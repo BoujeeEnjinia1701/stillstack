@@ -1,0 +1,17 @@
+# Card metadata consumed by https://amishchadha.com
+name: StillStack
+slug: stillstack
+area: Water Security
+status: concept          # concept | design | prototype | tested | released
+shortlisted: true
+pitch: >-
+  Multi-stage wick still that reuses the latent heat of condensation from each stage in the next one.
+problem: >-
+  Single-basin solar stills make only about 3 to 5 L per m2 per day.
+budget_usd: 250
+difficulty: 3  # 1 easiest, 5 hardest
+hero_image: media/hero.png
+licenses:
+  hardware: CERN-OHL-S-2.0
+  software: MIT
+tags: [water-security, open-hardware, cern-ohl-s]

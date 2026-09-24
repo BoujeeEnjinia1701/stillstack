@@ -1,0 +1,51 @@
+# StillStack
+
+**Area:** Water Security · **Status:** Concept · **Prototype budget:** about $250 USD · **Difficulty:** 3 of 5
+
+Multi-stage wick still that reuses the latent heat of condensation from each stage in the next one.
+
+## Problem
+
+Single-basin solar stills make only about 3 to 5 L per m2 per day.
+
+## Concept
+
+Multi-stage wick still that reuses the latent heat of condensation from each stage in the next one.
+
+Full design precis: [docs/02-concept.md](docs/02-concept.md)
+
+## Key components
+
+- Wick fabric
+- Stacked aluminum plates
+- Glazing
+- Insulation
+- Collection channels
+- Printed spacers
+
+The working bill of materials is in [bom/bom.csv](bom/bom.csv).
+
+## Safety
+
+> Distillate must be tested before drinking. Use food-safe materials on all wetted surfaces.
+
+## Repository layout
+
+| Folder | Contents |
+| --- | --- |
+| `docs/` | Problem, concept, requirements, calculations and design decisions |
+| `cad/src/` | build123d Python source, the source of truth for all geometry |
+| `cad/step/`, `cad/stl/` | Exported models for FreeCAD, other CAD tools and printing |
+| `cad/drawings/` | 2D sketches and dimensioned drawings |
+| `bom/` | Bill of materials |
+| `electronics/` | KiCad schematics and PCB layouts |
+| `firmware/` | Microcontroller code |
+| `media/` | Renders, perspectives and photos |
+| `build-log/` | Dated prototyping notes |
+
+## Licenses
+
+- **Hardware** (CAD, drawings, BOM, electronics): [CERN-OHL-S v2](LICENSE)
+- **Software** (firmware, scripts, notebooks): [MIT](LICENSE-SOFTWARE)
+
+Part of the open hardware portfolio at [amishchadha.com](https://amishchadha.com).
