@@ -6,6 +6,10 @@
 
 Multi-stage wick still that reuses the latent heat of condensation from each stage in the next one.
 
+![StillStack concept](media/hero.png)
+
+[Interactive 3D model](media/viewer.html) · [Concept blueprint (PDF)](media/concept-blueprint.pdf) · [Review note](docs/REVIEW.md)
+
 ## Problem
 
 Single-basin solar stills make only about 3 to 5 L per m2 per day.
