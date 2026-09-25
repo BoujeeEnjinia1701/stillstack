@@ -3,9 +3,9 @@ doc_id: SSK-PRB-001
 title: StillStack problem statement
 project: StillStack
 doc_type: Problem statement
-version: "0.2"
+version: "0.3"
 status: Draft
-date: '2026-09-24'
+date: '2026-09-25'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -17,6 +17,10 @@ revisions:
   date: '2026-09-24'
   author: Amish Chadha
   change: Populate to TRL 2 (users, context, constraints, out of scope, prior work)
+- version: "0.3"
+  date: '2026-09-25'
+  author: Amish Chadha
+  change: Record the 1 m2 aperture decision (SSK-DDR-001) and the TRL 3 cost finding; partner question stays open
 ---
 
 # StillStack problem statement
@@ -40,7 +44,7 @@ Multi-effect distillation fixes this in industry by condensing the vapor from on
 
 ## Constraints
 
-- Garage-buildable prototype of 1 m2 aperture for about $250 USD in parts, using sheet aluminum, polycarbonate glazing, timber and cloth wicks.
+- Garage-buildable prototype of 1 m2 aperture for about $250 USD in parts, using sheet aluminum, polycarbonate glazing, timber and cloth wicks. The 1 m2 aperture and the $250 budget were confirmed by Amish on 2026-09-25 (SSK-DDR-001). The TRL 3 priced BOM comes to about $317, so the cost constraint is not yet met (SSK-CAL-001).
 - Fully passive: no pumps, electronics or batteries. Feed water arrives by gravity from a container the user fills.
 - Every surface that touches distillate must be food-contact safe, and all materials must tolerate dry stagnation under full sun.
 - Feed water may be seawater (about 35 g per L of salt) or brackish groundwater, so wicks and plates must resist salt build-up and corrosion.
@@ -56,5 +60,5 @@ Multi-effect distillation fixes this in industry by condensing the vapor from on
 
 ## Open questions
 
-- Which users to involve first, and through which partner (a coastal NGO, a university water lab or a makerspace network)? Proposed, awaiting Amish.
-- Is a household unit of 1 m2 the right first size, or should the prototype be smaller (0.5 m2) to cut cost and weight? Proposed: 1 m2, awaiting Amish.
+- Which users to involve first, and through which partner (a coastal NGO, a university water lab or a makerspace network)? No recommendation has been made. Proposed, awaiting Amish.
+- The first size is settled: a household unit of 1 m2, decided by Amish on 2026-09-25 (SSK-DDR-001).

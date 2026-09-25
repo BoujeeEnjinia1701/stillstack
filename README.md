@@ -1,14 +1,14 @@
 # StillStack
 
-![TRL 2](https://img.shields.io/badge/TRL-2%20of%209-0F766E) ![Hardware: CERN-OHL-S-2.0](https://img.shields.io/badge/hardware-CERN--OHL--S--2.0-111827) ![Software: MIT](https://img.shields.io/badge/software-MIT-111827)
+![TRL 3](https://img.shields.io/badge/TRL-3%20of%209-0F766E) ![Hardware: CERN-OHL-S-2.0](https://img.shields.io/badge/hardware-CERN--OHL--S--2.0-111827) ![Software: MIT](https://img.shields.io/badge/software-MIT-111827)
 
-**Area:** Water Security · **TRL:** 2 of 9 (concept formulated) · **Prototype budget:** about $250 USD · **Difficulty:** 3 of 5
+**Area:** Water Security · **TRL:** 3 of 9 (proof of concept on paper) · **Prototype budget:** about $250 USD (priced BOM about $317, over budget) · **Difficulty:** 3 of 5
 
 Multi-stage wick still that reuses the latent heat of condensation from each stage in the next one.
 
 ![StillStack concept](media/hero.png)
 
-[Interactive 3D model](media/viewer.html) · [Concept blueprint (PDF)](media/concept-blueprint.pdf) · [Review note](docs/REVIEW.md)
+[Interactive 3D model](media/viewer.html) · [Concept blueprint (PDF)](media/concept-blueprint.pdf) · [General arrangement (PDF)](cad/drawings/SSK-DWG-002.pdf) · [Sizing note](docs/04-calcs/01-sizing.md) · [Review note](docs/REVIEW.md)
 
 ## Problem
 
@@ -18,22 +18,25 @@ Single-basin solar stills make only about 3 to 5 L per m2 per day.
 
 Multi-stage wick still that reuses the latent heat of condensation from each stage in the next one.
 
+The TRL 3 sizing (SSK-CAL-001) gives about 10.6 L per m2 per day on a 5.5 kWh per m2 day, with a gained output ratio of about 1.3. Dry stagnation (about 140 °C) and cost are not yet within requirements.
+
 Full design precis: [docs/02-concept.md](docs/02-concept.md)
 
 ## Key components
 
-- Wick fabric
-- Stacked aluminum plates
-- Glazing
-- Insulation
-- Collection channels
-- Printed spacers
+- Twin-wall polycarbonate glazing
+- Insulated plywood and PIR frame
+- Black aluminum absorber and four coated aluminum condenser plates
+- Wick strips, four stages
+- Polycarbonate side rails and silicone-cord spacer ribs
+- Feed trough, lidded distillate manifold and brine gutter
+- Rear heat-rejection fins and an adjustable tilt stand
 
 The working bill of materials is in [bom/bom.csv](bom/bom.csv).
 
 ## Safety
 
-> Distillate must be tested before drinking. Use food-safe materials on all wetted surfaces.
+> Distillate must be tested before drinking. Use food-safe materials on all wetted surfaces. The absorber reaches about 140 °C if the wicks run dry: shade the panel before maintenance. Anchor the stand against wind.
 
 ## Repository layout
 

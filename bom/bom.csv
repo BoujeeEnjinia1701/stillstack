@@ -1,13 +1,14 @@
 item,qty,spec,supplier,unit_cost_usd,make_buy,notes
-1 Glazing,1,"6 mm twin-wall UV-stabilized polycarbonate, 1.0 x 1.0 m",Building supplier,30.00,buy,Indicative price
-2 Insulated frame,1,"12 mm exterior plywood walls with 25 mm foam liner, 1.1 x 1.1 m outside, exterior paint",Building supplier,22.00,make,Material cost only
-3 Absorber plate,1,"0.5 mm aluminum sheet 1.0 x 1.0 m, high-temperature matte black paint",Metal supplier,24.00,buy,Indicative price including paint
-4 Wick fabric,4,"Cotton or viscose-polyester nonwoven, about 1 mm, 1.0 x 1.25 m",Fabric retailer,4.00,buy,Indicative price; wick material to be selected at TRL 3
-5 Condenser plate,4,"0.5 mm aluminum 1.0 x 1.0 m, food-grade coating on condensing face",Metal supplier,16.00,buy,Indicative price; coating or 316 stainless proposed awaiting Amish
-6 Stage spacer rail,8,"3D-printed ASA or PC rail, 1.0 m x 20 x 7 mm (printed in sections)",Self,1.50,make,Material cost only; not PETG (softens near 75 C)
-7 Feed trough,1,"PVC or HDPE gutter section 1.1 m with end caps and drip valve",Hardware store,10.00,buy,Indicative price
-8 Distillate manifold,1,"Food-grade PP or HDPE channel 1.1 m with silicone outlet tube",Online retailer,12.00,buy,Indicative price; food-contact rated
-9 Brine gutter,1,"PVC gutter section 1.1 m with drain hose",Hardware store,6.00,buy,Indicative price
-10 Heat-rejection fin,10,"Folded 0.5 mm aluminum strip, 0.96 m x 30 mm",Metal supplier,1.00,make,Cut from offcuts or flashing roll
-11 Tilt stand,1,"45 x 45 mm timber, about 6 m, with screws",Building supplier,15.00,make,Material cost only
-12 Sealant fasteners and tubing,1,"NSF/ANSI 51 or 61 silicone, stainless screws, silicone tube",Hardware store,20.00,buy,Indicative price; not shown in the model
+1 Glazing,1,"6 mm twin-wall UV-stabilized clear polycarbonate, 1.0 x 1.0 m cut sheet, rated to about 120 C",Greenhouse or glazing supplier,32.00,buy,Indicative price for a cut sheet; solar transmittance about 0.80 used in CAL-001
+2 Insulated frame,1,"12 mm exterior plywood walls 1.1 m x 90 mm (one 1.2 x 0.6 m panel), 25 mm foil-faced PIR foam liner, exterior paint",Building supplier,35.00,make,Material cost only; PIR (not XPS or EPS) because the absorber edge reaches about 140 C at dry stagnation
+3 Absorber plate,1,"0.5 mm 3003 or 1050 aluminum sheet 1.0 x 1.0 m, high-temperature matte black paint on top face",Metal supplier (cut sheet),24.00,buy,Indicative price including paint
+4 Wick fabric,4,"Viscose-polyester or cotton nonwoven, about 1 mm, 1.0 x 1.25 m, permeability 3e-11 m2 or more",Fabric retailer,4.00,buy,Indicative price; permeability not yet known for any candidate fabric (CAL-001 section 8)
+5 Condenser plate,4,"0.5 mm aluminum 1.0 x 1.0 m with food-contact coating on the condensing (top) face",Metal supplier (cut sheet) plus coating supplier,21.00,buy,Indicative: $16 plate plus about $5 coating allowance; coating product not yet selected
+6 Side spacer rail,8,"3D-printed polycarbonate rail 1.0 m x 12 x 7 mm, printed in sections",Self (PC filament from an online retailer),3.50,make,About 100 g of PC filament each; ASA excluded because stages 1 to 3 exceed its rating at dry stagnation
+7 Intermediate spacer rib,16,"Food-grade silicone round cord, 7 mm, 1.0 m, four per gap at 196 mm pitch",Seal or gasket supplier,1.20,buy,Silicone proposed (awaiting Amish) for heat rating and low wetting; PC ribs cost about the same
+8 Feed trough,1,"PVC or HDPE gutter section 1.1 m with end caps and drip valve",Hardware store,10.00,buy,Indicative price
+9 Distillate manifold,1,"Food-grade PP or HDPE channel 1.1 m with lid and silicone outlet tube",Online retailer,12.00,buy,Indicative price; food-contact rated
+10 Brine gutter,1,"PVC gutter section 1.1 m with drain hose, outboard of the distillate manifold",Hardware store,6.00,buy,Indicative price
+11 Heat-rejection fin,10,"Folded 0.5 mm aluminum strip, 0.96 m x 30 mm fin with 20 mm flange",Metal supplier (flashing roll),1.00,make,Cut from flashing roll or plate offcuts
+12 Adjustable tilt stand,1,"45 x 45 mm timber about 6 m, two hinges at the front pivot, rear struts with pin holes for 10 to 35 deg, stainless pins",Building supplier,21.00,make,Material cost only; ground anchors included
+13 Sealant fasteners and tubing,1,"NSF/ANSI 51 or 61 silicone sealant, stainless screws, silicone tube",Hardware store,20.00,buy,Indicative price; not shown in the model
