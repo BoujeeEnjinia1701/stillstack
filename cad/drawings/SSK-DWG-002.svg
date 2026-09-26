@@ -2475,10 +2475,22 @@
       <line x1="22.5" y1="14.75" x2="22.5" y2="15.25" />
       <line x1="-22.5" y1="14.75" x2="-22.5" y2="15.25" />
       <line x1="-22.5" y1="14.75" x2="22.5" y2="14.75" />
+      <line x1="8.2" y1="-0.25" x2="8.2" y2="-1.25" />
+      <line x1="8.2" y1="-1.25" x2="22.5" y2="-1.25" />
+      <line x1="22.5" y1="-1.25" x2="22.5" y2="-0.25" />
+      <line x1="8.2" y1="-0.25" x2="22.5" y2="-0.25" />
       <line x1="-22.5" y1="7.25" x2="-18.8" y2="7.25" />
       <line x1="-18.8" y1="7.25" x2="-18.8" y2="6.25" />
       <line x1="-22.5" y1="6.25" x2="-22.5" y2="7.25" />
       <line x1="-22.5" y1="6.25" x2="-18.8" y2="6.25" />
+      <line x1="-22.5" y1="14.75" x2="-18.8" y2="14.75" />
+      <line x1="-18.8" y1="14.75" x2="-18.8" y2="13.75" />
+      <line x1="-22.5" y1="13.75" x2="-22.5" y2="14.75" />
+      <line x1="-22.5" y1="13.75" x2="-18.8" y2="13.75" />
+      <line x1="8.2" y1="7.25" x2="8.2" y2="6.25" />
+      <line x1="8.2" y1="6.25" x2="22.5" y2="6.25" />
+      <line x1="22.5" y1="6.25" x2="22.5" y2="7.25" />
+      <line x1="8.2" y1="7.25" x2="22.5" y2="7.25" />
       <line x1="-22.5" y1="-0.25" x2="-18.8" y2="-0.25" />
       <line x1="-18.8" y1="-0.25" x2="-18.8" y2="-1.25" />
       <line x1="-22.5" y1="-1.25" x2="-22.5" y2="-0.25" />
@@ -2495,22 +2507,6 @@
       <line x1="8.2" y1="-8.75" x2="22.5" y2="-8.75" />
       <line x1="22.5" y1="-8.75" x2="22.5" y2="-7.75" />
       <line x1="8.2" y1="-7.75" x2="22.5" y2="-7.75" />
-      <line x1="8.2" y1="7.25" x2="8.2" y2="6.25" />
-      <line x1="8.2" y1="6.25" x2="22.5" y2="6.25" />
-      <line x1="22.5" y1="6.25" x2="22.5" y2="7.25" />
-      <line x1="8.2" y1="7.25" x2="22.5" y2="7.25" />
-      <line x1="-22.5" y1="14.75" x2="-18.8" y2="14.75" />
-      <line x1="-18.8" y1="14.75" x2="-18.8" y2="13.75" />
-      <line x1="-22.5" y1="13.75" x2="-22.5" y2="14.75" />
-      <line x1="-22.5" y1="13.75" x2="-18.8" y2="13.75" />
-      <line x1="8.2" y1="-0.25" x2="8.2" y2="-1.25" />
-      <line x1="8.2" y1="-1.25" x2="22.5" y2="-1.25" />
-      <line x1="22.5" y1="-1.25" x2="22.5" y2="-0.25" />
-      <line x1="8.2" y1="-0.25" x2="22.5" y2="-0.25" />
-      <line x1="-22.5" y1="0.25" x2="22.5" y2="0.25" />
-      <line x1="22.5" y1="-0.25" x2="22.5" y2="0.25" />
-      <line x1="-22.5" y1="-0.25" x2="-22.5" y2="0.25" />
-      <line x1="-22.5" y1="-0.25" x2="22.5" y2="-0.25" />
       <line x1="-22.5" y1="7.75" x2="22.5" y2="7.75" />
       <line x1="22.5" y1="7.25" x2="22.5" y2="7.75" />
       <line x1="-22.5" y1="7.25" x2="-22.5" y2="7.75" />
@@ -2519,24 +2515,40 @@
       <line x1="22.5" y1="-7.75" x2="22.5" y2="-7.25" />
       <line x1="-22.5" y1="-7.75" x2="-22.5" y2="-7.25" />
       <line x1="-22.5" y1="-7.75" x2="22.5" y2="-7.75" />
+      <line x1="-22.5" y1="0.25" x2="22.5" y2="0.25" />
+      <line x1="22.5" y1="-0.25" x2="22.5" y2="0.25" />
+      <line x1="-22.5" y1="-0.25" x2="-22.5" y2="0.25" />
+      <line x1="-22.5" y1="-0.25" x2="22.5" y2="-0.25" />
       <line x1="-22.5" y1="-14.75" x2="22.5" y2="-14.75" />
       <line x1="22.5" y1="-15.25" x2="22.5" y2="-14.75" />
       <line x1="-22.5" y1="-15.25" x2="-22.5" y2="-14.75" />
       <line x1="-22.5" y1="-15.25" x2="22.5" y2="-15.25" />
       <circle cx="-5.3" cy="3.75" r="3.5" />
-      <circle cx="-5.3" cy="-11.25" r="3.5" />
       <circle cx="-5.3" cy="11.25" r="3.5" />
       <circle cx="-5.3" cy="-3.75" r="3.5" />
+      <circle cx="-5.3" cy="-11.25" r="3.5" />
     </g>
     <g fill="none" stroke="rgb(106,113,128)" stroke-width="0.0875" id="Hidden" stroke-dasharray="1.050 0.263">
       <line x1="-22.5" y1="15.25" x2="22.5" y2="15.25" />
       <line x1="-22.5" y1="14.75" x2="-22.5" y2="15.25" />
       <line x1="22.5" y1="14.75" x2="22.5" y2="15.25" />
       <line x1="-22.5" y1="14.75" x2="22.5" y2="14.75" />
+      <line x1="8.2" y1="-0.25" x2="8.2" y2="-1.25" />
+      <line x1="8.2" y1="-1.25" x2="22.5" y2="-1.25" />
+      <line x1="8.2" y1="-0.25" x2="22.5" y2="-0.25" />
+      <line x1="22.5" y1="-1.25" x2="22.5" y2="-0.25" />
       <line x1="-22.5" y1="7.25" x2="-18.8" y2="7.25" />
       <line x1="-18.8" y1="7.25" x2="-18.8" y2="6.25" />
       <line x1="-22.5" y1="6.25" x2="-22.5" y2="7.25" />
       <line x1="-22.5" y1="6.25" x2="-18.8" y2="6.25" />
+      <line x1="-22.5" y1="14.75" x2="-18.8" y2="14.75" />
+      <line x1="-18.8" y1="14.75" x2="-18.8" y2="13.75" />
+      <line x1="-22.5" y1="13.75" x2="-22.5" y2="14.75" />
+      <line x1="-22.5" y1="13.75" x2="-18.8" y2="13.75" />
+      <line x1="8.2" y1="7.25" x2="8.2" y2="6.25" />
+      <line x1="8.2" y1="6.25" x2="22.5" y2="6.25" />
+      <line x1="8.2" y1="7.25" x2="22.5" y2="7.25" />
+      <line x1="22.5" y1="6.25" x2="22.5" y2="7.25" />
       <line x1="-22.5" y1="-0.25" x2="-18.8" y2="-0.25" />
       <line x1="-18.8" y1="-0.25" x2="-18.8" y2="-1.25" />
       <line x1="-22.5" y1="-1.25" x2="-22.5" y2="-0.25" />
@@ -2553,22 +2565,6 @@
       <line x1="8.2" y1="-8.75" x2="22.5" y2="-8.75" />
       <line x1="8.2" y1="-7.75" x2="22.5" y2="-7.75" />
       <line x1="22.5" y1="-8.75" x2="22.5" y2="-7.75" />
-      <line x1="8.2" y1="7.25" x2="8.2" y2="6.25" />
-      <line x1="8.2" y1="6.25" x2="22.5" y2="6.25" />
-      <line x1="8.2" y1="7.25" x2="22.5" y2="7.25" />
-      <line x1="22.5" y1="6.25" x2="22.5" y2="7.25" />
-      <line x1="-22.5" y1="14.75" x2="-18.8" y2="14.75" />
-      <line x1="-18.8" y1="14.75" x2="-18.8" y2="13.75" />
-      <line x1="-22.5" y1="13.75" x2="-22.5" y2="14.75" />
-      <line x1="-22.5" y1="13.75" x2="-18.8" y2="13.75" />
-      <line x1="8.2" y1="-0.25" x2="8.2" y2="-1.25" />
-      <line x1="8.2" y1="-1.25" x2="22.5" y2="-1.25" />
-      <line x1="8.2" y1="-0.25" x2="22.5" y2="-0.25" />
-      <line x1="22.5" y1="-1.25" x2="22.5" y2="-0.25" />
-      <line x1="-22.5" y1="0.25" x2="22.5" y2="0.25" />
-      <line x1="-22.5" y1="-0.25" x2="-22.5" y2="0.25" />
-      <line x1="22.5" y1="-0.25" x2="22.5" y2="0.25" />
-      <line x1="-22.5" y1="-0.25" x2="22.5" y2="-0.25" />
       <line x1="-22.5" y1="7.75" x2="22.5" y2="7.75" />
       <line x1="-22.5" y1="7.25" x2="-22.5" y2="7.75" />
       <line x1="22.5" y1="7.25" x2="22.5" y2="7.75" />
@@ -2577,14 +2573,18 @@
       <line x1="-22.5" y1="-7.75" x2="-22.5" y2="-7.25" />
       <line x1="22.5" y1="-7.75" x2="22.5" y2="-7.25" />
       <line x1="-22.5" y1="-7.75" x2="22.5" y2="-7.75" />
+      <line x1="-22.5" y1="0.25" x2="22.5" y2="0.25" />
+      <line x1="-22.5" y1="-0.25" x2="-22.5" y2="0.25" />
+      <line x1="22.5" y1="-0.25" x2="22.5" y2="0.25" />
+      <line x1="-22.5" y1="-0.25" x2="22.5" y2="-0.25" />
       <line x1="-22.5" y1="-14.75" x2="22.5" y2="-14.75" />
       <line x1="-22.5" y1="-15.25" x2="-22.5" y2="-14.75" />
       <line x1="22.5" y1="-15.25" x2="22.5" y2="-14.75" />
       <line x1="-22.5" y1="-15.25" x2="22.5" y2="-15.25" />
       <circle cx="-5.3" cy="3.75" r="3.5" />
-      <circle cx="-5.3" cy="-11.25" r="3.5" />
       <circle cx="-5.3" cy="11.25" r="3.5" />
       <circle cx="-5.3" cy="-3.75" r="3.5" />
+      <circle cx="-5.3" cy="-11.25" r="3.5" />
     </g>
   </g>
 </svg><text x="225.35" y="107.70" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.8" font-weight="600" fill="#111827" text-anchor="middle">DETAIL A: STACK SECTION AT A RIB</text><text x="225.35" y="111.70" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.2" font-weight="400" fill="#4B5563" text-anchor="middle">Scale 2:1, looking up the slope</text><polyline points="271.7,40.51 274.7,40.51 276.7,40.51" fill="none" stroke="#4B5563" stroke-width="0.18"/><text x="277.70" y="41.41" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.2" font-weight="400" fill="#111827" text-anchor="start">Absorber plate 0.5</text><polyline points="271.7,42.02 274.7,42.02 276.7,44.11" fill="none" stroke="#4B5563" stroke-width="0.18"/><text x="277.70" y="45.01" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.2" font-weight="400" fill="#111827" text-anchor="start">Wick 1 (stage 1)</text><polyline points="271.7,49.10 274.7,49.10 276.7,49.10" fill="none" stroke="#4B5563" stroke-width="0.18"/><text x="277.70" y="50.00" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.2" font-weight="400" fill="#111827" text-anchor="start">Vapor gap 6</text><polyline points="271.7,55.68 274.7,55.68 276.7,55.68" fill="none" stroke="#4B5563" stroke-width="0.18"/><text x="277.70" y="56.58" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.2" font-weight="400" fill="#111827" text-anchor="start">Condenser plate 0.5</text><polyline points="271.7,63.26 274.7,63.26 276.7,63.26" fill="none" stroke="#4B5563" stroke-width="0.18"/><text x="277.70" y="64.16" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.2" font-weight="400" fill="#111827" text-anchor="start">Silicone rib 7 dia</text><polyline points="271.7,87.74 274.7,87.74 276.7,87.74" fill="none" stroke="#4B5563" stroke-width="0.18"/><text x="277.70" y="88.64" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.2" font-weight="400" fill="#111827" text-anchor="start">Wick 4 (stage 4)</text><polyline points="271.7,101.19 274.7,101.19 276.7,101.19" fill="none" stroke="#4B5563" stroke-width="0.18"/><text x="277.70" y="102.09" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.2" font-weight="400" fill="#111827" text-anchor="start">Bottom plate 0.5</text><svg x="40.00" y="178.00" width="116.17" height="63.92" viewBox="-116.175 -63.925 232.35 127.85" preserveAspectRatio="xMidYMid meet" overflow="visible"><g transform="scale(1,-1)" stroke-linecap="round">
@@ -2593,10 +2593,6 @@
       <line x1="-58.0" y1="28.25" x2="-58.0" y2="28.75" />
       <line x1="-58.0" y1="28.25" x2="-116.0" y2="28.25" />
       <line x1="-116.0" y1="28.25" x2="-116.0" y2="28.75" />
-      <line x1="-78.0" y1="28.25" x2="-116.0" y2="28.25" />
-      <line x1="-78.0" y1="27.25" x2="-78.0" y2="28.25" />
-      <line x1="-78.0" y1="27.25" x2="-116.0" y2="27.25" />
-      <line x1="-116.0" y1="27.25" x2="-116.0" y2="28.25" />
       <line x1="-78.0" y1="20.75" x2="-116.0" y2="20.75" />
       <line x1="-78.0" y1="19.75" x2="-78.0" y2="20.75" />
       <line x1="-78.0" y1="19.75" x2="-116.0" y2="19.75" />
@@ -2609,6 +2605,18 @@
       <line x1="-78.0" y1="12.25" x2="-78.0" y2="13.25" />
       <line x1="-78.0" y1="12.25" x2="-116.0" y2="12.25" />
       <line x1="-116.0" y1="12.25" x2="-116.0" y2="13.25" />
+      <line x1="-78.0" y1="28.25" x2="-116.0" y2="28.25" />
+      <line x1="-78.0" y1="27.25" x2="-78.0" y2="28.25" />
+      <line x1="-78.0" y1="27.25" x2="-116.0" y2="27.25" />
+      <line x1="-116.0" y1="27.25" x2="-116.0" y2="28.25" />
+      <line x1="19.0" y1="21.25" x2="-116.0" y2="21.25" />
+      <line x1="19.0" y1="20.75" x2="19.0" y2="21.25" />
+      <line x1="19.0" y1="20.75" x2="-116.0" y2="20.75" />
+      <line x1="-116.0" y1="20.75" x2="-116.0" y2="21.25" />
+      <line x1="19.0" y1="-1.25" x2="-116.0" y2="-1.25" />
+      <line x1="19.0" y1="-1.75" x2="19.0" y2="-1.25" />
+      <line x1="19.0" y1="-1.75" x2="-116.0" y2="-1.75" />
+      <line x1="-116.0" y1="-1.75" x2="-116.0" y2="-1.25" />
       <line x1="19.0" y1="13.75" x2="-116.0" y2="13.75" />
       <line x1="19.0" y1="13.25" x2="19.0" y2="13.75" />
       <line x1="19.0" y1="13.25" x2="-116.0" y2="13.25" />
@@ -2617,34 +2625,26 @@
       <line x1="19.0" y1="5.75" x2="19.0" y2="6.25" />
       <line x1="19.0" y1="5.75" x2="-116.0" y2="5.75" />
       <line x1="-116.0" y1="5.75" x2="-116.0" y2="6.25" />
-      <line x1="19.0" y1="-1.25" x2="-116.0" y2="-1.25" />
-      <line x1="19.0" y1="-1.75" x2="19.0" y2="-1.25" />
-      <line x1="19.0" y1="-1.75" x2="-116.0" y2="-1.75" />
-      <line x1="-116.0" y1="-1.75" x2="-116.0" y2="-1.25" />
-      <line x1="19.0" y1="21.25" x2="-116.0" y2="21.25" />
-      <line x1="19.0" y1="20.75" x2="19.0" y2="21.25" />
-      <line x1="19.0" y1="20.75" x2="-116.0" y2="20.75" />
-      <line x1="-116.0" y1="20.75" x2="-116.0" y2="21.25" />
-      <line x1="-19.0" y1="-0.5" x2="-19.0" y2="5.0" />
-      <line x1="-19.0" y1="5.0" x2="-56.0" y2="5.0" />
-      <line x1="-56.0" y1="-0.5" x2="-56.0" y2="5.0" />
-      <line x1="-19.0" y1="-0.5" x2="-56.0" y2="-0.5" />
-      <line x1="-19.0" y1="63.75" x2="-56.0" y2="63.75" />
-      <line x1="-19.0" y1="22.0" x2="-19.0" y2="63.75" />
-      <line x1="-56.0" y1="22.0" x2="-56.0" y2="63.75" />
-      <line x1="-19.0" y1="22.0" x2="-56.0" y2="22.0" />
-      <line x1="-19.0" y1="14.5" x2="-19.0" y2="20.0" />
-      <line x1="-19.0" y1="20.0" x2="-56.0" y2="20.0" />
-      <line x1="-19.0" y1="14.5" x2="-56.0" y2="14.5" />
-      <line x1="-56.0" y1="14.5" x2="-56.0" y2="20.0" />
       <line x1="-19.0" y1="7.0" x2="-19.0" y2="12.5" />
       <line x1="-19.0" y1="12.5" x2="-56.0" y2="12.5" />
       <line x1="-19.0" y1="7.0" x2="-56.0" y2="7.0" />
       <line x1="-56.0" y1="7.0" x2="-56.0" y2="12.5" />
+      <line x1="-19.0" y1="14.5" x2="-19.0" y2="20.0" />
+      <line x1="-19.0" y1="20.0" x2="-56.0" y2="20.0" />
+      <line x1="-19.0" y1="14.5" x2="-56.0" y2="14.5" />
+      <line x1="-56.0" y1="14.5" x2="-56.0" y2="20.0" />
       <line x1="-19.0" y1="-6.75" x2="-56.0" y2="-6.75" />
       <line x1="-19.0" y1="-6.75" x2="-19.0" y2="-2.5" />
       <line x1="-19.0" y1="-2.5" x2="-56.0" y2="-2.5" />
       <line x1="-56.0" y1="-6.75" x2="-56.0" y2="-2.5" />
+      <line x1="-19.0" y1="63.75" x2="-56.0" y2="63.75" />
+      <line x1="-19.0" y1="22.0" x2="-19.0" y2="63.75" />
+      <line x1="-56.0" y1="22.0" x2="-56.0" y2="63.75" />
+      <line x1="-19.0" y1="22.0" x2="-56.0" y2="22.0" />
+      <line x1="-19.0" y1="-0.5" x2="-19.0" y2="5.0" />
+      <line x1="-19.0" y1="5.0" x2="-56.0" y2="5.0" />
+      <line x1="-56.0" y1="-0.5" x2="-56.0" y2="5.0" />
+      <line x1="-19.0" y1="-0.5" x2="-56.0" y2="-0.5" />
       <line x1="-56.0" y1="59.75" x2="-116.0" y2="59.75" />
       <line x1="-56.0" y1="53.75" x2="-56.0" y2="59.75" />
       <line x1="-56.0" y1="53.75" x2="-116.0" y2="53.75" />
@@ -2675,10 +2675,6 @@
       <line x1="-58.0" y1="28.25" x2="-58.0" y2="28.75" />
       <line x1="-116.0" y1="28.25" x2="-116.0" y2="28.75" />
       <line x1="-58.0" y1="28.25" x2="-116.0" y2="28.25" />
-      <line x1="-78.0" y1="28.25" x2="-116.0" y2="28.25" />
-      <line x1="-78.0" y1="27.25" x2="-78.0" y2="28.25" />
-      <line x1="-116.0" y1="27.25" x2="-116.0" y2="28.25" />
-      <line x1="-78.0" y1="27.25" x2="-116.0" y2="27.25" />
       <line x1="-78.0" y1="20.75" x2="-116.0" y2="20.75" />
       <line x1="-78.0" y1="19.75" x2="-78.0" y2="20.75" />
       <line x1="-116.0" y1="19.75" x2="-116.0" y2="20.75" />
@@ -2691,6 +2687,18 @@
       <line x1="-78.0" y1="12.25" x2="-78.0" y2="13.25" />
       <line x1="-116.0" y1="12.25" x2="-116.0" y2="13.25" />
       <line x1="-78.0" y1="12.25" x2="-116.0" y2="12.25" />
+      <line x1="-78.0" y1="28.25" x2="-116.0" y2="28.25" />
+      <line x1="-78.0" y1="27.25" x2="-78.0" y2="28.25" />
+      <line x1="-116.0" y1="27.25" x2="-116.0" y2="28.25" />
+      <line x1="-78.0" y1="27.25" x2="-116.0" y2="27.25" />
+      <line x1="19.0" y1="21.25" x2="-116.0" y2="21.25" />
+      <line x1="19.0" y1="20.75" x2="19.0" y2="21.25" />
+      <line x1="-116.0" y1="20.75" x2="-116.0" y2="21.25" />
+      <line x1="19.0" y1="20.75" x2="-116.0" y2="20.75" />
+      <line x1="19.0" y1="-1.25" x2="-116.0" y2="-1.25" />
+      <line x1="19.0" y1="-1.75" x2="19.0" y2="-1.25" />
+      <line x1="-116.0" y1="-1.75" x2="-116.0" y2="-1.25" />
+      <line x1="19.0" y1="-1.75" x2="-116.0" y2="-1.75" />
       <line x1="19.0" y1="13.75" x2="-116.0" y2="13.75" />
       <line x1="19.0" y1="13.25" x2="19.0" y2="13.75" />
       <line x1="-116.0" y1="13.25" x2="-116.0" y2="13.75" />
@@ -2699,34 +2707,26 @@
       <line x1="19.0" y1="5.75" x2="19.0" y2="6.25" />
       <line x1="-116.0" y1="5.75" x2="-116.0" y2="6.25" />
       <line x1="19.0" y1="5.75" x2="-116.0" y2="5.75" />
-      <line x1="19.0" y1="-1.25" x2="-116.0" y2="-1.25" />
-      <line x1="19.0" y1="-1.75" x2="19.0" y2="-1.25" />
-      <line x1="-116.0" y1="-1.75" x2="-116.0" y2="-1.25" />
-      <line x1="19.0" y1="-1.75" x2="-116.0" y2="-1.75" />
-      <line x1="19.0" y1="21.25" x2="-116.0" y2="21.25" />
-      <line x1="19.0" y1="20.75" x2="19.0" y2="21.25" />
-      <line x1="-116.0" y1="20.75" x2="-116.0" y2="21.25" />
-      <line x1="19.0" y1="20.75" x2="-116.0" y2="20.75" />
-      <line x1="-19.0" y1="-0.5" x2="-19.0" y2="5.0" />
-      <line x1="-19.0" y1="5.0" x2="-56.0" y2="5.0" />
-      <line x1="-56.0" y1="-0.5" x2="-56.0" y2="5.0" />
-      <line x1="-19.0" y1="-0.5" x2="-56.0" y2="-0.5" />
-      <line x1="-19.0" y1="63.75" x2="-56.0" y2="63.75" />
-      <line x1="-19.0" y1="22.0" x2="-19.0" y2="63.75" />
-      <line x1="-56.0" y1="22.0" x2="-56.0" y2="63.75" />
-      <line x1="-19.0" y1="22.0" x2="-56.0" y2="22.0" />
-      <line x1="-19.0" y1="14.5" x2="-19.0" y2="20.0" />
-      <line x1="-19.0" y1="20.0" x2="-56.0" y2="20.0" />
-      <line x1="-56.0" y1="14.5" x2="-56.0" y2="20.0" />
-      <line x1="-19.0" y1="14.5" x2="-56.0" y2="14.5" />
       <line x1="-19.0" y1="7.0" x2="-19.0" y2="12.5" />
       <line x1="-19.0" y1="12.5" x2="-56.0" y2="12.5" />
       <line x1="-56.0" y1="7.0" x2="-56.0" y2="12.5" />
       <line x1="-19.0" y1="7.0" x2="-56.0" y2="7.0" />
+      <line x1="-19.0" y1="14.5" x2="-19.0" y2="20.0" />
+      <line x1="-19.0" y1="20.0" x2="-56.0" y2="20.0" />
+      <line x1="-56.0" y1="14.5" x2="-56.0" y2="20.0" />
+      <line x1="-19.0" y1="14.5" x2="-56.0" y2="14.5" />
       <line x1="-19.0" y1="-6.75" x2="-56.0" y2="-6.75" />
       <line x1="-19.0" y1="-6.75" x2="-19.0" y2="-2.5" />
       <line x1="-56.0" y1="-6.75" x2="-56.0" y2="-2.5" />
       <line x1="-19.0" y1="-2.5" x2="-56.0" y2="-2.5" />
+      <line x1="-19.0" y1="63.75" x2="-56.0" y2="63.75" />
+      <line x1="-19.0" y1="22.0" x2="-19.0" y2="63.75" />
+      <line x1="-56.0" y1="22.0" x2="-56.0" y2="63.75" />
+      <line x1="-19.0" y1="22.0" x2="-56.0" y2="22.0" />
+      <line x1="-19.0" y1="-0.5" x2="-19.0" y2="5.0" />
+      <line x1="-19.0" y1="5.0" x2="-56.0" y2="5.0" />
+      <line x1="-56.0" y1="-0.5" x2="-56.0" y2="5.0" />
+      <line x1="-19.0" y1="-0.5" x2="-56.0" y2="-0.5" />
       <line x1="-56.0" y1="59.75" x2="-116.0" y2="59.75" />
       <line x1="-56.0" y1="53.75" x2="-56.0" y2="59.75" />
       <line x1="-116.0" y1="53.75" x2="-116.0" y2="59.75" />
@@ -2857,4 +2857,4 @@
       <line x1="38.397863" y1="-515.982862" x2="46.145973" y2="-493.594352" />
     </g>
   </g>
-</svg><text x="352.00" y="132.00" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.8" font-weight="600" fill="#111827" text-anchor="middle">ISOMETRIC VIEW</text><text x="352.00" y="136.00" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.2" font-weight="400" fill="#4B5563" text-anchor="middle">Not to scale</text><rect x="290" y="144" width="128" height="58.599999999999994" fill="#FFFFFF" stroke="#111827" stroke-width="0.35"/><text x="293.00" y="149.00" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.3" font-weight="600" fill="#0F766E" text-anchor="start">KEY DIMENSIONS AND FIGURES (SSK-CAL-001)</text><text x="293.00" y="154.00" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.6" font-weight="400" fill="#111827" text-anchor="start">Aperture 1.0 x 1.0 m; tilt 20 deg, stand 10 to 35 deg</text><text x="293.00" y="158.60" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.6" font-weight="400" fill="#111827" text-anchor="start">4 stages; 6 mm vapor gap; 1 mm wicks; 0.5 mm plates</text><text x="293.00" y="163.20" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.6" font-weight="400" fill="#111827" text-anchor="start">Ribs: 4 per gap at 194 mm pitch; sag 0.5 mm</text><text x="293.00" y="167.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.6" font-weight="400" fill="#111827" text-anchor="start">Dry breaks 10 mm each side of ribs and rails</text><text x="293.00" y="172.40" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.6" font-weight="400" fill="#111827" text-anchor="start">Air gap 25 mm; 6 mm twin-wall PC glazing</text><text x="293.00" y="177.00" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.6" font-weight="400" fill="#111827" text-anchor="start">Frame 12 mm plywood + 25 mm PIR; 1,074 mm square outside</text><text x="293.00" y="181.60" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.6" font-weight="400" fill="#111827" text-anchor="start">Front pivot 350 mm; rear strut 530 to 940 mm</text><text x="293.00" y="186.20" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.6" font-weight="400" fill="#111827" text-anchor="start">Design day: about 10.6 L/day, GOR about 1.3</text><text x="293.00" y="190.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.6" font-weight="400" fill="#111827" text-anchor="start">Dry stagnation: stage 1 about 140 C</text><text x="293.00" y="195.40" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.6" font-weight="400" fill="#111827" text-anchor="start">Panel about 16 kg dry, 20 kg wet</text><text x="293.00" y="200.00" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.6" font-weight="400" fill="#111827" text-anchor="start">Wick tails (0.25 m) and fasteners not shown</text><rect x="273.8" y="10.0" width="148" height="10.4" fill="#FFFFFF" stroke="#111827" stroke-width="0.5"/><rect x="273.8" y="10.0" width="148" height="5.2" fill="#F3F4F6" stroke="#111827" stroke-width="0.5"/><text x="275.60" y="13.60" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.0" font-weight="600" fill="#111827" text-anchor="start">REV</text><text x="289.60" y="13.60" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.0" font-weight="600" fill="#111827" text-anchor="start">DESCRIPTION</text><text x="381.60" y="13.60" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.0" font-weight="600" fill="#111827" text-anchor="start">DATE</text><text x="407.60" y="13.60" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.0" font-weight="600" fill="#111827" text-anchor="start">BY</text><line x1="273.8" y1="15.2" x2="421.8" y2="15.2" stroke="#9CA3AF" stroke-width="0.3"/><text x="275.60" y="18.80" font-family="IBM Plex Mono, Menlo, monospace" font-size="2.3" font-weight="400" fill="#111827" text-anchor="start">P1</text><text x="289.60" y="18.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.3" font-weight="400" fill="#111827" text-anchor="start">Preliminary general arrangement (TRL 3)</text><text x="381.60" y="18.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.3" font-weight="400" fill="#111827" text-anchor="start">2026-09-25</text><text x="407.60" y="18.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.3" font-weight="400" fill="#111827" text-anchor="start">AC</text><rect x="231.8" y="213.39999999999998" width="190.0" height="56.0" fill="#FFFFFF" stroke="#111827" stroke-width="0.7"/><rect x="231.8" y="213.39999999999998" width="3" height="56.0" fill="#0F766E"/><line x1="231.8" y1="227.39999999999998" x2="421.8" y2="227.39999999999998" stroke="#9CA3AF" stroke-width="0.3"/><line x1="231.8" y1="239.39999999999998" x2="421.8" y2="239.39999999999998" stroke="#9CA3AF" stroke-width="0.3"/><line x1="231.8" y1="251.39999999999998" x2="421.8" y2="251.39999999999998" stroke="#9CA3AF" stroke-width="0.3"/><line x1="231.8" y1="260.4" x2="421.8" y2="260.4" stroke="#9CA3AF" stroke-width="0.3"/><text x="237.80" y="218.40" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.2" font-weight="600" fill="#0F766E" text-anchor="start">STILLSTACK</text><text x="237.80" y="224.40" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="4.4" font-weight="600" fill="#111827" text-anchor="start">General arrangement</text><text x="236.80" y="230.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#4B5563" text-anchor="start">DRAWING NO.</text><text x="236.80" y="235.60" font-family="IBM Plex Mono, Menlo, monospace" font-size="3.4" font-weight="600" fill="#111827" text-anchor="start">SSK-DWG-002</text><text x="316.80" y="230.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#4B5563" text-anchor="start">REV</text><text x="316.80" y="235.60" font-family="IBM Plex Mono, Menlo, monospace" font-size="3.4" font-weight="600" fill="#111827" text-anchor="start">P1</text><line x1="314.8" y1="227.39999999999998" x2="314.8" y2="239.39999999999998" stroke="#9CA3AF" stroke-width="0.3"/><text x="341.80" y="230.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#4B5563" text-anchor="start">SHEET</text><text x="341.80" y="235.60" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="3.4" font-weight="600" fill="#111827" text-anchor="start">1 of 1</text><line x1="339.8" y1="227.39999999999998" x2="339.8" y2="239.39999999999998" stroke="#9CA3AF" stroke-width="0.3"/><text x="371.80" y="230.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#4B5563" text-anchor="start">SIZE</text><text x="371.80" y="235.60" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="3.4" font-weight="600" fill="#111827" text-anchor="start">ANSI B</text><line x1="369.8" y1="227.39999999999998" x2="369.8" y2="239.39999999999998" stroke="#9CA3AF" stroke-width="0.3"/><text x="236.80" y="242.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#4B5563" text-anchor="start">SCALE</text><text x="236.80" y="247.20" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="3.0" font-weight="500" fill="#111827" text-anchor="start">1:20</text><text x="266.80" y="242.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#4B5563" text-anchor="start">UNITS</text><text x="266.80" y="247.20" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="3.0" font-weight="500" fill="#111827" text-anchor="start">mm</text><line x1="264.8" y1="239.39999999999998" x2="264.8" y2="251.39999999999998" stroke="#9CA3AF" stroke-width="0.3"/><text x="291.80" y="242.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#4B5563" text-anchor="start">PROJECTION</text><path d="M302.8 244.39999999999998 L308.8 242.89999999999998 L308.8 250.89999999999998 L302.8 249.39999999999998 Z" fill="none" stroke="#111827" stroke-width="0.3"/><circle cx="314.8" cy="246.89999999999998" r="4" fill="none" stroke="#111827" stroke-width="0.3"/><circle cx="314.8" cy="246.89999999999998" r="2.3" fill="none" stroke="#111827" stroke-width="0.3"/><line x1="300.8" y1="246.89999999999998" x2="320.3" y2="246.89999999999998" stroke="#111827" stroke-width="0.18" stroke-dasharray="3 1 0.6 1"/><line x1="289.8" y1="239.39999999999998" x2="289.8" y2="251.39999999999998" stroke="#9CA3AF" stroke-width="0.3"/><text x="326.80" y="242.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#4B5563" text-anchor="start">DATE</text><text x="326.80" y="247.20" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="3.0" font-weight="500" fill="#111827" text-anchor="start">2026-09-25</text><line x1="324.8" y1="239.39999999999998" x2="324.8" y2="251.39999999999998" stroke="#9CA3AF" stroke-width="0.3"/><text x="366.80" y="242.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#4B5563" text-anchor="start">DRAWN</text><text x="366.80" y="247.20" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="3.0" font-weight="500" fill="#111827" text-anchor="start">Amish Chadha</text><line x1="364.8" y1="239.39999999999998" x2="364.8" y2="251.39999999999998" stroke="#9CA3AF" stroke-width="0.3"/><text x="236.80" y="254.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#4B5563" text-anchor="start">MATERIAL / NOTES</text><text x="236.80" y="258.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.6" font-weight="400" fill="#111827" text-anchor="start">See bom/bom.csv. Plates 0.5 mm aluminum; rails PC; ribs silicone; frame plywood and PIR</text><text x="236.80" y="266.20" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.1" font-weight="400" fill="#4B5563" text-anchor="start">Licensed CERN-OHL-S-2.0 · Open Hardware Portfolio · amishchadha.com</text><text x="418.80" y="266.20" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.9" font-weight="400" fill="#4B5563" text-anchor="end">Generated from cad/src; do not edit by hand</text></svg>
+</svg><text x="352.00" y="132.00" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.8" font-weight="600" fill="#111827" text-anchor="middle">ISOMETRIC VIEW</text><text x="352.00" y="136.00" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.2" font-weight="400" fill="#4B5563" text-anchor="middle">Not to scale</text><rect x="290" y="144" width="128" height="63.199999999999996" fill="#FFFFFF" stroke="#111827" stroke-width="0.35"/><text x="293.00" y="149.00" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.3" font-weight="600" fill="#0F766E" text-anchor="start">KEY DIMENSIONS AND FIGURES (SSK-CAL-001)</text><text x="293.00" y="154.00" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.6" font-weight="400" fill="#111827" text-anchor="start">Aperture 1.0 x 1.0 m; tilt 20 deg, stand 10 to 35 deg</text><text x="293.00" y="158.60" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.6" font-weight="400" fill="#111827" text-anchor="start">4 stages; 6 mm vapor gap; 1 mm wicks; 0.5 mm plates</text><text x="293.00" y="163.20" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.6" font-weight="400" fill="#111827" text-anchor="start">Ribs: 4 per gap at 194 mm pitch; sag 0.5 mm</text><text x="293.00" y="167.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.6" font-weight="400" fill="#111827" text-anchor="start">Dry breaks 10 mm each side of ribs and rails</text><text x="293.00" y="172.40" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.6" font-weight="400" fill="#111827" text-anchor="start">Air gap 25 mm; 6 mm twin-wall PC glazing</text><text x="293.00" y="177.00" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.6" font-weight="400" fill="#111827" text-anchor="start">Frame 12 mm plywood + 25 mm stone wool; 1,074 mm square outside</text><text x="293.00" y="181.60" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.6" font-weight="400" fill="#111827" text-anchor="start">Front pivot 350 mm; rear strut 530 to 940 mm</text><text x="293.00" y="186.20" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.6" font-weight="400" fill="#111827" text-anchor="start">Design day: about 10.6 L/day, GOR about 1.3</text><text x="293.00" y="190.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.6" font-weight="400" fill="#111827" text-anchor="start">Dry stagnation: stage 1 about 140 C (144 C calm)</text><text x="293.00" y="195.40" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.6" font-weight="400" fill="#111827" text-anchor="start">Stages 1, 2 rated 150 C; cover (BOM 14) not shown</text><text x="293.00" y="200.00" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.6" font-weight="400" fill="#111827" text-anchor="start">Panel about 17 kg dry, 21 kg wet</text><text x="293.00" y="204.60" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.6" font-weight="400" fill="#111827" text-anchor="start">Wick tails (0.25 m) and fasteners not shown</text><rect x="273.8" y="10.0" width="148" height="15.600000000000001" fill="#FFFFFF" stroke="#111827" stroke-width="0.5"/><rect x="273.8" y="10.0" width="148" height="5.2" fill="#F3F4F6" stroke="#111827" stroke-width="0.5"/><text x="275.60" y="13.60" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.0" font-weight="600" fill="#111827" text-anchor="start">REV</text><text x="289.60" y="13.60" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.0" font-weight="600" fill="#111827" text-anchor="start">DESCRIPTION</text><text x="381.60" y="13.60" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.0" font-weight="600" fill="#111827" text-anchor="start">DATE</text><text x="407.60" y="13.60" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.0" font-weight="600" fill="#111827" text-anchor="start">BY</text><line x1="273.8" y1="15.2" x2="421.8" y2="15.2" stroke="#9CA3AF" stroke-width="0.3"/><text x="275.60" y="18.80" font-family="IBM Plex Mono, Menlo, monospace" font-size="2.3" font-weight="400" fill="#111827" text-anchor="start">P1</text><text x="289.60" y="18.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.3" font-weight="400" fill="#111827" text-anchor="start">Preliminary general arrangement (TRL 3)</text><text x="381.60" y="18.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.3" font-weight="400" fill="#111827" text-anchor="start">2026-09-25</text><text x="407.60" y="18.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.3" font-weight="400" fill="#111827" text-anchor="start">AC</text><line x1="273.8" y1="20.4" x2="421.8" y2="20.4" stroke="#9CA3AF" stroke-width="0.3"/><text x="275.60" y="24.00" font-family="IBM Plex Mono, Menlo, monospace" font-size="2.3" font-weight="400" fill="#111827" text-anchor="start">P2</text><text x="289.60" y="24.00" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.3" font-weight="400" fill="#111827" text-anchor="start">Rail and liner materials, stagnation cover (DDR-002)</text><text x="381.60" y="24.00" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.3" font-weight="400" fill="#111827" text-anchor="start">2026-09-25</text><text x="407.60" y="24.00" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.3" font-weight="400" fill="#111827" text-anchor="start">AC</text><rect x="231.8" y="213.39999999999998" width="190.0" height="56.0" fill="#FFFFFF" stroke="#111827" stroke-width="0.7"/><rect x="231.8" y="213.39999999999998" width="3" height="56.0" fill="#0F766E"/><line x1="231.8" y1="227.39999999999998" x2="421.8" y2="227.39999999999998" stroke="#9CA3AF" stroke-width="0.3"/><line x1="231.8" y1="239.39999999999998" x2="421.8" y2="239.39999999999998" stroke="#9CA3AF" stroke-width="0.3"/><line x1="231.8" y1="251.39999999999998" x2="421.8" y2="251.39999999999998" stroke="#9CA3AF" stroke-width="0.3"/><line x1="231.8" y1="260.4" x2="421.8" y2="260.4" stroke="#9CA3AF" stroke-width="0.3"/><text x="237.80" y="218.40" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.2" font-weight="600" fill="#0F766E" text-anchor="start">STILLSTACK</text><text x="237.80" y="224.40" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="4.4" font-weight="600" fill="#111827" text-anchor="start">General arrangement</text><text x="236.80" y="230.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#4B5563" text-anchor="start">DRAWING NO.</text><text x="236.80" y="235.60" font-family="IBM Plex Mono, Menlo, monospace" font-size="3.4" font-weight="600" fill="#111827" text-anchor="start">SSK-DWG-002</text><text x="316.80" y="230.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#4B5563" text-anchor="start">REV</text><text x="316.80" y="235.60" font-family="IBM Plex Mono, Menlo, monospace" font-size="3.4" font-weight="600" fill="#111827" text-anchor="start">P2</text><line x1="314.8" y1="227.39999999999998" x2="314.8" y2="239.39999999999998" stroke="#9CA3AF" stroke-width="0.3"/><text x="341.80" y="230.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#4B5563" text-anchor="start">SHEET</text><text x="341.80" y="235.60" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="3.4" font-weight="600" fill="#111827" text-anchor="start">1 of 1</text><line x1="339.8" y1="227.39999999999998" x2="339.8" y2="239.39999999999998" stroke="#9CA3AF" stroke-width="0.3"/><text x="371.80" y="230.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#4B5563" text-anchor="start">SIZE</text><text x="371.80" y="235.60" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="3.4" font-weight="600" fill="#111827" text-anchor="start">ANSI B</text><line x1="369.8" y1="227.39999999999998" x2="369.8" y2="239.39999999999998" stroke="#9CA3AF" stroke-width="0.3"/><text x="236.80" y="242.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#4B5563" text-anchor="start">SCALE</text><text x="236.80" y="247.20" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="3.0" font-weight="500" fill="#111827" text-anchor="start">1:20</text><text x="266.80" y="242.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#4B5563" text-anchor="start">UNITS</text><text x="266.80" y="247.20" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="3.0" font-weight="500" fill="#111827" text-anchor="start">mm</text><line x1="264.8" y1="239.39999999999998" x2="264.8" y2="251.39999999999998" stroke="#9CA3AF" stroke-width="0.3"/><text x="291.80" y="242.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#4B5563" text-anchor="start">PROJECTION</text><path d="M302.8 244.39999999999998 L308.8 242.89999999999998 L308.8 250.89999999999998 L302.8 249.39999999999998 Z" fill="none" stroke="#111827" stroke-width="0.3"/><circle cx="314.8" cy="246.89999999999998" r="4" fill="none" stroke="#111827" stroke-width="0.3"/><circle cx="314.8" cy="246.89999999999998" r="2.3" fill="none" stroke="#111827" stroke-width="0.3"/><line x1="300.8" y1="246.89999999999998" x2="320.3" y2="246.89999999999998" stroke="#111827" stroke-width="0.18" stroke-dasharray="3 1 0.6 1"/><line x1="289.8" y1="239.39999999999998" x2="289.8" y2="251.39999999999998" stroke="#9CA3AF" stroke-width="0.3"/><text x="326.80" y="242.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#4B5563" text-anchor="start">DATE</text><text x="326.80" y="247.20" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="3.0" font-weight="500" fill="#111827" text-anchor="start">2026-09-25</text><line x1="324.8" y1="239.39999999999998" x2="324.8" y2="251.39999999999998" stroke="#9CA3AF" stroke-width="0.3"/><text x="366.80" y="242.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#4B5563" text-anchor="start">DRAWN</text><text x="366.80" y="247.20" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="3.0" font-weight="500" fill="#111827" text-anchor="start">Amish Chadha</text><line x1="364.8" y1="239.39999999999998" x2="364.8" y2="251.39999999999998" stroke="#9CA3AF" stroke-width="0.3"/><text x="236.80" y="254.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.8" font-weight="500" fill="#4B5563" text-anchor="start">MATERIAL / NOTES</text><text x="236.80" y="258.80" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.6" font-weight="400" fill="#111827" text-anchor="start">See bom/bom.csv. Plates 0.5 mm aluminum; rails 150 C polymer (stages 1, 2) and PC; ribs silicone; frame plywood, stone wool</text><text x="236.80" y="266.20" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="2.1" font-weight="400" fill="#4B5563" text-anchor="start">Licensed CERN-OHL-S-2.0 · Design Molecule Lab · designmolecule.com</text><text x="418.80" y="266.20" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="1.9" font-weight="400" fill="#4B5563" text-anchor="end">Generated from cad/src; do not edit by hand</text></svg>

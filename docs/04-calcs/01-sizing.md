@@ -3,7 +3,7 @@ doc_id: SSK-CAL-001
 title: StillStack sizing calculations
 project: StillStack
 doc_type: Calculation
-version: "0.1"
+version: "0.2"
 status: Draft
 date: 2026-09-25
 author: Amish Chadha
@@ -13,11 +13,15 @@ revisions:
     date: 2026-09-25
     author: Amish Chadha
     change: First TRL 3 sizing (stage energy balance, supports, stagnation, wick feed, salt, mass, tilt, cost)
+  - version: "0.2"
+    date: 2026-09-25
+    author: Amish Chadha
+    change: Recommendations accepted by Amish (DDR-002)
 ---
 
 # StillStack sizing calculations
 
-On paper the decided design (four stages, 6 mm gaps, air-cooled fins, 1 m2 at 20 deg) makes about **10.6 L per m2 per day** on the 5.5 kWh per m2 design day, with a gained output ratio of **1.26 to 1.34**. That meets R1 with a thin margin, puts R2 at risk, and misses the 13 L design goal. Two requirements are **not met**: dry stagnation reaches about **140 °C** at stage 1, above the 110 °C material rating in R8, and the priced BOM totals **$317.20** against the $250 budget in R12. Every number below is printed by `docs/04-calcs/sizing.py`; the geometry figures come from `cad/src/model.py`.
+On paper the decided design (four stages, 6 mm gaps, air-cooled fins, 1 m2 at 20 deg) makes about **10.6 L per m2 per day** on the 5.5 kWh per m2 design day, with a gained output ratio of **1.26 to 1.34**. That meets R1 with a thin margin, puts R2 at risk, and misses the 13 L design goal. Dry stagnation reaches about **140 °C** at stage 1 (**144 °C** in calm air). Under SSK-DDR-002 R8 now asks for a 150 °C rating in stages 1 and 2 and 110 °C elsewhere, plus a stagnation cover; the margins are 6 K and 0 K, so R8 is **at risk**. The priced BOM, with the 150 °C rails and the cover added, totals **$351.20** against the $320 budget set in SSK-DDR-002, so R12 is still **not met**. Every number below is printed by `docs/04-calcs/sizing.py`; the geometry figures come from `cad/src/model.py`.
 
 ## 1. Method
 
@@ -28,7 +32,7 @@ The script solves a quasi-steady energy balance of the stack every 15 minutes th
 - **Top loss.** Absorber to glazing across the 25 mm air layer (Hollands correlation for an inclined layer, plus radiation with emissivities 0.90), across the twin-wall cells (9.3 W/m2K, from a typical sheet U-value of 3.6 W/m2K less surface films), and from the outer sheet to wind (h = max(5, 8.6 V^0.6 / L^0.4)) and sky (Swinbank sky temperature).
 - **Bottom.** Natural convection from a heated surface facing down at 70 deg from vertical (Fujii and Imura), combined with sheltered wind at half the free-stream speed; fin efficiency for 0.5 mm aluminum fins 30 mm deep; radiation from the bare aluminum underside (emissivity 0.10) to ground at ambient.
 - **Feed.** Each stage heats its own feed from ambient to the wick temperature at a feed-to-distillate ratio of 2.5, and that heat leaves with the brine.
-- **Edges.** 12 mm plywood plus 25 mm PIR foam, U = 1.07 W/m2K, over the wall height of each stage.
+- **Edges.** 12 mm plywood plus 25 mm foil-faced stone wool (k about 0.035 W/mK), U = 1.07 W/m2K, over the wall height of each stage. Stone wool replaced PIR under SSK-DDR-002 with the same assumed conductivity, so the energy balance is unchanged.
 - **Thermal mass.** Treated separately as a warm-up deduction, because the quasi-steady solution ignores it.
 
 ### Assumptions
@@ -58,7 +62,7 @@ Table 1. Heat flux across one 6 mm gap with 5 K between the wick face and the co
 
 A 0.5 mm aluminum plate carrying a wet wick cannot span the frame. Under 22.6 N/m2 (plate, 1.0 kg/m2 of wet wick and condensate, normal to the 20 deg slope), beam theory gives a sag of about 325 mm over the 0.972 m clear span, so the TRL 2 concept with side rails only would close every gap. Treating each strip as simply supported, a sag of 1.0 mm (one sixth of the gap) allows a pitch of up to 229 mm. **Four intermediate ribs per gap at 194 mm pitch** give a sag of 0.52 mm. The ribs run down the slope so they do not block feed or condensate. Each plate grows about 1.4 mm across 1 m at a 60 K rise, so the model leaves 2 mm of clearance each side instead of tensioning the plates.
 
-The ribs are 7 mm food-grade silicone cord (proposed, awaiting Amish): silicone is rated well above the stagnation temperature and wets poorly, which limits brine creep across the rib. Printed polycarbonate ribs would cost about the same.
+The ribs are 7 mm food-grade silicone cord (decided by Amish on 2026-09-25, SSK-DDR-002): silicone is rated well above the stagnation temperature and wets poorly, which limits brine creep across the rib. Printed polycarbonate ribs would cost about the same.
 
 ## 4. Design day
 
@@ -101,11 +105,11 @@ Air fins are adequate for four stages: the bottom plate stays near 58 °C and th
 
 ## 5. Hot operation and dry stagnation
 
-At 1,000 W/m2 and 35 °C ambient, wet operation peaks at 80.0 °C at the absorber and 66.9 °C at the bottom plate. With dry wicks the plates reach **140, 123, 106, 87 and 65 °C** (absorber first), and 143.9 °C in calm air. The inner glazing sheet reaches about 109 °C and the outer sheet 61 °C.
+At 1,000 W/m2 and 35 °C ambient, wet operation peaks at 80.0 °C at the absorber and 66.9 °C at the bottom plate. With dry wicks the plates reach **140, 123, 106, 87 and 65 °C** (absorber first). In calm air they reach **144, 128, 110, 91 and 69 °C**. The inner glazing sheet reaches about 109 °C (115 °C in calm air) and the outer sheet 61 °C.
 
-> **Safety:** A dry panel in full sun holds the absorber near 140 °C. Shade the panel before opening the stack, and treat an empty feed container as a burn and material-damage hazard.
+> **Safety:** A dry panel in full sun holds the absorber near 140 °C. Fit the stagnation cover before opening the stack, and treat an empty feed container as a burn and material-damage hazard.
 
-Consequences for R8: ASA softens near 95 to 100 °C and is excluded from stages 1 to 3; printed polycarbonate is close to its heat-deflection range at stage 1; the PIR liner at the absorber edge and the inner glazing sheet run near their typical limits. Every material inside stages 1 and 2 would need a rating of about 150 °C to meet R8 as written.
+Consequences for R8 as restated in SSK-DDR-002. Stages 1 and 2 (absorber to plate 2) peak at 144 °C against the 150 °C rating, a margin of 6 K; their rails are therefore a 150 °C polymer (PPS or a high-heat polycarbonate copolymer), the ribs silicone and the liner stone wool, and the wick and the coating on plates 1 and 2 must tolerate 150 °C. Stages 3 and 4 peak at 110 °C in calm air against the 110 °C rating, a margin of 0 K; printed polycarbonate rails remain acceptable there, but ASA (softening near 95 to 100 °C) stays excluded from stages 1 to 3. The inner glazing sheet at 115 °C in calm air is close to the typical limit of twin-wall polycarbonate. The stagnation cover (BOM line 14) and the shade rule are the second barrier: the cover is fitted whenever the feed runs out.
 
 ## 6. Wick feed capacity
 
@@ -124,30 +128,30 @@ Table 4. Panel mass.
 | Plates, five 0.5 mm aluminum (four with 77 mm lips) | 7.17 |
 | Glazing, twin-wall polycarbonate | 1.30 |
 | Frame, 12 mm plywood | 2.00 |
-| Liner, 25 mm PIR | 0.23 |
+| Liner, 25 mm stone wool | 1.02 |
 | Wicks, dry | 1.00 |
-| Side rails, printed polycarbonate | 0.81 |
+| Side rails, 150 °C polymer and printed polycarbonate | 0.81 |
 | Ribs, silicone cord | 0.71 |
 | Fins | 0.65 |
 | Trough, manifold, gutter and fittings | 1.50 |
 | Sealant, fasteners and tubing | 0.50 |
-| **Panel, dry** | **15.9** |
-| Panel, wet wicks | 19.9 |
+| **Panel, dry** | **16.7** |
+| Panel, wet wicks | 20.7 |
 | Adjustable stand | 7.1 |
 
-The model's own volume-based estimate for the modeled parts (13.1 kg without the trough, manifold, gutter and fasteners) agrees within the allowances above.
+The model's own volume-based estimate for the modeled parts (13.9 kg without the trough, manifold, gutter and fasteners) agrees within the allowances above.
 
 With a front pivot 350 mm above the ground, the rear struts are 0.53, 0.70 and 0.94 m long at 10, 20 and 35 deg. The plan footprint is 1.28 x 1.16 m at 10 deg, 1.24 x 1.16 m at 20 deg and 1.11 x 1.16 m at 35 deg. The parametric model builds cleanly across the range (plan depth 1,263, 1,204 and 1,048 mm including the stand; feed trough top 609, 799 and 1,058 mm above the ground).
 
 ## 9. Wind
 
-At 20 m/s the normal force on the 1.15 m2 panel (force coefficient 1.2) is about 332 N, against 264 N for the wet panel and stand. Lift equals weight at about 17 m/s.
+At 20 m/s the normal force on the 1.15 m2 panel (force coefficient 1.2) is about 332 N, against 272 N for the wet panel and stand. Lift equals weight at about 17.5 m/s.
 
 > **Safety:** The panel and stand can overturn in a strong breeze. Anchor the stand to the ground or ballast it before filling.
 
 ## 10. Cost
 
-The priced BOM (`bom/bom.csv`, 13 lines) totals **$317.20**, which is **$67.20 over** the $250 budget. The increase over the TRL 2 estimate of $241 comes from the silicone ribs, polycarbonate rails priced by filament mass, the coating allowance, the PIR liner and the adjustable stand.
+The priced BOM (`bom/bom.csv`, 15 lines) totals **$351.20**, which is **$31.20 over** the $320 budget set in SSK-DDR-002. Version 0.1 of this note gave $317.20 against $250. The $34 added under SSK-DDR-002 is $22 for the four 150 °C rails in stages 1 and 2 (an allowance of $9 each in place of $3.50) and $12 for the stagnation cover; the stone wool liner is priced the same as the PIR it replaces.
 
 ## 11. Results against requirements
 
@@ -155,8 +159,8 @@ Table 5. Requirement status at TRL 3, not met first.
 
 | ID | Quantity | Value | Target | Status |
 | --- | --- | --- | --- | --- |
-| R8 | Stage 1 temperature at dry stagnation | 140 °C (144 °C calm) | Materials rated to 110 °C or more, no damage | Not met |
-| R12 | Parts cost | $317.20 | $250 or less | Not met |
+| R12 | Parts cost | $351.20 | $320 or less | Not met |
+| R8 | Temperatures at dry stagnation | Stages 1 and 2: 144 °C calm (6 K margin); stages 3 and 4: 110 °C calm (0 K margin); cover specified | 150 °C in stages 1 and 2, 110 °C elsewhere, cover and shade rule | At risk |
 | R2 | Gained output ratio | 1.34 quasi-steady; 1.26 after warm-up deduction | 1.3 or more | At risk |
 | R4 | Air break between wick edges and distillate paths | 10 mm at ribs and rails, 20 mm at the low edge; brine exit over the lidded manifold not yet detailed | 10 mm or more, no shared drain | At risk |
 | R6 | Brine salinity; wick feed | 66.7 g/L at 40 g/L feed; needs permeability of 3.0 x 10^-11 m2 or more | Feed ratio 2.5 or more, salt stays in solution | At risk |
@@ -165,9 +169,11 @@ Table 5. Requirement status at TRL 3, not met first.
 | R3 | Distillate conductivity | Carryover allowance 0.075 % (8.6 mL/day) | 75 µS/cm or less | Not verifiable at TRL 3 |
 | R1 | Daily distillate | 10.6 L/m2 (11.3 quasi-steady) | 10 L/m2 or more (goal 13) | Met (6 % margin; goal not met) |
 | R5 | Power; feed head | Passive; feed trough top 1.06 m at 35 deg | No power; container at most 1.5 m | Met |
-| R9 | Mass; footprint | 15.9 kg dry; 1.28 x 1.16 m | 20 kg or less; within 1.3 x 1.3 m | Met |
+| R9 | Mass; footprint | 16.7 kg dry; 1.28 x 1.16 m | 20 kg or less; within 1.3 x 1.3 m | Met |
 | R11 | Tilt range | Stand and model built at 10, 20 and 35 deg | 10 to 35 deg | Met |
 
 ## 12. Changes to earlier figures
 
 SSK-PRC-001 v0.2 gave 13.2 L per day, a gained output ratio of about 1.5, stage 1 at 70 to 80 °C, dry stagnation at 100 to 120 °C, feed of 35 L and brine of 22 L, a panel of about 15 kg and parts of about $241. The precis v0.3 now quotes the values in this note.
+
+Version 0.2 of this note (SSK-DDR-002) adds the calm-air plate temperatures and the restated R8 check, and changes the panel mass from 15.9 to 16.7 kg dry (19.9 to 20.7 kg wet), the wet panel and stand weight from 264 to 272 N, and the parts cost from $317.20 to $351.20 against a budget raised from $250 to $320. The energy balance, yield and gained output ratio are unchanged.

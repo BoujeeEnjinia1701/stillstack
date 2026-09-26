@@ -3,7 +3,7 @@ doc_id: SSK-PRB-001
 title: StillStack problem statement
 project: StillStack
 doc_type: Problem statement
-version: "0.3"
+version: "0.4"
 status: Draft
 date: '2026-09-25'
 author: Amish Chadha
@@ -21,6 +21,10 @@ revisions:
   date: '2026-09-25'
   author: Amish Chadha
   change: Record the 1 m2 aperture decision (SSK-DDR-001) and the TRL 3 cost finding; partner question stays open
+- version: "0.4"
+  date: '2026-09-25'
+  author: Amish Chadha
+  change: Recommendations accepted by Amish (DDR-002)
 ---
 
 # StillStack problem statement
@@ -44,7 +48,7 @@ Multi-effect distillation fixes this in industry by condensing the vapor from on
 
 ## Constraints
 
-- Garage-buildable prototype of 1 m2 aperture for about $250 USD in parts, using sheet aluminum, polycarbonate glazing, timber and cloth wicks. The 1 m2 aperture and the $250 budget were confirmed by Amish on 2026-09-25 (SSK-DDR-001). The TRL 3 priced BOM comes to about $317, so the cost constraint is not yet met (SSK-CAL-001).
+- Garage-buildable prototype of 1 m2 aperture for about $320 USD in parts, using sheet aluminum, polycarbonate glazing, timber and cloth wicks. The 1 m2 aperture was confirmed by Amish on 2026-09-25 (SSK-DDR-001), and the budget was raised from $250 to $320 the same day (SSK-DDR-002). The priced BOM, including the 150 °C materials and stagnation cover decided in SSK-DDR-002, comes to about $351, so the cost constraint is not yet met (SSK-CAL-001).
 - Fully passive: no pumps, electronics or batteries. Feed water arrives by gravity from a container the user fills.
 - Every surface that touches distillate must be food-contact safe, and all materials must tolerate dry stagnation under full sun.
 - Feed water may be seawater (about 35 g per L of salt) or brackish groundwater, so wicks and plates must resist salt build-up and corrosion.

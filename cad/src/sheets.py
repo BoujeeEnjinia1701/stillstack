@@ -1,7 +1,7 @@
 """StillStack drawing sheets.
 
 Run from the repo root:  python cad/src/sheets.py
-Builds cad/drawings/SSK-DWG-002 (general arrangement, Rev P1) as SVG, PDF and PNG
+Builds cad/drawings/SSK-DWG-002 (general arrangement, Rev P2) as SVG, PDF and PNG
 from the parametric model in cad/src/model.py. Never edit the sheet by hand.
 (SSK-DWG-001 is the concept blueprint in media/.)
 """
@@ -59,10 +59,11 @@ def main():
     detail = model.stack_detail(y=(80.0, 125.0))
     det = project_views(detail, WORK / "detail")
 
-    s = Sheet(project="StillStack", title="General arrangement", dwg_no="SSK-DWG-002", rev="P1",
+    s = Sheet(project="StillStack", title="General arrangement", dwg_no="SSK-DWG-002", rev="P2",
               author="Amish Chadha", date=DATE, scale=1 / 20,
-              material="See bom/bom.csv. Plates 0.5 mm aluminum; rails PC; ribs silicone; frame plywood and PIR",
-              concept=False, revisions=[("P1", "Preliminary general arrangement (TRL 3)", DATE, "AC")])
+              material="See bom/bom.csv. Plates 0.5 mm aluminum; rails 150 C polymer (stages 1, 2) and PC; ribs silicone; frame plywood, stone wool",
+              concept=False, revisions=[("P1", "Preliminary general arrangement (TRL 3)", DATE, "AC"),
+                         ("P2", "Rail and liner materials, stagnation cover (DDR-002)", DATE, "AC")])
     s._layers.append(_t(16, 19, "PRELIMINARY, NOT FOR FABRICATION", 3.2, 600, "#B45309"))
 
     k = 1 / 20
@@ -114,11 +115,12 @@ def main():
         f"Ribs: {p['n_ribs']} per gap at 194 mm pitch; sag 0.5 mm",
         f"Dry breaks {p['wick_break']:.0f} mm each side of ribs and rails",
         "Air gap 25 mm; 6 mm twin-wall PC glazing",
-        f"Frame {p['ply_t']:.0f} mm plywood + {p['foam_t']:.0f} mm PIR; 1,074 mm square outside",
+        f"Frame {p['ply_t']:.0f} mm plywood + {p['foam_t']:.0f} mm stone wool; 1,074 mm square outside",
         "Front pivot 350 mm; rear strut 530 to 940 mm",
         "Design day: about 10.6 L/day, GOR about 1.3",
-        "Dry stagnation: stage 1 about 140 C",
-        "Panel about 16 kg dry, 20 kg wet",
+        "Dry stagnation: stage 1 about 140 C (144 C calm)",
+        "Stages 1, 2 rated 150 C; cover (BOM 14) not shown",
+        "Panel about 17 kg dry, 21 kg wet",
         "Wick tails (0.25 m) and fasteners not shown",
     ], x=290, y=144, width=128)
     OUT.mkdir(parents=True, exist_ok=True)

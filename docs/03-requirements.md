@@ -3,7 +3,7 @@ doc_id: SSK-REQ-001
 title: StillStack requirements
 project: StillStack
 doc_type: Requirements
-version: "0.3"
+version: "0.4"
 status: Draft
 date: '2026-09-25'
 author: Amish Chadha
@@ -21,11 +21,15 @@ revisions:
   date: '2026-09-25'
   author: Amish Chadha
   change: Add TRL 3 status from SSK-CAL-001; record decisions from SSK-DDR-001 (budget kept at $250, tilt stand, aperture); targets unchanged
+- version: "0.4"
+  date: '2026-09-25'
+  author: Amish Chadha
+  change: Recommendations accepted by Amish (DDR-002)
 ---
 
 # StillStack requirements
 
-These requirements were checked by calculation at TRL 3 in SSK-CAL-001. Two are **not met** (R8 dry stagnation and R12 cost), five are at risk and one cannot be verified until TRL 4. No target has been relaxed: the TRL 2 review decisions (SSK-DDR-001, decided by Amish on 2026-09-25) kept the 1 m2 aperture, the 20 deg tilt on an adjustable stand and the $250 budget, with no redefinition of what the budget covers. Changes to R8 or R12 are proposed, awaiting Amish, in docs/REVIEW.md.
+These requirements were checked by calculation at TRL 3 in SSK-CAL-001 v0.2. One is **not met** (R12 cost), six are at risk and one cannot be verified until TRL 4. The TRL 2 review decisions (SSK-DDR-001) kept the 1 m2 aperture and the 20 deg tilt on an adjustable stand. Under SSK-DDR-002 (decided by Amish on 2026-09-25, going with the recommendations) R8 was restated with a 150 °C rating for stages 1 and 2 plus a stagnation cover, and the R12 budget was raised from $250 to $320. The added materials and cover bring the parts to $351.20, so R12 is still not met; a further response is proposed, awaiting Amish, in docs/REVIEW.md.
 
 Table 1. Requirements and status at TRL 3.
 
@@ -37,12 +41,12 @@ Table 1. Requirements and status at TRL 3.
 | R4 | Keep brine and distillate apart | A physical air break of 10 mm or more between every wick edge and every distillate channel; no shared drain | Design review of the model | At risk: 10 mm dry breaks at ribs and rails and 20 mm at the low edge are modeled; the brine exit over the lidded distillate manifold is not yet detailed |
 | R5 | Run without power | No pumps, electronics or batteries; gravity feed from a user-filled container at most 1.5 m above ground | Design review | Met: fully passive; feed trough top at most 1.06 m (at 35 deg) |
 | R6 | Accept real feed water | Seawater or brackish water up to 40 g/L salinity after cloth or 20 µm prefiltering; feed-to-distillate ratio 2.5 or more so salt stays in solution | Salt balance calculation | At risk: brine at 66.7 g/L is well below saturation, but the wick needs a permeability of 3.0 x 10^-11 m2 or more to carry the feed, which is not yet known |
-| R7 | Food-safe wetted parts | Every surface that touches distillate is food-contact rated (for example 316 stainless steel, food-grade coated aluminum, PP, HDPE or NSF/ANSI 51 or 61 silicone) | Material list review | At risk: coated aluminum is decided, but no coating product rated for wet, salty service at 80 °C is selected |
-| R8 | Survive dry stagnation | No damage after an empty-wick day at 1,000 W/m2 and 35 °C ambient; all internal materials rated to 110 °C or more | Stagnation temperature calculation; material datasheets | Not met: stage 1 reaches about 140 °C (144 °C in calm air), above the 110 °C rating; ASA is excluded from stages 1 to 3 |
-| R9 | Household scale and portable | 1.0 m2 aperture; panel mass 20 kg or less dry; carried by two people; footprint within 1.3 x 1.3 m | Massing model and mass estimate | Met: 15.9 kg dry (19.9 kg wet); footprint 1.28 x 1.16 m at 10 deg |
+| R7 | Food-safe wetted parts | Every surface that touches distillate is food-contact rated (for example 316 stainless steel, food-grade coated aluminum, PP, HDPE or NSF/ANSI 51 or 61 silicone) | Material list review | At risk: coated aluminum is decided, but no coating product rated for wet, salty service at 80 °C (and 150 °C dry on plates 1 and 2) is selected |
+| R8 | Survive dry stagnation | No damage after an empty-wick day at 1,000 W/m2 and 35 °C ambient, in calm air or wind: materials in stages 1 and 2 (absorber to plate 2, including wicks, rails, ribs, coating and liner) rated to 150 °C or more; all other internal materials rated to 110 °C or more; a stagnation cover supplied and a shade rule in the instructions (restated under SSK-DDR-002) | Stagnation temperature calculation; material datasheets | At risk: stages 1 and 2 reach 144 °C in calm air (6 K margin); stage 3 reaches 110 °C in calm air (0 K margin); cover specified (BOM line 14); rail polymer and coating products not yet selected |
+| R9 | Household scale and portable | 1.0 m2 aperture; panel mass 20 kg or less dry; carried by two people; footprint within 1.3 x 1.3 m | Massing model and mass estimate | Met: 16.7 kg dry (20.7 kg wet); footprint 1.28 x 1.16 m at 10 deg |
 | R10 | Easy maintenance | Wicks removable, rinsed and refitted by one person without special tools in 30 min or less; salt flushing no more often than once a week | Design review | At risk: wicks are bonded under the plates and the removal method is not defined |
 | R11 | Adjustable tilt | Tilt between 10 and 35 deg to suit latitudes of about 0 to 35 deg | Model check | Met: stand with rear struts of 0.53 to 0.94 m; model built at 10, 20 and 35 deg |
-| R12 | Low cost and buildable | Parts cost $250 or less for the 1 m2 prototype; hand tools, sheet metal shears and a 3D printer only | Priced BOM | Not met: $317.20, $67.20 over budget |
+| R12 | Low cost and buildable | Parts cost $320 or less for the 1 m2 prototype (raised from $250 under SSK-DDR-002); hand tools, sheet metal shears and a 3D printer only | Priced BOM | Not met: $351.20, $31.20 over budget |
 
 ## Assumptions
 

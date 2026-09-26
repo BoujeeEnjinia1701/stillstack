@@ -64,14 +64,17 @@ P = dict(
     feed_salinity=35.0,     # g/L seawater
     feed_salinity_max=40.0, # g/L, R6 upper bound
     # edges
-    U_edge=1.07,            # W/m2K, 12 mm plywood + 25 mm PIR foam + surface film
+    U_edge=1.07,            # W/m2K, 12 mm plywood + 25 mm foil-faced stone wool (k about 0.035) + surface films
     stage_h=0.008,          # m of frame wall per stage
     # spacer ribs
     rib_w=0.007,            # m, silicone cord rib diameter
     plate_clear=0.002,      # m, plate clearance to the frame each side (thermal growth)
-    wall=0.037,             # m, 12 mm plywood plus 25 mm PIR
+    wall=0.037,             # m, 12 mm plywood plus 25 mm stone wool
     wick_break=0.010,       # m, dry break each side of a rib (R4 air break)
-    rail_w=0.012,           # m, side rail width (printed PC)
+    rail_w=0.012,           # m, side rail width (150 degC polymer in stages 1 and 2, printed PC in 3 and 4)
+    budget=320.0,           # USD, project.yaml budget_usd (DDR-002)
+    rating_hot=150.0,       # degC, R8 rating for materials in stages 1 and 2 (DDR-002)
+    rating_cool=110.0,      # degC, R8 rating for all other internal materials
     sag_allow=0.001,        # m, allowed plate sag (one sixth of the gap)
 )
 A = P["aperture"] ** 2
@@ -396,6 +399,16 @@ def main():
     _, (tc1, tc2) = q_top(dry["Tp"][0], 35.0, 1.0)
     line("Dry stagnation: inner and outer glazing sheet", f"{tc1:.0f}, {tc2:.0f}", "degC")
     line("Dry stagnation, calm air: absorber", f(dry_calm["Tp"][0], 1), "degC")
+    line("Dry stagnation, calm air: plate temperatures", ", ".join(f"{t:.0f}" for t in dry_calm["Tp"]), "degC")
+    _, (tc1c, _) = q_top(dry_calm["Tp"][0], 35.0, 0.0)
+    line("Dry stagnation, calm air: inner glazing sheet", f(tc1c, 0), "degC")
+    # R8 as restated in DDR-002: stages 1 and 2 (absorber to plate 2) rated 150 degC, the rest 110 degC
+    hot = max(dry["Tp"][0], dry_calm["Tp"][0])
+    cool = max(dry["Tp"][2], dry_calm["Tp"][2])
+    line("R8: hottest stage 1 and 2 material vs 150 degC rating", f"{hot:.0f} vs {P['rating_hot']:.0f}", "degC")
+    line("R8: margin in stages 1 and 2", f(P["rating_hot"] - hot, 0), "K")
+    line("R8: hottest stage 3 and 4 material vs 110 degC rating", f"{cool:.0f} vs {P['rating_cool']:.0f}", "degC")
+    line("R8: margin in stages 3 and 4", f(P["rating_cool"] - cool, 0), "K")
 
     # 8. Wick feed capacity
     print("\n8. Wick feed capacity (stage 1 at noon)")
@@ -432,9 +445,9 @@ def main():
         "Plates, 5 x 0.5 mm aluminum (4 with 77 mm lips)": (1 + 4 * 1.077) * ap * P["plate_t"] * 2700,
         "Glazing, twin-wall PC 1.3 kg/m2": 1.3 * ap * ap,
         "Frame, 12 mm plywood (550 kg/m3)": 4 * (ap + 2 * P["wall"]) * frame_h * 0.012 * 550,
-        "Liner, 25 mm PIR foam (32 kg/m3)": 4 * (ap + P["wall"]) * frame_h * 0.025 * 32,
+        "Liner, 25 mm stone wool board (140 kg/m3)": 4 * (ap + P["wall"]) * frame_h * 0.025 * 140,
         "Wicks, 4 x 1.25 m2 at 0.20 kg/m2 dry": 4 * 1.25 * ap * 0.20,
-        "Side rails, printed PC (8 x 12 x 7 mm)": 4 * 2 * P["rail_w"] * (P["gap"] + P["wick_t"]) * ap * 1200,
+        "Side rails, 150 degC polymer and PC (8 x 12 x 7 mm)": 4 * 2 * P["rail_w"] * (P["gap"] + P["wick_t"]) * ap * 1200,
         "Intermediate ribs, 16 x 7 mm silicone cord": 4 * RIB["n_ribs"] * math.pi / 4 * 0.007 ** 2 * ap * 1150,
         "Fins, 10 folded strips 50 mm developed": P["fin_n"] * P["fin_len"] * 0.050 * P["plate_t"] * 2700,
         "Trough, manifold, gutter, fittings": 1.5,
@@ -483,8 +496,8 @@ def main():
     total = sum(float(r["qty"]) * float(r["unit_cost_usd"]) for r in rows)
     line("BOM lines", str(len(rows)))
     line("Parts total", f(total, 2), "USD")
-    line("Budget (project.yaml)", "250.00", "USD")
-    line("Margin", f(250 - total, 2), "USD")
+    line("Budget (project.yaml)", f(P["budget"], 2), "USD")
+    line("Margin", f(P["budget"] - total, 2), "USD")
 
 
 if __name__ == "__main__":

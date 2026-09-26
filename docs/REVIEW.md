@@ -34,16 +34,16 @@ Requirements not met or at risk:
 - **R12 (cost):** met with almost no margin. The stainless plate option would exceed the $250 budget.
 - **R1 and R2:** depend on an assumed evaporation fraction of 0.70 per stage and on air fins rejecting about 280 W/m2. Both are unverified and are the main technical risks.
 
-### Proposed, awaiting Amish
+### Proposed, awaiting Amish (items 1 to 7 since decided, see SSK-DDR-001)
 
-1. Four stages with 6 mm gaps. Alternatives: three stages (simpler, about 10.5 L) or six stages (only with a water-cooled bottom).
-2. Air-cooled fins under the bottom plate. Alternatives: a feed-water tray heat sink, or floating the unit on water.
-3. Condenser plates in aluminum with a food-grade coating (recommended on cost). Alternatives: 316 stainless steel (over budget by about $100 to $150) or anodized aluminum.
-4. Spacers in ASA or polycarbonate instead of PETG.
-5. Tilt of 20 deg, with an adjustable stand to meet R11.
-6. Prototype aperture of 1 m2 (alternative: 0.5 m2 to add budget margin).
-7. Keep the budget at $250. No budget change is proposed now, but the stainless option would need one.
-8. First co-design partner: a coastal NGO, a university water lab or a makerspace network.
+1. Four stages with 6 mm gaps. Alternatives: three stages (simpler, about 10.5 L) or six stages (only with a water-cooled bottom). Decided by Amish, 2026-09-25: go with recommendation.
+2. Air-cooled fins under the bottom plate. Alternatives: a feed-water tray heat sink, or floating the unit on water. Decided by Amish, 2026-09-25: go with recommendation.
+3. Condenser plates in aluminum with a food-grade coating (recommended on cost). Alternatives: 316 stainless steel (over budget by about $100 to $150) or anodized aluminum. Decided by Amish, 2026-09-25: go with recommendation.
+4. Spacers in ASA or polycarbonate instead of PETG. Decided by Amish, 2026-09-25: go with recommendation.
+5. Tilt of 20 deg, with an adjustable stand to meet R11. Decided by Amish, 2026-09-25: go with recommendation.
+6. Prototype aperture of 1 m2 (alternative: 0.5 m2 to add budget margin). Decided by Amish, 2026-09-25: go with recommendation.
+7. Keep the budget at $250. No budget change is proposed now, but the stainless option would need one. Decided by Amish, 2026-09-25: go with recommendation.
+8. First co-design partner: a coastal NGO, a university water lab or a makerspace network. No recommendation; still proposed, awaiting Amish.
 
 ### Safety concerns
 
@@ -98,10 +98,10 @@ Decided by Amish, 2026-09-25, going with the recommendation: four stages with 6 
 ### Still awaiting Amish
 
 1. First co-design partner (coastal NGO, university water lab or makerspace network). No recommendation made.
-2. **Intermediate spacer ribs** (new): silicone cord (recommended: rated well above 140 °C and poorly wetting, so it limits brine creep) or printed polycarbonate. About $20 either way.
-3. **Response to R8 not met** (new). Options: (a) specify materials rated to about 150 °C in stages 1 and 2 (silicone ribs, high-heat polycarbonate or PPS rails, higher-rated liner) and change the R8 rating to match the calculated stagnation temperature; (b) keep R8 as written and add a stagnation cover or a shade rule when the feed runs out; (c) both. Recommendation: (c), since a cover also protects the glazing.
-4. **Response to R12 not met** (new). Options: (a) raise budget_usd to about $320; (b) keep $250 and cut cost (for example ribs and rails from one material, a cheaper frame liner, or fewer coated faces); (c) redefine the budget to exclude the stand. Recommendation: (a), because the extra cost comes from parts the calculation shows are needed. The budget is not changed here.
-5. Coating product for the condensing faces (R7) and wick fabric with a permeability of at least 3.0 x 10^-11 m2 (R6). Both are selections that need datasheets; no product is recommended yet.
+2. **Intermediate spacer ribs** (new): silicone cord (recommended: rated well above 140 °C and poorly wetting, so it limits brine creep) or printed polycarbonate. About $20 either way. Decided by Amish, 2026-09-25: go with recommendation. Silicone cord (SSK-DDR-002).
+3. **Response to R8 not met** (new). Options: (a) specify materials rated to about 150 °C in stages 1 and 2 (silicone ribs, high-heat polycarbonate or PPS rails, higher-rated liner) and change the R8 rating to match the calculated stagnation temperature; (b) keep R8 as written and add a stagnation cover or a shade rule when the feed runs out; (c) both. Recommendation: (c), since a cover also protects the glazing. Decided by Amish, 2026-09-25: go with recommendation. Option (c) (SSK-DDR-002).
+4. **Response to R12 not met** (new). Options: (a) raise budget_usd to about $320; (b) keep $250 and cut cost (for example ribs and rails from one material, a cheaper frame liner, or fewer coated faces); (c) redefine the budget to exclude the stand. Recommendation: (a), because the extra cost comes from parts the calculation shows are needed. The budget is not changed here. Decided by Amish, 2026-09-25: go with recommendation. Option (a), budget_usd $320 (SSK-DDR-002).
+5. Coating product for the condensing faces (R7) and wick fabric with a permeability of at least 3.0 x 10^-11 m2 (R6). Both are selections that need datasheets; no product is recommended yet. Still proposed, awaiting Amish.
 
 ### Safety concerns
 
@@ -119,3 +119,51 @@ Decided by Amish, 2026-09-25, going with the recommendation: four stages with 6 
 ### Recommended next step
 
 TRL 4 is on hold by Amish's instruction. The recommended next step is for Amish to decide items 2 to 4 above, after which SSK-CAL-001 and the BOM can be rerun on paper. For reference only, TRL 4 would need: a lab test article of one or two stages, a test report (TST, environment: lab) measuring gap heat transfer, evaporation fraction, wick feed rate and distillate conductivity, and build-log entries. None of that should start until Amish lifts the TRL 3 cap.
+
+## Session 2026-09-25: recommendations accepted
+
+### Decisions applied
+
+Amish wrote on 2026-09-25: "i accept all your recommendations, go with them across all repos." Three items that carried a recommendation are now decided and recorded in `docs/decisions/0002-recommendations-accepted.md` (SSK-DDR-002 v0.1):
+
+1. **Intermediate spacer ribs:** silicone cord, as recommended. Already in the model and BOM; now a decided choice (no cost or geometry change).
+2. **Response to R8 not met:** option (c), both. Materials in stages 1 and 2 rated to 150 °C (four side rails in PPS or a high-heat polycarbonate copolymer; frame liner changed from PIR to foil-faced stone wool; wick and plate 1 and 2 coating to tolerate 150 °C), R8 restated (150 °C in stages 1 and 2, 110 °C elsewhere, cover and shade rule), and a stagnation cover added as BOM line 14.
+3. **Response to R12 not met:** option (a). budget_usd changed from **$250 to $320**.
+
+### What changed (before and after)
+
+| Quantity | Before | After |
+| --- | --- | --- |
+| budget_usd | $250 | $320 |
+| Priced BOM | $317.20 (13 lines), $67.20 over | $351.20 (15 lines), $31.20 over |
+| R8 rating | 110 °C for all internal materials | 150 °C in stages 1 and 2; 110 °C elsewhere; cover and shade rule |
+| R8 status | Not met (140 °C, 144 °C calm) | At risk (144 °C vs 150 °C, 6 K; stage 3 110 °C vs 110 °C in calm air, 0 K) |
+| Frame liner | 25 mm PIR foam | 25 mm foil-faced stone wool |
+| Panel mass | 15.9 kg dry, 19.9 kg wet | 16.7 kg dry, 20.7 kg wet |
+| Wind: lift equals weight | about 17 m/s | about 17.5 m/s |
+| Daily distillate, gained output ratio | 10.6 L, 1.26 to 1.34 | Unchanged |
+
+Files changed: `project.yaml`, `README.md`, `docs/01-problem.md` (SSK-PRB-001 v0.4), `docs/02-concept.md` (SSK-PRC-001 v0.4), `docs/03-requirements.md` (SSK-REQ-001 v0.4), `docs/04-calcs/01-sizing.md` (SSK-CAL-001 v0.2) and `sizing.py` (calm-air plate temperatures and R8 check added, budget from DDR-002), `bom/bom.csv` and `bom/bom-notes.md`, `cad/src/model.py` (material notes and liner density; geometry unchanged; STEP and STL re-exported), `cad/src/sheets.py` (SSK-DWG-002 Rev P1 to P2: material block and notes), `cad/src/concept_media.py` (blueprint SSK-DWG-001 Rev P2 to P3: key figures), all media and PDFs regenerated. The README gained the Concept rationale, Burning platform, Where it could be used and What sparked the idea sections.
+
+### Requirement status (not met first)
+
+| Status | Requirements |
+| --- | --- |
+| Not met | R12 (parts $351.20 against $320) |
+| At risk | R8 (0 K margin at stage 3 in calm air; rail polymer not selected), R2 (gained output ratio 1.26 to 1.34 against 1.3), R4 (brine exit over the manifold not detailed), R6 (wick permeability unknown), R7 (coating product not selected), R10 (wick removal not defined) |
+| Not verifiable at TRL 3 | R3 (carryover below 8.6 mL per day) |
+| Met on paper | R1 (10.6 L), R5, R9 (16.7 kg dry), R11 |
+
+### Still awaiting Amish
+
+1. First co-design partner (coastal NGO, university water lab or makerspace network). No recommendation.
+2. Coating product for the condensing faces (R7) and wick fabric (R6). Selections that need datasheets; no recommendation.
+3. **Response to R12 not met at $320** (new). Options: (a) raise budget_usd to about $355; (b) keep $320 and cut cost (for example silicone strip rails in stages 1 and 2, a locally sourced cover); (c) exclude the cover and stand from the budget. Recommendation: (a), because the extra cost follows from the decided R8 response.
+
+### Cross-repo actions
+
+None. No decision in this repo requires a change to another repo.
+
+### TRL
+
+trl: 3 and trl_target: 3 are unchanged. TRL 4 remains on hold by Amish's instruction: no hardware, tests, purchasing or build-log entries were created. Selecting the rail polymer, coating and wick from datasheets can be done on paper; measuring stagnation temperatures or wick permeability is TRL 4 work and is on hold.

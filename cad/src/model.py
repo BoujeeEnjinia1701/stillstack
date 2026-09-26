@@ -11,7 +11,9 @@ The panel is modeled flat in a local frame and then tilted about the front pivot
   local y runs across the panel, local z is the panel normal (toward the sun).
 Stack, bottom up: bottom plate (last condenser, fins underneath), then for each stage
 a vapor gap and a wick bonded under the plate above; the top plate is the absorber.
-Spacers: printed PC side rails plus intermediate silicone-cord ribs (pitch from SSK-CAL-001).
+Spacers: side rails (a polymer rated to 150 degC in stages 1 and 2, printed PC in stages 3 and 4)
+plus intermediate silicone-cord ribs (pitch from SSK-CAL-001). Liner: foil-faced stone wool (DDR-002).
+The stagnation cover (BOM line 14) is a loose accessory and is not modeled.
 """
 from __future__ import annotations
 import math
@@ -28,14 +30,14 @@ PARAMS = {
     "plate_clear": 2.0,    # clearance each side for thermal growth (about 1.4 mm at 60 K)
     "wick_t": 1.0,
     "gap": 6.0,            # vapor gap, wick face to condensing face
-    "rail_w": 12.0,        # printed PC side rail width
+    "rail_w": 12.0,        # side rail width (150 degC polymer in stages 1 and 2, PC in 3 and 4)
     "rib_d": 7.0,          # silicone cord rib diameter (gap plus wick)
     "n_ribs": 4,           # intermediate ribs per gap (CAL-001 section 3)
     "wick_break": 10.0,    # dry break each side of a rib or rail (R4)
     "air_gap": 25.0,       # absorber to glazing
     "glaz_t": 6.0,         # twin-wall polycarbonate
     "ply_t": 12.0,         # plywood wall
-    "foam_t": 25.0,        # PIR liner
+    "foam_t": 25.0,        # stone wool liner (rated well above 150 degC)
     "lip": 4.0,            # frame lip above the glazing
     "fin_n": 10, "fin_depth": 30.0, "fin_t": 0.5,
     "lip_out": 40.0,       # condenser plate lip past the low wall into the distillate manifold
@@ -47,7 +49,7 @@ DENSITY = {  # kg/m3, for the mass cross-check against CAL-001
     "Absorber plate": 2700, "Condenser plates": 2700, "Heat-rejection fins": 2700,
     "Glazing": 217,  # twin-wall sheet: 1.3 kg/m2 over 6 mm
     "Wicks": 200, "Side spacer rails": 1200, "Spacer ribs": 1150,
-    "Insulated frame": 200,  # plywood (12 mm, 550) and PIR (25 mm, 32) wall average
+    "Insulated frame": 273,  # plywood (12 mm, 550) and stone wool (25 mm, 140) wall average
 }
 
 
