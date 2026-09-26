@@ -3,9 +3,9 @@ doc_id: SSK-PRC-001
 title: StillStack design precis
 project: StillStack
 doc_type: Design precis
-version: "0.4"
+version: "0.5"
 status: Draft
-date: '2026-09-25'
+date: '2026-09-26'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -25,11 +25,15 @@ revisions:
   date: '2026-09-25'
   author: Amish Chadha
   change: Recommendations accepted by Amish (DDR-002)
+- version: "0.5"
+  date: '2026-09-26'
+  author: Amish Chadha
+  change: Budget top-up approved by Amish
 ---
 
 # StillStack design precis
 
-StillStack is a tilted, glazed panel of 1 m2 containing four thin evaporation stages stacked like a sandwich: each stage is a wet cloth wick under a metal plate, a 6 mm vapor gap, and the next plate below. Sunlight heats the top plate, and the heat released when vapor condenses on each plate evaporates water from the wick under it, so the same solar energy is used four times. The TRL 3 calculation (SSK-CAL-001) gives about 10.6 L of distillate per m2 per day on a 5.5 kWh per m2 day, roughly two to three times a single-basin still, with a gained output ratio of about 1.3. Dry stagnation reaches about 140 °C (144 °C in calm air), so stages 1 and 2 use materials rated to 150 °C and a stagnation cover is supplied (SSK-DDR-002). The priced parts come to about $351 against the $320 budget, so R12 is not met on paper.
+StillStack is a tilted, glazed panel of 1 m2 containing four thin evaporation stages stacked like a sandwich: each stage is a wet cloth wick under a metal plate, a 6 mm vapor gap, and the next plate below. Sunlight heats the top plate, and the heat released when vapor condenses on each plate evaporates water from the wick under it, so the same solar energy is used four times. The TRL 3 calculation (SSK-CAL-001) gives about 10.6 L of distillate per m2 per day on a 5.5 kWh per m2 day, roughly two to three times a single-basin still, with a gained output ratio of about 1.3. Dry stagnation reaches about 140 °C (144 °C in calm air), so stages 1 and 2 use materials rated to 150 °C and a stagnation cover is supplied (SSK-DDR-002). The priced parts come to about $351 against the $355 budget approved by Amish on 2026-09-26, so R12 is met on paper.
 
 ![Hero render](../media/hero.png)
 
@@ -88,7 +92,7 @@ Table 2. Key numbers per m2 of aperture.
 | Dry stagnation, stage 1 | about 140 °C (144 °C calm); stage 3 about 110 °C calm | R8 at risk (150 °C and 110 °C ratings) |
 | Feed and brine | about 28.7 L feed, 17.2 L brine per day; brine 58 to 67 g/L | R6 at risk (wick feed) |
 | Panel mass | 16.7 kg dry, 20.7 kg wet; stand 7.1 kg | R9 met |
-| Parts cost | $351.20 against $320 | R12 not met |
+| Parts cost | $351.20 against $355 | R12 met |
 
 ## Key design choices
 
@@ -99,7 +103,7 @@ These choices were decided by Amish on 2026-09-25 (SSK-DDR-001 and SSK-DDR-002).
 - **Aluminum plates with a food-contact coating on the condensing face.** Decided. The coating product is not yet selected; see open questions.
 - **Spacers in ASA or polycarbonate, not PETG.** Decided. SSK-CAL-001 shows that only polycarbonate is close to adequate, because stages 1 to 3 exceed the rating of ASA at dry stagnation.
 - **Tilt of 20 deg on an adjustable stand.** Decided. The stand pivots at the low edge and sets the tilt with rear struts from 10 to 35 deg.
-- **Aperture of 1 m2 and a budget of $320.** Decided. The budget was kept at $250 in SSK-DDR-001 and raised to $320 in SSK-DDR-002. The priced BOM ($351.20) still exceeds it.
+- **Aperture of 1 m2 and a budget of $355.** Decided. The budget was kept at $250 in SSK-DDR-001, raised to $320 in SSK-DDR-002 and topped up to $355 by Amish on 2026-09-26. The priced BOM ($351.20) fits within it.
 - **Intermediate silicone-cord ribs.** Decided (SSK-DDR-002). The calculation shows that side rails alone cannot hold a 6 mm gap; silicone is rated well above the stagnation temperature and wets poorly.
 - **Dry stagnation handled by materials and a cover.** Decided (SSK-DDR-002). Everything in stages 1 and 2 is rated to 150 °C or more, the frame liner is stone wool, and an opaque stagnation cover is supplied with a shade rule.
 
@@ -120,7 +124,6 @@ These choices were decided by Amish on 2026-09-25 (SSK-DDR-001 and SSK-DDR-002).
 - Which food-contact coating survives wet, salty service at 80 °C on aluminum, and at what cost (R7)?
 - Which wick fabric has a permeability of 3.0 x 10^-11 m2 or more, and how is it held so that one person can remove it in 30 min (R6, R10)?
 - Which rail polymer (PPS or a high-heat polycarbonate copolymer) meets the 150 °C rating at the lowest cost, and can stage 3 keep any margin over 110 °C in calm air (R8)?
-- How should R12 be met at the $320 budget, now $31.20 short: a budget of about $355 (recommended), cheaper rails and cover, or excluding the cover and stand? Proposed, awaiting Amish.
 - How do the wick tails leave the low end over the lidded distillate manifold while keeping a 10 mm air break (R4)?
 - Identify a coastal community or NGO partner for co-design (still open, no recommendation).
 

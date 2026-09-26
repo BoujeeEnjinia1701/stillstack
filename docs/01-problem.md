@@ -3,9 +3,9 @@ doc_id: SSK-PRB-001
 title: StillStack problem statement
 project: StillStack
 doc_type: Problem statement
-version: "0.4"
+version: "0.5"
 status: Draft
-date: '2026-09-25'
+date: '2026-09-26'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -25,6 +25,10 @@ revisions:
   date: '2026-09-25'
   author: Amish Chadha
   change: Recommendations accepted by Amish (DDR-002)
+- version: "0.5"
+  date: '2026-09-26'
+  author: Amish Chadha
+  change: Budget top-up approved by Amish
 ---
 
 # StillStack problem statement
@@ -48,7 +52,7 @@ Multi-effect distillation fixes this in industry by condensing the vapor from on
 
 ## Constraints
 
-- Garage-buildable prototype of 1 m2 aperture for about $320 USD in parts, using sheet aluminum, polycarbonate glazing, timber and cloth wicks. The 1 m2 aperture was confirmed by Amish on 2026-09-25 (SSK-DDR-001), and the budget was raised from $250 to $320 the same day (SSK-DDR-002). The priced BOM, including the 150 °C materials and stagnation cover decided in SSK-DDR-002, comes to about $351, so the cost constraint is not yet met (SSK-CAL-001).
+- Garage-buildable prototype of 1 m2 aperture for about $355 USD in parts, using sheet aluminum, polycarbonate glazing, timber and cloth wicks. The 1 m2 aperture was confirmed by Amish on 2026-09-25 (SSK-DDR-001), the budget was raised from $250 to $320 the same day (SSK-DDR-002), and Amish approved a top-up to $355 on 2026-09-26. The priced BOM, including the 150 °C materials and stagnation cover decided in SSK-DDR-002, comes to about $351, so the cost constraint is met (SSK-CAL-001).
 - Fully passive: no pumps, electronics or batteries. Feed water arrives by gravity from a container the user fills.
 - Every surface that touches distillate must be food-contact safe, and all materials must tolerate dry stagnation under full sun.
 - Feed water may be seawater (about 35 g per L of salt) or brackish groundwater, so wicks and plates must resist salt build-up and corrosion.

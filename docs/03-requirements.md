@@ -3,9 +3,9 @@ doc_id: SSK-REQ-001
 title: StillStack requirements
 project: StillStack
 doc_type: Requirements
-version: "0.4"
+version: "0.5"
 status: Draft
-date: '2026-09-25'
+date: '2026-09-26'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -25,11 +25,15 @@ revisions:
   date: '2026-09-25'
   author: Amish Chadha
   change: Recommendations accepted by Amish (DDR-002)
+- version: "0.5"
+  date: '2026-09-26'
+  author: Amish Chadha
+  change: Budget top-up approved by Amish
 ---
 
 # StillStack requirements
 
-These requirements were checked by calculation at TRL 3 in SSK-CAL-001 v0.2. One is **not met** (R12 cost), six are at risk and one cannot be verified until TRL 4. The TRL 2 review decisions (SSK-DDR-001) kept the 1 m2 aperture and the 20 deg tilt on an adjustable stand. Under SSK-DDR-002 (decided by Amish on 2026-09-25, going with the recommendations) R8 was restated with a 150 °C rating for stages 1 and 2 plus a stagnation cover, and the R12 budget was raised from $250 to $320. The added materials and cover bring the parts to $351.20, so R12 is still not met; a further response is proposed, awaiting Amish, in docs/REVIEW.md.
+These requirements were checked by calculation at TRL 3 in SSK-CAL-001 v0.3. No requirement is **not met**; six are at risk and one cannot be verified until TRL 4. The TRL 2 review decisions (SSK-DDR-001) kept the 1 m2 aperture and the 20 deg tilt on an adjustable stand. Under SSK-DDR-002 (decided by Amish on 2026-09-25, going with the recommendations) R8 was restated with a 150 °C rating for stages 1 and 2 plus a stagnation cover, and the R12 budget was raised from $250 to $320. The added materials and cover bring the parts to $351.20. On 2026-09-26 Amish approved a budget top-up to $355 (SSK-DDR-002 v0.2), so R12 is now met with a $3.80 margin.
 
 Table 1. Requirements and status at TRL 3.
 
@@ -46,7 +50,7 @@ Table 1. Requirements and status at TRL 3.
 | R9 | Household scale and portable | 1.0 m2 aperture; panel mass 20 kg or less dry; carried by two people; footprint within 1.3 x 1.3 m | Massing model and mass estimate | Met: 16.7 kg dry (20.7 kg wet); footprint 1.28 x 1.16 m at 10 deg |
 | R10 | Easy maintenance | Wicks removable, rinsed and refitted by one person without special tools in 30 min or less; salt flushing no more often than once a week | Design review | At risk: wicks are bonded under the plates and the removal method is not defined |
 | R11 | Adjustable tilt | Tilt between 10 and 35 deg to suit latitudes of about 0 to 35 deg | Model check | Met: stand with rear struts of 0.53 to 0.94 m; model built at 10, 20 and 35 deg |
-| R12 | Low cost and buildable | Parts cost $320 or less for the 1 m2 prototype (raised from $250 under SSK-DDR-002); hand tools, sheet metal shears and a 3D printer only | Priced BOM | Not met: $351.20, $31.20 over budget |
+| R12 | Low cost and buildable | Parts cost $355 or less for the 1 m2 prototype (raised from $250 to $320 under SSK-DDR-002 and to $355 by Amish on 2026-09-26); hand tools, sheet metal shears and a 3D printer only | Priced BOM | Met: $351.20, $3.80 margin |
 
 ## Assumptions
 

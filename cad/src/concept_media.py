@@ -57,7 +57,7 @@ render_all(
                  "About 10.6 L per day on 5.5 kWh/m2 (SSK-CAL-001)",
                  "Gained output ratio about 1.3",
                  "Dry stagnation about 140 C; stages 1, 2 rated 150 C",
-                 "About $351 in parts (indicative; budget $320)"],
+                 "About $351 in parts (indicative; budget $355)"],
     cut_exclude=("Adjustable tilt stand",), scale_figure=False, context=[person],
     flow={"title": "energy (MJ) and water per m2 per day at 5.5 kWh/m2, total about 11 L (CALCULATED ESTIMATES, SSK-CAL-001)",
           "unit": "MJ",

@@ -2,7 +2,7 @@
 
 Prices are indicative TRL 3 estimates by supplier type, not quotes. Line numbers match the callouts in `media/exploded.png`; line 6 is split into two rows by stage, and lines 13 (sealant, fasteners and tubing) and 14 (stagnation cover) are not modeled.
 
-Parts total **$351.20** for one 1 m2 prototype (checked by `docs/04-calcs/sizing.py`, section 13). The budget in `project.yaml` was raised from $250 to **$320** by Amish on 2026-09-25 (SSK-DDR-002), so the BOM is **$31.20 over** and R12 is not met. A further response (a budget of about $355, cheaper rails and cover, or excluding the cover and stand) is proposed, awaiting Amish.
+Parts total **$351.20** for one 1 m2 prototype (checked by `docs/04-calcs/sizing.py`, section 13). The budget in `project.yaml` was raised from $250 to $320 by Amish on 2026-09-25 (SSK-DDR-002) and topped up to **$355** on 2026-09-26, so the BOM is **$3.80 under** and R12 is met.
 
 Changes under SSK-DDR-002 (decided by Amish, 2026-09-25, going with the recommendations):
 

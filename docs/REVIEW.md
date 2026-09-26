@@ -158,7 +158,7 @@ Files changed: `project.yaml`, `README.md`, `docs/01-problem.md` (SSK-PRB-001 v0
 
 1. First co-design partner (coastal NGO, university water lab or makerspace network). No recommendation.
 2. Coating product for the condensing faces (R7) and wick fabric (R6). Selections that need datasheets; no recommendation.
-3. **Response to R12 not met at $320** (new). Options: (a) raise budget_usd to about $355; (b) keep $320 and cut cost (for example silicone strip rails in stages 1 and 2, a locally sourced cover); (c) exclude the cover and stand from the budget. Recommendation: (a), because the extra cost follows from the decided R8 response.
+3. **Response to R12 not met at $320** (new). Options: (a) raise budget_usd to about $355; (b) keep $320 and cut cost (for example silicone strip rails in stages 1 and 2, a locally sourced cover); (c) exclude the cover and stand from the budget. Recommendation: (a), because the extra cost follows from the decided R8 response. Decided by Amish, 2026-09-26: option (a), budget_usd $355 (SSK-DDR-002 v0.2).
 
 ### Cross-repo actions
 
@@ -167,3 +167,25 @@ None. No decision in this repo requires a change to another repo.
 ### TRL
 
 trl: 3 and trl_target: 3 are unchanged. TRL 4 remains on hold by Amish's instruction: no hardware, tests, purchasing or build-log entries were created. Selecting the rail polymer, coating and wick from datasheets can be done on paper; measuring stagnation temperatures or wick permeability is TRL 4 work and is on hold.
+
+## Session 2026-09-26: sources strengthened
+
+Amish, 2026-09-26: "Fix the weaker sources." All README source links in the Concept rationale, Burning platform, Where it could be used and What sparked the idea sections were fetched and checked against the claims they support.
+
+| Where | Old source | New source |
+| --- | --- | --- |
+| By country or region: Chile | None (row uncited) | Ruffino et al., "Drinking Water Supply in the Region of Antofagasta (Chile)," IJERPH 19 (2022), [doi:10.3390/ijerph192114406](https://doi.org/10.3390/ijerph192114406). The row now states only what the paper supports: the Atacama is the driest desert in the world, Antofagasta receives about 1.7 mm of rain a year, demand exceeds supply, and about 42 % of the rural population has no formal drinking-water supply. |
+| What sparked the idea | Nature Sustainability paper plus ScienceDaily for the 20 L per m2 per day figure | Paper now linked by DOI and cited for its own figure (almost 3 L per m2 per hour at less than one sun); ScienceDaily kept alongside it, labeled as carrying the Politecnico di Torino release, for the 20 L per day figure. Same inspiration event; INSPIRATIONS.md unchanged. |
+
+Links kept after verification: WHO and UNICEF JMP news release (2025), WHO drinking-water fact sheet, World Bank feature on Bangladesh salinity (2015), World Bank blog on South Tarawa, Texas Water Development Board report 363, World Bank blog on MENA water availability. docs/01-problem.md cites no weak source, so its sources are unchanged.
+
+### Budget top-up
+
+Amish, 2026-09-26: "I am ok with the budget top ups." Item 3 of the 2026-09-25 open list is decided as option (a).
+
+| Quantity | Before | After |
+| --- | --- | --- |
+| budget_usd | $320 | $355 |
+| R12 | Not met ($351.20, $31.20 over) | Met ($351.20, $3.80 margin) |
+
+Files changed: `project.yaml`, `README.md`, `docs/01-problem.md` (SSK-PRB-001 v0.5), `docs/02-concept.md` (SSK-PRC-001 v0.5), `docs/03-requirements.md` (SSK-REQ-001 v0.5), `docs/04-calcs/01-sizing.md` (SSK-CAL-001 v0.3) and `sizing.py` (budget 355, rerun), `docs/decisions/0002-recommendations-accepted.md` (SSK-DDR-002 v0.2), `bom/bom-notes.md`, `cad/src/concept_media.py` (blueprint budget line) and the regenerated media. trl: 3 and trl_target: 3 are unchanged.

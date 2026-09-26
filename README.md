@@ -2,7 +2,7 @@
 
 ![TRL 3](https://img.shields.io/badge/TRL-3%20of%209-0F766E) ![Hardware: CERN-OHL-S-2.0](https://img.shields.io/badge/hardware-CERN--OHL--S--2.0-111827) ![Software: MIT](https://img.shields.io/badge/software-MIT-111827)
 
-**Area:** Water Security · **TRL:** 3 of 9 (proof of concept on paper) · **Prototype budget:** about $320 USD (priced BOM about $351, over budget) · **Difficulty:** 3 of 5
+**Area:** Water Security · **TRL:** 3 of 9 (proof of concept on paper) · **Prototype budget:** about $355 USD (priced BOM about $351) · **Difficulty:** 3 of 5
 
 Multi-stage wick still that reuses the latent heat of condensation from each stage in the next one.
 
@@ -41,12 +41,12 @@ Many of these households sit beside seawater or above brackish aquifers that the
 | Bangladesh (southwest coast) | Dry-season river salinity is projected to rise significantly by 2050, and eight coastal districts are the most affected ([World Bank](https://www.worldbank.org/en/news/feature/2015/02/17/salinity-intrusion-in-changing-climate-scenario-will-hit-coastal-bangladesh-hard)) |
 | Kiribati (South Tarawa) | Groundwater from the freshwater lens can support only about half of South Tarawa's population, and households receive piped water for about 1.5 hours every two days ([World Bank](https://blogs.worldbank.org/en/eastasiapacific/drilling-for-water-in-kiribati)) |
 | United States (Texas) | Texas aquifers hold about 2.7 billion acre-feet (about 3.3 x 10^12 m3) of brackish groundwater at 1,000 to 10,000 mg/L dissolved solids ([Texas Water Development Board](https://www.twdb.texas.gov/publications/reports/numbered_reports/doc/r363/b2.pdf)); small ranches and colonias could use it at household scale |
-| Chile (Atacama coast) | Coastal towns in one of the driest regions on Earth have strong sun and seawater at hand but little fresh water |
+| Chile (Antofagasta region, Atacama coast) | The region holds the Atacama, the driest desert in the world, with about 1.7 mm of rain a year in Antofagasta; demand exceeds supply, and about 42 % of the rural population has no formal drinking-water supply ([Ruffino et al., IJERPH, 2022](https://doi.org/10.3390/ijerph192114406)) |
 | Middle East and North Africa | The region has the world's lowest water availability per person, about 480 m3 a year in 2023, less than 10 % of the global average ([World Bank](https://blogs.worldbank.org/en/voices/in-mena-make-every-drop-of-water-count)); sun and seawater are plentiful |
 
 ## What sparked the idea
 
-The starting point was a floating prototype that researchers at Politecnico di Torino tested in the Ligurian Sea at Varazze, Italy: a stack of thin evaporating and condensing layers fed by porous materials, with no pumps, which reported productivity of up to 20 L of drinking water per m2 per day ([Chiavazzo et al., Nature Sustainability, 2018](https://www.nature.com/articles/s41893-018-0186-x); [ScienceDaily](https://www.sciencedaily.com/releases/2019/01/190107131242.htm)). Their shift of attention from absorbing more sunlight to reusing the heat already absorbed is the principle behind StillStack. The gap it points at is that the result was a research device, not a design a community workshop could build; StillStack sets out to be that open, land-based, garage-buildable version.
+The starting point was a floating prototype that researchers at Politecnico di Torino tested in the Ligurian Sea at Varazze, Italy: a stack of thin evaporating and condensing layers fed by porous materials, with no pumps, which produced almost 3 L of distillate per m2 per hour from seawater at less than one sun ([Chiavazzo et al., Nature Sustainability, 2018](https://doi.org/10.1038/s41893-018-0186-x)); the university reported daily productivity of up to 20 L of drinking water per m2 ([Politecnico di Torino release via ScienceDaily](https://www.sciencedaily.com/releases/2019/01/190107131242.htm)). Their shift of attention from absorbing more sunlight to reusing the heat already absorbed is the principle behind StillStack. The gap it points at is that the result was a research device, not a design a community workshop could build; StillStack sets out to be that open, land-based, garage-buildable version.
 
 ## Problem
 
@@ -56,7 +56,7 @@ Single-basin solar stills make only about 3 to 5 L per m2 per day.
 
 Multi-stage wick still that reuses the latent heat of condensation from each stage in the next one.
 
-The TRL 3 sizing (SSK-CAL-001) gives about 10.6 L per m2 per day on a 5.5 kWh per m2 day, with a gained output ratio of about 1.3. Dry stagnation reaches about 140 °C, so stages 1 and 2 use materials rated to 150 °C and a stagnation cover is supplied; the stage 3 margin is thin. The priced parts (about $351) are still over the $320 budget.
+The TRL 3 sizing (SSK-CAL-001) gives about 10.6 L per m2 per day on a 5.5 kWh per m2 day, with a gained output ratio of about 1.3. Dry stagnation reaches about 140 °C, so stages 1 and 2 use materials rated to 150 °C and a stagnation cover is supplied; the stage 3 margin is thin. The priced parts (about $351) fit within the $355 budget approved by Amish on 2026-09-26.
 
 Full design precis: [docs/02-concept.md](docs/02-concept.md)
 
@@ -94,6 +94,12 @@ The working bill of materials is in [bom/bom.csv](bom/bom.csv).
 ## Documentation
 
 Controlled documents follow the portfolio [documentation standard](.kit/STANDARDS.md). Each carries a document ID (SSK-PRC-001 for the precis), a version and a revision history. Branded PDFs are built with `python .kit/render.py` and attached to GitHub Releases when a document is tagged, for example `SSK-PRC-001/v1.0`.
+
+## Credits
+
+Designed by Amish Chadha. See [CONTRIBUTORS.md](CONTRIBUTORS.md) for roles. To cite this design, use [CITATION.cff](CITATION.cff) (GitHub shows it as "Cite this repository").
+
+AI assistance (Claude) was used to accelerate concept renders, prototype documentation and first-pass sizing calculations. Design direction and all decisions are Amish Chadha's, recorded in this repository's decision records (`docs/decisions/`).
 
 ## Licenses
 

@@ -3,9 +3,9 @@ doc_id: SSK-DDR-002
 title: StillStack recommendations accepted
 project: StillStack
 doc_type: Design decision record
-version: "0.1"
+version: "0.2"
 status: Draft
-date: 2026-09-25
+date: 2026-09-26
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -13,12 +13,16 @@ revisions:
     date: 2026-09-25
     author: Amish Chadha
     change: Recommendations accepted by Amish (DDR-002)
+  - version: "0.2"
+    date: 2026-09-26
+    author: Amish Chadha
+    change: Budget top-up to $355 decided by Amish
 ---
 
 # 0002: Recommendations accepted
 
 - **Date:** 2026-09-25
-- **Status:** accepted (items 1 to 3); items 4 and 5 remain proposed, awaiting Amish
+- **Status:** accepted (items 1 to 3 and 6); items 4 and 5 remain proposed, awaiting Amish
 
 On 2026-09-25 Amish wrote: "i accept all your recommendations, go with them across all repos." Every open item in docs/REVIEW.md and docs/decisions/ that carried a recommendation is therefore decided as recommended. Items without a recommendation stay open. TRL 4 remains on hold by Amish's instruction, so the decisions are implemented on paper only (TRL 3).
 
@@ -54,9 +58,13 @@ Table 2. Items that stay proposed, awaiting Amish.
 | --- | --- | --- |
 | 4 | First co-design partner (coastal NGO, university water lab or makerspace network) | No recommendation. Proposed, awaiting Amish. |
 | 5 | Coating product for the condensing faces (R7) and wick fabric with a permeability of 3.0 x 10^-11 m2 or more (R6) | Selections that need datasheets. No recommendation. Proposed, awaiting Amish. |
-| 6 | Response to R12 not met at the $320 budget (new) | Options: (a) raise budget_usd to about $355; (b) keep $320 and cut cost, for example by making the stage 1 and 2 rails from silicone strip (about $14 less) and sourcing the cover locally; (c) exclude the stagnation cover and stand from the budget. Recommendation: (a), because the extra cost comes from parts that items 2 and 3 require. Proposed, awaiting Amish. |
+| 6 | Response to R12 not met at the $320 budget (new) | Options: (a) raise budget_usd to about $355; (b) keep $320 and cut cost, for example by making the stage 1 and 2 rails from silicone strip (about $14 less) and sourcing the cover locally; (c) exclude the stagnation cover and stand from the budget. Recommendation: (a). Budget top-up to $355: decided by Amish, 2026-09-26. |
+
+## Budget top-up (2026-09-26)
+
+Budget top-up to $355: decided by Amish, 2026-09-26 ("I am ok with the budget top ups"). This closes item 6 with option (a). budget_usd in project.yaml changes from $320 to $355, R12 reads $355 or less, and the priced BOM of $351.20 now meets it with a $3.80 margin (SSK-CAL-001 v0.3).
 
 ## Consequences
 
-- R8 is now at risk rather than not met, and R12 remains not met at the higher budget. Requirement targets other than R8 and R12 are unchanged.
+- R8 is now at risk rather than not met. R12 remained not met at $320 and is met at $355 after the 2026-09-26 top-up. Requirement targets other than R8 and R12 are unchanged.
 - TRL 4 is on hold by Amish's instruction. Nothing in this record authorizes hardware, tests or purchasing.

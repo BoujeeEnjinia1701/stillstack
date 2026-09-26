@@ -3,9 +3,9 @@ doc_id: SSK-CAL-001
 title: StillStack sizing calculations
 project: StillStack
 doc_type: Calculation
-version: "0.2"
+version: "0.3"
 status: Draft
-date: 2026-09-25
+date: 2026-09-26
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -17,11 +17,15 @@ revisions:
     date: 2026-09-25
     author: Amish Chadha
     change: Recommendations accepted by Amish (DDR-002)
+  - version: "0.3"
+    date: 2026-09-26
+    author: Amish Chadha
+    change: Budget top-up approved by Amish
 ---
 
 # StillStack sizing calculations
 
-On paper the decided design (four stages, 6 mm gaps, air-cooled fins, 1 m2 at 20 deg) makes about **10.6 L per m2 per day** on the 5.5 kWh per m2 design day, with a gained output ratio of **1.26 to 1.34**. That meets R1 with a thin margin, puts R2 at risk, and misses the 13 L design goal. Dry stagnation reaches about **140 °C** at stage 1 (**144 °C** in calm air). Under SSK-DDR-002 R8 now asks for a 150 °C rating in stages 1 and 2 and 110 °C elsewhere, plus a stagnation cover; the margins are 6 K and 0 K, so R8 is **at risk**. The priced BOM, with the 150 °C rails and the cover added, totals **$351.20** against the $320 budget set in SSK-DDR-002, so R12 is still **not met**. Every number below is printed by `docs/04-calcs/sizing.py`; the geometry figures come from `cad/src/model.py`.
+On paper the decided design (four stages, 6 mm gaps, air-cooled fins, 1 m2 at 20 deg) makes about **10.6 L per m2 per day** on the 5.5 kWh per m2 design day, with a gained output ratio of **1.26 to 1.34**. That meets R1 with a thin margin, puts R2 at risk, and misses the 13 L design goal. Dry stagnation reaches about **140 °C** at stage 1 (**144 °C** in calm air). Under SSK-DDR-002 R8 now asks for a 150 °C rating in stages 1 and 2 and 110 °C elsewhere, plus a stagnation cover; the margins are 6 K and 0 K, so R8 is **at risk**. The priced BOM, with the 150 °C rails and the cover added, totals **$351.20** against the $355 budget approved by Amish on 2026-09-26, so R12 is **met** with a $3.80 margin. Every number below is printed by `docs/04-calcs/sizing.py`; the geometry figures come from `cad/src/model.py`.
 
 ## 1. Method
 
@@ -151,7 +155,7 @@ At 20 m/s the normal force on the 1.15 m2 panel (force coefficient 1.2) is about
 
 ## 10. Cost
 
-The priced BOM (`bom/bom.csv`, 15 lines) totals **$351.20**, which is **$31.20 over** the $320 budget set in SSK-DDR-002. Version 0.1 of this note gave $317.20 against $250. The $34 added under SSK-DDR-002 is $22 for the four 150 °C rails in stages 1 and 2 (an allowance of $9 each in place of $3.50) and $12 for the stagnation cover; the stone wool liner is priced the same as the PIR it replaces.
+The priced BOM (`bom/bom.csv`, 15 lines) totals **$351.20**, which is **$3.80 under** the $355 budget approved by Amish on 2026-09-26 (SSK-DDR-002 v0.2; the budget was $320 in SSK-DDR-002 v0.1). Version 0.1 of this note gave $317.20 against $250. The $34 added under SSK-DDR-002 is $22 for the four 150 °C rails in stages 1 and 2 (an allowance of $9 each in place of $3.50) and $12 for the stagnation cover; the stone wool liner is priced the same as the PIR it replaces.
 
 ## 11. Results against requirements
 
@@ -159,7 +163,6 @@ Table 5. Requirement status at TRL 3, not met first.
 
 | ID | Quantity | Value | Target | Status |
 | --- | --- | --- | --- | --- |
-| R12 | Parts cost | $351.20 | $320 or less | Not met |
 | R8 | Temperatures at dry stagnation | Stages 1 and 2: 144 °C calm (6 K margin); stages 3 and 4: 110 °C calm (0 K margin); cover specified | 150 °C in stages 1 and 2, 110 °C elsewhere, cover and shade rule | At risk |
 | R2 | Gained output ratio | 1.34 quasi-steady; 1.26 after warm-up deduction | 1.3 or more | At risk |
 | R4 | Air break between wick edges and distillate paths | 10 mm at ribs and rails, 20 mm at the low edge; brine exit over the lidded manifold not yet detailed | 10 mm or more, no shared drain | At risk |
@@ -168,6 +171,7 @@ Table 5. Requirement status at TRL 3, not met first.
 | R10 | Wick removal time; flushing interval | Wicks bonded under plates; removal method not defined | 30 min or less; weekly or less often | At risk |
 | R3 | Distillate conductivity | Carryover allowance 0.075 % (8.6 mL/day) | 75 µS/cm or less | Not verifiable at TRL 3 |
 | R1 | Daily distillate | 10.6 L/m2 (11.3 quasi-steady) | 10 L/m2 or more (goal 13) | Met (6 % margin; goal not met) |
+| R12 | Parts cost | $351.20 | $355 or less | Met ($3.80 margin) |
 | R5 | Power; feed head | Passive; feed trough top 1.06 m at 35 deg | No power; container at most 1.5 m | Met |
 | R9 | Mass; footprint | 16.7 kg dry; 1.28 x 1.16 m | 20 kg or less; within 1.3 x 1.3 m | Met |
 | R11 | Tilt range | Stand and model built at 10, 20 and 35 deg | 10 to 35 deg | Met |
@@ -177,3 +181,5 @@ Table 5. Requirement status at TRL 3, not met first.
 SSK-PRC-001 v0.2 gave 13.2 L per day, a gained output ratio of about 1.5, stage 1 at 70 to 80 °C, dry stagnation at 100 to 120 °C, feed of 35 L and brine of 22 L, a panel of about 15 kg and parts of about $241. The precis v0.3 now quotes the values in this note.
 
 Version 0.2 of this note (SSK-DDR-002) adds the calm-air plate temperatures and the restated R8 check, and changes the panel mass from 15.9 to 16.7 kg dry (19.9 to 20.7 kg wet), the wet panel and stand weight from 264 to 272 N, and the parts cost from $317.20 to $351.20 against a budget raised from $250 to $320. The energy balance, yield and gained output ratio are unchanged.
+
+Version 0.3 of this note records the budget top-up to $355 approved by Amish on 2026-09-26; the parts cost is unchanged at $351.20 and R12 moves from not met to met.

@@ -23,7 +23,7 @@ pitch: >-
   Multi-stage wick still that reuses the latent heat of condensation from each stage in the next one.
 problem: >-
   Single-basin solar stills make only about 3 to 5 L per m2 per day.
-budget_usd: 320
+budget_usd: 355
 difficulty: 3  # 1 easiest, 5 hardest
 hero_image: media/hero.png
 licenses:
