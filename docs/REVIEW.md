@@ -189,3 +189,36 @@ Amish, 2026-09-26: "I am ok with the budget top ups." Item 3 of the 2026-09-25 o
 | R12 | Not met ($351.20, $31.20 over) | Met ($351.20, $3.80 margin) |
 
 Files changed: `project.yaml`, `README.md`, `docs/01-problem.md` (SSK-PRB-001 v0.5), `docs/02-concept.md` (SSK-PRC-001 v0.5), `docs/03-requirements.md` (SSK-REQ-001 v0.5), `docs/04-calcs/01-sizing.md` (SSK-CAL-001 v0.3) and `sizing.py` (budget 355, rerun), `docs/decisions/0002-recommendations-accepted.md` (SSK-DDR-002 v0.2), `bom/bom-notes.md`, `cad/src/concept_media.py` (blueprint budget line) and the regenerated media. trl: 3 and trl_target: 3 are unchanged.
+
+## Session 2026-09-26: product appearance model and photoreal renders
+
+Amish chose this repo for the first batch of product renders on 2026-09-26. This session added `cad/src/product_model.py`, an appearance model for photoreal renders built on `cad/src/model.py` (PARAMS, `build()`, `rib_positions()` and `wick_strips()`), and pointed the README hero image at `media/render-hero.png` with a link to `media/render-exploded.png`. The render files themselves are produced later by the orchestrator. `model.py`, the BOM and the other docs are unchanged.
+
+### What product_model.py adds
+
+- `product_parts()` (62 parts: 20 shell, 18 internal, 18 accessory including 16 cutaway fills, 6 context), `TITLE` and three `RENDER_VIEWS`: hero (30 deg elevation, az -40), exploded (28 deg, az -55) and detail (52 deg, az -32, no context) looking down into the cutaway.
+- Insulated frame shown as a painted plywood shell with eased edges and corner-joint reveals, plus a foil-faced stone wool liner, in the same envelope and with the same condenser lip slots as `model.py`.
+- Twin-wall glazing modeled as two skins and webs so the flutes read through the clear sheet.
+- A stepped corner cutaway at the front, low corner (local +x, -y) that steps down through the absorber, each stage's wick strips, side rails, silicone ribs and condenser plate, so all four stages are visible. The removed corners are kept as "cutaway fill" parts in group "accessory", so the exploded view shows whole layers.
+- Every stack layer as its own part (absorber, four wick layers, four rail pairs, four rib sets, four condenser plates), with rails coloured by material: tan for the 150 degC polymer in stages 1 and 2, kit teal for printed PC in stages 3 and 4.
+- Details: glazing trim ring with stainless screws, teal nameplate with raised "STILLSTACK" lettering on the front face, feed trough bead, end caps and drip valve, lidded distillate manifold with parting line, clips, outlet barb and raised "DISTILLATE" label, brine gutter with raised "BRINE" lettering, fins with their 20 mm flange, timber stand with eased edges, front pivot hinges, rear-strut pin holes with a tilt pin, and ground anchor brackets.
+- Context (not in the BOM unless noted): a compact ground patch, the silicone outlet tube (BOM 13) to a clear covered distillate container, and the brine drain hose (BOM 10). The stagnation cover (BOM 14) is shown folded as an accessory.
+
+### Differences from model.py (each Proposed, awaiting Amish)
+
+| # | Difference | Recommendation |
+| --- | --- | --- |
+| 1 | Glazing retention: an anodized aluminum trim ring (1.5 mm, 45 mm wide, with a lip onto the glazing) screwed to the frame top. `model.py` has only the 4 mm frame lip and does not show how the glazing is held. | Adopt a screwed trim or batten over a silicone bead; price it under BOM line 13 or a new line before the next BOM update. |
+| 2 | Twin-wall flutes run down the slope at a visual 10 mm pitch. `model.py` shows a plain slab. | Specify flutes down the slope so condensate and rain drain from the channels; take the real pitch from the chosen sheet. |
+| 3 | Distillate manifold split into a channel and a lid at the cavity top with clips, and both outlet spouts bored through. `model.py` shows a closed box with solid spouts. | Keep the lid removable for cleaning, as BOM line 9 implies. |
+| 4 | Feed trough end caps drawn slightly oversize (76 by 72 mm over the 70 mm gutter) and a drip valve placed on the front (-Y) end cap. `model.py` does not show caps or valve. | Confirm the valve position at the front end, where the user fills and adjusts it. |
+| 5 | Fins shown with the 20 mm flange from BOM line 11; `model.py` shows the web only. | Add the flange to `model.py` at the next model update. |
+| 6 | Stand hardware (hinges, four pin holes per rear strut, stainless tilt pins, ground anchor brackets) added from BOM line 12. Hole spacing is illustrative and is not derived from the 10 to 35 deg settings. | Derive the hole positions from the tilt check in `model.py` at the next model update. |
+| 7 | Nameplate and raised "DISTILLATE" and "BRINE" labels added. | Keep the outlet labels: they help prevent mixing distillate and brine. |
+| 8 | Rail colours (tan for stages 1 and 2, teal for 3 and 4) are appearance choices. | Keep a visible colour difference so the high-temperature rails cannot be fitted in the wrong stage. |
+
+The corner cutaway is a render device, not a design change. The wick drape over the high wall into the feed trough is not shown, as in `model.py`.
+
+### TRL
+
+This is an appearance model only: no tolerances, fabrication detail, build procedures or tests. trl: 3 and trl_target: 3 are unchanged, and TRL 4 remains on hold.
