@@ -14,3 +14,5 @@ Changes under SSK-DDR-002 (decided by Amish, 2026-09-25, going with the recommen
 The largest cost is still the five aluminum plates with coating (lines 3 and 5, $108). Choosing 316 stainless steel plates instead would add roughly $100 to $150 more.
 
 Every part that touches distillate (lines 5, 7, 9 and 13) must be food-contact rated. The rails in stages 3 and 4 may stay printed polycarbonate; ASA and PETG soften below the dry stagnation temperature of stages 1 to 3 (about 110 to 144 °C in calm air).
+
+Decided on 2026-10-02 (SSK-DEC-001), not yet in the BOM lines or prices: the stage 1 and 2 rails and the stop blocks (line 6) are PPS, in a different colour from the stage 3 and 4 rails; the coating (lines 3 and 5) is the lowest-cost one certified for drinking-water contact and rated to 150 °C dry, else 316 stainless for plates 1 and 2; the wick fabric (line 4) is chosen by a wicking-rise test between a polyester-type nonwoven and a glass-fibre fabric; wicks are held by end clips with no adhesive; DISTILLATE and BRINE labels are added. Silicone strip in place of the 150 °C rails is not a saving to take, because it would undo the R8 materials decision.

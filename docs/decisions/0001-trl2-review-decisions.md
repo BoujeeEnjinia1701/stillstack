@@ -3,9 +3,9 @@ doc_id: SSK-DDR-001
 title: StillStack TRL 2 review decisions
 project: StillStack
 doc_type: Design decision record
-version: "0.1"
+version: "0.2"
 status: Draft
-date: 2026-09-25
+date: '2026-10-02'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -13,12 +13,16 @@ revisions:
     date: 2026-09-25
     author: Amish Chadha
     change: Record the decisions Amish made on the TRL 2 review points, and the items still open
+  - version: "0.2"
+    date: '2026-10-02'
+    author: Amish Chadha
+    change: "Item 8 decided by Amish on 2026-10-02 (SSK-DEC-001)"
 ---
 
 # 0001: TRL 2 review decisions
 
 - **Date:** 2026-09-25
-- **Status:** accepted (items 1 to 7); item 8 proposed
+- **Status:** accepted (items 1 to 7); item 8 decided by Amish on 2026-10-02 (SSK-DEC-001)
 
 Amish accepted every recommendation in the TRL 2 review note (docs/REVIEW.md, session 2026-09-24) on 2026-09-25, with the instruction that no repo proceeds to TRL 4. Seven items are decided. The first co-design partner had no recommendation and stays open.
 
@@ -43,7 +47,7 @@ Table 1. Decisions on the TRL 2 review points.
 | 5 | Tilt | Fixed 20 deg; 20 deg with an adjustable stand | Decided by Amish, 2026-09-25: go with recommendation. Nominal tilt 20 deg on a stand adjustable over the R11 range. |
 | 6 | Prototype aperture | 1 m2; 0.5 m2 | Decided by Amish, 2026-09-25: go with recommendation. 1 m2. |
 | 7 | Budget | Keep $250; raise for stainless plates | Decided by Amish, 2026-09-25: go with recommendation. Keep budget_usd at $250 with no redefinition of what it covers. |
-| 8 | First co-design partner | Coastal NGO; university water lab; makerspace network | Still open. No recommendation was made. Proposed, awaiting Amish. |
+| 8 | First co-design partner | Coastal NGO; university water lab; makerspace network | No recommendation was made on 2026-09-25. Decided by Amish, 2026-10-02: a university water or desalination lab first; first candidate to approach, the Politecnico di Torino group behind the 2018 floating multistage still; a coastal NGO for field use once the distillate passes its tests (SSK-DEC-001). |
 
 ## Consequences
 

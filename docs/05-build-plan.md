@@ -3,9 +3,9 @@ doc_id: SSK-BLD-001
 title: StillStack prototype build plan
 project: StillStack
 doc_type: Build plan
-version: "0.1"
+version: "0.2"
 status: Draft
-date: '2026-10-01'
+date: '2026-10-02'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -13,6 +13,10 @@ revisions:
     date: '2026-10-01'
     author: Amish Chadha
     change: First build plan, with pictures by component and step; design made constructable (SSK-DDR-003)
+  - version: "0.2"
+    date: '2026-10-02'
+    author: Amish Chadha
+    change: "SSK-DDR-003 accepted with exceptions (2026-10-02): high-edge lip on condensing plates, wick clips in place of silicone dots, PPS rails in their own colour"
 ---
 
 # StillStack prototype build plan
@@ -31,7 +35,7 @@ The prototype is one 1 m2 StillStack panel on its tilting stand. The panel is a 
 
 ## 2. What changed to make it buildable
 
-The concept showed what the still does; some of its parts could not be made, fixed or put together as drawn. Each change below keeps what the still does, and all of them are recorded in decision record SSK-DDR-003, open for Amish's review.
+The concept showed what the still does; some of its parts could not be made, fixed or put together as drawn. Each change below keeps what the still does, and all of them are recorded in decision record SSK-DDR-003, which Amish accepted on 2026-10-02 with two exceptions: a 4 mm downturned lip on each condensing plate's high edge, and clips in place of the silicone dots for the wicks (sections 3.10 and 3.11).
 
 *Table 1. Changes from the concept.*
 
@@ -161,7 +165,7 @@ The high wall and the low wall comb sit between the side walls. Each corner is g
 
 *Figure 10. Stop block making sketch (SSK-DWG-106).*
 
-**What it is and what it is made from.** A block in each low corner that the whole stack bears on, so it cannot slide down the slope. The stage 1 rail polymer (PPS or a high-heat polycarbonate copolymer), rated to 150 °C.
+**What it is and what it is made from.** A block in each low corner that the whole stack bears on, so it cannot slide down the slope. The stage 1 rail polymer, PPS, rated to 150 °C (decided 2026-10-02).
 
 **How to make it.** Cut a block 27 x 15 x 33 mm from the rail stock, or glue two pieces of it together with high-temperature silicone.
 
@@ -224,7 +228,7 @@ The plate's four edges rest on the base ring's ledge; its corners touch the stop
 
 *Figure 18. Side rail making sketch (SSK-DWG-109).*
 
-**What it is and what it is made from.** Two rails per gap, along the side edges, that hold the plates 7 mm apart (6 mm gap plus the 1 mm wick). Stages 1 and 2 (the top two gaps): PPS or a high-heat polycarbonate copolymer rated to 150 °C. Stages 3 and 4: printed polycarbonate.
+**What it is and what it is made from.** Two rails per gap, along the side edges, that hold the plates 7 mm apart (6 mm gap plus the 1 mm wick). Stages 1 and 2 (the top two gaps): PPS rated to 150 °C (decided 2026-10-02), in a different colour from the stage 3 and 4 rails. Stages 3 and 4: printed polycarbonate.
 
 **How to make it.**
 
@@ -272,7 +276,7 @@ Each rail lies flush with a side edge of the plate below, its low end touching t
 1. From a 1.0 x 1.25 m sheet each, cut the same 996 x 996 mm body and zigzag low edge as the bottom plate (Figure 14).
 2. Leave six distillate tongues 30 mm wide at the tips and five brine tongues 50 mm wide at the roots, all straight. Lengths, distillate from the tip line and brine from the root line: plate 3 (lowest) 68 and 175 mm; plate 2, 80 and 187 mm; plate 1 (highest), 91 and 198 mm.
 3. Mark the bend lines: distillate 51, 55 and 59 mm from the tip line, brine 143, 147 and 151 mm from the root line, for plates 3, 2 and 1.
-4. Deburr, coat the top face, and bond the five wick strips of the stage below under it (section 3.11).
+4. Bend a 4 mm downturned lip along the high edge (decided 2026-10-02; the sketch is still to be updated), deburr, coat the top face, and fit the five wick strips of the stage below under it (section 3.11).
 
 **How they fit the parts next to them.**
 
@@ -297,7 +301,7 @@ Each plate rests on the rails and ribs of the gap below, its corners against the
 1. For each stage cut a 1.0 x 1.4 m piece into five strips: 171, 167, 167, 167 and 171 mm wide.
 2. Low end: cut each strip to follow its plate's zigzag edge 13 mm inside it (a 10 mm dry break), then leave a 30 mm wide tail along the middle of the brine tongue, as long as the tongue plus 10 mm.
 3. High end: leave 150 mm beyond the plate's high edge for the feed tail.
-4. Lay the plate face down on a clean table. Bond each strip under it with dots of food-grade silicone every 100 mm along both edges, 10 mm in from the strip edge, with the tail centred under its brine tongue.
+4. Lay the plate face down on a clean table and hold each strip under it with clips at its high and low ends (stainless, or PPS in stages 1 and 2), with the tail centred under its brine tongue. Use no adhesive, so the wicks lift out for rinsing (decided 2026-10-02, replacing the silicone dots; the clip detail and pictures are still to be drawn).
 
 **How they fit the parts next to them.** Each strip lies between a rail and a rib, or between two ribs, with 10 mm of dry plate on each side. The feed tail leaves through the high wall opening for its strip (Figure 4); the brine tail rides under its brine tongue (Figure 22).
 

@@ -286,3 +286,60 @@ The design changed visibly (trim, tongues, comb, trough closure, stand), so `med
 ### Recommended next step
 
 Amish reviews SSK-DDR-003 and the register. TRL 4 (building and testing to this plan) stays on hold until Amish lifts the TRL 3 cap.
+
+## Session 2026-10-02: open decisions decided
+
+Amish, 2026-10-02: "i approve your recommendations for all 555 open decisions." This approves the recommendation written for every open decision in the design decisions register (SSK-DEC-001). trl stays 3; nothing was built, bought or tested, and TRL 4 remains on hold.
+
+### Decisions recorded (9)
+
+| Register item | Decision |
+| --- | --- |
+| 1 | SSK-DDR-003 accepted with exceptions: P1 to P12 as made, A2 decided as (c) and P11's silicone dots replaced by wick clips |
+| 2 | Zigzag edge brine and distillate tongues (A1 (a)); distillate conductivity test per stage a pass condition at TRL 4 before any water is drunk; cross-wick the fallback |
+| 3 | 4 mm downturned lip on each condensing plate's high edge now (A2 (c), changed from the register's (a)); dropped only on test evidence |
+| 4 | Wicks held by clips at high and low ends, no adhesive |
+| 5 | Lowest-cost coating certified for drinking-water contact and rated 150 °C dry (fluoropolymer cookware coatings first), else 316 stainless plates 1 and 2 |
+| 6 | Wick fabric chosen by a wicking-rise test between a polyester-type nonwoven and a glass-fibre fabric |
+| 7 | PPS for the stage 1 and 2 rails and stop blocks |
+| 8 | University water or desalination lab first; first candidate to approach, the Politecnico di Torino group; coastal NGO later |
+| 9 | All five appearance items adopted: flutes down the slope, removable manifold lid, front drip valve, DISTILLATE and BRINE labels, stage 1 and 2 rail colour |
+
+All 9 moved to Decisions made in SSK-DEC-001, dated 2026-10-02; the Open decisions section now reads "None."
+
+### Documents changed
+
+- `docs/06-design-decisions.md` (SSK-DEC-001 v0.2): items 1 to 9 moved to Decisions made; Open decisions reads "None"; "To confirm" item 5 names PPS; the silicone-strip saving marked as not to take
+- `docs/decisions/0003-design-for-construction.md` (SSK-DDR-003 v0.2): status accepted with exceptions (kept Draft): A1 accepted, A2 decided as (c), P11 replaced by clips; consequence added
+- `docs/decisions/0001-trl2-review-decisions.md` (SSK-DDR-001 v0.2): item 8 ("Proposed, awaiting Amish") recorded as decided
+- `docs/decisions/0002-recommendations-accepted.md` (SSK-DDR-002 v0.3): items 4 and 5 (awaiting Amish) recorded as decided
+- `docs/03-requirements.md` (SSK-REQ-001 v0.7): R4, R6, R7, R8 and R10 status notes for the decisions; no status changed
+- `docs/04-calcs/01-sizing.md` (SSK-CAL-001 v0.5): SSK-DDR-003 accepted; R4, R7 and R10 rows note the decisions; figures unchanged
+- `docs/02-concept.md` (SSK-PRC-001 v0.7): coating, PPS, lip, conductivity pass condition in the safety note, open questions answered, partner, labels and rail colours
+- `docs/01-problem.md` (SSK-PRB-001 v0.6): partner decided and first candidate to approach
+- `docs/05-build-plan.md` (SSK-BLD-001 v0.2): section 2 records the acceptance and its exceptions; PPS rails in their own colour; plate step 4 adds the high-edge lip; wick step 4 uses clips, no adhesive (pictures still to follow)
+- `bom/bom-notes.md`: PPS rails, coating rule, wick fabric test, wick clips and labels noted, not yet in BOM lines or prices
+- PDFs regenerated with `python3 .kit/render.py`; superseded versions removed.
+
+### Follow-up actions to carry approved decisions into the design
+
+The model, BOM quantities and prices, calculations and pictures were not changed in this session. These actions carry the approved decisions into them:
+
+1. Decision 3 (model, drawings, build plan pictures): Add the 4 mm downturned lip on each condensing plate's high edge in `cad/src/model.py`, re-run the 93 checks (feed tail clearance at the high edge), and update the plate making sketches (SSK-DWG-110 and the bottom plate sketch) and the joint pictures at the high wall.
+2. Decision 3 (calculations): Check the lip's effect on plate blank size, cost and mass in `docs/04-calcs/sizing.py` (a bend, no yield loss expected).
+3. Decision 4 (model, drawings, build plan pictures, BOM): Design the wick end clips (stainless, or PPS in stages 1 and 2), add them to the model, the wick cutting sketch SSK-DWG-111, the step pictures and a BOM line with price; remove the silicone-dot method from the build plan's Table 1.
+4. Decision 2 and 3 (test plan): Write the TRL 4 distillate conductivity test per stage as a pass condition before any water is drunk; it also decides whether the lip can be dropped.
+5. Decision 5 (BOM): Select the coating against the rule (drinking-water contact certified, 150 °C dry; fluoropolymer cookware coatings first) and price it in lines 3 and 5, or move plates 1 and 2 to 316 stainless.
+6. Decision 6 (BOM): Run the wicking-rise test on the two shortlisted fabrics and name the chosen fabric in BOM line 4.
+7. Decision 7 (BOM): Name PPS in BOM line 6 (stages 1 and 2) and for the stop blocks, with its colour, and reprice from a PPS sheet quote.
+8. Decision 9 (pictures, model): Update `cad/src/product_model.py` and the renders on Amish's Mac: flutes down the slope, removable manifold lid, front drip valve, DISTILLATE and BRINE labels, stage 1 and 2 rail colour.
+9. Decision 8 (documents): Approach the first candidate partner (the Politecnico di Torino group); nothing is agreed yet.
+
+### Points found in the review
+
+Raised when the recommendations were written (2026-10-01) and kept here so they are not lost:
+
+- R4 is 'at risk' and depends on two open safety details (items 2 and 3). The README already says distillate must be tested before drinking, but its hero image alt text calls StillStack a still 'for drinking water'; that wording should wait for TRL 4 conductivity tests.
+- Item 3's register recommendation accepts a known 6 mm path for feed water onto a condensing face in a drinking-water safety case; the conservative choice is the lip now.
+- Value engineering: the target is USD 355 against USD 416.20 (USD 61.20 over); one listed saving, silicone strip in place of the 150 °C rails in stages 1 and 2, would undo the R8 materials decision (SSK-DDR-002, item 2) and should not be on the savings list without that note.
+- R10 (wicks removable in 30 min) is at risk only because the wick fixing (item 4) is open; the build plan's silicone-dot bonding should not be used until item 4 is decided.

@@ -3,9 +3,9 @@ doc_id: SSK-DDR-002
 title: StillStack recommendations accepted
 project: StillStack
 doc_type: Design decision record
-version: "0.2"
+version: "0.3"
 status: Draft
-date: 2026-09-26
+date: '2026-10-02'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -17,12 +17,16 @@ revisions:
     date: 2026-09-26
     author: Amish Chadha
     change: Budget top-up to $355 decided by Amish
+  - version: "0.3"
+    date: '2026-10-02'
+    author: Amish Chadha
+    change: "Items 4 and 5 decided by Amish on 2026-10-02 (SSK-DEC-001)"
 ---
 
 # 0002: Recommendations accepted
 
 - **Date:** 2026-09-25
-- **Status:** accepted (items 1 to 3 and 6); items 4 and 5 remain proposed, awaiting Amish
+- **Status:** accepted (items 1 to 3 and 6); items 4 and 5 decided by Amish on 2026-10-02 (SSK-DEC-001)
 
 On 2026-09-25 Amish wrote: "i accept all your recommendations, go with them across all repos." Every open item in docs/REVIEW.md and docs/decisions/ that carried a recommendation is therefore decided as recommended. Items without a recommendation stay open. TRL 4 remains on hold by Amish's instruction, so the decisions are implemented on paper only (TRL 3).
 
@@ -52,12 +56,12 @@ Table 1. Items decided by this record.
 
 ## Items still open
 
-Table 2. Items that stay proposed, awaiting Amish.
+Table 2. Items open on 2026-09-25, with their later decisions.
 
 | # | Item | Status |
 | --- | --- | --- |
-| 4 | First co-design partner (coastal NGO, university water lab or makerspace network) | No recommendation. Proposed, awaiting Amish. |
-| 5 | Coating product for the condensing faces (R7) and wick fabric with a permeability of 3.0 x 10^-11 m2 or more (R6) | Selections that need datasheets. No recommendation. Proposed, awaiting Amish. |
+| 4 | First co-design partner (coastal NGO, university water lab or makerspace network) | No recommendation on 2026-09-25. Decided by Amish, 2026-10-02: a university water or desalination lab first; first candidate to approach, the Politecnico di Torino group behind the 2018 floating multistage still; a coastal NGO for field use once the distillate passes its tests (SSK-DEC-001). |
+| 5 | Coating product for the condensing faces (R7) and wick fabric with a permeability of 3.0 x 10^-11 m2 or more (R6) | Selections that need datasheets. No recommendation on 2026-09-25. Decided by Amish, 2026-10-02: the lowest-cost coating certified for drinking-water contact and rated to 150 °C dry, else 316 stainless for plates 1 and 2; the wick fabric chosen by a wicking-rise test between a polyester-type nonwoven and a glass-fibre fabric (SSK-DEC-001). |
 | 6 | Response to R12 not met at the $320 budget (new) | Options: (a) raise budget_usd to about $355; (b) keep $320 and cut cost, for example by making the stage 1 and 2 rails from silicone strip (about $14 less) and sourcing the cover locally; (c) exclude the stagnation cover and stand from the budget. Recommendation: (a). Budget top-up to $355: decided by Amish, 2026-09-26. |
 
 ## Budget top-up (2026-09-26)

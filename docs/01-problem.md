@@ -3,9 +3,9 @@ doc_id: SSK-PRB-001
 title: StillStack problem statement
 project: StillStack
 doc_type: Problem statement
-version: "0.5"
+version: "0.6"
 status: Draft
-date: '2026-09-26'
+date: '2026-10-02'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -29,6 +29,10 @@ revisions:
   date: '2026-09-26'
   author: Amish Chadha
   change: Budget top-up approved by Amish
+- version: "0.6"
+  date: '2026-10-02'
+  author: Amish Chadha
+  change: "Partner decided and first candidate to approach (SSK-DEC-001, 2026-10-02)"
 ---
 
 # StillStack problem statement
@@ -68,5 +72,5 @@ Multi-effect distillation fixes this in industry by condensing the vapor from on
 
 ## Open questions
 
-- Which users to involve first, and through which partner (a coastal NGO, a university water lab or a makerspace network)? No recommendation has been made. Proposed, awaiting Amish.
+- Which users to involve first, and through which partner? Decided by Amish, 2026-10-02 (SSK-DEC-001): a university water or desalination lab first, to measure distillate quality; first candidate to approach, the Politecnico di Torino group behind the 2018 floating multistage still. A coastal NGO follows for field use once the distillate passes its tests. Nothing is agreed yet.
 - The first size is settled: a household unit of 1 m2, decided by Amish on 2026-09-25 (SSK-DDR-001).

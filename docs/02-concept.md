@@ -3,9 +3,9 @@ doc_id: SSK-PRC-001
 title: StillStack design precis
 project: StillStack
 doc_type: Design precis
-version: "0.6"
+version: "0.7"
 status: Draft
-date: '2026-10-01'
+date: '2026-10-02'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -33,6 +33,10 @@ revisions:
   date: '2026-10-01'
   author: Amish Chadha
   change: Constructable design (SSK-DDR-003, open for Amish's review); budget as a value-engineering target
+- version: "0.7"
+  date: '2026-10-02'
+  author: Amish Chadha
+  change: "Decisions of 2026-10-02: coating rule, wick fabric test and clips, PPS rails, high-edge lip, conductivity pass condition, partner, labels and rail colours"
 ---
 
 # StillStack design precis
@@ -63,8 +67,8 @@ Table 1. Main components, numbered to match the exploded view and bom/bom.csv.
 | 2 | Insulated frame | 12 mm exterior plywood walls on a plywood base ring, with 25 mm foil-faced stone wool liner, 1,074 mm square outside; glazing held by an aluminium trim | Stone wool replaces PIR (SSK-DDR-002) because the absorber edge reaches about 144 °C at dry stagnation |
 | 3 | Absorber plate | 0.5 mm aluminum, high-temperature matte black paint on top | Stage 1 evaporator surface underneath |
 | 4 | Wicks, 4 stages | Viscose-polyester or cotton nonwoven, about 1 mm, 1.0 x 1.25 m, cut into five strips | Needs a permeability of 3.0 x 10^-11 m2 or more and must tolerate 150 °C dry; product not yet selected |
-| 5 | Condenser plates, 4 | 0.5 mm aluminum with a food-contact coating on the condensing face; 77 mm lip into the manifold | Coating rated to 150 °C on plates 1 and 2; product not yet selected (awaiting Amish) |
-| 6 | Side spacer rails | 12 x 7 mm, two per gap: stages 1 and 2 in a polymer rated to 150 °C or more (PPS or high-heat polycarbonate copolymer); stages 3 and 4 in printed polycarbonate | Split by SSK-DDR-002; ASA excluded by the stagnation temperature |
+| 5 | Condenser plates, 4 | 0.5 mm aluminum with a food-contact coating on the condensing face; 77 mm lip into the manifold | Coating rated to 150 °C on plates 1 and 2 and certified for drinking-water contact; the lowest-cost such coating (fluoropolymer cookware coatings first), else 316 stainless plates 1 and 2 (decided 2026-10-02); 4 mm downturned lip on each condensing plate's high edge (decided 2026-10-02) |
+| 6 | Side spacer rails | 12 x 7 mm, two per gap: stages 1 and 2 in PPS, rated to 150 °C or more (decided 2026-10-02); stages 3 and 4 in printed polycarbonate | Split by SSK-DDR-002; ASA excluded by the stagnation temperature |
 | 7 | Spacer ribs | 7 mm food-grade silicone cord, four per gap at 194 mm pitch | Decided (SSK-DDR-002) |
 | 8 | Feed trough | PVC or HDPE rain gutter section with end caps and drip valve | Fed from a user-filled container |
 | 9 | Distillate manifold | Food-grade PP or HDPE channel with lid and silicone outlet tube | Separate outlet from the brine |
@@ -113,7 +117,7 @@ These choices were decided by Amish on 2026-09-25 (SSK-DDR-001 and SSK-DDR-002).
 
 ## Safety
 
-> **Safety:** Distillate is not certified drinking water. Test it before drinking (at least conductivity and E. coli), store it in a clean covered container, and disinfect it (for example with chlorine) before use. Stages run below pasteurization certainty, brine can wick or splash into distillate channels, and volatile contaminants in the feed can carry over with the vapor. Long-term drinking of distillate needs remineralization.
+> **Safety:** Distillate is not certified drinking water. Test it before drinking (at least conductivity and E. coli), store it in a clean covered container, and disinfect it (for example with chlorine) before use. Each stage's distillate conductivity test is a pass condition at TRL 4 before any water is drunk (decided 2026-10-02). Stages run below pasteurization certainty, brine can wick or splash into distillate channels, and volatile contaminants in the feed can carry over with the vapor. Long-term drinking of distillate needs remineralization.
 
 > **Safety:** Use only food-contact rated materials on every surface that touches distillate: coated or stainless plates, PP or HDPE channels, and NSF/ANSI 51 or 61 silicone. Never use lead-containing solder, treated timber or recycled containers of unknown history in the water path.
 
@@ -125,10 +129,13 @@ These choices were decided by Amish on 2026-09-25 (SSK-DDR-001 and SSK-DDR-002).
 
 ## Open questions
 
-- Which food-contact coating survives wet, salty service at 80 °C on aluminum, and at what cost (R7)?
-- Which wick fabric has a permeability of 3.0 x 10^-11 m2 or more, and how is it held so that one person can remove it in 30 min (R6, R10)?
-- Which rail polymer (PPS or a high-heat polycarbonate copolymer) meets the 150 °C rating at the lowest cost, and can stage 3 keep any margin over 110 °C in calm air (R8)?
-- How do the wick tails leave the low end over the lidded distillate manifold while keeping a 10 mm air break (R4)? A detail is now proposed in SSK-DDR-003 (A1) and listed in the design decisions register (SSK-DEC-001).
-- Identify a coastal community or NGO partner for co-design (still open, no recommendation).
+Decided by Amish on 2026-10-02 (SSK-DEC-001); the questions that remain are what the tests will show:
+
+- Coating (R7): the lowest-cost coating certified for drinking-water contact (NSF/ANSI 61 or an equivalent food-contact statement) in hot salty water and rated to 150 °C dry; fluoropolymer (PTFE type) cookware coatings are checked first; if none meets both, 316 stainless for plates 1 and 2. Which product passes is still to be found.
+- Wick fabric (R6): one polyester or polyester-viscose nonwoven and one glass-fibre fabric are shortlisted from datasheets and compared by a wicking-rise test; the cheaper one that reaches 3.0 x 10^-11 m2 and tolerates 150 °C dry is chosen. Wick fixing (R10): clips at the high and low ends, no adhesive.
+- Rail polymer (R8): PPS for the stage 1 and 2 rails and stop blocks. Whether stage 3 can keep any margin over 110 °C in calm air is still open.
+- Brine and feed separation (R4): the zigzag edge detail of SSK-DDR-003 (A1) and a 4 mm downturned lip on each condensing plate's high edge (A2); each stage's distillate conductivity at TRL 4 decides whether they work.
+- Partner: a university water or desalination lab first; first candidate to approach, the Politecnico di Torino group behind the 2018 floating multistage still; a coastal NGO for field use once the distillate passes its tests. Nothing is agreed yet.
+- Outlets and rails are marked DISTILLATE and BRINE, and the stage 1 and 2 rails have their own colour, so outlets are not mixed and a low-temperature rail is not fitted in a hot stage.
 
 Design data: [general arrangement SSK-DWG-002](../cad/drawings/SSK-DWG-002.pdf), [sizing SSK-CAL-001](04-calcs/01-sizing.md), [parametric model](../cad/src/model.py), [blueprint sheet](../media/concept-blueprint.pdf), [interactive 3D model](../media/viewer.html), [cutaway](../media/cutaway.png).

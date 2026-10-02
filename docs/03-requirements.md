@@ -3,9 +3,9 @@ doc_id: SSK-REQ-001
 title: StillStack requirements
 project: StillStack
 doc_type: Requirements
-version: "0.6"
+version: "0.7"
 status: Draft
-date: '2026-10-01'
+date: '2026-10-02'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -33,6 +33,10 @@ revisions:
   date: '2026-10-01'
   author: Amish Chadha
   change: Status from the constructable design (SSK-DDR-003); R12 reported against the value-engineering target
+- version: "0.7"
+  date: '2026-10-02'
+  author: Amish Chadha
+  change: "Decisions of 2026-10-02 noted under R4, R6, R7, R8 and R10 (lip, conductivity pass condition, fabric test, coating rule, PPS, wick clips); no status changed"
 ---
 
 # StillStack requirements
@@ -46,13 +50,13 @@ Table 1. Requirements and status at TRL 3.
 | R1 | Produce more distillate per unit area than a basin still | 10 L per m2 of aperture per day or more on a clear day with 5.5 kWh per m2 of sun (design goal 13 L) | Stage energy balance calculation; later outdoor test with a single-basin still alongside | Met on paper: 10.6 L after warm-up deduction (11.3 L quasi-steady); the 13 L goal is not met |
 | R2 | Reuse the latent heat of condensation | Daily gained output ratio (latent heat in distillate divided by solar input) of 1.3 or more | Stage energy balance calculation | At risk: 1.34 quasi-steady, 1.26 after warm-up deduction |
 | R3 | Remove salt | Distillate conductivity 75 µS/cm or less (about 50 mg/L dissolved solids) from feed up to 40 g/L salinity | Calculation of carryover paths; later conductivity meter | Not verifiable at TRL 3: brine carryover must stay below 0.075 % of the distillate (8.5 mL per day) |
-| R4 | Keep brine and distillate apart | A physical air break of 10 mm or more between every wick edge and every distillate channel; no shared drain | Design review of the model | At risk: 10 mm dry breaks at ribs, rails and inside the plate edges; brine tongues carry the wick tails 10.5 mm or more above the closed manifold lid and at least 44 mm from any distillate tongue (SSK-DDR-003, detail proposed, awaiting Amish); feed tails cross the condensing plates' high edges 6 mm above them (proposed, awaiting Amish) |
+| R4 | Keep brine and distillate apart | A physical air break of 10 mm or more between every wick edge and every distillate channel; no shared drain | Design review of the model | At risk: 10 mm dry breaks at ribs, rails and inside the plate edges; brine tongues carry the wick tails 10.5 mm or more above the closed manifold lid and at least 44 mm from any distillate tongue (SSK-DDR-003 A1, accepted 2026-10-02); feed tails cross the condensing plates' high edges 6 mm above them, to be guarded by a 4 mm downturned lip on each condensing plate's high edge (A2 (c), decided 2026-10-02, not yet in the model). Each stage's distillate conductivity test at TRL 4 is a pass condition before any water is drunk |
 | R5 | Run without power | No pumps, electronics or batteries; gravity feed from a user-filled container at most 1.5 m above ground | Design review | Met: fully passive; feed trough rim at most 1.00 m (at 35 deg) |
-| R6 | Accept real feed water | Seawater or brackish water up to 40 g/L salinity after cloth or 20 µm prefiltering; feed-to-distillate ratio 2.5 or more so salt stays in solution | Salt balance calculation | At risk: brine at 66.7 g/L is well below saturation, but the wick needs a permeability of 3.0 x 10^-11 m2 or more to carry the feed, which is not yet known |
-| R7 | Food-safe wetted parts | Every surface that touches distillate is food-contact rated (for example 316 stainless steel, food-grade coated aluminum, PP, HDPE or NSF/ANSI 51 or 61 silicone) | Material list review | At risk: coated aluminum is decided, but no coating product rated for wet, salty service at 80 °C (and 150 °C dry on plates 1 and 2) is selected |
-| R8 | Survive dry stagnation | No damage after an empty-wick day at 1,000 W/m2 and 35 °C ambient, in calm air or wind: materials in stages 1 and 2 (absorber to plate 2, including wicks, rails, ribs, coating and liner) rated to 150 °C or more; all other internal materials rated to 110 °C or more; a stagnation cover supplied and a shade rule in the instructions (restated under SSK-DDR-002) | Stagnation temperature calculation; material datasheets | At risk: stages 1 and 2 reach 144 °C in calm air (6 K margin); stage 3 reaches 110 °C in calm air (0 K margin); cover specified (BOM line 14); rail polymer and coating products not yet selected |
+| R6 | Accept real feed water | Seawater or brackish water up to 40 g/L salinity after cloth or 20 µm prefiltering; feed-to-distillate ratio 2.5 or more so salt stays in solution | Salt balance calculation | At risk: brine at 66.7 g/L is well below saturation, but the wick needs a permeability of 3.0 x 10^-11 m2 or more to carry the feed, which is not yet known; the fabric is chosen by a wicking-rise test between a polyester-type nonwoven and a glass-fibre fabric (decided 2026-10-02) |
+| R7 | Food-safe wetted parts | Every surface that touches distillate is food-contact rated (for example 316 stainless steel, food-grade coated aluminum, PP, HDPE or NSF/ANSI 51 or 61 silicone) | Material list review | At risk: coated aluminum is decided, but no coating product rated for wet, salty service at 80 °C (and 150 °C dry on plates 1 and 2) is selected. Rule decided 2026-10-02: the lowest-cost coating certified for drinking-water contact and rated to 150 °C dry (fluoropolymer cookware coatings first), else 316 stainless for plates 1 and 2 |
+| R8 | Survive dry stagnation | No damage after an empty-wick day at 1,000 W/m2 and 35 °C ambient, in calm air or wind: materials in stages 1 and 2 (absorber to plate 2, including wicks, rails, ribs, coating and liner) rated to 150 °C or more; all other internal materials rated to 110 °C or more; a stagnation cover supplied and a shade rule in the instructions (restated under SSK-DDR-002) | Stagnation temperature calculation; material datasheets | At risk: stages 1 and 2 reach 144 °C in calm air (6 K margin); stage 3 reaches 110 °C in calm air (0 K margin); cover specified (BOM line 14); rail polymer decided as PPS (2026-10-02); coating product not yet selected |
 | R9 | Household scale and portable | 1.0 m2 aperture; panel mass 20 kg or less dry; carried by two people; footprint within 1.3 x 1.3 m | Massing model and mass estimate | Met: 18.5 kg dry (22.5 kg wet); footprint 1.28 x 1.25 m at 10 deg |
-| R10 | Easy maintenance | Wicks removable, rinsed and refitted by one person without special tools in 30 min or less; salt flushing no more often than once a week | Design review | At risk: the plates lift out once the low wall cap is off, but the wicks are bonded under them and the removal method is not defined |
+| R10 | Easy maintenance | Wicks removable, rinsed and refitted by one person without special tools in 30 min or less; salt flushing no more often than once a week | Design review | At risk: the plates lift out once the low wall cap is off, and the wicks are to be held by clips at their high and low ends with no adhesive (decided 2026-10-02), so they lift out; the clips are not yet in the model |
 | R11 | Adjustable tilt | Tilt between 10 and 35 deg to suit latitudes of about 0 to 35 deg | Model check | Met: props pinned at six holes, 10 to 35 deg in 5 deg steps; model built and checked at each |
 | R12 | Low cost and buildable | Parts cost against a value-engineering target of USD 355 for the 1 m2 prototype (budget_usd; a hypothetical control target, not a limit, Amish 2026-10-01); hand tools, sheet metal shears and a 3D printer only | Priced BOM | USD 61.20 over the value-engineering target: estimated USD 416.20 for the constructable design (SSK-DDR-003) |
 

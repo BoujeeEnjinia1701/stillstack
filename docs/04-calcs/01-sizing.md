@@ -3,9 +3,9 @@ doc_id: SSK-CAL-001
 title: StillStack sizing calculations
 project: StillStack
 doc_type: Calculation
-version: "0.4"
+version: "0.5"
 status: Draft
-date: 2026-10-01
+date: '2026-10-02'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -25,6 +25,10 @@ revisions:
     date: 2026-10-01
     author: Amish Chadha
     change: Design for construction (SSK-DDR-003); constructability checks; budget treated as a value-engineering target
+  - version: "0.5"
+    date: '2026-10-02'
+    author: Amish Chadha
+    change: "SSK-DDR-003 accepted (2026-10-02); R4, R7 and R10 rows note the decisions; figures unchanged"
 ---
 
 # StillStack sizing calculations
@@ -173,10 +177,10 @@ Table 5. Requirement status at TRL 3, not met first.
 | --- | --- | --- | --- | --- |
 | R8 | Temperatures at dry stagnation | Stages 1 and 2: 144 °C calm (6 K margin); stages 3 and 4: 110 °C calm (0 K margin); cover specified | 150 °C in stages 1 and 2, 110 °C elsewhere, cover and shade rule | At risk |
 | R2 | Gained output ratio | 1.34 quasi-steady; 1.26 after warm-up deduction | 1.3 or more | At risk |
-| R4 | Air break between wick edges and distillate paths | 10 mm at ribs and rails and inside the plate edges; brine tongues pass 10.5 mm or more over the closed manifold lid and at least 44 mm from any distillate tongue (detail proposed in SSK-DDR-003, awaiting Amish) | 10 mm or more, no shared drain | At risk |
+| R4 | Air break between wick edges and distillate paths | 10 mm at ribs and rails and inside the plate edges; brine tongues pass 10.5 mm or more over the closed manifold lid and at least 44 mm from any distillate tongue (SSK-DDR-003 A1, accepted 2026-10-02; high-edge lip of A2 (c) decided, not yet modelled) | 10 mm or more, no shared drain | At risk |
 | R6 | Brine salinity; wick feed | 66.7 g/L at 40 g/L feed; needs permeability of 3.0 x 10^-11 m2 or more | Feed ratio 2.5 or more, salt stays in solution | At risk |
-| R7 | Food-contact wetted surfaces | Coated aluminum decided; coating product not selected | All distillate-side surfaces food-contact rated | At risk |
-| R10 | Wick removal time; flushing interval | Plates lift out after the low wall cap is removed, but the wicks are bonded under them | 30 min or less; weekly or less often | At risk |
+| R7 | Food-contact wetted surfaces | Coated aluminum decided; coating product not selected (rule decided 2026-10-02: certified for drinking-water contact and 150 °C dry, else 316 stainless for plates 1 and 2) | All distillate-side surfaces food-contact rated | At risk |
+| R10 | Wick removal time; flushing interval | Plates lift out after the low wall cap is removed; wicks to be held by end clips with no adhesive (decided 2026-10-02) | 30 min or less; weekly or less often | At risk |
 | R3 | Distillate conductivity | Carryover allowance 0.075 % (8.5 mL/day) | 75 µS/cm or less | Not verifiable at TRL 3 |
 | R1 | Daily distillate | 10.6 L/m2 (11.3 quasi-steady) | 10 L/m2 or more (goal 13) | Met (6 % margin; goal not met) |
 | R12 | Parts cost | USD 416.20 | Value-engineering target USD 355 | USD 61.20 over the target |
@@ -192,7 +196,7 @@ Version 0.2 of this note (SSK-DDR-002) adds the calm-air plate temperatures and 
 
 Version 0.3 of this note records the budget top-up to $355 approved by Amish on 2026-09-26; the parts cost is unchanged at $351.20 and R12 moves from not met to met.
 
-Version 0.4 of this note follows SSK-DDR-003 (design for construction, made under Amish's 2026-09-30 instruction to make the design physically buildable; open for his review). The wet wick fraction falls from 0.824 to 0.817, which moves the stage outputs by at most 0.01 L; the daily yield (10.6 L), gained output ratio and stagnation temperatures are unchanged at the precision quoted. The panel rises from 16.7 to 18.5 kg dry (20.7 to 22.5 kg wet), the stand from 7.1 to 8.9 kg, the footprint from 1.28 x 1.16 m to 1.28 x 1.25 m, the wind speed at which lift equals weight from 17.5 to 18.7 m/s, and the cost from USD 351.20 to USD 416.20, now reported against the USD 355 value-engineering target. Feed and brine figures were also brought in line with the script (28.2 and 16.9 L per day).
+Version 0.4 of this note follows SSK-DDR-003 (design for construction, made under Amish's 2026-09-30 instruction to make the design physically buildable; accepted by Amish on 2026-10-02 with the exceptions recorded there). The wet wick fraction falls from 0.824 to 0.817, which moves the stage outputs by at most 0.01 L; the daily yield (10.6 L), gained output ratio and stagnation temperatures are unchanged at the precision quoted. The panel rises from 16.7 to 18.5 kg dry (20.7 to 22.5 kg wet), the stand from 7.1 to 8.9 kg, the footprint from 1.28 x 1.16 m to 1.28 x 1.25 m, the wind speed at which lift equals weight from 17.5 to 18.7 m/s, and the cost from USD 351.20 to USD 416.20, now reported against the USD 355 value-engineering target. Feed and brine figures were also brought in line with the script (28.2 and 16.9 L per day).
 
 ## 13. Design for construction checks
 
