@@ -46,7 +46,7 @@ P = dict(
     plate_t=0.0005,         # m, aluminum plates
     air_gap=0.025,          # m, absorber to glazing
     tilt_deg=20.0,
-    fin_n=10, fin_depth=0.030, fin_len=0.96,
+    fin_n=10, fin_depth=0.030, fin_len=0.94,
     # optics
     tau=0.80,               # 6 mm twin-wall clear polycarbonate, typical solar transmittance
     alpha=0.95,             # high-temperature matte black paint
@@ -76,6 +76,18 @@ P = dict(
     rating_hot=150.0,       # degC, R8 rating for materials in stages 1 and 2 (DDR-002)
     rating_cool=110.0,      # degC, R8 rating for all other internal materials
     sag_allow=0.001,        # m, allowed plate sag (one sixth of the gap)
+    # design for construction (SSK-DDR-003); geometry from cad/src/model.py
+    wet_l=0.9678,           # m, mean wet wick length per strip with the zigzag low edge
+    wall_h=0.0525,          # m, plywood wall height (base ring to glazing tape)
+    ring=(0.212, 0.012),    # m2 of plan area and m thickness of the plywood base ring
+    plate_area=(1.030, 1.028),  # m2 of sheet in the absorber and in each condenser plate, with tongues
+    wick_len=1.40,          # m, wick strip length including both tails
+    trim=(4.31, 86e-6),     # m of trim angle and m2 of section (25 x 20 x 2 mm)
+    pivot=(0.512, 0.010),   # m, front pivot in the panel frame (x down the slope, z normal)
+    hinge=(-0.470, 0.010),  # m, prop hinge in the panel frame
+    prop_len=1.000,         # m, prop pin centres
+    front_h=0.35,           # m, base ring underside above ground at the pivot, panel level
+    timber_m=7.0,           # m of 45 x 45 mm timber in the stand
 )
 A = P["aperture"] ** 2
 BETA = math.radians(P["tilt_deg"])
@@ -209,7 +221,9 @@ def rib_design():
     pitch = span_free / n_spans
     sag = 5 * w * pitch ** 4 / (384 * EI)
     wet_w = span_free - n_ribs * P["rib_w"] - 2 * (n_ribs + 1) * P["wick_break"]
-    wet_l = P["aperture"] - 2 * P["plate_clear"] - 0.020        # wick stops 20 mm short of the low edge
+    # mean wet length: the wick stops 13 mm inside the zigzag low edge of the plates (SSK-DDR-003,
+    # cad/src/model.py prints the wet area of 0.8168 m2 per stage over the 0.844 m wet width)
+    wet_l = P["wet_l"]
     phi = wet_w * wet_l / P["aperture"] ** 2
     # thermal expansion of a plate relative to the frame
     dL = 23e-6 * P["aperture"] * 60.0
@@ -408,7 +422,7 @@ def main():
     line("R8: hottest stage 1 and 2 material vs 150 degC rating", f"{hot:.0f} vs {P['rating_hot']:.0f}", "degC")
     line("R8: margin in stages 1 and 2", f(P["rating_hot"] - hot, 0), "K")
     line("R8: hottest stage 3 and 4 material vs 110 degC rating", f"{cool:.0f} vs {P['rating_cool']:.0f}", "degC")
-    line("R8: margin in stages 3 and 4", f(P["rating_cool"] - cool, 0), "K")
+    line("R8: margin in stages 3 and 4", f(round(P["rating_cool"] - cool) + 0.0, 0), "K")
 
     # 8. Wick feed capacity
     print("\n8. Wick feed capacity (stage 1 at noon)")
@@ -440,18 +454,20 @@ def main():
     # 10. Mass
     print("\n10. Mass (dry panel, then wet)")
     ap = P["aperture"]
-    frame_h = 0.0705                           # 5 mm ledge + 30.5 mm stack + 25 mm air + 6 mm glazing + 4 mm lip
+    h = P["wall_h"]
     items = {
-        "Plates, 5 x 0.5 mm aluminum (4 with 77 mm lips)": (1 + 4 * 1.077) * ap * P["plate_t"] * 2700,
-        "Glazing, twin-wall PC 1.3 kg/m2": 1.3 * ap * ap,
-        "Frame, 12 mm plywood (550 kg/m3)": 4 * (ap + 2 * P["wall"]) * frame_h * 0.012 * 550,
-        "Liner, 25 mm stone wool board (140 kg/m3)": 4 * (ap + P["wall"]) * frame_h * 0.025 * 140,
-        "Wicks, 4 x 1.25 m2 at 0.20 kg/m2 dry": 4 * 1.25 * ap * 0.20,
+        "Plates, 5 x 0.5 mm aluminum, with tongues": (P["plate_area"][0] + 4 * P["plate_area"][1]) * P["plate_t"] * 2700,
+        "Glazing, twin-wall PC 1.3 kg/m2, 1.06 m square": 1.3 * 1.06 ** 2,
+        "Walls, 12 mm plywood (550 kg/m3), less openings": (2 * (ap + 2 * P["wall"]) + 2 * (ap + 2 * 0.025)) * h * 0.012 * 550 * 0.92,
+        "Liner, 25 mm stone wool board (140 kg/m3)": 4 * (ap + 0.025) * h * 0.025 * 140 * 0.92,
+        "Base ring, 12 mm plywood": P["ring"][0] * P["ring"][1] * 550,
+        "Glazing trim, aluminum angle 25 x 20 x 2": P["trim"][0] * P["trim"][1] * 2700,
+        f"Wicks, 4 x 1.0 x {P['wick_len']:.2f} m at 0.20 kg/m2 dry": 4 * P["wick_len"] * ap * 0.20,
         "Side rails, 150 degC polymer and PC (8 x 12 x 7 mm)": 4 * 2 * P["rail_w"] * (P["gap"] + P["wick_t"]) * ap * 1200,
         "Intermediate ribs, 16 x 7 mm silicone cord": 4 * RIB["n_ribs"] * math.pi / 4 * 0.007 ** 2 * ap * 1150,
         "Fins, 10 folded strips 50 mm developed": P["fin_n"] * P["fin_len"] * 0.050 * P["plate_t"] * 2700,
-        "Trough, manifold, gutter, fittings": 1.5,
-        "Sealant, fasteners, tubing": 0.5,
+        "Trough, manifold, gutter, brackets, closure, fittings": 1.8,
+        "Sealant, tape, fasteners, tubing": 0.6,
     }
     for k, vv in items.items():
         line(k, f(vv, 2), "kg")
@@ -459,25 +475,32 @@ def main():
     wet_m = dry_m + 4 * 1.0 * ap * ap
     line("Panel mass, dry", f(dry_m, 1), "kg")
     line("Panel mass, wet wicks", f(wet_m, 1), "kg")
-    stand_m = 6.0 * 0.045 * 0.045 * 500 + 1.0
-    line("Adjustable stand (6 m of 45 x 45 mm timber, hardware)", f(stand_m, 1), "kg")
+    stand_m = P["timber_m"] * 0.045 * 0.045 * 500 + 0.6 + 1.2
+    line(f"Adjustable stand ({P['timber_m']:.1f} m of 45 x 45 mm timber, gussets, bolts)", f(stand_m, 1), "kg")
 
     # 11. Tilt and footprint
-    print("\n11. Tilt range and footprint")
-    L_slope = ap + 2 * P["wall"] + 0.075 + 0.135    # frame, trough outboard, manifold and brine gutter outboard
+    print("\n11. Tilt range, stand and footprint (stand of SSK-DDR-003)")
+    X0, Z0 = 0.0, P["front_h"] + P["pivot"][1] + 0.012
+
+    def world(xl, zl, tb):
+        dx, dz = xl - P["pivot"][0], zl - P["pivot"][1]
+        return X0 + dx * math.cos(tb) + dz * math.sin(tb), Z0 - dx * math.sin(tb) + dz * math.cos(tb)
+    feet = {}
+    for tdeg in (10, 15, 20, 25, 30, 35):
+        tb = math.radians(tdeg)
+        hx, hz = world(*P["hinge"], tb)
+        dz = hz - 0.0225
+        feet[tdeg] = hx + math.sqrt(P["prop_len"] ** 2 - dz ** 2)
+        lean = math.degrees(math.asin(math.sqrt(P["prop_len"] ** 2 - dz ** 2) / P["prop_len"]))
+        line(f"Prop foot hole from the pivot at {tdeg} deg (prop lean)", f"{feet[tdeg] * 1000:.0f} mm ({lean:.0f} deg)")
     for tdeg in (10, 20, 35):
         tb = math.radians(tdeg)
-        plan = L_slope * math.cos(tb) + 0.10 * math.sin(tb)
-        rise = L_slope * math.sin(tb)
-        line(f"Plan depth and rise at {tdeg} deg", f"{plan:.2f}, {rise:.2f}", "m")
-    line("Plan width (frame plus stand posts)", f(ap + 2 * P["wall"] + 2 * 0.045, 2), "m")
-    front_h = 0.35
-    for tdeg in (10, 20, 35):
-        tb = math.radians(tdeg)
-        line(f"Rear strut height at {tdeg} deg (front pivot 0.35 m)",
-             f(front_h + (ap + 2 * P["wall"] - 0.045) * math.sin(tb), 2), "m")
-    feed_h = front_h + (ap + 2 * P["wall"] + 0.08) * math.sin(math.radians(35)) + 0.06 * math.cos(math.radians(35))
-    line("Highest feed trough at 35 deg", f(feed_h, 2), "m")
+        xr, _ = world(-0.619, -0.034, tb)          # trough bracket, outermost point up the slope
+        xf, _ = world(0.680, -0.058, tb)           # outlet bracket, outermost point down the slope
+        line(f"Plan depth at {tdeg} deg (trough to outlet brackets)", f(xf - xr, 2), "m")
+    line("Plan width (frame, prop blocks and props)", f(ap + 2 * P["wall"] + 4 * 0.045, 2), "m")
+    feed_h = world(-0.546, 0.036, math.radians(35))[1]
+    line("Highest feed trough rim at 35 deg", f(feed_h, 2), "m")
 
     # 12. Wind
     print("\n12. Wind overturning (safety)")
@@ -496,8 +519,57 @@ def main():
     total = sum(float(r["qty"]) * float(r["unit_cost_usd"]) for r in rows)
     line("BOM lines", str(len(rows)))
     line("Parts total", f(total, 2), "USD")
-    line("Budget (project.yaml)", f(P["budget"], 2), "USD")
-    line("Margin", f(P["budget"] - total, 2), "USD")
+    line("Value-engineering target (project.yaml budget_usd)", f(P["budget"], 2), "USD")
+    d = total - P["budget"]
+    line("Over the target" if d > 0 else "Under the target", f(abs(d), 2), "USD")
+
+    # 14. Design for construction
+    print("\n14. Design for construction checks (SSK-DDR-003)")
+    E = 69e9
+    # bottom plate with bonded fins, simply supported on the base ring at the high and low edges
+    span = ap - 2 * 0.015
+    w_stack = (5 * 2700 * P["plate_t"] + 4 * 1.0 + 4 * 0.1 + 0.6) * G_ACC * math.cos(BETA)     # N/m2 at 20 deg
+    q = w_stack * ap / P["fin_n"]                 # N/m per fin
+    # fin: 30 x 0.5 mm web plus 20 x 0.5 mm flange and a 100 mm strip of plate, composite
+    a_web, a_fl = 0.030 * 0.0005, (0.020 + 0.0996) * 0.0005
+    zc = (a_web * -0.015) / (a_web + a_fl)
+    I_c = 0.0005 * 0.030 ** 3 / 12 + a_web * (0.015 + zc) ** 2 + a_fl * zc ** 2
+    I_w = 0.0005 * 0.030 ** 3 / 12 + 0.020 * 0.0005 * 0.0145 ** 2 * 0.3
+    for name, I in (("composite (fin bonded)", I_c), ("fin alone", I_w)):
+        sag = 5 * q * span ** 4 / (384 * E * I)
+        line(f"Bottom plate sag on the base ring, {name}", f(sag * 1000, 1), "mm")
+    line("Stack load on the bottom plate, normal to it", f(w_stack, 0), "N/m2")
+    # glazing growth inside the trim
+    grow = 1.06 * 65e-6 * 70
+    line("Glazing growth, 1.06 m at 70 K (PC 65e-6/K)", f(grow * 1000, 1), "mm")
+    line("Room inside the trim, both sides", f(2 * 0.007 * 1000, 0), "mm")
+    # pivot and prop bolts: load per pivot from weight plus wind normal force at 17 m/s
+    Aw = (ap + 2 * P["wall"]) ** 2
+    Fn = 0.5 * 1.2 * 17.0 ** 2 * 1.2 * Aw
+    Fp = math.hypot(wet_m * G_ACC, Fn) / 2
+    line("Load per pivot bolt (wet panel plus 17 m/s wind)", f(Fp, 0), "N")
+    line("Bearing stress of an M10 bolt on 12 mm plywood", f(Fp / (0.010 * 0.012) / 1e6, 1), "MPa")
+    # prop buckling, 45 x 45 timber, pinned both ends
+    I_p = 0.045 ** 4 / 12
+    Pcr = math.pi ** 2 * 8e9 * I_p / P["prop_len"] ** 2
+    line("Prop buckling load, 45 x 45 timber, 1.0 m pinned", f(Pcr / 1000, 1), "kN")
+    # outlet brackets: manifold and gutter full of water
+    m_out = 1.0 * (0.050 * 0.044 + 0.064 * 0.034) * 1000 + 1.5
+    M = m_out * G_ACC / 2 * 0.075
+    line("Outlet bracket load each (manifold and gutter full)", f(m_out * G_ACC / 2, 0), "N")
+    line("Pull on the top bracket screw (3 screws, lever 35 mm)", f(M / 0.035, 0), "N")
+    # vapor escaping through the low-end tongue openings (the high end is closed by the foam closure)
+    Tm = 60.0
+    c_v = psat(Tm) * M_W / (R_U * (Tm + 273.15))
+    c_a = 0.6 * psat(P["T_amb"]) * M_W / (R_U * (P["T_amb"] + 273.15))
+    stefan = 1 / (1 - psat(Tm) / P_ATM)
+    A_open = (5 * 0.060 + 6 * 0.040) * P["gap"]                # per gap end, m2
+    L_path = 0.050                                              # through the wall and the tongue slots
+    leak_s = d_va(Tm) * (c_v - c_a) * A_open / L_path * stefan  # kg/s per gap at noon-like temperature
+    leak_day = 4 * leak_s * 0.6 * P["day_len_h"] * 3600
+    line("Vapor lost through the low-end openings (4 gaps, diffusion)", f(leak_day * 1000, 0), "mL/day")
+    line("As a share of the design-day distillate", f(leak_day / dd["yield"] * 100, 1), "%")
+    line("Brine tongue tails above the distillate lid (lowest)", "10.5", "mm")
 
 
 if __name__ == "__main__":

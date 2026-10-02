@@ -3,9 +3,9 @@ doc_id: SSK-PRC-001
 title: StillStack design precis
 project: StillStack
 doc_type: Design precis
-version: "0.5"
+version: "0.6"
 status: Draft
-date: '2026-09-26'
+date: '2026-10-01'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -29,11 +29,15 @@ revisions:
   date: '2026-09-26'
   author: Amish Chadha
   change: Budget top-up approved by Amish
+- version: "0.6"
+  date: '2026-10-01'
+  author: Amish Chadha
+  change: Constructable design (SSK-DDR-003, open for Amish's review); budget as a value-engineering target
 ---
 
 # StillStack design precis
 
-StillStack is a tilted, glazed panel of 1 m2 containing four thin evaporation stages stacked like a sandwich: each stage is a wet cloth wick under a metal plate, a 6 mm vapor gap, and the next plate below. Sunlight heats the top plate, and the heat released when vapor condenses on each plate evaporates water from the wick under it, so the same solar energy is used four times. The TRL 3 calculation (SSK-CAL-001) gives about 10.6 L of distillate per m2 per day on a 5.5 kWh per m2 day, roughly two to three times a single-basin still, with a gained output ratio of about 1.3. Dry stagnation reaches about 140 °C (144 °C in calm air), so stages 1 and 2 use materials rated to 150 °C and a stagnation cover is supplied (SSK-DDR-002). The priced parts come to about $351 against the $355 budget approved by Amish on 2026-09-26, so R12 is met on paper.
+StillStack is a tilted, glazed panel of 1 m2 containing four thin evaporation stages stacked like a sandwich: each stage is a wet cloth wick under a metal plate, a 6 mm vapor gap, and the next plate below. Sunlight heats the top plate, and the heat released when vapor condenses on each plate evaporates water from the wick under it, so the same solar energy is used four times. The TRL 3 calculation (SSK-CAL-001) gives about 10.6 L of distillate per m2 per day on a 5.5 kWh per m2 day, roughly two to three times a single-basin still, with a gained output ratio of about 1.3. Dry stagnation reaches about 140 °C (144 °C in calm air), so stages 1 and 2 use materials rated to 150 °C and a stagnation cover is supplied (SSK-DDR-002). Value-engineering target: USD 355. Estimated cost of the constructable design: USD 416.20 (USD 61.20 over the target). How each part is made and fitted is in the prototype build plan (SSK-BLD-001); the changes that made the concept buildable are in SSK-DDR-003, open for Amish's review.
 
 ![Hero render](../media/hero.png)
 
@@ -44,8 +48,8 @@ StillStack is a tilted, glazed panel of 1 m2 containing four thin evaporation st
 3. **Condense and reuse.** The vapor crosses a 6 mm gap and condenses on the top face of the next plate. The latent heat released there (about 2.35 MJ per kg at stage temperatures) conducts through that plate into the wick under it, which evaporates water into stage 2. The cascade repeats through four stages, each running about 3.7 K cooler than the one above at noon. Between 85 and 91 % of the heat crossing each gap at noon is latent.
 4. **Hold the gaps.** Each gap has two side rails (a polymer rated to 150 °C in stages 1 and 2, printed polycarbonate in stages 3 and 4) and four silicone-cord ribs running down the slope at 194 mm pitch, so the 0.5 mm plates sag no more than about 0.5 mm. The wicks are cut into five strips with 10 mm dry breaks at every rib and rail.
 5. **Reject heat.** The bottom plate is the last condenser. Folded aluminum fins on its shaded underside reject the remaining heat (6.6 MJ per day, peak 277 W/m2) to air at about 28 K above ambient.
-6. **Feed and drain.** Feed water drips from a user-filled container into a trough along the high edge. The wicks drape over the frame wall into the trough and are fed by capillary action and gravity down the slope. Excess salty water leaves the low end of each wick into a brine gutter that sits outboard of, and lower than, the distillate manifold.
-7. **Collect distillate.** Condensate runs down each condenser plate, whose lip passes through a slot in the low wall into a lidded distillate manifold, and leaves through a spout into a clean covered container.
+6. **Feed and drain.** Feed water drips from a user-filled container into a trough along the high edge. The wick tails pass out through openings in the high wall, rise behind a foam closure and drop into the trough, and the wicks are fed by capillary action and gravity down the slope. Excess salty water leaves the low end of each wick into a brine gutter that sits outboard of, and lower than, the distillate manifold.
+7. **Collect distillate.** Condensate runs down each condenser plate to its zigzag low edge, which leads it to six tongues at the rib lines and corners. The tongues pass through notches in the low wall and turn down through slots in a lidded distillate manifold, which drains through a spout into a clean covered container. Brine leaves on separate tongues at the strip centres, carrying the wick tails over the closed lid into the brine gutter (SSK-DDR-003, proposed, awaiting Amish).
 
 ![Energy and water flow (calculated estimates)](../media/flow.png)
 
@@ -56,7 +60,7 @@ Table 1. Main components, numbered to match the exploded view and bom/bom.csv.
 | # | Component | Choice | Notes |
 | --- | --- | --- | --- |
 | 1 | Glazing | 6 mm twin-wall UV-stabilized polycarbonate, 1.0 x 1.0 m | Inner sheet reaches about 109 °C at dry stagnation |
-| 2 | Insulated frame | 12 mm exterior plywood walls with 25 mm foil-faced stone wool liner, 1,074 mm square outside | Stone wool replaces PIR (SSK-DDR-002) because the absorber edge reaches about 144 °C at dry stagnation |
+| 2 | Insulated frame | 12 mm exterior plywood walls on a plywood base ring, with 25 mm foil-faced stone wool liner, 1,074 mm square outside; glazing held by an aluminium trim | Stone wool replaces PIR (SSK-DDR-002) because the absorber edge reaches about 144 °C at dry stagnation |
 | 3 | Absorber plate | 0.5 mm aluminum, high-temperature matte black paint on top | Stage 1 evaporator surface underneath |
 | 4 | Wicks, 4 stages | Viscose-polyester or cotton nonwoven, about 1 mm, 1.0 x 1.25 m, cut into five strips | Needs a permeability of 3.0 x 10^-11 m2 or more and must tolerate 150 °C dry; product not yet selected |
 | 5 | Condenser plates, 4 | 0.5 mm aluminum with a food-contact coating on the condensing face; 77 mm lip into the manifold | Coating rated to 150 °C on plates 1 and 2; product not yet selected (awaiting Amish) |
@@ -66,7 +70,7 @@ Table 1. Main components, numbered to match the exploded view and bom/bom.csv.
 | 9 | Distillate manifold | Food-grade PP or HDPE channel with lid and silicone outlet tube | Separate outlet from the brine |
 | 10 | Brine gutter | PVC gutter outboard of and below the distillate manifold, with drain hose | Brine to a soak-away or evaporation pond |
 | 11 | Rear heat-rejection fins | Ten folded 0.5 mm aluminum strips, 30 mm deep | On the shaded underside of the bottom plate |
-| 12 | Adjustable tilt stand | 45 x 45 mm timber; front pivot at 350 mm; rear struts 0.53 to 0.94 m | 10 to 35 deg (R11) |
+| 12 | Adjustable tilt stand | 45 x 45 mm timber ground frame, front posts with a pivot bolt, fixed props pinned at one of six holes | 10 to 35 deg in 5 deg steps (R11) |
 | 13 | Sealant, fasteners and tubing | NSF/ANSI 51 or 61 silicone, stainless screws, silicone tube | Not shown in the model |
 | 14 | Stagnation cover | Opaque white or aluminized tarpaulin 1.3 x 1.3 m with elastic edge cord | Fitted when the feed runs out and before maintenance; not shown in the model |
 
@@ -91,8 +95,8 @@ Table 2. Key numbers per m2 of aperture.
 | Plate temperatures at noon | 73, 69, 66, 62 and 58 °C | |
 | Dry stagnation, stage 1 | about 140 °C (144 °C calm); stage 3 about 110 °C calm | R8 at risk (150 °C and 110 °C ratings) |
 | Feed and brine | about 28.7 L feed, 17.2 L brine per day; brine 58 to 67 g/L | R6 at risk (wick feed) |
-| Panel mass | 16.7 kg dry, 20.7 kg wet; stand 7.1 kg | R9 met |
-| Parts cost | $351.20 against $355 | R12 met |
+| Panel mass | 18.5 kg dry, 22.5 kg wet; stand 8.9 kg | R9 met |
+| Parts cost | USD 416.20 against a USD 355 value-engineering target | R12 USD 61.20 over the target |
 
 ## Key design choices
 
@@ -103,7 +107,7 @@ These choices were decided by Amish on 2026-09-25 (SSK-DDR-001 and SSK-DDR-002).
 - **Aluminum plates with a food-contact coating on the condensing face.** Decided. The coating product is not yet selected; see open questions.
 - **Spacers in ASA or polycarbonate, not PETG.** Decided. SSK-CAL-001 shows that only polycarbonate is close to adequate, because stages 1 to 3 exceed the rating of ASA at dry stagnation.
 - **Tilt of 20 deg on an adjustable stand.** Decided. The stand pivots at the low edge and sets the tilt with rear struts from 10 to 35 deg.
-- **Aperture of 1 m2 and a budget of $355.** Decided. The budget was kept at $250 in SSK-DDR-001, raised to $320 in SSK-DDR-002 and topped up to $355 by Amish on 2026-09-26. The priced BOM ($351.20) fits within it.
+- **Aperture of 1 m2 and a value-engineering target of USD 355.** Decided. The budget was kept at $250 in SSK-DDR-001, raised to $320 in SSK-DDR-002 and topped up to $355 by Amish on 2026-09-26; on 2026-10-01 Amish set it as a value-engineering target, not a limit. The constructable design is estimated at USD 416.20.
 - **Intermediate silicone-cord ribs.** Decided (SSK-DDR-002). The calculation shows that side rails alone cannot hold a 6 mm gap; silicone is rated well above the stagnation temperature and wets poorly.
 - **Dry stagnation handled by materials and a cover.** Decided (SSK-DDR-002). Everything in stages 1 and 2 is rated to 150 °C or more, the frame liner is stone wool, and an opaque stagnation cover is supplied with a shade rule.
 
@@ -124,7 +128,7 @@ These choices were decided by Amish on 2026-09-25 (SSK-DDR-001 and SSK-DDR-002).
 - Which food-contact coating survives wet, salty service at 80 °C on aluminum, and at what cost (R7)?
 - Which wick fabric has a permeability of 3.0 x 10^-11 m2 or more, and how is it held so that one person can remove it in 30 min (R6, R10)?
 - Which rail polymer (PPS or a high-heat polycarbonate copolymer) meets the 150 °C rating at the lowest cost, and can stage 3 keep any margin over 110 °C in calm air (R8)?
-- How do the wick tails leave the low end over the lidded distillate manifold while keeping a 10 mm air break (R4)?
+- How do the wick tails leave the low end over the lidded distillate manifold while keeping a 10 mm air break (R4)? A detail is now proposed in SSK-DDR-003 (A1) and listed in the design decisions register (SSK-DEC-001).
 - Identify a coastal community or NGO partner for co-design (still open, no recommendation).
 
 Design data: [general arrangement SSK-DWG-002](../cad/drawings/SSK-DWG-002.pdf), [sizing SSK-CAL-001](04-calcs/01-sizing.md), [parametric model](../cad/src/model.py), [blueprint sheet](../media/concept-blueprint.pdf), [interactive 3D model](../media/viewer.html), [cutaway](../media/cutaway.png).

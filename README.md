@@ -2,13 +2,13 @@
 
 ![TRL 3](https://img.shields.io/badge/TRL-3%20of%209-0F766E) ![Hardware: CERN-OHL-S-2.0](https://img.shields.io/badge/hardware-CERN--OHL--S--2.0-111827) ![Software: MIT](https://img.shields.io/badge/software-MIT-111827) [![DOI](https://zenodo.org/badge/1386352769.svg)](https://zenodo.org/badge/latestdoi/1386352769) [![REUSE compliant](https://github.com/BoujeeEnjinia1701/stillstack/actions/workflows/reuse.yml/badge.svg)](https://github.com/BoujeeEnjinia1701/stillstack/actions/workflows/reuse.yml) [![Archived in Software Heritage](https://archive.softwareheritage.org/badge/origin/https://github.com/BoujeeEnjinia1701/stillstack/)](https://archive.softwareheritage.org/browse/origin/?origin_url=https://github.com/BoujeeEnjinia1701/stillstack)
 
-**Area:** Water Security · **TRL:** 3 of 9 (proof of concept on paper) · **Prototype budget:** about $355 USD (priced BOM about $351) · **Difficulty:** 3 of 5
+**Area:** Water Security · **TRL:** 3 of 9 (proof of concept on paper) · **Value-engineering target:** USD 355 (estimated cost of the constructable design about USD 416) · **Difficulty:** 3 of 5
 
 Multi-stage wick still that reuses the latent heat of condensation from each stage in the next one.
 
 ![StillStack: four-stage solar wick still for drinking water, product render](media/render-hero.png)
 
-[Exploded render](media/render-exploded.png) · [Detail render](media/render-detail.png) · [Interactive 3D model](media/viewer.html) · [Concept blueprint (PDF)](media/concept-blueprint.pdf) · [General arrangement (PDF)](cad/drawings/SSK-DWG-002.pdf) · [Sizing note](docs/04-calcs/01-sizing.md) · [Review note](docs/REVIEW.md)
+[Exploded render](media/render-exploded.png) · [Detail render](media/render-detail.png) · [Interactive 3D model](media/viewer.html) · [Concept blueprint (PDF)](media/concept-blueprint.pdf) · [General arrangement (PDF)](cad/drawings/SSK-DWG-002.pdf) · [Prototype build plan](docs/05-build-plan.md) · [Design decisions](docs/06-design-decisions.md) · [Sizing note](docs/04-calcs/01-sizing.md) · [Review note](docs/REVIEW.md)
 
 ## Concept rationale
 
@@ -56,7 +56,7 @@ Single-basin solar stills make only about 3 to 5 L per m2 per day.
 
 Multi-stage wick still that reuses the latent heat of condensation from each stage in the next one.
 
-The TRL 3 sizing (SSK-CAL-001) gives about 10.6 L per m2 per day on a 5.5 kWh per m2 day, with a gained output ratio of about 1.3. Dry stagnation reaches about 140 °C, so stages 1 and 2 use materials rated to 150 °C and a stagnation cover is supplied; the stage 3 margin is thin. The priced parts (about $351) fit within the $355 budget approved by Amish on 2026-09-26.
+The TRL 3 sizing (SSK-CAL-001) gives about 10.6 L per m2 per day on a 5.5 kWh per m2 day, with a gained output ratio of about 1.3. Dry stagnation reaches about 140 °C, so stages 1 and 2 use materials rated to 150 °C and a stagnation cover is supplied; the stage 3 margin is thin. Value-engineering target: USD 355. Estimated cost of the constructable design: USD 416.20 (USD 61.20 over the target).
 
 Full design precis: [docs/02-concept.md](docs/02-concept.md)
 
@@ -72,6 +72,12 @@ Full design precis: [docs/02-concept.md](docs/02-concept.md)
 - Opaque stagnation cover for when the feed runs out
 
 The working bill of materials is in [bom/bom.csv](bom/bom.csv).
+
+## Building the prototype
+
+The [prototype build plan](docs/05-build-plan.md) (SSK-BLD-001) shows how to make each of the 20 components and put them together in 22 illustrated steps. The frame is a plywood box on a plywood base ring, lined with stone wool and closed by twin-wall glazing under an aluminium trim. The five aluminium plates are cut with a zigzag low edge so distillate leaves on tongues at the rib lines and brine on separate tongues over the closed manifold lid. The stand pivots on two front posts and is held by props pinned at one of six holes from 10° to 35°. The changes that made the concept buildable are in [SSK-DDR-003](docs/decisions/0003-design-for-construction.md), and decisions still open are in the [design decisions register](docs/06-design-decisions.md).
+
+![Every component of the StillStack prototype, pulled apart and numbered in build order](docs/05-build-plan/overview.png)
 
 ## Safety
 

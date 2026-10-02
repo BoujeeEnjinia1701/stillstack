@@ -228,3 +228,61 @@ This is an appearance model only: no tolerances, fabrication detail, build proce
 - Kit 1.5.0 synced: STANDARDS v1.5 (sections 12 to 15: product renders, storefront images and image quality, public release, authorship and signing), `.kit/cards.py`, `.kit/image_qc.py`, `.kit/release_gate.py`, issue templates, and the `/render-product` and `/release` commands. `CLAUDE.md` now matches `.kit/CLAUDE.md`.
 - Every `media/render-*.png` recaptioned from its original render with the new layout: the title, concept label and repository sit in a band above the render and the view note in a band below it, each line wrapped to the image width, so no text overlaps other text or the render or runs off the image. `media/card.png` and `media/social-preview.png` regenerated with the same rules.
 - `python .kit/image_qc.py` and `python .kit/release_gate.py` pass. trl stays 3.
+
+## Session 2026-10-01: kit 1.7.0, design for construction and prototype build plan
+
+Kit 1.7.0 installed (`.kit/`, `.claude/commands/`; `CLAUDE.md` now matches `.kit/CLAUDE.md`). Following `/build-plan` and `.kit/STANDARDS.md` section 18, the concept was checked part by part with build123d and made constructable under Amish's 2026-09-30 instruction ("If you are realising that the design cannot be built as per concept - fix the design assumptions to match and be physically feasible as you draw the illustrations."). Every change is recorded in `docs/decisions/0003-design-for-construction.md` (SSK-DDR-003 v0.1, Draft, open for Amish's review).
+
+### Design changes made for construction
+
+1. **Base ring:** a 12 mm plywood ring under the walls with a 15 mm ledge on all four sides carries the stack; the bottom plate spans between the ledges on its bonded fins (sag 0.5 mm).
+2. **Low wall:** a comb with eleven open-topped notches and a removable cap replaces four 1 m slits that left unbuildable slivers; plates drop in from above and lift out again.
+3. **Low edge of the plates (proposed, A1):** a zigzag edge with six distillate tongues at the rib lines and corners and five brine tongues at the strip centres; wick tails ride under the brine tongues over the closed manifold lid into the gutter; silicone chevron dams at the brine tongue roots.
+4. **Stop blocks:** two blocks of the stage 1 rail polymer in the low corners hold the stack against sliding down the slope.
+5. **Glazing:** a 1,060 mm sheet on foam tape on the wall tops, held by a mitred aluminium trim with 7 mm of room to grow; walls 52.5 mm tall.
+6. **Feed end:** five openings in the high wall; tails rise behind a silicone foam closure into a trough on two fascia brackets.
+7. **Outlets:** two aluminium outlet brackets carry the manifold and the gutter; the manifold lid is slotted only at the six tongue lines.
+8. **Fins:** 940 mm long, bonded by their flanges with high-temperature silicone adhesive.
+9. **Stand:** ground frame, front posts with plywood gussets and M10 pivot bolts, fixed props (1,000 mm between pins, foot rounded) hinged on blocks and pinned at one of six holes (10 to 35 deg in 5 deg steps); ground rails 760 mm behind the pivot keep the centre of mass inside the frame.
+10. **Joints:** glued and screwed wall corners; wicks held by silicone dots; ribs stop 8 mm short of the tongue tips.
+
+### What was done
+
+- `cad/src/model.py`: rebuilt as the constructable model (46 panel parts plus the stand), with `--check` running 93 constructability checks, all passing (overlaps, contacts, 10 mm brine to distillate clearances, stand clashes, centre of mass and footprint at all six tilt holes); STEP and STL re-exported.
+- `cad/src/build_plan_media.py` (uses `.kit/build_views.py`): overview, 18 making sketches `cad/drawings/SSK-DWG-101` to `118`, 12 joint close-ups, 22 assembly step pictures, and two layout drawings (plate low edge, end wall openings) in `docs/05-build-plan/`.
+- `docs/05-build-plan.md` (SSK-BLD-001 v0.1) and `docs/06-design-decisions.md` (SSK-DEC-001 v0.1).
+- `docs/04-calcs/sizing.py` and `01-sizing.md` (SSK-CAL-001 v0.4): wet wick fraction from the zigzag edge, new mass table, stand geometry and hole positions, footprint, cost against the value-engineering target, and a new section of construction checks.
+- `bom/bom.csv`: lines 2 to 5, 8, 11 and 12 respecified; lines 15 (glazing trim and tape), 16 (outlet brackets) and 17 (feed closure) added.
+- `docs/02-concept.md` (SSK-PRC-001 v0.6), `docs/03-requirements.md` (SSK-REQ-001 v0.6), `docs/decisions/0003-design-for-construction.md`, `project.yaml` (`design_state: constructable`, new evidence), `README.md` (links and "Building the prototype").
+- `cad/src/sheets.py`: general arrangement SSK-DWG-002 Rev P3; `cad/src/concept_media.py`: blueprint SSK-DWG-001 Rev P4 and the concept media regenerated.
+
+### Key results
+
+| Quantity | Before | After |
+| --- | --- | --- |
+| Daily distillate (design day) | 10.6 L | 10.6 L (wet wick fraction 0.824 to 0.817) |
+| Panel mass, dry and wet | 16.7, 20.7 kg | 18.5, 22.5 kg (R9 met) |
+| Footprint at 10 deg | 1.28 x 1.16 m | 1.28 x 1.25 m (R9 met) |
+| Wind speed at which lift equals weight | 17.5 m/s | 18.7 m/s |
+| Cost | USD 351.20 | USD 416.20; value-engineering target USD 355, USD 61.20 over the target |
+| Low-end vapor loss | not counted | 25 mL per day (0.2 %) |
+
+No requirement is not met. At risk: R2, R4, R6, R7, R8, R10; not verifiable at TRL 3: R3; met on paper: R1, R5, R9, R11; R12 is USD 61.20 over the value-engineering target.
+
+### Proposed, awaiting Amish
+
+All open items are in `docs/06-design-decisions.md`. New from this session: acceptance of SSK-DDR-003 as a whole; A1, the brine exit at the low edge (recommend the zigzag and tongue layout as modelled); A2, feed tails crossing the condensing plates' high edges (recommend accepting for the first prototype and measuring each stage's conductivity at TRL 4).
+
+### Safety concerns
+
+- The brine and feed paths now have defined geometry, but separation of brine from distillate (R4) is still a paper result; the build plan's first checks include a coloured-water test and per-stage conductivity.
+- Lifting the panel onto the stand is a two-person job (18.5 kg dry); the stand must be staked or ballasted before the panel faces the sun.
+- Stone wool cutting, plate coating and absorber painting need the protective equipment listed in the build plan.
+
+### Stale media (made on Amish's Mac)
+
+The design changed visibly (trim, tongues, comb, trough closure, stand), so `media/render-hero.png`, `media/render-exploded.png`, `media/render-detail.png`, `media/card.png` and `media/social-preview.png` are stale, and `cad/src/product_model.py` still builds the concept (its stand and frame no longer match `model.py`). Regenerate them on Amish's Mac.
+
+### Recommended next step
+
+Amish reviews SSK-DDR-003 and the register. TRL 4 (building and testing to this plan) stays on hold until Amish lifts the TRL 3 cap.

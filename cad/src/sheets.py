@@ -17,6 +17,7 @@ from drawing import Sheet, project_views, _viewbox, _t, INK, MUTED  # noqa: E402
 import model  # noqa: E402
 
 DATE = "2026-09-25"
+DATE3 = "2026-10-01"
 OUT = ROOT / "cad" / "drawings"
 WORK = OUT / "_views"
 
@@ -59,11 +60,12 @@ def main():
     detail = model.stack_detail(y=(80.0, 125.0))
     det = project_views(detail, WORK / "detail")
 
-    s = Sheet(project="StillStack", title="General arrangement", dwg_no="SSK-DWG-002", rev="P2",
-              author="Amish Chadha", date=DATE, scale=1 / 20,
+    s = Sheet(project="StillStack", title="General arrangement", dwg_no="SSK-DWG-002", rev="P3",
+              author="Amish Chadha", date=DATE3, scale=1 / 20,
               material="See bom/bom.csv. Plates 0.5 mm aluminum; rails 150 C polymer (stages 1, 2) and PC; ribs silicone; frame plywood, stone wool",
               concept=False, revisions=[("P1", "Preliminary general arrangement (TRL 3)", DATE, "AC"),
-                         ("P2", "Rail and liner materials, stagnation cover (DDR-002)", DATE, "AC")])
+                         ("P2", "Rail and liner materials, stagnation cover (DDR-002)", DATE, "AC"),
+                         ("P3", "Constructable design: base ring, trim, tongues, stand (DDR-003)", DATE3, "AC")])
     s._layers.append(_t(16, 19, "PRELIMINARY, NOT FOR FABRICATION", 3.2, 600, "#B45309"))
 
     k = 1 / 20
@@ -90,23 +92,27 @@ def main():
                          f'fill="none" stroke="{MUTED}" stroke-width="0.18"/>')
         s._layers.append(_t(dx + dw + 7, ty_ + 0.9, name, 2.2, 400, INK))
 
-    edge = model.stack_detail(x=(440.0, 690.0), y=(0.0, 20.0), z=(-90.0, 80.0),
+    edge = model.stack_detail(x=(440.0, 690.0), y=(90.0, 105.0), z=(-90.0, 80.0),
                               keep=model.STACK + ["Insulated frame", "Glazing", "Distillate manifold", "Brine gutter"])
     ev = project_views(edge, WORK / "edge")
     bx, by, bw, bh = place(s, ev["front"], 40, 178, 0.5, "Detail B: low edge, distillate and brine",
-                           "Scale 1:2, untilted; wick tails not shown")
+                           "Scale 1:2, untilted; cut on a rib line")
     ebb = edge.bounding_box()
     outer = p["aperture"] / 2 + p["ply_t"] + p["foam_t"]
     def at(xm, zm):
         return bx + (xm - ebb.min.X) * 0.5, by + (ebb.max.Z - zm) * 0.5
-    for text, (xm, zm), (lx, ly) in [
-            ("Glazing", (470, 58), (-2, -8)), ("Condenser lips into manifold", (outer + 10, 8), (-30, 20)),
-            ("Frame wall", (outer - 18, 60), (8, -12)), ("Distillate manifold, lidded", (outer + 40, 38), (10, -8)),
-            ("Brine gutter (outboard, lower)", (outer + 130, -45), (22, 4))]:
-        x0, y0 = at(xm, zm)
-        s._layers.append(f'<line x1="{x0:.2f}" y1="{y0:.2f}" x2="{x0 + lx:.2f}" y2="{y0 + ly:.2f}" '
-                         f'stroke="{MUTED}" stroke-width="0.18"/>')
-        s._layers.append(_t(x0 + lx, y0 + ly + (-0.8 if ly < 0 else 3.0), text, 2.2, 400, INK, "middle"))
+    lab = [("Glazing on foam tape, under the trim", (480, 58.5)), ("Low wall cap (above the notch)", (531, 45)),
+           ("Distillate tongues into the manifold", (557, -2)), ("Base ring and low wall sill", (505, -6)),
+           ("Distillate manifold, lidded", (595, -30)), ("Brine gutter (outboard, lower)", (668, -40))]
+    pts = sorted([(at(xm, zm), text) for text, (xm, zm) in lab], key=lambda q: q[0][1])
+    colx = bx + bw + 6
+    last = -1e9
+    for (x0, y0), text in pts:
+        ty = max(y0, last + 4.2)
+        last = ty
+        s._layers.append(f'<polyline points="{x0:.2f},{y0:.2f} {colx - 2:.2f},{ty:.2f} {colx - 0.5:.2f},{ty:.2f}" '
+                         f'fill="none" stroke="{MUTED}" stroke-width="0.18"/>')
+        s._layers.append(_t(colx, ty + 0.8, text, 2.2, 400, INK))
 
     s.add_svg(views["iso"], 290, 34, 124, 92, label="Isometric view", sublabel="Not to scale")
     s.add_notes("Key dimensions and figures (SSK-CAL-001)", [
@@ -116,12 +122,12 @@ def main():
         f"Dry breaks {p['wick_break']:.0f} mm each side of ribs and rails",
         "Air gap 25 mm; 6 mm twin-wall PC glazing",
         f"Frame {p['ply_t']:.0f} mm plywood + {p['foam_t']:.0f} mm stone wool; 1,074 mm square outside",
-        "Front pivot 350 mm; rear strut 530 to 940 mm",
+        "Front pivot bolts; props pinned at 6 holes",
         "Design day: about 10.6 L/day, GOR about 1.3",
         "Dry stagnation: stage 1 about 140 C (144 C calm)",
         "Stages 1, 2 rated 150 C; cover (BOM 14) not shown",
-        "Panel about 17 kg dry, 21 kg wet",
-        "Wick tails (0.25 m) and fasteners not shown",
+        "Panel about 18.5 kg dry, 22.5 kg wet",
+        "Fasteners not shown; see build plan SSK-BLD-001",
     ], x=290, y=144, width=128)
     OUT.mkdir(parents=True, exist_ok=True)
     s.save(OUT / "SSK-DWG-002")
