@@ -19,7 +19,7 @@ p = model.PARAMS
 parts = model.build()
 # fold the parts added for construction (SSK-DDR-003) into the BOM groups the media number
 _fold = {"Insulated frame": ["Base ring", "Stack stops", "Glazing trim", "Glazing tape"],
-         "Feed trough": ["Feed closure"], "Distillate manifold": ["Outlet brackets"]}
+         "Feed trough": ["Feed closure"], "Wicks": ["Wick clips"], "Distillate manifold": ["Outlet brackets"]}
 for _k, _extra in _fold.items():
     for _e in _extra:
         if _e in parts:
@@ -59,12 +59,12 @@ person = human_figure(1750.0, x=_bb.max.X + 1000.0, y=_bb.max.Y + 300.0, z=0.0)
 
 render_all(
     media_parts, project="StillStack", title="Four-stage wick still concept", dwg_no="SSK-DWG-001",
-    rev="P4", date="2026-10-01",
+    rev="P5", date="2026-10-02",
     key_figures=["1.0 m2 aperture, tilt 20 deg (stand 10 to 35 deg)", "4 stages, 6 mm vapor gaps, ribs at 194 mm",
                  "About 10.6 L per day on 5.5 kWh/m2 (SSK-CAL-001)",
                  "Gained output ratio about 1.3",
                  "Dry stagnation about 140 C; stages 1, 2 rated 150 C",
-                 "About USD 416 in parts (target USD 355)"],
+                 "About USD 443 in parts (value-engineering target USD 355)"],
     cut_exclude=("Adjustable tilt stand",), scale_figure=False, context=[person],
     flow={"title": "energy (MJ) and water per m2 per day at 5.5 kWh/m2, total about 11 L (CALCULATED ESTIMATES, SSK-CAL-001)",
           "unit": "MJ",

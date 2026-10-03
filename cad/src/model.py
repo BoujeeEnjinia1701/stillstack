@@ -18,8 +18,10 @@ design physically buildable; open for his review):
   * the walls have openings (not slits) where the stack passes through;
   * the plates' low edges are cut to a zigzag that leads condensate to distillate tongues at the
     rib lines and corners; wick tails leave on brine tongues at the strip centres, over the
-    lidded distillate manifold into the brine gutter (Proposed, awaiting Amish: A1, R4);
+    lidded distillate manifold into the brine gutter (A1, accepted 2026-10-02);
   * two stop blocks at the low corners hold the stack against sliding down the slope;
+  * each condensing plate has a 4 mm downturned lip on its high edge, as tabs on the rib lines (A2 (c));
+  * each wick is held by two stainless clips, one at the high end and one on the brine tongue, no adhesive;
   * the feed-end wick tails rise up the high wall behind a foam closure into the trough;
   * the stand is a ground frame, front posts with gussets and a pivot bolt, and fixed-length
     props pinned to the ground rails at one hole per tilt (10 to 35 deg).
@@ -78,6 +80,18 @@ PARAMS = {
     "tilt_holes": (10.0, 15.0, 20.0, 25.0, 30.0, 35.0),
     "rail_rear": 760.0,    # ground rail length behind the pivot (centre of mass at 10 deg is about 500 mm back)
     "gusset": 150.0,       # plywood gusset leg at each post foot (inside face, behind the post)
+    # SSK-DDR-003 A2 option (c) and the wick clips, decided 2026-10-02 (SSK-DEC-001)
+    "lip_h": 4.0,          # downturned lip on each condensing plate's high edge (tabs between the wick strips)
+    "lip_w": 7.0,          # lip tab width, centred on each rib line
+    "rib_start": 6.0,      # ribs start this far inside the plate's high edge (clear of the lip tabs)
+    "clip_t": 0.4,         # wick clip: 304 stainless strip thickness
+    "clip_w": 8.0,         # wick clip strip width
+    "clip_hi_x": 9.0,      # high-end clip bar runs from 1 to 9 mm inside the plate's high edge
+    "clip_ear": 8.0,       # high-end clip ear width (in the dry break beside the strip)
+    "clip_flap": 6.0,      # ear flap length over the plate's top face
+    "clip_lo_x": (7.0, 15.0),   # low-end clip position, mm past the brine tongue root line
+    "clip_flange": 3.0,    # low-end clip flange over the tongue's top face
+    "ring_pocket": (5.0, 4.0),  # base ring slot (depth, width) under each lip tab of the bottom plate
 }
 
 DENSITY = {  # kg/m3, for the mass cross-check against CAL-001
@@ -86,7 +100,7 @@ DENSITY = {  # kg/m3, for the mass cross-check against CAL-001
     "Wicks": 200, "Side spacer rails": 1200, "Spacer ribs": 1150,
     "Insulated frame": 330,  # plywood walls (550) and stone wool liner (140), by volume share
     "Base ring": 550, "Glazing trim": 2700, "Glazing tape": 300, "Stack stops": 1350,
-    "Outlet brackets": 2700, "Feed closure": 300,
+    "Outlet brackets": 2700, "Feed closure": 300, "Wick clips": 7900,
 }
 
 
@@ -204,6 +218,9 @@ def plate(kind, lvl, p=PARAMS, bent=True, split=False):
                 dt.append(_box(xb, xb + t, y - w, y + w, -9.0, z0 + t))
             else:
                 dt.append(_box(D["tip"] - 0.5, D["tip"] + L["d_len"], y - w, y + w, z0, z0 + t))
+    if kind in ("bottom", "cond"):                    # downturned lip tabs on the high edge, on the rib lines
+        for ry in rib_positions(p):
+            parts.append(_box(-h, -h + t, ry - p["lip_w"] / 2, ry + p["lip_w"] / 2, z0 - p["lip_h"], z0 + t))
     dams = None
     if kind in ("cond", "absorber"):
         xbb = p["b_bend"] + 4 * (lvl - 1)
@@ -270,6 +287,36 @@ def wick(stage, p=PARAMS, bent=True, split=False):
     return _union(out + tails)
 
 
+def wick_clips(stage, p=PARAMS):
+    """The stage's wick clips: per strip a high-end bar with two ears that hook round the plate's high
+    edge, and a low-end clip that straddles the brine tongue and the tail under it. 0.4 mm 304 stainless."""
+    D = derived(p)
+    lvl = p["n_stages"] - stage + 1
+    z1 = D["levels"][lvl]
+    z0 = z1 - p["wick_t"]
+    h, t, ct = D["half"], p["plate_t"], p["clip_t"]
+    ptop = z1 + t
+    out_hi, out_lo = [], []
+    for (a, b), yb in zip(D["strips"], D["yb"]):
+        e = p["clip_ear"]
+        xi = -h + p["clip_hi_x"]
+        out_hi.append(_box(-h + 1.0, xi, a - e - 1.0, b + e + 1.0, z0 - ct, z0))              # bar under the wick
+        for y0, y1 in ((a - e - 1.0, a - 1.0), (b + 1.0, b + e + 1.0)):                          # ears
+            out_hi.append(_box(-h - ct, -h + 1.0, y0, y1, z0 - ct, z0))                          # out under the edge
+            out_hi.append(_box(-h - ct, -h, y0, y1, z0 - ct, ptop + ct))                         # up the edge
+            out_hi.append(_box(-h - ct, -h + p["clip_flap"], y0, y1, ptop, ptop + ct))           # flap over the top face
+        xa, xb = (D["root"] + p["clip_lo_x"][0], D["root"] + p["clip_lo_x"][1])
+        w = p["b_tongue_w"] / 2
+        out_lo.append(_box(xa, xb, yb - w - ct, yb + w + ct, z0 - ct, z0))                      # bar under the tail
+        fl = p["clip_flange"]
+        for sg in (-1, 1):
+            y0, y1 = sorted((yb + sg * w, yb + sg * (w + ct)))
+            out_lo.append(_box(xa, xb, y0, y1, z0 - ct, ptop + ct))                              # leg up the tongue edge
+            f0, f1 = sorted((yb + sg * (w + ct), yb + sg * (w - fl)))
+            out_lo.append(_box(xa, xb, f0, f1, ptop, ptop + ct))                                 # flange over the top face
+    return _union(out_hi), _union(out_lo)
+
+
 def build_components(p=PARAMS, tilt=None, local_only=False):
     """{part name: shape}. Panel parts in the local frame when local_only, else in the world
     with the stand. Part names are the constructable components, finer than build()'s groups."""
@@ -287,6 +334,10 @@ def build_components(p=PARAMS, tilt=None, local_only=False):
     C["ring_side_r"] = _box(-OH, xl, ri, OH, z0r, 0)
     C["ring_side_l"] = _box(-OH, xl, -OH, -ri, z0r, 0)
     C["ring_high"] = _box(-OH, -ri, -ri, ri, z0r, 0)
+    pd_, pw_ = p["ring_pocket"]                      # slots for the bottom plate's lip tabs
+    for ry in rib_positions(p):
+        C["ring_high"] = C["ring_high"] - _box(-D["half"] - 1.5, -D["half"] - 1.5 + pw_, ry - p["lip_w"] / 2 - 1.5,
+                                               ry + p["lip_w"] / 2 + 1.5, -pd_, 0.1)
     C["ring_low"] = _box(ri, xl, -ri, ri, z0r, 0)
 
     # ---- walls: side walls full length; high and low walls between them; liner inside.
@@ -326,10 +377,11 @@ def build_components(p=PARAMS, tilt=None, local_only=False):
         zb = D["levels"][lvl - 1] + p["plate_t"]    # top of the plate below
         hgt = p["gap"] + p["wick_t"]
         C[f"rails_{st}"] = _union([_slab(zb, hgt, 2 * h, p["rail_w"], y=sg * (h - p["rail_w"] / 2)) for sg in (-1, 1)])
-        rl = 2 * h - 8.0                             # ribs stop 8 mm short of the tongue tips
-        C[f"ribs_{st}"] = _union([Pos(-h + rl / 2, ry, zb + hgt / 2) * Rot(0, 90, 0) * Cylinder(p["rib_d"] / 2, rl)
+        rl = 2 * h - 8.0 - p["rib_start"]            # ribs stop 8 mm short of the tongue tips, start clear of the lip tabs
+        C[f"ribs_{st}"] = _union([Pos(-h + p["rib_start"] + rl / 2, ry, zb + hgt / 2) * Rot(0, 90, 0) * Cylinder(p["rib_d"] / 2, rl)
                                   for ry in rib_positions(p)])
         C[f"wick_{st}"] = wick(st, p)
+        C[f"clips_hi_{st}"], C[f"clips_lo_{st}"] = wick_clips(st, p)
 
     # ---- fins under the bottom plate, running down the slope (flange bonded to the plate)
     pitch = 2 * h / p["fin_n"]
@@ -516,6 +568,7 @@ GROUPS = {
     "Base ring": ["ring_side_r", "ring_side_l", "ring_high", "ring_low"],
     "Absorber plate": ["absorber"],
     "Wicks": ["wick_1", "wick_2", "wick_3", "wick_4"],
+    "Wick clips": [f"clips_{e}_{s_}" for s_ in range(1, 5) for e in ("hi", "lo")],
     "Condenser plates": ["plate_1", "plate_2", "plate_3", "plate_bottom"],
     "Side spacer rails": ["rails_1", "rails_2", "rails_3", "rails_4"],
     "Spacer ribs": ["ribs_1", "ribs_2", "ribs_3", "ribs_4", "dams_1", "dams_2", "dams_3"],
@@ -649,6 +702,41 @@ def checks(p=PARAMS, verbose=True):
         dw = _dist(C[k], teeth)
         dl = _dist(C[k], C["liner_low"])
         rec(f"{k} tongues pass the low wall notches clear", min(dw, dl) >= 1.0, f"{min(dw, dl):.1f} mm")
+    # 3b. lip tabs (A2 (c)) and wick clips (decided 2026-10-02)
+    n = p["n_stages"]
+    for lvl in range(0, n):
+        pl = C["plate_bottom"] if lvl == 0 else C[f"plate_{n - lvl}"]
+        tabs = pl & _box(-D["half"] - 1, -D["half"] + 2, -600, 600, D["levels"][lvl] - 5, D["levels"][lvl] - 0.01)
+        ok = abs(tabs.bounding_box().size.Z - p["lip_h"]) < 0.05
+        rec(f"plate level {lvl}: lip tabs hang {p['lip_h']:.0f} mm below the plate", ok, f"{tabs.bounding_box().size.Z:.1f} mm")
+        if lvl > 0:
+            st = n - lvl + 1
+            dw = _dist(tabs, C[f"wick_{st}"])
+            rec(f"plate level {lvl}: lip tabs at least 1.5 mm from its wick (stage {st})", dw >= 1.5, f"{dw:.1f} mm")
+            dn = _dist(tabs, C[f"wick_{st - 1}"]) if st > 1 else 99.0
+            rec(f"plate level {lvl}: lip tabs clear of the wick tails above", dn >= 1.5, f"{dn:.1f} mm")
+        dr = min(_dist(tabs, C[f"ribs_{s_}"]) for s_ in range(1, 5))
+        rec(f"plate level {lvl}: lip tabs at least 5 mm from every rib end", dr >= 5.0, f"{dr:.1f} mm")
+    d = _dist(C["plate_bottom"], C["ring_high"])
+    rec("bottom plate lip tabs sit in the base ring slots, ring top touching the plate", d < 0.05, f"{d:.2f} mm")
+    tabs0 = C["plate_bottom"] & _box(-D["half"] - 1, -D["half"] + 2, -600, 600, -5, -0.01)
+    dsl = _dist(tabs0, C["ring_high"])
+    rec("bottom plate lip tabs clear of the ring slots' walls", dsl >= 0.5, f"{dsl:.1f} mm")
+    for st in range(1, n + 1):
+        lvl = n - st + 1
+        for e in ("hi", "lo"):
+            cl = C[f"clips_{e}_{st}"]
+            dwk = _dist(cl, C[f"wick_{st}"])
+            rec(f"stage {st} {e} wick clips touch their wick", dwk < 0.05, f"{dwk:.2f} mm")
+            pl = C["absorber"] if lvl == n else C[f"plate_{n - lvl}"]
+            rec(f"stage {st} {e} wick clips grip their plate", _dist(cl, pl) < 0.05, f"{_dist(cl, pl):.2f} mm")
+        rec(f"stage {st} high clips at least 1 mm from the high liner and ribs",
+            min(_dist(C[f"clips_hi_{st}"], C["liner_high"]), _dist(C[f"clips_hi_{st}"], C[f"ribs_{st}"])) >= 0.9,
+            f"{min(_dist(C[f'clips_hi_{st}'], C['liner_high']), _dist(C[f'clips_hi_{st}'], C[f'ribs_{st}'])):.1f} mm")
+        dd = min(_dist(C[f"clips_lo_{st}"], C["lid"]), _dist(C[f"clips_lo_{st}"], C["wall_low"]))
+        rec(f"stage {st} low clips clear of the lid and the low wall by 10 mm", dd >= 10.0, f"{dd:.1f} mm")
+        dq = min(_dist(C[f"clips_lo_{st}"], C[k]) for k in ("dams_1", "dams_2", "dams_3"))
+        rec(f"stage {st} low clips clear of the chevron dams", dq >= 5.0, f"{dq:.1f} mm")
     gs = p["glaz_size"] / 2
     rec("glazing edge room to grow inside the trim (4.8 mm needed per sheet)", (D["OH"] - gs) * 2 >= 4.8,
         f"{D['OH'] - gs:.1f} mm each side")

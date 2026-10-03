@@ -24,6 +24,7 @@ Model summary
 from __future__ import annotations
 import csv
 import math
+import sys
 from pathlib import Path
 
 import numpy as np
@@ -80,7 +81,9 @@ P = dict(
     wet_l=0.9678,           # m, mean wet wick length per strip with the zigzag low edge
     wall_h=0.0525,          # m, plywood wall height (base ring to glazing tape)
     ring=(0.212, 0.012),    # m2 of plan area and m thickness of the plywood base ring
-    plate_area=(1.030, 1.028),  # m2 of sheet in the absorber and in each condenser plate, with tongues
+    plate_area=(1.030, 1.0281),  # m2 of sheet in the absorber and in each condenser plate, with tongues and the 4 mm lip tabs (4 x 7 x 5 mm developed)
+    lip=(0.004, 0.007, 4),  # m lip height, m tab width, tabs per condensing plate (SSK-DDR-003 A2 (c), decided 2026-10-02)
+    clip=(40, 0.0004, 0.008, 5.5),  # wick clips: count, strip thickness m, strip width m, total strip length m (304 stainless)
     wick_len=1.40,          # m, wick strip length including both tails
     trim=(4.31, 86e-6),     # m of trim angle and m2 of section (25 x 20 x 2 mm)
     pivot=(0.512, 0.010),   # m, front pivot in the panel frame (x down the slope, z normal)
@@ -463,7 +466,9 @@ def main():
         "Base ring, 12 mm plywood": P["ring"][0] * P["ring"][1] * 550,
         "Glazing trim, aluminum angle 25 x 20 x 2": P["trim"][0] * P["trim"][1] * 2700,
         f"Wicks, 4 x 1.0 x {P['wick_len']:.2f} m at 0.20 kg/m2 dry": 4 * P["wick_len"] * ap * 0.20,
-        "Side rails, 150 degC polymer and PC (8 x 12 x 7 mm)": 4 * 2 * P["rail_w"] * (P["gap"] + P["wick_t"]) * ap * 1200,
+        "Side rails, PPS (stages 1, 2, 1,350 kg/m3) and PC (stages 3, 4, 1,200 kg/m3), 8 x 12 x 7 mm": 2 * 2 * P["rail_w"] * (P["gap"] + P["wick_t"]) * ap * (1350 + 1200),
+        "Stop blocks, 2 x 27 x 15 x 33 mm PPS": 2 * 0.027 * 0.015 * 0.033 * 1350,
+        "Wick clips, 40 of 0.4 x 8 mm 304 stainless strip, 5.5 m": P["clip"][3] * P["clip"][1] * P["clip"][2] * 7900,
         "Intermediate ribs, 16 x 7 mm silicone cord": 4 * RIB["n_ribs"] * math.pi / 4 * 0.007 ** 2 * ap * 1150,
         "Fins, 10 folded strips 50 mm developed": P["fin_n"] * P["fin_len"] * 0.050 * P["plate_t"] * 2700,
         "Trough, manifold, gutter, brackets, closure, fittings": 1.8,
@@ -538,6 +543,17 @@ def main():
     for name, I in (("composite (fin bonded)", I_c), ("fin alone", I_w)):
         sag = 5 * q * span ** 4 / (384 * E * I)
         line(f"Bottom plate sag on the base ring, {name}", f(sag * 1000, 1), "mm")
+    # 14b. lip on the condensing plates' high edge (A2 (c)): effect on blank, area, mass
+    sys.path.insert(0, str(ROOT / "cad" / "src"))
+    import model as MD
+    lip_dev = P["lip"][0] + 0.001                                  # lip height plus about 1 mm bend allowance
+    Lb = MD.tongue_lengths(3)["b_len"]                             # longest tongue (plate 1, highest)
+    blank = (2 * MD.derived()["half"] + 25.0 + Lb) / 1000
+    line("Lip tab developed length (4 mm lip plus bend allowance)", f(lip_dev * 1000, 1), "mm")
+    line("Added sheet per condensing plate (4 tabs x 7 mm)", f(P["lip"][2] * P["lip"][1] * lip_dev * 1e6, 0), "mm2")
+    line("Added mass of the lips, 4 plates", f(4 * P["lip"][2] * P["lip"][1] * lip_dev * P["plate_t"] * 2700 * 1000, 2), "g")
+    line("Plate blank length down the slope incl. tongues and lip", f((blank + lip_dev) * 1000, 0), "mm (sheet 1,250 mm)")
+    line("Sheet size and cost with the lip", "unchanged", "(a bend, no yield loss)")
     line("Stack load on the bottom plate, normal to it", f(w_stack, 0), "N/m2")
     # glazing growth inside the trim
     grow = 1.06 * 65e-6 * 70

@@ -317,13 +317,13 @@ All 9 moved to Decisions made in SSK-DEC-001, dated 2026-10-02; the Open decisio
 - `docs/04-calcs/01-sizing.md` (SSK-CAL-001 v0.5): SSK-DDR-003 accepted; R4, R7 and R10 rows note the decisions; figures unchanged
 - `docs/02-concept.md` (SSK-PRC-001 v0.7): coating, PPS, lip, conductivity pass condition in the safety note, open questions answered, partner, labels and rail colours
 - `docs/01-problem.md` (SSK-PRB-001 v0.6): partner decided and first candidate to approach
-- `docs/05-build-plan.md` (SSK-BLD-001 v0.2): section 2 records the acceptance and its exceptions; PPS rails in their own colour; plate step 4 adds the high-edge lip; wick step 4 uses clips, no adhesive (pictures still to follow)
-- `bom/bom-notes.md`: PPS rails, coating rule, wick fabric test, wick clips and labels noted, not yet in BOM lines or prices
+- `docs/05-build-plan.md` (SSK-BLD-001 v0.2): section 2 records the acceptance and its exceptions; PPS rails in their own colour; plate step 4 adds the high-edge lip; wick step 4 uses clips, no adhesive; superseded by the follow-ups carried out below
+- `bom/bom-notes.md`: PPS rails, coating rule, wick fabric test, wick clips and labels noted (carried into BOM lines and prices in the follow-ups below)
 - PDFs regenerated with `python3 .kit/render.py`; superseded versions removed.
 
 ### Follow-up actions to carry approved decisions into the design
 
-The model, BOM quantities and prices, calculations and pictures were not changed in this session. These actions carry the approved decisions into them:
+The model, BOM quantities and prices, calculations and pictures were not changed in the first part of this session. These actions carry (carried out in the section "Approved follow-ups carried out" below) the approved decisions into them:
 
 1. Decision 3 (model, drawings, build plan pictures): Add the 4 mm downturned lip on each condensing plate's high edge in `cad/src/model.py`, re-run the 93 checks (feed tail clearance at the high edge), and update the plate making sketches (SSK-DWG-110 and the bottom plate sketch) and the joint pictures at the high wall.
 2. Decision 3 (calculations): Check the lip's effect on plate blank size, cost and mass in `docs/04-calcs/sizing.py` (a bend, no yield loss expected).
@@ -343,3 +343,57 @@ Raised when the recommendations were written (2026-10-01) and kept here so they 
 - Item 3's register recommendation accepts a known 6 mm path for feed water onto a condensing face in a drinking-water safety case; the conservative choice is the lip now.
 - Value engineering: the target is USD 355 against USD 416.20 (USD 61.20 over); one listed saving, silicone strip in place of the 150 °C rails in stages 1 and 2, would undo the R8 materials decision (SSK-DDR-002, item 2) and should not be on the savings list without that note.
 - R10 (wicks removable in 30 min) is at risk only because the wick fixing (item 4) is open; the build plan's silicone-dot bonding should not be used until item 4 is decided.
+
+## 2026-10-02: Approved follow-ups carried out
+
+Amish, 2026-10-02: every follow-up action from the open-decision sign-off is approved. trl stays 3; nothing was built, bought or tested; budget_usd is unchanged at 355.
+
+### Follow-ups done (6 of 9)
+
+| # | Follow-up | Done |
+| --- | --- | --- |
+| 1 | Lip on the high edge, model and pictures | Four 7 mm tabs bent down 4 mm on the rib lines of each condensing plate (bottom plate and plates 1 to 3), with four 4 mm slots in the base ring for the bottom plate's tabs; ribs now start 6 mm inside the high edge. 137 constructability checks pass (93 before). Sketches SSK-DWG-104, 107, 110 (P2) and the new joint picture 13 updated |
+| 2 | Lip effect on blank, cost, mass | `sizing.py` section 14: 5 mm of sheet per tab, 140 mm2 and 0.76 g in all; the blank is 1,224 mm long on a 1,250 mm sheet; no change to sheet size or cost |
+| 3 | Wick clips | 40 stainless clips (0.4 x 8 mm 304 strip): 20 high-end bars with ears hooked round the plate edge, 20 tongue clips round each brine tongue; no adhesive. In the model, SSK-DWG-111 (P2), new sketches SSK-DWG-119 and 120, joints 13 and 14, steps 6 to 9, BOM line 18 at USD 14.00; silicone dots removed from the build plan |
+| 5 | Coating | Fluoropolymer (PTFE or PFA type) cookware coating chosen as the class and kept at the USD 5 per plate allowance (BOM line 5); applied after the lip is bent. No named product: its drinking-water certificate has not been seen, so plates 1 and 2 may still need 316 stainless (register item 8) |
+| 7 | PPS | Named in BOM line 6 (natural, tan) for the stage 1 and 2 rails and the stop blocks; stage 3 and 4 rails are teal PC. Repriced at USD 11.50 per rail from a distributor list price of about USD 70 per kg; a sheet quote is still to be obtained (register item 7) |
+| 8 | Appearance model | `cad/src/product_model.py` rebuilt from the constructable model (it had broken on parameters that no longer exist); flutes down the slope, removable manifold lid, drip valve at the front end of the trough, DISTILLATE and BRINE labels, PPS and PC rail colours; render scenes exported (hero, exploded, detail) |
+
+### Not done
+
+- 4 (conductivity test plan per stage): TRL 4 work, which the TRL 3 cap forbids.
+- 6 (wicking-rise test on two fabrics): a physical test, TRL 4 work; BOM line 4 keeps its indicative price.
+- 9 (approach the Politecnico di Torino group): outreach by Amish; nothing agreed.
+
+### Documents changed and new versions
+
+- `docs/05-build-plan.md` SSK-BLD-001 v0.3; `docs/04-calcs/01-sizing.md` SSK-CAL-001 v0.6; `docs/03-requirements.md` SSK-REQ-001 v0.8; `docs/02-concept.md` SSK-PRC-001 v0.8; `docs/06-design-decisions.md` SSK-DEC-001 v0.3; `docs/decisions/0003-design-for-construction.md` SSK-DDR-003 v0.3; `bom/bom.csv` (lines 5, 6, 18, 19), `bom/bom-notes.md`, README (cost, hero alt text).
+- Drawings: SSK-DWG-002 Rev P4; SSK-DWG-001 concept blueprint Rev P5; making sketches 104, 106, 107, 109, 110, 111 at P2; 119 and 120 new. Build plan pictures regenerated: overview (22 components), every joint, every step, low-edge layout; joints 13 and 14 are new.
+- Model STEP and STL regenerated.
+
+### Results
+
+- Requirement status change: R10 moves from at risk to met on paper (the wicks lift out on clips, in the model; the 30 minute time is to be shown at TRL 4). R4 stays at risk until the TRL 4 conductivity test; R7 stays at risk until a certificate is seen. Five at risk (R2, R4, R6, R7, R8), one not verifiable (R3), five met on paper (R1, R5, R9, R10, R11).
+- Value-engineering target: USD 355. Estimated cost of the constructable design: USD 443.20 (USD 88.20 over the target). The USD 27 added: PPS rails at list price USD 10, wick clips USD 14, labels USD 3.
+- Panel mass 18.7 kg dry, 22.7 kg wet (R9 met).
+
+### Proposed, awaiting Amish
+
+- The lip is four 7 mm tabs per plate on the rib lines, not a full-width lip. A full-width lip cannot work because each plate's own wick strips pass out through the same edge, and the base ring also needed slots. The tabs guard the gaps between wick strips; they do not stand in the path of a drip from a tail itself. If the conductivity tests show carryover at the strips, the alternatives are the 22 mm stagger (A2 (b)) or letting each wick dip below a full-width lip, which cuts the gap above the plate below from 6 mm to about 3.5 mm at the edge.
+- Appearance deviations in `product_model.py` from `model.py`: twin-wall glazing drawn with skins and flutes, trim screw heads, nameplate, drip valve body and lever, label bands and lettering, lid clips, outlet barb, outlet tube, jar and gravel, and a stepped corner cutaway (a render device). The render title no longer says "for drinking water", as the 2026-10-01 review advised, until the TRL 4 conductivity tests.
+
+### Cross-repo actions
+
+None arose from this repo's follow-ups.
+
+### Safety
+
+No change. Distillate stays test water until each stage's conductivity test passes (S7 in the build plan).
+
+### Recommended next step
+
+Amish renders the three views on the Mac (`.kit/photoreal.py` on the scenes in `/home/claude/renders/stillstack`), then `python .kit/cards.py .`; separately, ask a coater for the coating certificate and a distributor for a PPS sheet quote.
+
+## 2026-10-02: photoreal renders redone on the constructable design
+
+Rendered with Blender Cycles on Amish's Mac from the updated appearance model; captioned with `.kit/photo_caption.py`; `media/card.png` and `media/social-preview.png` regenerated with `.kit/cards.py`. Views: hero, exploded, detail. image_qc passes. Appearance deviations are those logged above as proposed, awaiting Amish.

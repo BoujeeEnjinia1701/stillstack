@@ -2,11 +2,11 @@
 
 ![TRL 3](https://img.shields.io/badge/TRL-3%20of%209-0F766E) ![Hardware: CERN-OHL-S-2.0](https://img.shields.io/badge/hardware-CERN--OHL--S--2.0-111827) ![Software: MIT](https://img.shields.io/badge/software-MIT-111827) [![DOI](https://zenodo.org/badge/1386352769.svg)](https://zenodo.org/badge/latestdoi/1386352769) [![REUSE compliant](https://github.com/BoujeeEnjinia1701/stillstack/actions/workflows/reuse.yml/badge.svg)](https://github.com/BoujeeEnjinia1701/stillstack/actions/workflows/reuse.yml) [![Archived in Software Heritage](https://archive.softwareheritage.org/badge/origin/https://github.com/BoujeeEnjinia1701/stillstack/)](https://archive.softwareheritage.org/browse/origin/?origin_url=https://github.com/BoujeeEnjinia1701/stillstack)
 
-**Area:** Water Security · **TRL:** 3 of 9 (proof of concept on paper) · **Value-engineering target:** USD 355 (estimated cost of the constructable design about USD 416) · **Difficulty:** 3 of 5
+**Area:** Water Security · **TRL:** 3 of 9 (proof of concept on paper) · **Value-engineering target:** USD 355 (estimated cost of the constructable design about USD 443) · **Difficulty:** 3 of 5
 
 Multi-stage wick still that reuses the latent heat of condensation from each stage in the next one.
 
-![StillStack: four-stage solar wick still for drinking water, product render](media/render-hero.png)
+![StillStack: four-stage solar wick still, product render](media/render-hero.png)
 
 [Exploded render](media/render-exploded.png) · [Detail render](media/render-detail.png) · [Interactive 3D model](media/viewer.html) · [Concept blueprint (PDF)](media/concept-blueprint.pdf) · [General arrangement (PDF)](cad/drawings/SSK-DWG-002.pdf) · [Prototype build plan](docs/05-build-plan.md) · [Design decisions](docs/06-design-decisions.md) · [Sizing note](docs/04-calcs/01-sizing.md) · [Review note](docs/REVIEW.md)
 
@@ -56,7 +56,7 @@ Single-basin solar stills make only about 3 to 5 L per m2 per day.
 
 Multi-stage wick still that reuses the latent heat of condensation from each stage in the next one.
 
-The TRL 3 sizing (SSK-CAL-001) gives about 10.6 L per m2 per day on a 5.5 kWh per m2 day, with a gained output ratio of about 1.3. Dry stagnation reaches about 140 °C, so stages 1 and 2 use materials rated to 150 °C and a stagnation cover is supplied; the stage 3 margin is thin. Value-engineering target: USD 355. Estimated cost of the constructable design: USD 416.20 (USD 61.20 over the target).
+The TRL 3 sizing (SSK-CAL-001) gives about 10.6 L per m2 per day on a 5.5 kWh per m2 day, with a gained output ratio of about 1.3. Dry stagnation reaches about 140 °C, so stages 1 and 2 use materials rated to 150 °C and a stagnation cover is supplied; the stage 3 margin is thin. Value-engineering target: USD 355. Estimated cost of the constructable design: USD 443.20 (USD 88.20 over the target).
 
 Full design precis: [docs/02-concept.md](docs/02-concept.md)
 

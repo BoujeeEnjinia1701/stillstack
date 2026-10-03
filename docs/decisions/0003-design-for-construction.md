@@ -3,7 +3,7 @@ doc_id: SSK-DDR-003
 title: StillStack design for construction
 project: StillStack
 doc_type: Design decision record
-version: "0.2"
+version: "0.3"
 status: Draft
 date: '2026-10-02'
 author: Amish Chadha
@@ -17,6 +17,10 @@ revisions:
   date: '2026-10-02'
   author: Amish Chadha
   change: "Accepted by Amish (2026-10-02) with exceptions: A2 decided as option (c), P11 wick fixing replaced by clips; A1 as recommended; status kept Draft"
+- version: "0.3"
+  date: '2026-10-02'
+  author: Amish Chadha
+  change: "Exceptions carried into the model, drawings, BOM and calculations (lip tabs, wick clips, PPS rails, labels); mass, cost and drawing figures updated"
 ---
 
 # 0003: Design for construction
@@ -54,11 +58,11 @@ The changes keep what the panel does: the same 1 m2 aperture, four stages with 6
 | Item | Change | Reason |
 | --- | --- | --- |
 | Yield | Wet wick fraction 0.824 to 0.817; design-day yield 10.6 L and gained output ratio 1.26 to 1.34 unchanged at the precision quoted. Low-end vapor loss 25 mL per day (0.2 %). | Wicks stop 13 mm inside the zigzag edge. |
-| Mass | Panel 18.5 kg dry (was 16.7), 22.5 kg wet; stand 8.9 kg. R9 (20 kg dry) still met. | Base ring, trim, tongues, brackets. |
-| Cost | Value-engineering target: USD 355. Estimated cost of the constructable design: USD 416.20 (USD 61.20 over the target); the concept priced at USD 351.20. New BOM lines 15 to 17; lines 2 to 5, 8, 11 and 12 respecified. | Larger plate blanks, trim, stand ground frame, brackets, closure. |
+| Mass | Panel 18.7 kg dry (was 16.7), 22.7 kg wet; stand 8.9 kg, with the wick clips, PPS rails and stop blocks. R9 (20 kg dry) still met. | Base ring, trim, tongues, brackets. |
+| Cost | Value-engineering target: USD 355. Estimated cost of the constructable design: USD 443.20 (USD 88.20 over the target, after the decisions of 2026-10-02 added USD 27); the concept priced at USD 351.20. New BOM lines 15 to 19; lines 2 to 5, 8, 11 and 12 respecified. | Larger plate blanks, trim, stand ground frame, brackets, closure. |
 | Footprint and wind | 1.28 x 1.25 m at 10 deg (was 1.28 x 1.16 m); lift equals weight at 18.7 m/s (was 17.5 m/s). | Props sit outside the posts. |
-| Drawings | SSK-DWG-002 Rev P3; making sketches SSK-DWG-101 to 118 added; concept blueprint SSK-DWG-001 Rev P4. | Follow the model. |
-| Documents | SSK-CAL-001 v0.4, SSK-PRC-001 v0.6, SSK-REQ-001 v0.6. R12 is now reported against the value-engineering target; no other requirement changed status. | Follow the model. |
+| Drawings | SSK-DWG-002 Rev P4; making sketches SSK-DWG-101 to 120 added (119 and 120 are the wick clips); concept blueprint SSK-DWG-001 Rev P5. | Follow the model. |
+| Documents | SSK-CAL-001 v0.6, SSK-PRC-001 v0.8, SSK-REQ-001 v0.8. R12 is reported against the value-engineering target; R10 moved from at risk to met on paper when the wick clips were modelled. | Follow the model. |
 
 *Table 3. Items proposed to Amish; decided on 2026-10-02 (A1 as recommended, A2 as option (c)).*
 
@@ -70,7 +74,7 @@ The changes keep what the panel does: the same 1 m2 aperture, four stages with 6
 ## Consequences
 
 - `design_state: constructable` in `project.yaml`. The build plan SSK-BLD-001 shows every component and step in pictures generated from the model (`cad/src/build_plan_media.py`), and the design decisions register SSK-DEC-001 lists A1, A2 and the other open items.
-- Exceptions accepted on 2026-10-02: the high-edge lip of A2 (c) and the wick clips that replace P11's silicone dots are to be carried into the model, the plate and wick sketches, the BOM and the build plan pictures.
-- Requirement status is unchanged except that R12 is now reported against the value-engineering target: none not met, six at risk (R2, R4, R6, R7, R8, R10), one not verifiable at TRL 3 (R3), four met on paper (R1, R5, R9, R11), and R12 USD 61.20 over the target.
-- The photoreal renders (`media/render-*.png`), `media/card.png`, `media/social-preview.png` and the appearance model `cad/src/product_model.py` still show the concept frame, lips, stand and trough; they need updating on Amish's Mac, where Blender is.
+- Exceptions accepted on 2026-10-02: the high-edge lip of A2 (c) and the wick clips that replace P11's silicone dots are carried into the model, the plate and wick sketches, the BOM and the build plan pictures (2026-10-02). The lip is four 7 mm tabs on the rib lines of each condensing plate, not a full-width lip, because the wicks of the plate pass out of the same edge; the base ring has four slots for the bottom plate's tabs.
+- Requirement status is unchanged except that R12 is now reported against the value-engineering target: none not met, five at risk (R2, R4, R6, R7, R8), one not verifiable at TRL 3 (R3), five met on paper (R1, R5, R9, R10, R11), and R12 USD 88.20 over the target.
+- The photoreal renders (`media/render-*.png`), `media/card.png`, `media/social-preview.png` and the appearance model `cad/src/product_model.py` are being redone: the appearance model now follows the constructable design and the render scenes are exported; the images are made on Amish's Mac, where Blender is.
 - The plate tongues stay straight until the manifold and gutter are fitted, then are bent by hand (build plan steps 15 and 17).

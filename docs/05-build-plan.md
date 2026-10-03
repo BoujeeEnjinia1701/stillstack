@@ -3,7 +3,7 @@ doc_id: SSK-BLD-001
 title: StillStack prototype build plan
 project: StillStack
 doc_type: Build plan
-version: "0.2"
+version: "0.3"
 status: Draft
 date: '2026-10-02'
 author: Amish Chadha
@@ -17,6 +17,10 @@ revisions:
     date: '2026-10-02'
     author: Amish Chadha
     change: "SSK-DDR-003 accepted with exceptions (2026-10-02): high-edge lip on condensing plates, wick clips in place of silicone dots, PPS rails in their own colour"
+  - version: "0.3"
+    date: '2026-10-02'
+    author: Amish Chadha
+    change: "Approved follow-ups carried into the design: lip tabs and base ring slots, wick clips (two new making sketches and two new joint pictures), PPS rails and stop blocks, fluoropolymer coating, labels; every picture regenerated from the model"
 ---
 
 # StillStack prototype build plan
@@ -29,13 +33,13 @@ revisions:
 
 *Figure 1. Every component pulled apart and numbered in build order, with the panel at 20° on its stand.*
 
-The prototype is one 1 m2 StillStack panel on its tilting stand. The panel is a shallow plywood box lined with stone wool, closed by twin-wall glazing under an aluminium trim. Inside it lies the stack: a black absorber plate on top, three condenser plates and a bottom plate below it, with a cloth wick bonded under each of the top four plates and 6 mm gaps held by plastic rails and silicone cords. Feed water runs from a trough at the high edge into the wicks; at the low edge, tongues cut from the plates lead distillate into a lidded manifold and brine into a gutter beyond it. Figure 1 shows the 20 components in the order you make or fit them. Most are made in a small workshop: the plywood walls, base ring and stand, the five aluminium plates and the fins, the rails, wicks, trim and brackets. The glazing, liner board, silicone cord, gutters, manifold, fixings and sealant are bought and cut or drilled. The work is sawing and drilling plywood and timber, cutting and folding thin aluminium sheet with snips, cutting fabric and board, a little 3D printing, and sealing with silicone. The parts cost about USD 416 from the bill of materials.
+The prototype is one 1 m2 StillStack panel on its tilting stand. The panel is a shallow plywood box lined with stone wool, closed by twin-wall glazing under an aluminium trim. Inside it lies the stack: a black absorber plate on top, three condenser plates and a bottom plate below it, with a cloth wick clipped under each of the top four plates and 6 mm gaps held by plastic rails and silicone cords. Feed water runs from a trough at the high edge into the wicks; at the low edge, tongues cut from the plates lead distillate into a lidded manifold and brine into a gutter beyond it. Figure 1 shows the 22 components in the order you make or fit them. Most are made in a small workshop: the plywood walls, base ring and stand, the five aluminium plates and the fins, the rails, wicks, trim and brackets. The glazing, liner board, silicone cord, gutters, manifold, fixings and sealant are bought and cut or drilled. The work is sawing and drilling plywood and timber, cutting and folding thin aluminium sheet with snips, cutting fabric and board, a little 3D printing, and sealing with silicone. The parts cost about USD 416 from the bill of materials.
 
 > **Safety:** In sun the absorber passes 80 °C, and about 140 °C if the wicks run dry. Build indoors or in shade, keep the stagnation cover on whenever the panel faces the sun without feed water, and never touch the glazing or open the stack in sun. Cut aluminium edges are sharp: deburr everything and wear gloves. Stone wool sheds fibres: cut it with gloves, glasses and a dust mask. The distillate is not drinking water until it has been tested (section 6).
 
 ## 2. What changed to make it buildable
 
-The concept showed what the still does; some of its parts could not be made, fixed or put together as drawn. Each change below keeps what the still does, and all of them are recorded in decision record SSK-DDR-003, which Amish accepted on 2026-10-02 with two exceptions: a 4 mm downturned lip on each condensing plate's high edge, and clips in place of the silicone dots for the wicks (sections 3.10 and 3.11).
+The concept showed what the still does; some of its parts could not be made, fixed or put together as drawn. Each change below keeps what the still does, and all of them are recorded in decision record SSK-DDR-003, which Amish accepted on 2026-10-02 with two exceptions, both now in the model and the pictures: a 4 mm downturned lip on each condensing plate's high edge, and clips in place of the silicone dots for the wicks (sections 3.7, 3.10 and 3.11).
 
 *Table 1. Changes from the concept.*
 
@@ -45,11 +49,13 @@ The concept showed what the still does; some of its parts could not be made, fix
 | Low wall | Four 1 m long, 2 mm slits for the plate lips, leaving slivers of plywood | A comb with eleven open-topped notches and a separate cap strip (Figure 6) | Each plate drops in from above; lifting the cap lets the plates out again |
 | Low edge of the plates | Full-width lips, with the brine exit not worked out | A zigzag edge: distillate tongues at the rib lines and corners, brine tongues at the strip centres carrying the wick tails over the closed manifold lid (Figures 21 and 22) | Brine and distillate never share an edge; every brine path keeps 10 mm or more from every distillate path |
 | Stack against sliding | Nothing; the plates faced soft stone wool | Two stop blocks in the low corners of the liner (Figure 11) | A hard face for the stack's down-slope load |
-| Glazing | A sheet the size of the opening, held by nothing | A larger sheet on foam tape on the wall tops, under a screwed aluminium trim (Figure 26) | Room to grow 4.8 mm when hot; no shade on the aperture |
+| Glazing | A sheet the size of the opening, held by nothing | A larger sheet on foam tape on the wall tops, under a screwed aluminium trim (Figure 30) | Room to grow 4.8 mm when hot; no shade on the aperture |
 | Feed | Wicks draped over a solid high wall into a loose trough | Five openings in the high wall; tails rise behind a foam closure into a trough on two brackets (Figure 4) | Feed reaches each stage; vapor stays in |
-| Manifold and gutter | No support | Two outlet brackets on the low wall (Figure 30) | The gutter sits lower and further out than the manifold |
-| Stand | Vertical rear struts that could not follow the panel's high edge as the tilt changes | Ground frame, front posts with gussets, a pivot bolt, and fixed props pinned at one of six holes (Figures 31 to 36) | Rigid at every tilt from 10° to 35°; the panel's weight stays well inside the frame |
-| Fins, corners, wicks, ribs | No fixing method | Fins bonded with silicone adhesive; corners glued and screwed; wicks held by silicone dots; ribs stopped short of the tongues | Plain workshop methods |
+| Manifold and gutter | No support | Two outlet brackets on the low wall (Figure 34) | The gutter sits lower and further out than the manifold |
+| Stand | Vertical rear struts that could not follow the panel's high edge as the tilt changes | Ground frame, front posts with gussets, a pivot bolt, and fixed props pinned at one of six holes (Figures 35 to 40) | Rigid at every tilt from 10° to 35°; the panel's weight stays well inside the frame |
+| Plate high edge | Plain edge, with feed tails leaving 6 mm above the condensing face of the plate below | Four 7 mm tabs bent down 4 mm on each condensing plate's high edge, on the rib lines, with slots in the base ring for the bottom plate's tabs (Figure 26) | Gives feed water at the high edge a drip edge away from the condensing face; the wicks pass between the tabs |
+| Wick fixing | Wicks bonded under the plates | Two stainless clips per wick strip, one at the high edge and one on the brine tongue, with no adhesive (Figures 24 to 27) | The wicks lift out for rinsing; no adhesive on the wet side |
+| Fins, corners, ribs | No fixing method | Fins bonded with silicone adhesive; corners glued and screwed; ribs stopped 6 mm short of the high edge and 8 mm short of the tongue tips | Plain workshop methods |
 
 ## 3. Making the components
 
@@ -137,6 +143,7 @@ The high wall and the low wall comb sit between the side walls. Each corner is g
 
 1. Cut two side strips 1,062 x 52 mm, one high strip 52 x 970 mm and one low strip 40 x 970 mm.
 2. Pilot drill 2.5 mm every 150 mm along each strip's centre line.
+3. In the high strip, cut four slots 4 mm wide and 5 mm deep down from the top face, centred 97.2 and 291.6 mm each side of the centre line (the rib lines), so the bottom plate's lip tabs have room. Saw the two sides and chisel out.
 
 **How it fits the parts next to it.** The side strips lie flush with the outside of the side walls and the high wall and stop at the inside face of the low wall comb. The high and low strips fit between them. Glue and screw (4 x 40 mm) up into the wall edges.
 
@@ -165,9 +172,9 @@ The high wall and the low wall comb sit between the side walls. Each corner is g
 
 *Figure 10. Stop block making sketch (SSK-DWG-106).*
 
-**What it is and what it is made from.** A block in each low corner that the whole stack bears on, so it cannot slide down the slope. The stage 1 rail polymer, PPS, rated to 150 °C (decided 2026-10-02).
+**What it is and what it is made from.** A block in each low corner that the whole stack bears on, so it cannot slide down the slope. PPS, natural (tan), the stage 1 and 2 rail polymer, rated above 150 °C (decided 2026-10-02).
 
-**How to make it.** Cut a block 27 x 15 x 33 mm from the rail stock, or glue two pieces of it together with high-temperature silicone.
+**How to make it.** Cut a block 27 x 15 x 33 mm from the offcut of the 7 mm PPS sheet the stage 1 and 2 rails come from, or glue two pieces of it together with high-temperature silicone.
 
 **How it fits the parts next to it.**
 
@@ -197,16 +204,17 @@ The block fills the liner's low corner: its back against the low wall comb, its 
 
 *Figure 15. Fin making sketch (SSK-DWG-108).*
 
-**What it is and what it is made from.** The last condenser: stage 4 condenses on its top face, and the fins underneath shed the remaining heat to the air. Aluminium sheet 0.5 mm, 3003 or 1050, with the food-contact coating on its top face; fins of 0.5 mm aluminium flashing.
+**What it is and what it is made from.** The last condenser: stage 4 condenses on its top face, and the fins underneath shed the remaining heat to the air. Aluminium sheet 0.5 mm, 3003 or 1050, with a fluoropolymer (PTFE or PFA type) cookware coating on its top face, certified for drinking-water contact and rated to 150 °C dry; fins of 0.5 mm aluminium flashing.
 
 **How to make it.**
 
-1. From a 1.0 x 1.25 m sheet, cut a body 996 x 996 mm whose low edge is the zigzag of Figure 14: tips at the six distillate tongue lines, falling 25 mm to a flat root at each strip centre.
+1. From a 1.0 x 1.25 m sheet (the blank, tongues and lip included, is 1,224 mm long, so it fits), cut a body 996 x 996 mm whose low edge is the zigzag of Figure 14: tips at the six distillate tongue lines, falling 25 mm to a flat root at each strip centre.
 2. Leave six distillate tongues 30 mm wide and 56.5 mm long beyond the tip line, straight for now. Mark a bend line 47 mm from the tip line on each.
-3. File every edge smooth and free of burrs.
-4. Coat the top face, tongues included, with the food-contact coating.
-5. Fins: cut ten strips 50 x 940 mm and fold each 90° along its length 20 mm from one edge, between two hardwood battens clamped in a vice.
-6. Bond each fin's 20 mm flange under the plate with high-temperature silicone adhesive, web hanging down and running down the slope, at 99.6 mm pitch with the first 49.8 mm in from a side edge and the ends 28 mm in from the high edge.
+3. Lip: on the high edge leave four tabs 7 mm wide, centred 97.2 and 291.6 mm each side of the centre line (the rib lines), each 5 mm long beyond the edge. Bend each 90° down over a steel bar so it hangs 4 mm below the plate.
+4. File every edge smooth and free of burrs.
+5. Coat the top face, tongues included, with the coating, after the tabs are bent.
+6. Fins: cut ten strips 50 x 940 mm and fold each 90° along its length 20 mm from one edge, between two hardwood battens clamped in a vice.
+7. Bond each fin's 20 mm flange under the plate with high-temperature silicone adhesive, web hanging down and running down the slope, at 99.6 mm pitch with the first 49.8 mm in from a side edge and the ends 28 mm in from the high edge.
 
 **How it fits the parts next to it.**
 
@@ -228,12 +236,12 @@ The plate's four edges rest on the base ring's ledge; its corners touch the stop
 
 *Figure 18. Side rail making sketch (SSK-DWG-109).*
 
-**What it is and what it is made from.** Two rails per gap, along the side edges, that hold the plates 7 mm apart (6 mm gap plus the 1 mm wick). Stages 1 and 2 (the top two gaps): PPS rated to 150 °C (decided 2026-10-02), in a different colour from the stage 3 and 4 rails. Stages 3 and 4: printed polycarbonate.
+**What it is and what it is made from.** Two rails per gap, along the side edges, that hold the plates 7 mm apart (6 mm gap plus the 1 mm wick). Stages 1 and 2 (the top two gaps): natural (tan) PPS rated above 150 °C (decided 2026-10-02). Stages 3 and 4: printed polycarbonate in teal, so the two kinds never swap.
 
 **How to make it.**
 
-1. Stages 1 and 2: cut four strips 996 x 12 mm from 7 mm sheet.
-2. Stages 3 and 4: print four rails 996 x 12 x 7 mm in polycarbonate, each in four 249 mm sections, and butt-join the sections with high-temperature silicone.
+1. Stages 1 and 2: cut four strips 996 x 12 mm from 7 mm PPS sheet; keep the offcut for the stop blocks.
+2. Stages 3 and 4: print four rails 996 x 12 x 7 mm in teal polycarbonate, each in four 249 mm sections, and butt-join the sections with high-temperature silicone.
 3. Mark each rail with its stage number on the outside face.
 
 **How it fits the parts next to it.**
@@ -269,14 +277,15 @@ Each rail lies flush with a side edge of the plate below, its low end touching t
 
 *Figure 21. Condenser plate making sketch (SSK-DWG-110), plate 2 shown with its tongues straight.*
 
-**What they are and what they are made from.** The three plates between the absorber and the bottom plate. Each condenses the stage above on its top face and carries the wick of the stage below on its underside. Aluminium sheet 0.5 mm with the food-contact coating on the top face.
+**What they are and what they are made from.** The three plates between the absorber and the bottom plate. Each condenses the stage above on its top face and carries the wick of the stage below on its underside. Aluminium sheet 0.5 mm with the fluoropolymer coating on the top face (as for the bottom plate).
 
 **How to make them.**
 
-1. From a 1.0 x 1.25 m sheet each, cut the same 996 x 996 mm body and zigzag low edge as the bottom plate (Figure 14).
+1. From a 1.0 x 1.25 m sheet each, cut the same 996 x 996 mm body, lip tabs and zigzag low edge as the bottom plate (Figure 14).
 2. Leave six distillate tongues 30 mm wide at the tips and five brine tongues 50 mm wide at the roots, all straight. Lengths, distillate from the tip line and brine from the root line: plate 3 (lowest) 68 and 175 mm; plate 2, 80 and 187 mm; plate 1 (highest), 91 and 198 mm.
 3. Mark the bend lines: distillate 51, 55 and 59 mm from the tip line, brine 143, 147 and 151 mm from the root line, for plates 3, 2 and 1.
-4. Bend a 4 mm downturned lip along the high edge (decided 2026-10-02; the sketch is still to be updated), deburr, coat the top face, and fit the five wick strips of the stage below under it (section 3.11).
+4. Lip: on the high edge leave four tabs 7 mm wide at the rib lines (97.2 and 291.6 mm each side of the centre line) and bend each 90° down so it hangs 4 mm below the plate. The tabs stand clear of the wick strips and of the rib ends.
+5. Deburr, coat the top face after the tabs are bent, and clip the five wick strips of the stage below under it (section 3.11).
 
 **How they fit the parts next to them.**
 
@@ -294,24 +303,42 @@ Each plate rests on the rails and ribs of the gap below, its corners against the
 
 *Figure 23. Wick strip cutting sketch (SSK-DWG-111): the part under the plate, with the brine tail.*
 
-**What they are and what they are made from.** The wet cloth that evaporates water in each stage, fed from the trough at the high end, with its excess leaving as brine at the low end. Viscose-polyester or cotton nonwoven about 1 mm thick that tolerates 150 °C dry.
+**What they are and what they are made from.** The wet cloth that evaporates water in each stage, fed from the trough at the high end, with its excess leaving as brine at the low end. Nonwoven about 1 mm thick that tolerates 150 °C dry.
 
 **How to make them.**
 
 1. For each stage cut a 1.0 x 1.4 m piece into five strips: 171, 167, 167, 167 and 171 mm wide.
 2. Low end: cut each strip to follow its plate's zigzag edge 13 mm inside it (a 10 mm dry break), then leave a 30 mm wide tail along the middle of the brine tongue, as long as the tongue plus 10 mm.
 3. High end: leave 150 mm beyond the plate's high edge for the feed tail.
-4. Lay the plate face down on a clean table and hold each strip under it with clips at its high and low ends (stainless, or PPS in stages 1 and 2), with the tail centred under its brine tongue. Use no adhesive, so the wicks lift out for rinsing (decided 2026-10-02, replacing the silicone dots; the clip detail and pictures are still to be drawn).
+4. Lay the plate face down on a clean table. Slide a high-end clip (Figure 24) onto each strip so its bar lies under the wick and its ears hook round the plate edge in the dry breaks beside the strip, then slide a tongue clip (Figure 25) onto the brine tongue so it holds the tail centred under the tongue. Use no adhesive, so the wicks lift out for rinsing.
 
-**How they fit the parts next to them.** Each strip lies between a rail and a rib, or between two ribs, with 10 mm of dry plate on each side. The feed tail leaves through the high wall opening for its strip (Figure 4); the brine tail rides under its brine tongue (Figure 22).
+**How they fit the parts next to them.** Each strip lies between a rail and a rib, or between two ribs, with 10 mm of dry plate on each side; the clip ears sit in those dry breaks, beside the lip tabs (Figure 26). The feed tail leaves through the high wall opening for its strip (Figure 4); the brine tail rides under its brine tongue (Figure 22).
+
+![Figure 24. Making sketch of the high-end wick clip](../cad/drawings/SSK-DWG-119.png)
+
+*Figure 24. High-end wick clip making sketch (SSK-DWG-119): a 0.4 x 8 mm stainless strip, shown for the centre strip of a stage.*
+
+![Figure 25. Making sketch of the brine tongue clip](../cad/drawings/SSK-DWG-120.png)
+
+*Figure 25. Brine tongue clip making sketch (SSK-DWG-120).*
+
+**The two clips.** Both are folded by hand from 0.4 x 8 mm 304 stainless strip, 20 of each (40 in all). The high-end clip is 206 mm long for a 167 mm strip: a 185 mm bar under the wick, and at each end three folds that carry an ear out under the plate's high edge, up along it and 6 mm flat over its top face, in the dry break beside the strip. The tongue clip is 62 mm long: a 51 mm base under the wick tail, two 2.3 mm legs up the sides of the brine tongue and a 3.4 mm flange turned in over the tongue's top face. Spring the flaps about 5° tighter than square so they grip. Neither clip touches a rib, a lip tab, the liner or the lid (the nearest is 1.5 mm).
+
+![Figure 26. Joint 13: the high edge with its lip tab and wick clip ears](05-build-plan/joint-13.png)
+
+*Figure 26. Seen from the high end, cut at a rib line: the lip hangs 4 mm from the plate edge at the rib line, and each wick's clip ears sit in the dry break beside the strip.*
+
+![Figure 27. Joint 14: the brine tongue clip](05-build-plan/joint-14.png)
+
+*Figure 27. The tongue clip holds the 30 mm wick tail under the 50 mm brine tongue, 7 to 15 mm past the root line and clear of the chevron dam.*
 
 **Check before moving on.** No fibre bridges a dry break; each tail is centred on its tongue.
 
 ### 3.12 Absorber plate
 
-![Figure 24. Making sketch of the absorber plate](../cad/drawings/SSK-DWG-112.png)
+![Figure 28. Making sketch of the absorber plate](../cad/drawings/SSK-DWG-112.png)
 
-*Figure 24. Absorber plate making sketch (SSK-DWG-112).*
+*Figure 28. Absorber plate making sketch (SSK-DWG-112).*
 
 **What it is and what it is made from.** The top plate that absorbs the sunlight; stage 1's wick is bonded under it. Aluminium sheet 0.5 mm with high-temperature matte black paint on top.
 
@@ -327,9 +354,9 @@ Each plate rests on the rails and ribs of the gap below, its corners against the
 
 ### 3.13 Glazing trim (make 4)
 
-![Figure 25. Making sketch of the glazing trim](../cad/drawings/SSK-DWG-113.png)
+![Figure 29. Making sketch of the glazing trim](../cad/drawings/SSK-DWG-113.png)
 
-*Figure 25. Glazing trim making sketch (SSK-DWG-113).*
+*Figure 29. Glazing trim making sketch (SSK-DWG-113).*
 
 **What it is and what it is made from.** The frame that holds the glazing down on the walls. Aluminium unequal angle 25 x 20 x 2 mm.
 
@@ -340,9 +367,9 @@ Each plate rests on the rails and ribs of the gap below, its corners against the
 
 **How it fits the parts next to it.**
 
-![Figure 26. The trim, glazing and tape at the top of a side wall](05-build-plan/joint-02.png)
+![Figure 30. The trim, glazing and tape at the top of a side wall](05-build-plan/joint-02.png)
 
-*Figure 26. The 25 mm leg lies on the glazing edge over a bead of silicone; the 20 mm leg hangs down the outside of the wall (detail of Figure 19).*
+*Figure 30. The 25 mm leg lies on the glazing edge over a bead of silicone; the 20 mm leg hangs down the outside of the wall (detail of Figure 19).*
 
 The glazing sits on 3 mm foam tape on the wall tops, its edge 7 mm inside the trim's hanging leg so it can grow when hot. The trim's top leg stops 14 mm outside the aperture, so it casts no shade. Four 4 x 20 mm stainless screws per length go through the hanging leg into the plywood.
 
@@ -350,9 +377,9 @@ The glazing sits on 3 mm foam tape on the wall tops, its edge 7 mm inside the tr
 
 ### 3.14 Distillate manifold lid
 
-![Figure 27. Slotting sketch of the manifold lid](../cad/drawings/SSK-DWG-114.png)
+![Figure 31. Slotting sketch of the manifold lid](../cad/drawings/SSK-DWG-114.png)
 
-*Figure 27. Manifold lid slotting sketch (SSK-DWG-114).*
+*Figure 31. Manifold lid slotting sketch (SSK-DWG-114).*
 
 **What it is and what it is made from.** The lid of the bought food-grade channel that collects the distillate. Six slots let the distillate tongues in; everywhere else the lid is closed, so brine dripping above it cannot reach the distillate.
 
@@ -364,17 +391,17 @@ The glazing sits on 3 mm foam tape on the wall tops, its edge 7 mm inside the tr
 
 **How it fits the parts next to it.**
 
-![Figure 28. Joint 4: distillate tongues into the manifold](05-build-plan/joint-04.png)
+![Figure 32. Joint 4: distillate tongues into the manifold](05-build-plan/joint-04.png)
 
-*Figure 28. Cut on a rib line: each condenser plate's tongue turns down through the slot, 4 mm outside the one below, and ends 3 mm inside the channel.*
+*Figure 32. Cut on a rib line: each condenser plate's tongue turns down through the slot, 4 mm outside the one below, and ends 3 mm inside the channel.*
 
 **Check before moving on.** The lid is tight on the channel all along its length; the slots line up with the notches in the low wall.
 
 ### 3.15 Outlet brackets (make 2)
 
-![Figure 29. Making sketch of the outlet bracket](../cad/drawings/SSK-DWG-115.png)
+![Figure 33. Making sketch of the outlet bracket](../cad/drawings/SSK-DWG-115.png)
 
-*Figure 29. Outlet bracket making sketch (SSK-DWG-115).*
+*Figure 33. Outlet bracket making sketch (SSK-DWG-115).*
 
 **What it is and what it is made from.** Two L-shaped brackets on the low wall that carry the manifold and the brine gutter. Aluminium flat bar 30 x 4 mm.
 
@@ -386,9 +413,9 @@ The glazing sits on 3 mm foam tape on the wall tops, its edge 7 mm inside the tr
 
 **How it fits the parts next to it.**
 
-![Figure 30. Joint 9: outlet bracket carrying the manifold and the brine gutter](05-build-plan/joint-09.png)
+![Figure 34. Joint 9: outlet bracket carrying the manifold and the brine gutter](05-build-plan/joint-09.png)
 
-*Figure 30. Cut at a bracket: the manifold sits against the upright; the gutter sits on the outer end, lower and further out.*
+*Figure 34. Cut at a bracket: the manifold sits against the upright; the gutter sits on the outer end, lower and further out.*
 
 Each bracket is screwed (4 x 25 mm stainless) to a tooth of the low wall comb and its sill, 335 mm each side of the centre line.
 
@@ -396,9 +423,9 @@ Each bracket is screwed (4 x 25 mm stainless) to a tooth of the low wall comb an
 
 ### 3.16 Ground frame
 
-![Figure 31. Making sketch of the ground rail](../cad/drawings/SSK-DWG-116.png)
+![Figure 35. Making sketch of the ground rail](../cad/drawings/SSK-DWG-116.png)
 
-*Figure 31. Ground rail making sketch (SSK-DWG-116), with the six prop holes.*
+*Figure 35. Ground rail making sketch (SSK-DWG-116), with the six prop holes.*
 
 **What it is and what it is made from.** Two ground rails and two cross rails that the stand stands on. 45 x 45 mm treated timber (it never touches the water).
 
@@ -415,9 +442,9 @@ Each bracket is screwed (4 x 25 mm stainless) to a tooth of the low wall comb an
 
 ### 3.17 Front posts and gussets (make 2 of each)
 
-![Figure 32. Making sketch of the post and gusset](../cad/drawings/SSK-DWG-117.png)
+![Figure 36. Making sketch of the post and gusset](../cad/drawings/SSK-DWG-117.png)
 
-*Figure 32. Front post and gusset making sketch (SSK-DWG-117).*
+*Figure 36. Front post and gusset making sketch (SSK-DWG-117).*
 
 **What they are and what they are made from.** The posts that carry the panel's pivot, made rigid on the ground rails by plywood gussets. 45 x 45 mm treated timber; gussets 12 mm exterior plywood.
 
@@ -429,9 +456,9 @@ Each bracket is screwed (4 x 25 mm stainless) to a tooth of the low wall comb an
 
 **How they fit the parts next to them.**
 
-![Figure 33. Joint 10: front pivot, post, gusset and ground rail](05-build-plan/joint-10.png)
+![Figure 37. Joint 10: front pivot, post, gusset and ground rail](05-build-plan/joint-10.png)
 
-*Figure 33. Seen from inside the stand: the gusset joins post and rail behind the post; the M10 pivot bolt goes through the post and the side wall.*
+*Figure 37. Seen from inside the stand: the gusset joins post and rail behind the post; the M10 pivot bolt goes through the post and the side wall.*
 
 Each post stands on top of its ground rail at the mark; the gusset is glued and screwed (eight 4 x 40 mm screws) to the inside faces of post and rail, behind the post. The post's inside face touches the side wall, and an M10 x 70 stainless bolt through post and wall, with a large washer and nut inside the wall in the liner pocket, is the pivot.
 
@@ -439,9 +466,9 @@ Each post stands on top of its ground rail at the mark; the gusset is glued and 
 
 ### 3.18 Props (make 2)
 
-![Figure 34. Making sketch of the prop](../cad/drawings/SSK-DWG-118.png)
+![Figure 38. Making sketch of the prop](../cad/drawings/SSK-DWG-118.png)
 
-*Figure 34. Prop making sketch (SSK-DWG-118).*
+*Figure 38. Prop making sketch (SSK-DWG-118).*
 
 **What it is and what it is made from.** A fixed-length strut on each side from the prop block to the ground rail; the hole it is pinned in sets the tilt. 45 x 45 mm treated timber.
 
@@ -452,13 +479,13 @@ Each post stands on top of its ground rail at the mark; the gusset is glued and 
 
 **How it fits the parts next to it.**
 
-![Figure 35. Joint 11: prop top on its block](05-build-plan/joint-11.png)
+![Figure 39. Joint 11: prop top on its block](05-build-plan/joint-11.png)
 
-*Figure 35. The prop hinges on an M10 bolt through the prop, the prop block and the side wall.*
+*Figure 39. The prop hinges on an M10 bolt through the prop, the prop block and the side wall.*
 
-![Figure 36. Joint 12: prop foot pinned to the ground rail](05-build-plan/joint-12.png)
+![Figure 40. Joint 12: prop foot pinned to the ground rail](05-build-plan/joint-12.png)
 
-*Figure 36. The foot lies against the outside of the ground rail and is pinned through the hole for the chosen tilt.*
+*Figure 40. The foot lies against the outside of the ground rail and is pinned through the hole for the chosen tilt.*
 
 The top: an M10 x 120 stainless bolt through prop, block and wall, nut and washer inside the wall. The foot: an M10 x 100 stainless bolt with a wing nut through the prop and the rail hole for the tilt. To change the tilt, support the panel, pull both foot pins, swing the props to the new holes and refit the pins.
 
@@ -478,6 +505,8 @@ Buy to specification, not brand. Line numbers are those of the bill of materials
 - **Stagnation cover (line 14).** Opaque white or aluminised tarpaulin 1.3 x 1.3 m with an elastic edge cord.
 - **Glazing tape (line 15).** Silicone foam tape 3 x 30 mm, 4.3 m.
 - **Feed closure (line 17).** Closed-cell silicone foam strip 5 x 35 mm, 1.0 m.
+- **Wick clips (line 18).** 0.4 x 8 mm 304 stainless strip, about 5.5 m (one 6 m coil), cut and folded in the workshop.
+- **Labels (line 19).** Two UV-stable vinyl or engraved aluminium labels, 80 x 25 mm, DISTILLATE beside the manifold outlet and BRINE beside the brine drain.
 - **Stand hardware (line 12).** Two M10 x 70 and two M10 x 120 stainless bolts with nuts and large washers; two M10 x 100 stainless bolts with wing nuts; four galvanised corner brackets; four ground stakes.
 
 ## 4. Putting it together
@@ -518,25 +547,25 @@ Lower it level, fins down; the six tongues drop into the comb's notches and rest
 
 ![Step 6](05-build-plan/step-06.png)
 
-Lay the two stage 4 rails flush with the side edges, low ends on the stop blocks, and the four ribs on the rib lines. Lower plate 3, wick 4 underneath, so its tongues drop into the notches; feed the wick tails out through the high wall openings. Then run the chevron dams on plate 3's top face. **Hold point:** with a 6 mm gauge, the gap is even at the four corners and on each rib line.
+Lay the two stage 4 rails flush with the side edges, low ends on the stop blocks, and the four ribs on the rib lines. Lower plate 3, with wick 4 clipped under it (ten clips), so its tongues drop into the notches; feed the wick tails out through the high wall openings. Then run the chevron dams on plate 3's top face. **Hold point:** with a 6 mm gauge, the gap is even at the four corners and on each rib line.
 
 ### Step 7: stage 3 rails, ribs and plate 2
 
 ![Step 7](05-build-plan/step-07.png)
 
-As step 6, with the stage 3 rails and plate 2 (wick 3 underneath); then the dams on plate 2.
+As step 6, with the stage 3 rails and plate 2 (wick 3 clipped under it); then the dams on plate 2.
 
 ### Step 8: stage 2 rails, ribs and plate 1
 
 ![Step 8](05-build-plan/step-08.png)
 
-As step 6, with the stage 2 rails (150 °C polymer) and plate 1 (wick 2 underneath); then the dams on plate 1.
+As step 6, with the stage 2 rails (PPS) and plate 1 (wick 2 clipped under it); then the dams on plate 1.
 
 ### Step 9: stage 1 rails, ribs and the absorber
 
 ![Step 9](05-build-plan/step-09.png)
 
-As step 6, with the stage 1 rails (150 °C polymer) and the absorber (wick 1 underneath), black face up. **Hold point:** no wick fibre bridges a dry break, every tail is centred on its brine tongue, and no tongue touches the side of its notch.
+As step 6, with the stage 1 rails (PPS) and the absorber (wick 1 clipped under it), black face up. **Hold point:** no wick fibre bridges a dry break, every tail is centred on its brine tongue, and no tongue touches the side of its notch.
 
 ### Step 10: low wall cap
 
@@ -627,9 +656,10 @@ These are the checks a TRL 4 test report would record; this plan only lists them
 | Gaps | R1, R2 | 6 mm gauge at the corners and rib lines of every gap during steps 6 to 9 | Every gap 6 mm, give or take 0.5 mm |
 | Dry breaks and brine clearance | R4 | Look along every wick edge; 10 mm gauge between each brine tongue or tail and the lid | 10 mm of dry plate beside every rib and rail; 10 mm or more everywhere above the lid |
 | Separation, coloured water | R4, R3 | Panel at 20° in shade, cover on; food dye in the feed; run 2 hours | No colour in the manifold or its outlet |
+| Wicks lift out | R10 | Slide off the tongue clips, unhook the high-end clips, lift one wick strip and refit it; time it | A strip comes out and goes back in a few minutes without tearing |
 | Plates lift out | R10 | Remove the cap, lift the absorber and one condenser plate, refit; time it | The plates come out and go back without bending a tongue |
 | Tilt range | R11 | Pin the props at each of the six holes; angle finder on the glazing | 10° to 35°, each within 1° of its hole |
-| Mass and footprint | R9 | Weigh the panel dry; measure the stand at 10° | 20 kg or less dry (18.5 kg estimated); within 1.3 x 1.3 m |
+| Mass and footprint | R9 | Weigh the panel dry; measure the stand at 10° | 20 kg or less dry (18.7 kg estimated); within 1.3 x 1.3 m |
 | Feed head | R5 | Measure the trough rim height at 35° | 1.5 m or less (1.00 m estimated) |
 | Food-contact surfaces | R7 | Check the coating, manifold, lid, tube and silicone against their datasheets | Every distillate-side surface food-contact rated |
 | First sun | R1, R2, R8 | Feed running, cover off, a clear day; outputs per stage and absorber temperature logged | Recorded for the TRL 4 report; feed never runs out |
@@ -642,7 +672,7 @@ Stop at each point. Carry on only when everything listed is true.
 - **S1. Before cutting.** Gloves and glasses for aluminium sheet and snips; gloves, glasses and a dust mask for stone wool; hearing protection for the jigsaw; a ventilated space for paint, primer and the printer.
 - **S2. Before painting the absorber or coating the plates.** Ventilation and a respirator as the product's datasheet says; no flame nearby; cure to the maker's schedule before the plate goes in.
 - **S3. Before closing the stack (step 10).** Every surface on the distillate side (coating, lid, manifold, tube, silicone) is food-contact rated; no treated timber, lead solder or container of unknown history anywhere in the water path.
-- **S4. Before lifting the panel onto the stand (step 21).** Two people; the panel dry (about 18.5 kg); the ground frame staked or ballasted; the cover on.
+- **S4. Before lifting the panel onto the stand (step 21).** Two people; the panel dry (about 18.7 kg); the ground frame staked or ballasted; the cover on.
 - **S5. Before the panel faces the sun.** The stand staked or ballasted (the panel can overturn at about 18 m/s of wind); the feed container full and the drip valve open; the stagnation cover at hand. Never leave the panel in sun with an empty feed: a dry stack reaches about 140 °C.
 - **S6. Before opening or working on the stack.** The cover on and the panel cool to the touch.
 - **S7. Before anyone drinks the distillate.** Tested for at least conductivity and E. coli, stored in a clean covered container and disinfected. The prototype's distillate is test water until then.
@@ -650,20 +680,20 @@ Stop at each point. Carry on only when everything listed is true.
 
 ## 7. Tools, skills and workspace
 
-**Tools.** Circular saw or a fine-toothed handsaw with a straight-edge guide for ripping plywood; jigsaw with wood and fine metal blades; drill with bits from 2.5 to 12 mm; chisel and mallet; files and a deburring tool; aviation snips; two straight hardwood battens and a vice for folding the fins; steel rule, engineer's square, angle finder and spirit level; a 6 mm and a 10 mm gauge (offcuts of rail stock); long bread knife for the stone wool; caulking gun; screwdrivers; clamps; a 3D printer with an enclosure and a heated bed that prints polycarbonate; a scale to 30 kg.
+**Tools.** Circular saw or a fine-toothed handsaw with a straight-edge guide for ripping plywood; jigsaw with wood and fine metal blades; drill with bits from 2.5 to 12 mm; chisel and mallet; files and a deburring tool; aviation snips; two straight hardwood battens and a vice for folding the fins; two steel plates and tin snips for the stainless clips and the lip tabs; steel rule, engineer's square, angle finder and spirit level; a 6 mm and a 10 mm gauge (offcuts of rail stock); long bread knife for the stone wool; caulking gun; screwdrivers; clamps; a 3D printer with an enclosure and a heated bed that prints polycarbonate; a scale to 30 kg.
 
 **Skills.** No certified trade is needed. Basic woodwork (ripping, notching, gluing and screwing), cutting and folding thin aluminium sheet, careful cutting of fabric and insulation board, printing polycarbonate, and neat work with silicone. There is no electricity in the product.
 
-**Workspace.** A flat bench at least 1.3 x 1.3 m, or two trestles with a sheet of plywood; a clean area kept apart from sawdust for coating the plates and bonding the wicks; a ventilated place for paint and printing; a shaded outdoor spot for the stand.
+**Workspace.** A flat bench at least 1.3 x 1.3 m, or two trestles with a sheet of plywood; a clean area kept apart from sawdust for coating the plates and fitting the wicks; a ventilated place for paint and printing; a shaded outdoor spot for the stand.
 
 **Personal protective equipment.** Safety glasses throughout; cut-resistant gloves for aluminium; gloves and a dust mask for stone wool; hearing protection for sawing; a respirator for spray paint or coating as their datasheets say.
 
 ## 8. Where the numbers come from
 
 - Model and constructability checks: `cad/src/model.py` (`python cad/src/model.py --check`); STEP and STL exports in `cad/step/` and `cad/stl/`.
-- Pictures: `cad/src/build_plan_media.py`, using `.kit/build_views.py`; written to `docs/05-build-plan/` and `cad/drawings/SSK-DWG-101` to `SSK-DWG-118`.
-- General arrangement: `cad/drawings/SSK-DWG-002.pdf`, Rev P3.
-- Calculations: `docs/04-calcs/01-sizing.md` (SSK-CAL-001 v0.4) and `docs/04-calcs/sizing.py`; plate support [section 3], mass, tilt and footprint [section 8], wind [section 9], construction checks [section 13].
+- Pictures: `cad/src/build_plan_media.py`, using `.kit/build_views.py`; written to `docs/05-build-plan/` and `cad/drawings/SSK-DWG-101` to `SSK-DWG-120`.
+- General arrangement: `cad/drawings/SSK-DWG-002.pdf`, Rev P4.
+- Calculations: `docs/04-calcs/01-sizing.md` (SSK-CAL-001 v0.6) and `docs/04-calcs/sizing.py`; plate support [section 3], mass, tilt and footprint [section 8], wind [section 9], construction checks [section 13].
 - Bill of materials: `bom/bom.csv`.
 - Decisions: `docs/decisions/0003-design-for-construction.md` (SSK-DDR-003), with SSK-DDR-001 and SSK-DDR-002; open items in `docs/06-design-decisions.md` (SSK-DEC-001).
-- Requirements: `docs/03-requirements.md` (SSK-REQ-001 v0.6).
+- Requirements: `docs/03-requirements.md` (SSK-REQ-001 v0.8).

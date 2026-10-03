@@ -3,7 +3,7 @@ doc_id: SSK-CAL-001
 title: StillStack sizing calculations
 project: StillStack
 doc_type: Calculation
-version: "0.5"
+version: "0.6"
 status: Draft
 date: '2026-10-02'
 author: Amish Chadha
@@ -29,6 +29,10 @@ revisions:
     date: '2026-10-02'
     author: Amish Chadha
     change: "SSK-DDR-003 accepted (2026-10-02); R4, R7 and R10 rows note the decisions; figures unchanged"
+  - version: "0.6"
+    date: '2026-10-02'
+    author: Amish Chadha
+    change: "Approved follow-ups carried in: lip tabs, wick clips, PPS rails and stop blocks, labels; mass 18.7 kg dry, cost USD 443.20; R10 moves from at risk to met on paper"
 ---
 
 # StillStack sizing calculations
@@ -146,28 +150,30 @@ Table 4. Panel mass (constructable design, SSK-DDR-003).
 | Base ring, 12 mm plywood | 1.40 |
 | Glazing trim, aluminum angle | 1.00 |
 | Wicks, dry, with tails | 1.12 |
-| Side rails, 150 °C polymer and printed polycarbonate | 0.81 |
+| Side rails, PPS (stages 1 and 2) and printed polycarbonate (stages 3 and 4) | 0.86 |
+| Stop blocks, PPS | 0.04 |
+| Wick clips, 40 of 0.4 x 8 mm stainless strip | 0.14 |
 | Ribs, silicone cord | 0.71 |
 | Fins | 0.63 |
 | Trough, manifold, gutter, brackets, closure and fittings | 1.80 |
 | Sealant, tape, fasteners and tubing | 0.60 |
-| **Panel, dry** | **18.5** |
-| Panel, wet wicks | 22.5 |
+| **Panel, dry** | **18.7** |
+| Panel, wet wicks | 22.7 |
 | Adjustable stand | 8.9 |
 
-The model's own volume-based estimate for the modeled parts (16.1 kg without the trough, manifold, gutter and fasteners) agrees within the allowances above.
+The model's own volume-based estimate for the modeled parts (16.2 kg without the trough, manifold, gutter and fasteners) agrees within the allowances above.
 
 The stand (SSK-DDR-003) pivots the panel on two M10 bolts through front posts 372 mm above the ground and holds it with two fixed props, 1,000 mm between pins, hinged on blocks near the high end and pinned to the ground rails. One hole per tilt sets the angle; measured back from the pivot the holes are at 113, 151, 195, 245, 309 and 396 mm for 10, 15, 20, 25, 30 and 35 deg. The plan footprint is 1.28 x 1.25 m at 10 deg, 1.21 x 1.25 m at 20 deg and 1.05 x 1.25 m at 35 deg. The ground rails run 760 mm behind the pivot, so the wet panel's centre of mass (about 500 mm behind the pivot at 10 deg) stays at least 260 mm inside the ground frame. The model builds and checks the stand at all six holes; the feed trough rim is at most 1.00 m above the ground.
 
 ## 9. Wind
 
-At 20 m/s the normal force on the 1.15 m2 panel (force coefficient 1.2) is about 332 N, against 308 N for the wet panel and stand. Lift equals weight at about 18.7 m/s.
+At 20 m/s the normal force on the 1.15 m2 panel (force coefficient 1.2) is about 332 N, against 310 N for the wet panel and stand. Lift equals weight at about 18.7 m/s.
 
 > **Safety:** The panel and stand can overturn in a strong breeze. Anchor the stand to the ground or ballast it before filling.
 
 ## 10. Cost
 
-Value-engineering target: USD 355 (a hypothetical control target, `budget_usd` in `project.yaml`). Estimated cost of the constructable design: USD 416.20 from `bom/bom.csv` (18 lines), USD 61.20 over the target. Before SSK-DDR-003 the concept priced at USD 351.20. The USD 65 added for construction is USD 20 for larger plate blanks for the tongues (lines 3 and 5), USD 2 for longer wicks (line 4), USD 20 for the glazing trim and tape (line 15), USD 7 for the stand's ground frame, gussets and pins (line 12), USD 4 for the trough brackets (line 8), USD 6 for the outlet brackets (line 16) and USD 6 for the feed closure (line 17).
+Value-engineering target: USD 355 (a hypothetical control target, `budget_usd` in `project.yaml`). Estimated cost of the constructable design: USD 443.20 from `bom/bom.csv` (20 lines), USD 88.20 over the target. Before SSK-DDR-003 the concept priced at USD 351.20. The USD 65 added for construction is USD 20 for larger plate blanks for the tongues (lines 3 and 5), USD 2 for longer wicks (line 4), USD 20 for the glazing trim and tape (line 15), USD 7 for the stand's ground frame, gussets and pins (line 12), USD 4 for the trough brackets (line 8), USD 6 for the outlet brackets (line 16) and USD 6 for the feed closure (line 17). The decisions of 2026-10-02 add USD 27 more: USD 10 for PPS rails at a distributor list price (line 6, not a quote), USD 14 for 40 stainless wick clips (line 18) and USD 3 for the DISTILLATE and BRINE labels (line 19). The lip is a bend and adds nothing (section 13).
 
 ## 11. Results against requirements
 
@@ -177,15 +183,15 @@ Table 5. Requirement status at TRL 3, not met first.
 | --- | --- | --- | --- | --- |
 | R8 | Temperatures at dry stagnation | Stages 1 and 2: 144 °C calm (6 K margin); stages 3 and 4: 110 °C calm (0 K margin); cover specified | 150 °C in stages 1 and 2, 110 °C elsewhere, cover and shade rule | At risk |
 | R2 | Gained output ratio | 1.34 quasi-steady; 1.26 after warm-up deduction | 1.3 or more | At risk |
-| R4 | Air break between wick edges and distillate paths | 10 mm at ribs and rails and inside the plate edges; brine tongues pass 10.5 mm or more over the closed manifold lid and at least 44 mm from any distillate tongue (SSK-DDR-003 A1, accepted 2026-10-02; high-edge lip of A2 (c) decided, not yet modelled) | 10 mm or more, no shared drain | At risk |
+| R4 | Air break between wick edges and distillate paths | 10 mm at ribs and rails and inside the plate edges; brine tongues pass 10.5 mm or more over the closed manifold lid and at least 44 mm from any distillate tongue (SSK-DDR-003 A1, accepted 2026-10-02; high-edge lip of A2 (c) modelled, 2026-10-02) | 10 mm or more, no shared drain | At risk |
 | R6 | Brine salinity; wick feed | 66.7 g/L at 40 g/L feed; needs permeability of 3.0 x 10^-11 m2 or more | Feed ratio 2.5 or more, salt stays in solution | At risk |
 | R7 | Food-contact wetted surfaces | Coated aluminum decided; coating product not selected (rule decided 2026-10-02: certified for drinking-water contact and 150 °C dry, else 316 stainless for plates 1 and 2) | All distillate-side surfaces food-contact rated | At risk |
-| R10 | Wick removal time; flushing interval | Plates lift out after the low wall cap is removed; wicks to be held by end clips with no adhesive (decided 2026-10-02) | 30 min or less; weekly or less often | At risk |
+| R10 | Wick removal time; flushing interval | Plates lift out after the low wall cap is removed; wicks held by stainless end clips with no adhesive, modelled (decided 2026-10-02) | 30 min or less; weekly or less often | Met on paper (timing to be shown at TRL 4) |
 | R3 | Distillate conductivity | Carryover allowance 0.075 % (8.5 mL/day) | 75 µS/cm or less | Not verifiable at TRL 3 |
 | R1 | Daily distillate | 10.6 L/m2 (11.3 quasi-steady) | 10 L/m2 or more (goal 13) | Met (6 % margin; goal not met) |
-| R12 | Parts cost | USD 416.20 | Value-engineering target USD 355 | USD 61.20 over the target |
+| R12 | Parts cost | USD 443.20 | Value-engineering target USD 355 | USD 88.20 over the target |
 | R5 | Power; feed head | Passive; feed trough rim 1.00 m at 35 deg | No power; container at most 1.5 m | Met |
-| R9 | Mass; footprint | 18.5 kg dry; 1.28 x 1.25 m | 20 kg or less; within 1.3 x 1.3 m | Met |
+| R9 | Mass; footprint | 18.7 kg dry; 1.28 x 1.25 m | 20 kg or less; within 1.3 x 1.3 m | Met |
 | R11 | Tilt range | Six prop holes, 10 to 35 deg in 5 deg steps; model built and checked at each | 10 to 35 deg | Met |
 
 ## 12. Changes to earlier figures
@@ -207,10 +213,12 @@ Table 6. Checks added for the constructable design (section 14 of the script).
 | Bottom plate sag on the base ring, fins bonded (composite) | 0.5 mm |
 | Bottom plate sag, fins carrying the load alone | 1.0 mm |
 | Glazing growth, 1.06 m sheet at a 70 K rise | 4.8 mm, against 14 mm of room inside the trim |
-| Load per pivot bolt, wet panel plus 17 m/s wind | 163 N; bearing on 12 mm plywood 1.4 MPa |
+| Load per pivot bolt, wet panel plus 17 m/s wind | 164 N; bearing on 12 mm plywood 1.4 MPa |
 | Prop buckling, 45 x 45 mm timber, 1.0 m pinned | 27 kN, far above the load |
 | Outlet bracket load, manifold and gutter full | 29 N each; 62 N pull on the top screw |
 | Vapor lost through the low-end tongue openings (diffusion, 4 gaps) | 25 mL per day (0.2 % of the yield) |
 | Lowest brine tongue tail above the distillate lid | 10.5 mm |
+| Lip tabs, 4 mm on the high edge of each condensing plate | 5.0 mm of sheet each, 140 mm2 per plate, 0.76 g for the four plates; the plate blank is 1,224 mm long against a 1,250 mm sheet, so sheet size and cost are unchanged (a bend, no yield loss) |
+| Wick clips, 304 stainless 0.4 x 8 mm | 40 clips from 5.5 m of strip, 0.14 kg |
 
-The parametric model also runs its own constructability checks (`python cad/src/model.py --check`): no overlaps among the 46 panel parts, every part that must touch does touch, every brine path keeps 10 mm or more from every distillate path, and the stand at each of the six tilt holes has no clashes, keeps the centre of mass inside the ground frame and stays within the 1.3 x 1.3 m footprint.
+The parametric model also runs its own constructability checks (`python cad/src/model.py --check`): no overlaps among the 54 panel parts, every part that must touch does touch, the lip tabs and wick clips keep their clearances (the tabs 1.5 mm or more from every wick and 5 mm or more from every rib end; the clips 1.5 mm or more from the liner and ribs and 10 mm or more from the lid), every brine path keeps 10 mm or more from every distillate path, and the stand at each of the six tilt holes has no clashes, keeps the centre of mass inside the ground frame and stays within the 1.3 x 1.3 m footprint.

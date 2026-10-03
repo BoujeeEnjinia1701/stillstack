@@ -1,7 +1,7 @@
 """StillStack drawing sheets.
 
 Run from the repo root:  python cad/src/sheets.py
-Builds cad/drawings/SSK-DWG-002 (general arrangement, Rev P2) as SVG, PDF and PNG
+Builds cad/drawings/SSK-DWG-002 (general arrangement, Rev P4) as SVG, PDF and PNG
 from the parametric model in cad/src/model.py. Never edit the sheet by hand.
 (SSK-DWG-001 is the concept blueprint in media/.)
 """
@@ -18,6 +18,7 @@ import model  # noqa: E402
 
 DATE = "2026-09-25"
 DATE3 = "2026-10-01"
+DATE4 = "2026-10-02"
 OUT = ROOT / "cad" / "drawings"
 WORK = OUT / "_views"
 
@@ -60,12 +61,13 @@ def main():
     detail = model.stack_detail(y=(80.0, 125.0))
     det = project_views(detail, WORK / "detail")
 
-    s = Sheet(project="StillStack", title="General arrangement", dwg_no="SSK-DWG-002", rev="P3",
-              author="Amish Chadha", date=DATE3, scale=1 / 20,
-              material="See bom/bom.csv. Plates 0.5 mm aluminum; rails 150 C polymer (stages 1, 2) and PC; ribs silicone; frame plywood, stone wool",
+    s = Sheet(project="StillStack", title="General arrangement", dwg_no="SSK-DWG-002", rev="P4",
+              author="Amish Chadha", date=DATE4, scale=1 / 20,
+              material="See bom/bom.csv. Plates 0.5 mm aluminum; rails PPS (stages 1, 2) and PC; wick clips stainless; ribs silicone; frame plywood, stone wool",
               concept=False, revisions=[("P1", "Preliminary general arrangement (TRL 3)", DATE, "AC"),
                          ("P2", "Rail and liner materials, stagnation cover (DDR-002)", DATE, "AC"),
-                         ("P3", "Constructable design: base ring, trim, tongues, stand (DDR-003)", DATE3, "AC")])
+                         ("P3", "Constructable design: base ring, trim, tongues, stand (DDR-003)", DATE3, "AC"),
+                         ("P4", "High-edge lip tabs, wick clips, PPS rails (SSK-DEC-001)", DATE4, "AC")])
     s._layers.append(_t(16, 19, "PRELIMINARY, NOT FOR FABRICATION", 3.2, 600, "#B45309"))
 
     k = 1 / 20
@@ -126,7 +128,7 @@ def main():
         "Design day: about 10.6 L/day, GOR about 1.3",
         "Dry stagnation: stage 1 about 140 C (144 C calm)",
         "Stages 1, 2 rated 150 C; cover (BOM 14) not shown",
-        "Panel about 18.5 kg dry, 22.5 kg wet",
+        "Panel about 18.7 kg dry, 22.7 kg wet",
         "Fasteners not shown; see build plan SSK-BLD-001",
     ], x=290, y=144, width=128)
     OUT.mkdir(parents=True, exist_ok=True)

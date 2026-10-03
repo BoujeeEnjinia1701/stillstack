@@ -3,7 +3,7 @@ doc_id: SSK-DEC-001
 title: StillStack design decisions register
 project: StillStack
 doc_type: Design decisions register
-version: "0.2"
+version: "0.3"
 status: Draft
 date: '2026-10-02'
 author: Amish Chadha
@@ -17,6 +17,10 @@ revisions:
     date: '2026-10-02'
     author: Amish Chadha
     change: "Amish approved the recommendations for open decisions 1 to 9 (2026-10-02); moved to decisions made (SSK-DDR-003 accepted, A2 as option (c))"
+  - version: "0.3"
+    date: '2026-10-02'
+    author: Amish Chadha
+    change: "Value engineering restated for the follow-ups carried into the design (USD 443.20, USD 88.20 over the target); two items to confirm when parts are bought"
 ---
 
 # StillStack design decisions register
@@ -37,12 +41,15 @@ None. All open decisions were decided on 2026-10-02.
 | 4 | The twin-wall sheet can be cut to 1,060 mm square with the flutes running down the slope, and breather tape is available for the flute ends | Drainage of condensate and rain from the flutes | SSK-PRC-001 |
 | 5 | 7 mm PPS sheet (the stage 1 and 2 rail polymer, decided 2026-10-02) is sold in strips or small sheets | The rails and stop blocks are cut from it | SSK-DDR-002 |
 | 6 | The coating and the high-temperature silicone adhesive bond to each other and to bare aluminium | The fins are bonded under the bottom plate; the chevron dams sit on the coating | SSK-DDR-003 |
+| 7 | A quote for the 7 mm PPS sheet (BOM line 6 is priced at a distributor list price of about USD 70 per kg, not a quote) | The rails cost about USD 46 for four at that price | SSK-DEC-001 |
+| 8 | The coater supplies an NSF/ANSI 61 or equivalent drinking-water certificate for the fluoropolymer coating in hot salty water, rated to 150 °C dry | Decides whether plates 1 and 2 keep the coating or move to 316 stainless | SSK-DEC-001 |
 
 ## Value engineering
 
-Value-engineering target: USD 355 (a hypothetical control target, not a limit). Estimated cost of the constructable design: USD 416.20 (USD 61.20 over the target). Main cost drivers and savings worth trying:
+Value-engineering target: USD 355 (a hypothetical control target, not a limit). Estimated cost of the constructable design: USD 443.20 (USD 88.20 over the target). Main cost drivers and savings worth trying:
 
-- The largest lines are the five coated aluminium plates (USD 128 together, lines 3 and 5), the side rails (USD 50, line 6), the frame and liner (USD 35), the glazing (USD 32), the stand (USD 28) and the glazing trim and tape (USD 20).
+- The largest lines are the five coated aluminium plates (USD 128 together, lines 3 and 5), the side rails (USD 60, line 6), the frame and liner (USD 35), the glazing (USD 32), the stand (USD 28) the glazing trim and tape (USD 20) and the 40 stainless wick clips (USD 14).
+- The decisions of 2026-10-02 added USD 27: PPS rails at list price (USD 10), the wick clips (USD 14) and the labels (USD 3).
 - Making the design constructable added USD 65: larger plate blanks for the tongues (USD 20), the glazing trim and tape (USD 20), the stand's ground frame, gussets and pins (USD 7), brackets for the trough and outlets (USD 10), the feed closure (USD 6) and longer wicks (USD 2).
 - Savings worth trying: nest the plates' tongues when ordering cut sheet so the blank is nearer 1.0 x 1.1 m (about USD 10); fold the trim from aluminium flashing instead of buying angle (about USD 8); silicone strip in place of the 150 °C polymer rails in stages 1 and 2 (about USD 14, from SSK-DDR-002) is not a saving to take, because it would undo the R8 materials decision (SSK-DDR-002, item 2) and the PPS rails decided on 2026-10-02; move the brine gutter closer to the manifold to shorten the brine tongues; reclaimed timber for the stand; a locally made stagnation cover.
 

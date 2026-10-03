@@ -3,7 +3,7 @@ doc_id: SSK-PRC-001
 title: StillStack design precis
 project: StillStack
 doc_type: Design precis
-version: "0.7"
+version: "0.8"
 status: Draft
 date: '2026-10-02'
 author: Amish Chadha
@@ -37,6 +37,10 @@ revisions:
   date: '2026-10-02'
   author: Amish Chadha
   change: "Decisions of 2026-10-02: coating rule, wick fabric test and clips, PPS rails, high-edge lip, conductivity pass condition, partner, labels and rail colours"
+- version: "0.8"
+  date: '2026-10-02'
+  author: Amish Chadha
+  change: "Approved follow-ups carried into the design: mass 18.7 kg, cost USD 443.20, lip tabs and wick clips in the model"
 ---
 
 # StillStack design precis
@@ -99,8 +103,8 @@ Table 2. Key numbers per m2 of aperture.
 | Plate temperatures at noon | 73, 69, 66, 62 and 58 °C | |
 | Dry stagnation, stage 1 | about 140 °C (144 °C calm); stage 3 about 110 °C calm | R8 at risk (150 °C and 110 °C ratings) |
 | Feed and brine | about 28.7 L feed, 17.2 L brine per day; brine 58 to 67 g/L | R6 at risk (wick feed) |
-| Panel mass | 18.5 kg dry, 22.5 kg wet; stand 8.9 kg | R9 met |
-| Parts cost | USD 416.20 against a USD 355 value-engineering target | R12 USD 61.20 over the target |
+| Panel mass | 18.7 kg dry, 22.7 kg wet; stand 8.9 kg | R9 met |
+| Parts cost | USD 443.20 against a USD 355 value-engineering target | R12 USD 88.20 over the target |
 
 ## Key design choices
 
