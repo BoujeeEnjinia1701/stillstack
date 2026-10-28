@@ -1,9 +1,17 @@
-"""StillStack parametric model (build123d), TRL 3, constructable design (SSK-DDR-003).
+"""StillStack parametric model (build123d), kit 1.9 interface, TRL 3 (stage P3, detail level D3).
 
 Run from the repo root:
-    python cad/src/model.py            exports STEP and STL, prints masses and the tilt check
+    python .kit/cad_check.py --export  fidelity check of every option, STEP per part and per assembly
+    python cad/src/model.py            exports the assembly STEP and STL, prints masses and the tilt check
     python cad/src/model.py --check    also runs the constructability checks (overlaps, contacts,
                                        clearances, stand geometry at every tilt hole)
+
+Kit 1.9 (STANDARDS section 24; Amish, 2026-10-24: "Detail every option"): OPTIONS, PRINCIPLES, CHOSEN,
+OPTION_VIEWS and components(option) are at the end of this file. Option A is the current design below, split
+into its real parts with every screw, bolt, washer, nut, corner plate and stake; option B is the single-effect
+tilted wick still of SSK-OPT-001. The calculations (sizing.py), the drawing sheets (sheets.py), the build plan
+pictures (build_plan_media.py) and the concept media keep reading PARAMS, derived(), build_components() and
+build(), unchanged. The stage 3 rails are PPS since 2026-10-24 (SSK-DEC-001 D-01); bolt lengths per D-02.
 
 The panel is modelled flat in a local frame and then tilted about the front pivot:
   local x runs down the slope (x < 0 is the high, feed edge; x > 0 the low, collection edge),
@@ -21,7 +29,7 @@ design physically buildable; open for his review):
     lidded distillate manifold into the brine gutter (A1, accepted 2026-10-02);
   * two stop blocks at the low corners hold the stack against sliding down the slope;
   * each condensing plate has a 4 mm downturned lip on its high edge, as tabs on the rib lines (A2 (c));
-  * each wick is held by two stainless clips, one at the high end and one on the brine tongue, no adhesive;
+  * each wick is held by two 5052 aluminium clips (D-08, decided by Amish 2026-10-25), one at the high end and one on the brine tongue, no adhesive;
   * the feed-end wick tails rise up the high wall behind a foam closure into the trough;
   * the stand is a ground frame, front posts with gussets and a pivot bolt, and fixed-length
     props pinned to the ground rails at one hole per tilt (10 to 35 deg).
@@ -84,7 +92,7 @@ PARAMS = {
     "lip_h": 4.0,          # downturned lip on each condensing plate's high edge (tabs between the wick strips)
     "lip_w": 7.0,          # lip tab width, centred on each rib line
     "rib_start": 6.0,      # ribs start this far inside the plate's high edge (clear of the lip tabs)
-    "clip_t": 0.4,         # wick clip: 304 stainless strip thickness
+    "clip_t": 0.4,         # wick clip: 5052-H32 aluminium strip thickness (D-08, was 304 stainless)
     "clip_w": 8.0,         # wick clip strip width
     "clip_hi_x": 9.0,      # high-end clip bar runs from 1 to 9 mm inside the plate's high edge
     "clip_ear": 8.0,       # high-end clip ear width (in the dry break beside the strip)
@@ -289,7 +297,7 @@ def wick(stage, p=PARAMS, bent=True, split=False):
 
 def wick_clips(stage, p=PARAMS):
     """The stage's wick clips: per strip a high-end bar with two ears that hook round the plate's high
-    edge, and a low-end clip that straddles the brine tongue and the tail under it. 0.4 mm 304 stainless."""
+    edge, and a low-end clip that straddles the brine tongue and the tail under it. 0.4 mm 5052-H32 aluminium (D-08, decided by Amish 2026-10-25; was 304 stainless)."""
     D = derived(p)
     lvl = p["n_stages"] - stage + 1
     z1 = D["levels"][lvl]
@@ -783,15 +791,483 @@ def checks(p=PARAMS, verbose=True):
     return n_ok, len(rows) - n_ok, rows
 
 
+# ================================================================== kit 1.9 interface (STANDARDS section 24)
+# Every option as a list of cad_parts.part() dicts in the world frame (ground at z = 0), detailed to D3:
+# every made part its own solid with its holes, every screw, bolt, washer, nut and stake, edges broken on
+# sawn and cut parts. Option A is the design above (build_components) split into its real parts; option B
+# is the single-effect tilted wick still of SSK-OPT-001. Neither changes a design dimension of option A.
+sys.path[:0] = [str(Path(__file__).resolve().parent), str(Path(__file__).resolve().parents[2] / ".kit")]
+import cad_parts as cp  # noqa: E402
+from cad_parts import part  # noqa: E402
+import ssk_parts as sp  # noqa: E402
+
+TITLE = "StillStack"
+OPTIONS = {"A": "Four-stage wick still", "B": "Single-effect tilted wick still"}
+PRINCIPLES = {
+    "A": "Four stacked wick stages under thin plates: the latent heat released when vapour condenses on each "
+         "plate evaporates the wick under it, so the sun's heat is used about four times (multi-effect diffusion).",
+    "B": "One black wick on an insulated backboard under a glass cover: vapour condenses on the cover and its "
+         "latent heat is lost to the sky; distillate runs down the cover into an inner channel (single effect).",
+}
+CHOSEN = "A"           # current design, carried to the drawing, BOM and build plan; selection proposed, awaiting Amish
+OPTION_VIEWS = {"A": {"el": 24, "az": -50, "ground_z": 0}, "B": {"el": 24, "az": -50, "ground_z": 0}}
+ALLOWED_CONTACTS = []
+
+# Materials (kit names) and colours per family. PPS is not in cad_parts.MATERIALS: it is drawn as "hdpe_natural"
+# in tan, so the fidelity mass of the rails uses 950 rather than 1,350 kg/m3 (CAL-001 carries the real figure).
+MAT = dict(ply="plywood", timber="timber", wool="insulated_white", al="aluminium", ss="stainless", pc="polycarbonate",
+           sil="epdm", fab="canvas", pp="hdpe_natural", pvc="hdpe_natural", galv="galvanised", glass="glass")
+COL = dict(wool="#C9CDD2", absorber="#1B1D20", pps="#C7AF7F", pc_rail="#0F766E", rib="#C65A3E", dam="#D98BA3",
+           wick="#E8DFCC", wick_b="#2A2622", tape="#1F2937", trim="#3B424A", trough="#8F98A3", mani="#F2F3F1",
+           gutter="#5B6470", foam="#E8E1D0", frame="#E4E2DC")
+SCREW = "Stainless wood screw"
+
+
+def _rec(name, shape, mat, kind="made", bom=None, group="shell", color=None):
+    return dict(name=name, shape=shape, mat=mat, kind=kind, bom=bom, group=group, color=color)
+
+
+def _screw(recs, name, d, L, xyz, direction, bom=13, pan=False, group="fixings"):
+    sh = sp.pan_screw(d, L) if pan else sp.wood_screw(d, L)
+    recs.append(_rec(f"{name} {d} x {L} ({'pan' if pan else 'countersunk'} head)", sp.place_fastener(sh, xyz, direction),
+                     MAT["ss"], "fastener", bom, group))
+
+
+def _bolts(recs, label, dia, grip, xyz, direction, extra=None, bom=12):
+    for n, s in sp.bolt_set(dia, grip, xyz, direction, extra):
+        recs.append(_rec(f"{label}: {n}", s, MAT["ss"], "fastener", bom, "stand"))
+
+
+def _rib(length, d):
+    """Silicone cord rib along +X, ends cut square and slightly rounded (not a bare cylinder)."""
+    return cp.break_edges(Pos(0, 0, 0) * Rot(0, 90, 0) * Cylinder(d / 2, length), 1.0)
+
+
+def _trim_pieces(trim, OH):
+    """Split the glazing trim frame into its four mitred lengths (cut on the diagonals)."""
+    X = OH + 50.0
+    wedges = {"high": [(0, 0), (-X, X), (-X, -X)], "low": [(0, 0), (X, -X), (X, X)],
+              "right": [(0, 0), (X, X), (-X, X)], "left": [(0, 0), (-X, -X), (X, -X)]}
+    bb = trim.bounding_box()
+    out = {}
+    for k, pts in wedges.items():
+        w = Pos(0, 0, bb.min.Z - 5) * extrude(Polygon(*pts, align=None), bb.size.Z + 10)
+        out[k] = trim & w
+    return out
+
+
+def _stand_world(p, tilt, recs, tag=""):
+    """Stand parts in the world (ground rails, cross rails, posts, gussets, props), with the foot pins, gusset
+    screws, corner plates and ground stakes. Returns the dict of drillable stand shapes and the stand geometry."""
+    S = stand(p, tilt)
+    G = stand_geometry(p, tilt)
+    OH, P_ = derived(p)["OH"], p["post"]
+    px, pz = G["pivot"]
+    x_rear, x_front = px - p["rail_rear"], px + P_ / 2 + P_
+    W = {}
+    for key, label in (("ground_rails", "Ground rail"), ("cross_rails", "Cross rail"), ("posts", "Post"),
+                       ("gussets", "Gusset"), ("props", "Prop")):
+        for i, s in enumerate(sp.split(S[key])):
+            side = ("rear" if i == 0 else "front") if key == "cross_rails" else ("left" if s.center().Y < 0 else "right")
+            W[f"{label}, {side}"] = s
+    # ground stakes through 12 mm holes, one near each end of each rail
+    stakes = []
+    for sg in (-1, 1):
+        yc = sg * (OH + P_ / 2)
+        for xs in (x_rear + 70.0, px - 60.0):
+            W[f"Ground rail, {'left' if sg < 0 else 'right'}"] -= Pos(xs, yc, P_ / 2) * Cylinder(6.0, P_ + 2)
+            stakes.append(Pos(xs, yc, P_ + 5.0) * sp.stake(10.0, 305.0))
+    for i, s in enumerate(stakes):
+        recs.append(_rec(f"Ground stake {i + 1} (10 mm, 300 mm)", s, MAT["galv"], "bought", 12, "stand"))
+    # corner plates over the cross rail ends, two screws each
+    for xc in (x_rear + P_ / 2, x_front - P_ / 2):
+        for sg in (-1, 1):
+            yc = sg * (OH - 5.0)
+            plate_ = Pos(xc, yc, P_) * cp.sheet(40.0, 100.0, 2.0, holes=[(0, -sg * 30.0, 4.5), (0, sg * 30.0, 4.5)])
+            for dy in (-30.0, 30.0):
+                sc = sp.place_fastener(sp.wood_screw(4, 25), (xc, yc + dy, P_ + 2.0), "-z")
+                recs.append(_rec(f"{SCREW} 4 x 25 (countersunk head), corner plate", sc, MAT["ss"], "fastener", 13, "stand"))
+                sp.drill_all(W, sc)
+                plate_ = plate_ - sc                    # countersunk holes
+            recs.append(_rec(f"Corner plate {'rear' if xc < px else 'front'} {'left' if sg < 0 else 'right'}", plate_,
+                             MAT["galv"], "bought", 12, "stand"))
+    # gusset screws: eight 4 x 40 through each gusset into the post and the rail
+    xa = px + P_ / 2
+    for sg in (-1, 1):
+        for dx, z in ((-60, 22), (-95, 22), (-130, 22), (-160, 14), (-22, 70), (-22, 105), (-22, 140), (-12, 160)):
+            y0 = sg * (OH - 12.0)
+            sc = sp.place_fastener(sp.wood_screw(4, 40), (xa + dx, y0, z), "+y" if sg > 0 else "-y")
+            recs.append(_rec(f"{SCREW} 4 x 40 (countersunk head), gusset", sc, MAT["ss"], "fastener", 13, "stand"))
+            sp.drill_all(W, sc)
+    # the 10 and 15 deg holes lie under the gussets, so they go through the gusset as well (SSK-DEC-001 D-02)
+    for hx_ in G["holes"].values():
+        for sg in (-1, 1):
+            k = f"Gusset, {'left' if sg < 0 else 'right'}"
+            W[k] = W[k] - Pos(hx_, sg * (OH - 6.0), P_ / 2) * Rot(90, 0, 0) * Cylinder(5.25, 14.0)
+    # foot pins: M10 x 120 bolt, washers and nut (wing nut drawn as a hex nut) through the prop and the rail hole;
+    # 120 mm so the same pin also takes the gusset at the 10 and 15 deg holes (grip 102 mm; SSK-DEC-001 D-02)
+    fx, fz = G["foot"]
+    for sg in (-1, 1):
+        face = sg * (OH + 2 * P_)
+        for n, s in sp.bolt_set(10, 2 * P_, (fx, face, fz), "-y" if sg > 0 else "+y", extra=17.6):
+            recs.append(_rec(f"Prop foot pin{tag}: {n}", s, MAT["ss"], "fastener", 12, "stand"))
+            sp.drill_all(W, s)
+    return W, G
+
+
+def _panel_stand_fixings(p, L, recs_local, side_keys):
+    """Pivot and prop hinge bolts and the prop blocks with their screws, built in the panel frame and cut into the
+    panel parts L (local shapes)."""
+    D = derived(p)
+    OH, P_ = D["OH"], p["post"]
+    for sg in (-1, 1):
+        s_ = "left" if sg < 0 else "right"
+        y0, y1 = sorted((sg * OH, sg * (OH + P_)))
+        hx = p["prop_hinge"][0]
+        blk = cp.break_edges(_box(hx - 60, hx + 60, y0, y1, D["FZ0"], D["FZ0"] + P_), 2.0)
+        L[f"Prop block, {s_}"] = blk
+        inward = "-y" if sg > 0 else "+y"
+        # pivot: M10 through post and side wall, washer and nut inside the wall in a pocket cut in the liner
+        for n, s in sp.bolt_set(10, P_ + p["ply_t"], (p["pivot"][0], sg * (OH + P_), p["pivot"][1]), inward, extra=4.0):
+            recs_local.append(_rec(f"Pivot bolt, {s_}: {n}", s, MAT["ss"], "fastener", 12, "stand"))
+            sp.drill_all(L, s, side_keys)
+        for n, s in sp.bolt_set(10, 2 * P_ + p["ply_t"], (hx, sg * (OH + 2 * P_), p["prop_hinge"][1]), inward):
+            recs_local.append(_rec(f"Prop hinge bolt, {s_}: {n}", s, MAT["ss"], "fastener", 12, "stand"))
+            sp.drill_all(L, s, side_keys + [f"Prop block, {s_}"])
+        # four 4 x 40 screws from inside the side wall into the prop block
+        for dx in (-30.0, 30.0):
+            for z in (2.0, 24.0):
+                sc = sp.place_fastener(sp.wood_screw(4, 40), (hx + dx, sg * (OH - p["ply_t"]), z), "+y" if sg > 0 else "-y")
+                recs_local.append(_rec(f"{SCREW} 4 x 40 (countersunk head), prop block", sc, MAT["ss"], "fastener", 13, "stand"))
+                sp.drill_all(L, sc, side_keys + [f"Prop block, {s_}"])
+
+
+def _to_world(recs, p, tilt):
+    for r in recs:
+        r["shape"] = place(r["shape"], p, tilt)
+    return recs
+
+
+def _cut_world(recs_cutters, W):
+    for r in recs_cutters:
+        if r["kind"] == "fastener":
+            sp.drill_all(W, r["shape"])
+
+
+def _finish(recs, explode=None):
+    out = []
+    for r in recs:
+        out.append(part(r["name"], r["shape"], r["mat"], kind=r["kind"], bom=r["bom"], group=r["group"],
+                        color=r["color"]))
+    return out
+
+
+def option_a(p=PARAMS, tilt=None):
+    """Option A (the current design) at D3: build_components() split into its real parts, with fasteners."""
+    tilt = p["tilt"] if tilt is None else tilt
+    D = derived(p)
+    OH, WT, n = D["OH"], p["ply_t"], p["n_stages"]
+    C = build_components(p, local_only=True)
+    L, meta = {}, {}
+
+    def add(name, shape, mat, bom, group="shell", color=None, kind="made", edge=None):
+        if edge:
+            shape = cp.break_edges(shape, edge)
+        L[name] = shape
+        meta[name] = (mat, kind, bom, group, color)
+
+    for k, nm in (("ring_side_r", "Base ring, side strip right"), ("ring_side_l", "Base ring, side strip left"),
+                  ("ring_high", "Base ring, high strip"), ("ring_low", "Base ring, low strip")):
+        add(nm, C[k], MAT["ply"], 2, edge=1.0 if k != "ring_high" else None)
+    for k, nm in (("wall_side_r", "Side wall, right"), ("wall_side_l", "Side wall, left"), ("wall_high", "High wall"),
+                  ("wall_low", "Low wall comb"), ("wall_low_cap", "Low wall cap")):
+        add(nm, C[k], MAT["ply"], 2, color=COL["frame"], edge=1.0 if k in ("wall_side_r", "wall_side_l", "wall_low_cap") else None)
+    for k, nm in (("liner_side_r", "Liner, side right"), ("liner_side_l", "Liner, side left"), ("liner_high", "Liner, high"),
+                  ("liner_low_cap", "Liner, low cap")):
+        add(nm, C[k], MAT["wool"], 2, color=COL["wool"], edge=0.5 if k != "liner_high" else None)
+    # low liner: the tongue notches cut it into separate pieces between the stop blocks (rebuilt here as boxes,
+    # the same cuts as build_components)
+    yst = D["half"] - p["rail_w"] - 1.0
+    cuts = sorted([(y - 20.0, y + 20.0) for y in D["yd"]] + [(y - 30.0, y + 30.0) for y in D["yb"]])
+    edges, y0 = [], -yst
+    for c0, c1 in cuts:
+        if c0 > y0:
+            edges.append((y0, min(c0, yst)))
+        y0 = max(y0, c1)
+    if y0 < yst:
+        edges.append((y0, yst))
+    for i, (ya, yb_) in enumerate(e for e in edges if e[1] - e[0] > 1.0):
+        add(f"Liner, low piece {i + 1}", cp.break_edges(_box(p["aperture"] / 2, OH - WT, ya, yb_, 0, D["open_top"]), 0.5),
+            MAT["wool"], 2, color=COL["wool"])
+    for i, s in enumerate(sp.split(C["stops"])):
+        add(f"Stop block {'left' if s.center().Y < 0 else 'right'}", cp.break_edges(s, 0.5), MAT["pp"], 6, "internal", COL["pps"])
+    add("Bottom plate", C["plate_bottom"], MAT["al"], 5, "internal")
+    for k in range(1, n):
+        add(f"Condenser plate {k}", C[f"plate_{k}"], MAT["al"], 5, "internal")
+        for i, s in enumerate(sp.split(C[f"dams_{k}"])):
+            add(f"Chevron dam, plate {k}, {i + 1}", s, MAT["sil"], 13, "internal", COL["dam"])
+    add("Absorber plate", C["absorber"], MAT["al"], 3, "internal", COL["absorber"])
+    h = D["half"]
+    for st in range(1, n + 1):
+        pps = st <= 3                          # SSK-DEC-001 D-01: PPS in stages 1 to 3, printed PC in stage 4
+        for s in sp.split(C[f"rails_{st}"]):
+            add(f"Side rail, stage {st}, {'left' if s.center().Y < 0 else 'right'} ({'PPS' if pps else 'printed PC'})",
+                cp.break_edges(s, 0.5), MAT["pp"], 6, "internal", COL["pps"] if pps else COL["pc_rail"])
+        lvl = n - st + 1
+        zb = D["levels"][lvl - 1] + p["plate_t"]
+        rl = 2 * h - 8.0 - p["rib_start"]
+        for j, ry in enumerate(rib_positions(p)):
+            rib = Pos(-h + p["rib_start"] + rl / 2, ry, zb + (p["gap"] + p["wick_t"]) / 2) * _rib(rl, p["rib_d"])
+            add(f"Spacer rib, stage {st}, {j + 1}", rib, MAT["sil"], 7, "internal", COL["rib"])
+        for i, s in enumerate(sp.split(C[f"wick_{st}"])):
+            add(f"Wick strip, stage {st}, {i + 1}", s, MAT["fab"], 4, "internal", COL["wick"])
+        for e, lab in (("hi", "high-end"), ("lo", "brine-tongue")):
+            for i, s in enumerate(sp.split(C[f"clips_{e}_{st}"])):
+                add(f"Wick clip, {lab}, stage {st}, {i + 1}", s, MAT["al"], 18, "internal")
+    for i, s in enumerate(sp.split(C["fins"])):
+        add(f"Heat-rejection fin {i + 1} (painted black, D-07)", s, MAT["al"], 11, "internal", COL["absorber"])
+    add("Glazing tape", C["tape"], MAT["sil"], 15, color=COL["tape"])
+    add("Glazing, twin-wall polycarbonate", Pos(0, 0, D["glaz_z"]) * sp.twin_wall(p["glaz_size"], p["glaz_size"], p["glaz_t"]),
+        MAT["pc"], 1)
+    for k, s in _trim_pieces(C["trim"], OH).items():
+        add(f"Glazing trim, {k} length", s, MAT["al"], 15, color=COL["trim"])
+    add("Feed trough", C["trough"], MAT["pvc"], 8, color=COL["trough"])
+    add("Feed closure", cp.break_edges(C["closure"], 0.5), MAT["sil"], 17, color=COL["foam"])
+    for s in sp.split(C["trough_brackets"]):
+        add(f"Trough bracket, {'left' if s.center().Y < 0 else 'right'}", s, MAT["galv"], 8)
+    add("Distillate manifold", C["manifold"], MAT["pp"], 9, color=COL["mani"])
+    add("Distillate manifold lid", C["lid"], MAT["pp"], 9, color=COL["mani"])
+    add("Brine gutter", C["gutter"], MAT["pvc"], 10, color=COL["gutter"])
+    for s in sp.split(C["outlet_brackets"]):
+        add(f"Outlet bracket, {'left' if s.center().Y < 0 else 'right'}", s, MAT["al"], 16)
+
+    # ---- fasteners in the panel frame, each cut into the parts it passes through
+    F = []
+    wt, gz = D["wall_top"], D["glaz_z"]
+    frame_keys = [k for k in L if k.startswith(("Base ring", "Side wall", "High wall", "Low wall", "Liner", "Prop block"))]
+    for sg in (-1, 1):                                   # corners: three screws per corner through the side wall
+        y = sg * OH
+        d_in = "-y" if sg > 0 else "+y"
+        for z in (10.0, 26.0, 42.0):
+            _screw(F, f"{SCREW}, corner", 4, 40, (-OH + WT / 2, y, z), d_in)
+        for z in (10.0, 26.0):
+            _screw(F, f"{SCREW}, corner", 4, 40, (OH - WT / 2, y, z), d_in)
+        _screw(F, f"{SCREW}, low wall cap", 4, 30, (OH - WT / 2, y, 42.0), d_in)
+        for x in (-450.0, -300.0, -150.0, 0.0, 150.0, 300.0, 450.0):    # base ring up into the side walls
+            _screw(F, f"{SCREW}, base ring", 4, 40, (x, sg * (OH - WT / 2), D["FZ0"]), "+z")
+    for ry in rib_positions(p):                          # base ring up into the high wall, between the openings
+        _screw(F, f"{SCREW}, base ring", 4, 40, (-OH + WT / 2, ry, D["FZ0"]), "+z")
+    for y in (-300.0, 0.0, 300.0):                       # low wall sill into the low base ring strip
+        _screw(F, f"{SCREW}, base ring", 4, 40, (OH, y, D["FZ0"] / 2), "-x")
+    tt = p["trim"][2]
+    zt = gz - 8.0
+    for u in (-400.0, -200.0, 0.0, 200.0, 400.0):        # trim: pan head screws through the hanging leg
+        _screw(F, "Stainless screw, glazing trim", 4, 20, (u, OH + tt, zt), "-y", pan=True)
+        _screw(F, "Stainless screw, glazing trim", 4, 20, (u, -OH - tt, zt), "+y", pan=True)
+        _screw(F, "Stainless screw, glazing trim", 4, 20, (OH + tt, u, zt), "-x", pan=True)
+        _screw(F, "Stainless screw, glazing trim", 4, 20, (-OH - tt, u, zt), "+x", pan=True)
+    bw, bt = p["bracket"]
+    for sg in (-1, 1):                                   # outlet brackets: three screws into a tooth and the sill
+        for z in (25.0, 10.0, -6.0):
+            _screw(F, f"{SCREW}, outlet bracket", 4, 25, (OH + bt, sg * p["bracket_y"], z), "-x")
+        y0 = sg * (p["aperture"] / 2 - 7)                # trough brackets: two screws into the high wall's solid ends
+        for z in (18.0, 6.0):
+            _screw(F, f"{SCREW}, trough bracket", 4, 25, (-OH - 3.0, y0, z), "+x")
+    all_keys = list(L)
+    for r in F:
+        sp.drill_all(L, r["shape"], all_keys)
+    side_keys = [k for k in L if k.startswith(("Side wall", "Liner, side", "Base ring, side"))]
+    _panel_stand_fixings(p, L, F, side_keys)
+    for k in L:
+        if k.startswith("Prop block"):
+            meta[k] = (MAT["timber"], "made", 12, "stand", None)
+
+    recs = [_rec(k, v, *meta[k]) for k, v in L.items()] + F
+    _to_world(recs, p, tilt)
+    recs_w = []
+    W, G = _stand_world(p, tilt, recs_w)
+    _cut_world([r for r in recs if "bolt" in r["name"]], W)
+    for k, s in W.items():
+        recs_w.append(_rec(k, s, MAT["ply"] if k.startswith("Gusset") else MAT["timber"], "made", 2 if k.startswith("Gusset") else 12, "stand"))
+    return _finish(recs + recs_w)
+
+
+# ---- option B: single-effect tilted wick still on the same frame size, trough, gutter and stand
+B_PARAMS = {
+    "base_t": 12.0,        # plywood base panel
+    "board_t": 25.0,       # stone wool backboard
+    "tray_t": 0.5,         # black aluminium tray under the wick
+    "wick_t": 1.0,
+    "cover_gap": 60.0,     # wick face to glass underside
+    "glass_t": 4.0,        # toughened float glass cover
+    "channel": (40.0, 28.0, 1.5),   # distillate channel (PP): width, depth, wall
+    "channel_x": 452.0,    # inboard edge of the channel (local x)
+    "gutter_z": 18.0,      # top of the outside brine gutter
+}
+
+
+def option_b(p=PARAMS, tilt=None):
+    """Option B at D3: one black wick on an insulated backboard under a glass cover, inner distillate channel."""
+    tilt = p["tilt"] if tilt is None else tilt
+    b = B_PARAMS
+    D = derived(p)
+    OH, WT, FT = D["OH"], p["ply_t"], p["foam_t"]
+    li = p["aperture"] / 2                              # 500: inside of the liners
+    z_board = b["board_t"]
+    z_tray = z_board + b["tray_t"]
+    z_wick = z_tray + b["wick_t"]
+    g0 = z_wick + b["cover_gap"]                        # glass underside
+    wt = g0 - p["tape_t"]
+    L, meta = {}, {}
+
+    def add(name, shape, mat, bom=None, group="shell", color=None, kind="made", edge=None):
+        if edge:
+            shape = cp.break_edges(shape, edge)
+        L[name] = shape
+        meta[name] = (mat, kind, bom, group, color)
+
+    add("Base panel", _box(-OH, OH, -OH, OH, -b["base_t"], 0), MAT["ply"], edge=1.0)
+    add("Side wall, right", _box(-OH, OH, OH - WT, OH, 0, wt), MAT["ply"], color=COL["frame"], edge=1.0)
+    add("Side wall, left", _box(-OH, OH, -OH, -OH + WT, 0, wt), MAT["ply"], color=COL["frame"], edge=1.0)
+    slot = lambda x0, x1: _box(x0, x1, -li + 10, li - 10, z_tray - 0.5, z_wick + 1.5)
+    add("High wall", _box(-OH, -OH + WT, -OH + WT, OH - WT, 0, wt) - slot(-OH - 1, -OH + WT + 1), MAT["ply"], color=COL["frame"])
+    add("Low wall", _box(OH - WT, OH, -OH + WT, OH - WT, 0, wt) - slot(OH - WT - 1, OH + 1), MAT["ply"], color=COL["frame"])
+    add("Backboard, stone wool", _box(-OH + WT, OH - WT, -OH + WT, OH - WT, 0, z_board), MAT["wool"], color=COL["wool"], edge=0.5)
+    add("Liner, side right", _box(-li - FT, li + FT, li, li + FT, z_board, wt), MAT["wool"], color=COL["wool"], edge=0.5)
+    add("Liner, side left", _box(-li - FT, li + FT, -li - FT, -li, z_board, wt), MAT["wool"], color=COL["wool"], edge=0.5)
+    add("Liner, high", _box(-li - FT, -li, -li, li, z_board, wt) - slot(-li - FT - 1, -li + 1), MAT["wool"], color=COL["wool"])
+    add("Liner, low", _box(li, li + FT, -li, li, z_board, wt) - slot(li - 1, li + FT + 1), MAT["wool"], color=COL["wool"])
+    add("Absorber tray, black", Pos(0, 0, z_board) * cp.sheet(2 * li - 4, 2 * li - 4, b["tray_t"], r_corner=5.0),
+        MAT["al"], group="internal", color=COL["absorber"])
+    # wick: one black sheet on the tray, out through the high wall slot to the trough and through the low wall slot
+    xi, tw_, rim = p["trough"]
+    yw = li - 20.0
+    wick = _box(-li + 3, li - 3, -yw, yw, z_tray, z_wick)
+    wick += _box(-OH - 1.0, -li + 3, -yw, yw, z_tray, z_wick)                       # out through the high wall slot
+    wick += _box(-OH - 1.0, -OH, -yw, yw, z_tray, rim + 1.0)                         # up the outside of the wall
+    wick += _box(-xi - 8.0, -OH, -yw, yw, rim, rim + 1.0)                            # over the trough rim
+    wick += _box(-xi - 8.0, -xi - 7.0, -yw, yw, -20.0, rim)                          # down into the feed
+    xg0 = OH + 12.0
+    wick += _box(li - 3, xg0 + 30.0, -yw, yw, z_tray, z_wick)                      # out to the brine gutter
+    wick += _box(xg0 + 29.0, xg0 + 30.0, -yw, yw, b["gutter_z"] - 25.0, z_tray)   # down into the gutter
+    add("Wick, black cotton-viscose", wick, MAT["fab"], group="internal", color=COL["wick_b"])
+    clip = _box(-li + 3, -li + 13, -yw - 2, yw + 2, z_wick, z_wick + 0.6)
+    add("Wick clamp bar, high end (stainless)", cp.break_edges(clip, 0.2), MAT["ss"], group="internal")
+    # glass, tape, trim
+    gs = p["glaz_size"] / 2
+    add("Glazing tape", _box(-gs, gs, -gs, gs, wt, g0) - _box(-li, li, -li, li, wt - 1, g0 + 1), MAT["sil"], color=COL["tape"])
+    add("Cover, 4 mm toughened glass", Pos(0, 0, g0) * cp.sheet(2 * gs, 2 * gs, b["glass_t"], r_corner=4.0, edge=0.8), MAT["glass"])
+    tl, td, tt = p["trim"]
+    gt = g0 + b["glass_t"]
+    xo = OH + tt
+    ring = _box(-xo, xo, -xo, xo, gt, gt + tt) - _box(-xo + tl, xo - tl, -xo + tl, xo - tl, gt - 1, gt + tt + 1)
+    skirt = _box(-xo, xo, -xo, xo, gt + tt - td, gt + tt) - _box(-OH, OH, -OH, OH, gt - td - 1, gt + tt + 1)
+    for k, s in _trim_pieces(ring + skirt, OH).items():
+        add(f"Glazing trim, {k} length", s, MAT["al"], color=COL["trim"])
+    # distillate: silicone drip strip under the glass, PP channel with end caps, outlet tube through the right wall
+    cw, cd, ct = b["channel"]
+    cx = b["channel_x"]
+    add("Drip strip, silicone", cp.break_edges(_box(cx + 12, cx + 18, -li + 2, li - 2, g0 - 6.0, g0), 0.8), MAT["sil"],
+        group="internal", color=COL["dam"])
+    zc1 = g0 - 8.0
+    ch = Pos(cx + cw / 2, 0, zc1 - cd) * Rot(90, 0, 0) * Pos(0, 0, -(2 * li - 10) / 2) * cp.bent_channel_sheet(cw, cd, ct, 2 * li - 10)
+    yo = li - 5.0
+    tube_z = zc1 - cd + 8.0
+    add("Distillate channel, PP", ch, MAT["pp"], group="internal", color=COL["mani"])
+    for sg in (-1, 1):
+        cap = _box(cx - 1, cx + cw + 1, *sorted((sg * yo, sg * (yo + 3))), zc1 - cd - 1, zc1)
+        if sg > 0:
+            cap -= Pos(cx + cw / 2, yo, tube_z) * Rot(-90, 0, 0) * Cylinder(6.0, 10)
+        add(f"Channel end cap, {'left' if sg < 0 else 'right'}", cp.break_edges(cap, 0.4), MAT["pp"], group="internal", color=COL["mani"])
+    tube = Pos(cx + cw / 2, yo - 6.0, tube_z) * Rot(-90, 0, 0) * cp.round_tube(12.0, 1.5, OH + 50.0 - (yo - 6.0))
+    add("Distillate outlet tube, silicone", tube, MAT["sil"], group="internal", color=COL["mani"])
+    bore = Pos(cx + cw / 2, li - 1.0, tube_z) * Rot(-90, 0, 0) * Pos(0, 0, 25.0) * Cylinder(6.0, 50.0)
+    for k in ("Liner, side right", "Side wall, right"):
+        L[k] = L[k] - bore
+    # outside: brine gutter on two brackets, feed trough on two brackets, foam closure
+    gw, gh = 70.0, 40.0
+    gz1 = b["gutter_z"]
+    gut = _box(xg0, xg0 + gw, -li, li, gz1 - gh, gz1) - _box(xg0 + 3, xg0 + gw - 3, -li + 3, li - 3, gz1 - gh + 3, gz1 + 1)
+    gut += Pos(xg0 + gw / 2, -li + 30, gz1 - gh - 30) * Cylinder(8, 60)
+    add("Brine gutter", gut, MAT["pvc"], color=COL["gutter"])
+    bw, bt = p["bracket"]
+    for sg in (-1, 1):
+        y0 = sg * p["bracket_y"]
+        br = _box(OH, OH + bt, y0 - bw / 2, y0 + bw / 2, gz1 - gh - bt, gz1 - 2.0)
+        br += _box(OH, xg0 + gw + 6, y0 - bw / 2, y0 + bw / 2, gz1 - gh - bt, gz1 - gh)
+        add(f"Gutter bracket, {'left' if sg < 0 else 'right'}", cp.break_edges(br, 0.5), MAT["al"])
+    tz0 = rim - tw_
+    tr = _box(-xi - tw_, -xi, -li, li, tz0, rim) - _box(-xi - tw_ + 5, -xi - 5, -li + 5, li - 5, tz0 + 5, rim + 1)
+    add("Feed trough", tr, MAT["pvc"], color=COL["trough"])
+    add("Feed closure", cp.break_edges(_box(-xi, -OH - 1.0, -yw - 2, yw + 2, z_wick, rim), 0.5), MAT["sil"], color=COL["foam"])
+    for sg in (-1, 1):
+        y0 = sg * (li - 7)
+        br = _box(-OH - 3, -OH, y0 - 10, y0 + 10, tz0 - 3, z_tray - 1.0)
+        br += _box(-xi - tw_ - 3, -OH, y0 - 10, y0 + 10, tz0 - 3, tz0)
+        br += _box(-xi - tw_ - 3, -xi - tw_, y0 - 10, y0 + 10, tz0 - 3, tz0 + 30)
+        add(f"Trough bracket, {'left' if sg < 0 else 'right'}", br, MAT["galv"])
+
+    # ---- fasteners
+    F = []
+    for sg in (-1, 1):
+        d_in = "-y" if sg > 0 else "+y"
+        for xw in (-OH + WT / 2, OH - WT / 2):
+            for z in (12.0, 40.0, wt - 12.0):
+                _screw(F, f"{SCREW}, corner", 4, 40, (xw, sg * OH, z), d_in)
+        for x in (-450.0, -225.0, 0.0, 225.0, 450.0):
+            _screw(F, f"{SCREW}, base panel", 4, 40, (x, sg * (OH - WT / 2), -b["base_t"]), "+z")
+            _screw(F, f"{SCREW}, base panel", 4, 40, (sg * (OH - WT / 2), x * 0.9, -b["base_t"]), "+z")
+    zt = g0 - 6.0
+    for u in (-400.0, 0.0, 400.0):
+        _screw(F, "Stainless screw, glazing trim", 4, 20, (u, OH + tt, zt), "-y", pan=True)
+        _screw(F, "Stainless screw, glazing trim", 4, 20, (u, -OH - tt, zt), "+y", pan=True)
+        _screw(F, "Stainless screw, glazing trim", 4, 20, (OH + tt, u, zt), "-x", pan=True)
+        _screw(F, "Stainless screw, glazing trim", 4, 20, (-OH - tt, u, zt), "+x", pan=True)
+    for sg in (-1, 1):
+        for z in (8.0, -6.0):
+            _screw(F, f"{SCREW}, gutter bracket", 4, 25, (OH + bt, sg * p["bracket_y"], z), "-x")
+        for z in (14.0, 4.0):
+            _screw(F, f"{SCREW}, trough bracket", 4, 25, (-OH - 3.0, sg * (li - 7), z), "+x")
+    keys = list(L)
+    for r in F:
+        sp.drill_all(L, r["shape"], keys)
+    side_keys = [k for k in L if k.startswith(("Side wall", "Liner, side", "Backboard", "Base panel"))]
+    _panel_stand_fixings(p, L, F, side_keys)
+    for k in L:
+        if k not in meta:
+            meta[k] = (MAT["timber"], "made", None, "stand", None)
+    recs = [_rec(k, v, *meta[k]) for k, v in L.items()] + F
+    _to_world(recs, p, tilt)
+    recs_w = []
+    W, G = _stand_world(p, tilt, recs_w, " (B)")
+    _cut_world([r for r in recs if "bolt" in r["name"]], W)
+    for k, s in W.items():
+        recs_w.append(_rec(k, s, MAT["ply"] if k.startswith("Gusset") else MAT["timber"], "made", None, "stand"))
+    out = _finish(recs + recs_w)
+    for q in out:                                   # option B is not carried to the BOM
+        q["bom"] = None
+    return out
+
+
+def components(option=None):
+    """kit 1.9: the parts of one option as cad_parts.part() dicts in the world frame (ground at z = 0)."""
+    option = option or CHOSEN
+    if option == "A":
+        return option_a()
+    if option == "B":
+        return option_b()
+    raise KeyError(option)
+
+
 if __name__ == "__main__":
     root = Path(__file__).resolve().parents[1]
     parts = build()
     asm = assembly(parts)
     (root / "step").mkdir(exist_ok=True); (root / "stl").mkdir(exist_ok=True)
     export_step(asm, str(root / "step" / "stillstack-assembly.step"))
-    export_stl(asm, str(root / "stl" / "stillstack-assembly.stl"), tolerance=0.5)
-    rail = Box(PARAMS["aperture"] - 2 * PARAMS["plate_clear"], PARAMS["rail_w"], PARAMS["gap"] + PARAMS["wick_t"])
-    export_stl(rail, str(root / "stl" / "side-rail.stl"))
+    export_stl(asm, str(root / "stl" / "stillstack-assembly.stl"), tolerance=0.15, angular_tolerance=0.2)
+    rail = cp.break_edges(Box(PARAMS["aperture"] - 2 * PARAMS["plate_clear"], PARAMS["rail_w"], PARAMS["gap"] + PARAMS["wick_t"]), 0.5)
+    export_stl(rail, str(root / "stl" / "side-rail.stl"), tolerance=0.1, angular_tolerance=0.2)   # stage 4 printed rail
     bb = asm.bounding_box()
     D = derived()
     print(f"Assembly envelope at {PARAMS['tilt']:.0f} deg: {bb.size.X:.0f} x {bb.size.Y:.0f} x {bb.size.Z:.0f} mm")

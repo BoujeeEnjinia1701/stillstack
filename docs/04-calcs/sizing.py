@@ -52,7 +52,7 @@ P = dict(
     tau=0.80,               # 6 mm twin-wall clear polycarbonate, typical solar transmittance
     alpha=0.95,             # high-temperature matte black paint
     # emissivities
-    eps_abs=0.90, eps_pc=0.90, eps_wick=0.95, eps_cond=0.90, eps_bottom=0.10,   # bottom: bare rolled aluminum underside and fins
+    eps_abs=0.90, eps_pc=0.90, eps_wick=0.95, eps_cond=0.90, eps_bottom=0.90,   # bottom: underside and fins painted high-temperature matte black (SSK-DEC-001 D-07; was bare, 0.10)
     h_twin=9.3,             # W/m2K across the twin-wall cells (from a typical U of 3.6 W/m2K less surface films)
     # site and design day
     H_day_kwh=5.5,          # kWh/m2/day on the tilted aperture
@@ -72,7 +72,7 @@ P = dict(
     plate_clear=0.002,      # m, plate clearance to the frame each side (thermal growth)
     wall=0.037,             # m, 12 mm plywood plus 25 mm stone wool
     wick_break=0.010,       # m, dry break each side of a rib (R4 air break)
-    rail_w=0.012,           # m, side rail width (150 degC polymer in stages 1 and 2, printed PC in 3 and 4)
+    rail_w=0.012,           # m, side rail width (PPS in stages 1 to 3, printed PC in stage 4; SSK-DEC-001 D-01)
     budget=355.0,           # USD, project.yaml budget_usd (DDR-002 v0.2, 2026-09-26)
     rating_hot=150.0,       # degC, R8 rating for materials in stages 1 and 2 (DDR-002)
     rating_cool=110.0,      # degC, R8 rating for all other internal materials
@@ -123,6 +123,16 @@ def d_va(T):
 CP_W = 4180.0
 
 
+# ---------------------------------------------------------------- brine water activity (independent review, 2026-10-24)
+def water_activity(S_gL, phi_osm=0.93):
+    """Water activity of NaCl brine at S g/L: ln a_w = -2 m phi M_w (osmotic coefficient about 0.93)."""
+    m = S_gL / 58.44 / (1 - S_gL / 1000.0)
+    return math.exp(-2 * m * phi_osm * M_W)
+
+
+S_MEAN = 0.5 * (P["feed_salinity"] + P["feed_salinity"] * P["FR"] / (P["FR"] - 1))   # mean wick salinity, g/L
+A_W = water_activity(S_MEAN)
+
 # ---------------------------------------------------------------- gap transfer
 F_GAP = 1.0 / (1 / P["eps_wick"] + 1 / P["eps_cond"] - 1)
 
@@ -136,7 +146,7 @@ def gap_flux(Tw, Tc, phi=1.0, dry=False):
     if dry or Tw <= Tc:
         m = 0.0
     else:
-        p1 = min(psat(min(Tw, 99.0)), 0.99 * P_ATM)
+        p1 = min(A_W * psat(min(Tw, 99.0)), 0.99 * P_ATM)      # brine lowers the vapour pressure (Raoult, A_W)
         p2 = min(psat(min(Tc, 99.0)), p1)
         m = P_ATM * M_W * d_va(Tm) / (R_U * TK * P["gap"]) * math.log((P_ATM - p2) / (P_ATM - p1))
         m *= phi
@@ -198,8 +208,11 @@ def q_bottom(Tb, Ta, v, eps=None):
     # natural convection, heated surface facing down, 70 deg from vertical (Fujii and Imura)
     Ra = G_ACC * dT / (Tf + 273.15) * L ** 3 / nu_air(Tf) ** 2 * 0.71
     h_nat = 0.56 * (Ra * math.cos(math.pi / 2 - BETA)) ** 0.25 * k_air(Tf) / L
-    # sheltered wind under the panel at half the free-stream speed
-    h_frc = h_wind(0.5 * v)
+    # sheltered wind under the panel at half the free-stream speed: laminar flat plate (Incropera eq. 7.30),
+    # in place of the 5 W/m2K floor of h_wind() used before v0.8 (independent review, 2026-10-24)
+    Vb = max(0.5 * v, 0.05)
+    Re = Vb * L / nu_air(Tf)
+    h_frc = 0.664 * Re ** 0.5 * 0.71 ** (1 / 3) * k_air(Tf) / L
     h_c = (h_nat ** 3 + h_frc ** 3) ** (1 / 3)
     # fin efficiency, 0.5 mm aluminum, 30 mm deep
     m = math.sqrt(2 * h_c / (205 * P["plate_t"]))
@@ -361,7 +374,7 @@ def main():
     # 4. Design day
     dd = design_day()
     pk = dd["peak"]
-    print("\n4. Design day, 4 stages, FR 2.5, wind 1 m/s, 30 degC ambient, bare underside")
+    print("\n4. Design day, 4 stages, FR 2.5, wind 1 m/s, 30 degC ambient, painted underside (D-07)")
     line("Distillate per stage", ", ".join(f"{x:.2f}" for x in dd["stage"]), "L/m2/day")
     line("Total distillate", f(dd["yield"], 1), "L/m2/day")
     line("Gained output ratio (latent in distillate / sun)", f(dd["GOR"], 2))
@@ -396,7 +409,7 @@ def main():
     print("\n6. Sensitivity (daily distillate, L/m2/day; GOR)")
     cases = [("3 stages", dict(n=3)), ("4 stages (base)", dict()), ("6 stages", dict(n=6)),
              ("No rib breaks (phi = 1)", dict(phi=1.0)), ("FR 3.5", dict(FR=3.5)),
-             ("Wind 3 m/s", dict(v=3.0)), ("Painted underside (eps 0.90)", dict(eps_bottom=0.90)),
+             ("Wind 3 m/s", dict(v=3.0)), ("Bare underside (eps 0.10, before D-07)", dict(eps_bottom=0.10)),
              ("Sunny day 6.5 kWh/m2", dict(H_kwh=6.5)), ("Hazy day 4.5 kWh/m2", dict(H_kwh=4.5))]
     sens = {}
     for name, kw in cases:
@@ -404,6 +417,12 @@ def main():
         sens[name] = d
         print(f"  {name:<40s} {d['yield']:>6.1f} L   GOR {d['GOR']:.2f}   peak absorber {d['T0max']:.0f} degC"
               f"   peak bottom {d['Tbmax']:.0f} degC")
+    tau0 = P["tau"]
+    P["tau"] = 0.75                                  # solar-weighted glazing with incidence and soiling loss (review)
+    d = design_day()
+    P["tau"] = tau0
+    print(f"  {'Glazing tau 0.75 (solar-weighted, soiled)':<40s} {d['yield']:>6.1f} L   GOR {d['GOR']:.2f}   peak absorber {d['T0max']:.0f} degC"
+          f"   peak bottom {d['Tbmax']:.0f} degC")
 
     # 7. Stagnation and hot operation
     print("\n7. Temperatures at 1,000 W/m2 and 35 degC ambient, wind 1 m/s")
@@ -419,6 +438,14 @@ def main():
     line("Dry stagnation, calm air: plate temperatures", ", ".join(f"{t:.0f}" for t in dry_calm["Tp"]), "degC")
     _, (tc1c, _) = q_top(dry_calm["Tp"][0], 35.0, 0.0)
     line("Dry stagnation, calm air: inner glazing sheet", f(tc1c, 0), "degC")
+    # harsher stagnation cases (independent review, 2026-10-24)
+    for lab, kw in (("40 degC ambient, calm", dict(Ta=40.0, v=0.0)),):
+        s_ = solve_stack(1000.0, dry=True, **kw)
+        _, (tgi, _) = q_top(s_["Tp"][0], kw["Ta"], 0.0)
+        line(f"Dry stagnation, {lab}: plates; inner glazing", ", ".join(f"{t:.0f}" for t in s_["Tp"]) + f"; {tgi:.0f}", "degC")
+    s_ = solve_stack(1100.0, Ta=35.0, dry=True, v=0.0)
+    _, (tgi, _) = q_top(s_["Tp"][0], 35.0, 0.0)
+    line("Dry stagnation, 1,100 W/m2, 35 degC, calm: plates; inner glazing", ", ".join(f"{t:.0f}" for t in s_["Tp"]) + f"; {tgi:.0f}", "degC")
     # R8 as restated in DDR-002: stages 1 and 2 (absorber to plate 2) rated 150 degC, the rest 110 degC
     hot = max(dry["Tp"][0], dry_calm["Tp"][0])
     cool = max(dry["Tp"][2], dry_calm["Tp"][2])
@@ -426,6 +453,10 @@ def main():
     line("R8: margin in stages 1 and 2", f(P["rating_hot"] - hot, 0), "K")
     line("R8: hottest stage 3 and 4 material vs 110 degC rating", f"{cool:.0f} vs {P['rating_cool']:.0f}", "degC")
     line("R8: margin in stages 3 and 4", f(round(P["rating_cool"] - cool) + 0.0, 0), "K")
+    # rail polymers against their own limits (SSK-DEC-001 D-01, 2026-10-24: stage 3 rails moved from printed PC to PPS)
+    line("Stage 3 rails (PPS, long-term 218 degC) at calm-air stagnation", f"{cool:.0f} vs 218", "degC")
+    st4 = max(dry["Tp"][3], dry_calm["Tp"][3])
+    line("Stage 4 rails (printed PC, softens at 113 degC, ISO 75 0.45 MPa)", f"{st4:.0f} vs 113", "degC")
 
     # 8. Wick feed capacity
     print("\n8. Wick feed capacity (stage 1 at noon)")
@@ -466,7 +497,7 @@ def main():
         "Base ring, 12 mm plywood": P["ring"][0] * P["ring"][1] * 550,
         "Glazing trim, aluminum angle 25 x 20 x 2": P["trim"][0] * P["trim"][1] * 2700,
         f"Wicks, 4 x 1.0 x {P['wick_len']:.2f} m at 0.20 kg/m2 dry": 4 * P["wick_len"] * ap * 0.20,
-        "Side rails, PPS (stages 1, 2, 1,350 kg/m3) and PC (stages 3, 4, 1,200 kg/m3), 8 x 12 x 7 mm": 2 * 2 * P["rail_w"] * (P["gap"] + P["wick_t"]) * ap * (1350 + 1200),
+        "Side rails, PPS (stages 1 to 3, 1,350 kg/m3) and PC (stage 4, 1,200 kg/m3), 8 x 12 x 7 mm": 2 * P["rail_w"] * (P["gap"] + P["wick_t"]) * ap * (3 * 1350 + 1200),
         "Stop blocks, 2 x 27 x 15 x 33 mm PPS": 2 * 0.027 * 0.015 * 0.033 * 1350,
         "Wick clips, 40 of 0.4 x 8 mm 304 stainless strip, 5.5 m": P["clip"][3] * P["clip"][1] * P["clip"][2] * 7900,
         "Intermediate ribs, 16 x 7 mm silicone cord": 4 * RIB["n_ribs"] * math.pi / 4 * 0.007 ** 2 * ap * 1150,
@@ -517,6 +548,28 @@ def main():
     line("Weight of wet panel and stand", f(W, 0), "N")
     v_lift = math.sqrt(W * math.cos(BETA) / (0.5 * 1.2 * 1.2 * Aw))
     line("Wind speed at which lift equals weight (approx.)", f(v_lift, 1), "m/s")
+    # tipping about the front end of the ground frame, wind from behind on the underside (independent review,
+    # 2026-10-24): normal force at the panel centre, up and toward the low edge; geometry from cad/src/model.py
+    sys.path.insert(0, str(ROOT / "cad" / "src"))
+    import model as MW
+    sg = MW.stand_geometry()
+    px = sg["pivot"][0]
+    x_front = px + MW.PARAMS["post"] * 1.5
+    x_rear = px - MW.PARAMS["rail_rear"]
+    xc, zc = MW.to_world(0.0, 15.0)                       # panel centre (local origin, mid stack), mm
+    xg = (wet_m * xc + stand_m * 0.5 * (x_front + x_rear)) / (wet_m + stand_m)
+    nx, nz = math.sin(BETA), math.cos(BETA)
+    arm_o = (nz * (x_front - xc) + nx * zc) / 1000.0       # m of overturning arm per N of normal force
+    arm_r = (x_front - xg) / 1000.0                        # m of restoring arm per N of weight
+    v_tip = math.sqrt(W * arm_r / (0.5 * 1.2 * 1.2 * Aw * arm_o))
+    line("Wind speed at which the unanchored stand tips forward (wind from behind)", f(v_tip, 1), "m/s")
+    line("Overturning and restoring arms", f"{arm_o:.2f}, {arm_r:.2f}", "m")
+    # anchored (D-09, decided by Amish 2026-10-25): PR-013 is met anchored; stakes or 40 kg of ballast are a hold point
+    arm_b = (x_front - x_rear) / 1000.0                    # m, front tipping edge to the rear stakes or ballast
+    v_tip_b = math.sqrt((W * arm_r + 40.0 * G_ACC * arm_b) / (0.5 * 1.2 * 1.2 * Aw * arm_o))
+    line("Wind speed at which the stand tips with 40 kg of ballast on the rear of the ground rails", f(v_tip_b, 1), "m/s")
+    m_def = 0.5 * 1.2 * 1.2 * Aw * 17.0 ** 2 * arm_o - W * arm_r
+    line("Hold-down needed at 17 m/s on each of the two rear stakes", f(max(m_def, 0.0) / arm_b / 2, 0), "N")
 
     # 13. Cost
     print("\n13. Cost from bom/bom.csv")

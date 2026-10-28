@@ -26,6 +26,8 @@ from model import PARAMS as P, derived, build_components, plate, wick, stand, st
 OUT = ROOT / "docs" / "05-build-plan"
 DWG = ROOT / "cad" / "drawings"
 DATE = "2026-10-02"
+DATE3 = "2026-10-24"
+DATE4 = "2026-10-25"
 DATE_P1 = "2026-10-01"
 D = derived(P)
 TILT = P["tilt"]
@@ -83,6 +85,24 @@ def rv(n, what):
     return dict(rev="P2", revisions=[("P1", "Making sketch for the prototype build plan", DATE_P1, "AC"), ("P2", what, DATE, "AC")])
 
 
+def rv3(n, what, p2=None):
+    """Revision P3 of a making sketch changed on 2026-10-24 (kit 1.9.1 upgrade, SSK-DEC-001 D-01 and D-02)."""
+    revs = [("P1", "Making sketch for the prototype build plan", DATE_P1, "AC")]
+    if p2:
+        revs.append(("P2", p2, DATE, "AC"))
+    revs.append(("P3" if p2 else "P2", what, DATE3, "AC"))
+    return dict(rev=revs[-1][0], revisions=revs)
+
+
+def rv4(n, what, p2=None):
+    """Next revision of a making sketch changed on 2026-10-25 (Amish's decisions, SSK-DEC-001 D-08)."""
+    revs = [("P1", "Making sketch for the prototype build plan", DATE_P1, "AC")]
+    if p2:
+        revs.append(("P2", p2, DATE, "AC"))
+    revs.append((f"P{len(revs) + 1}", what, DATE4, "AC"))
+    return dict(rev=revs[-1][0], revisions=revs)
+
+
 def rot_local(off, tilt=TILT):
     """A pull-apart offset given in the panel frame, as a world vector."""
     s, c = math.sin(math.radians(tilt)), math.cos(math.radians(tilt))
@@ -103,12 +123,12 @@ def overview():
         ("Stone wool liner", U(c["liner_side_r"], c["liner_side_l"], c["liner_high"], c["liner_low"], c["liner_low_cap"]), COL["liner"], (0, 0, 150)),
         ("Stop blocks, PPS (2)", c["stops"], COL["stop"], (420, 0, 380)),
         ("Bottom plate with fins", U(c["plate_bottom"], c["fins"]), COL["bottom"], (-120, 0, 300)),
-        ("Side rails, stages 3 and 4, printed PC (4)", U(c["rails_3"], c["rails_4"]), COL["rail34"], (-260, 0, 400)),
-        ("Side rails, stages 1 and 2, PPS (4)", U(c["rails_1"], c["rails_2"]), COL["pps"], (-300, 0, 470)),
+        ("Side rails, stage 4, printed PC (2)", c["rails_4"], COL["rail34"], (-260, 0, 400)),
+        ("Side rails, stages 1 to 3, PPS (6)", U(c["rails_1"], c["rails_2"], c["rails_3"]), COL["pps"], (-300, 0, 470)),
         ("Spacer ribs (16) and dams", U(*[c[f"ribs_{s}"] for s in range(1, 5)], *[c[f"dams_{s}"] for s in range(1, 4)]), COL["rib"], (-330, 0, 470)),
         ("Condenser plates (3)", U(c["plate_1"], c["plate_2"], c["plate_3"]), COL["plate"], (-520, 0, 600)),
         ("Wick strips (20)", U(*[c[f"wick_{s}"] for s in range(1, 5)]), COL["wick"], (-620, 0, 680)),
-        ("Wick clips, stainless (40)", U(*[clips_of(s) for s in range(1, 5)]), COL["clip"], (-700, 0, 780)),
+        ("Wick clips, aluminium (40)", U(*[clips_of(s) for s in range(1, 5)]), COL["clip"], (-700, 0, 780)),
         ("Absorber plate", c["absorber"], COL["absorber"], (-800, 0, 880)),
         ("Glazing and tape", U(c["glazing"], c["tape"]), COL["glazing"], (-920, 0, 980)),
         ("Glazing trim (4)", c["trim"], COL["trim"], (-1040, 0, 1080)),
@@ -328,20 +348,20 @@ def sheets(only=None):
         out.append(bv.component_sheet(
             part("Side rail", r, COL["rail12"]), [part("Plate below it", c["plate_1"], COL["plate"])],
             dwg_no="SSK-DWG-109", title="StillStack side rail (make 8): making sketch",
-            material="Stages 1, 2: PPS, natural (tan), above 150 C. Stages 3, 4: printed PC, teal",
+            material="Stages 1 to 3: PPS, natural (tan), 218 C long term. Stage 4: printed PC, teal",
             view_shape=b.Rot(0, 0, 90) * b.Pos(0, -492.0, -26.0) * r, inset_view=(30, -40),
             notes=["Eight rails, 996 x 12 x 7 mm, two per stage.",
-                   "Stages 1 and 2 (the top two gaps): cut four strips 12 mm wide",
+                   "Stages 1 to 3 (the top three gaps): cut six strips 12 mm wide",
                    "  from 7 mm natural (tan) PPS sheet; keep the offcut for the stop blocks.",
-                   "Stages 3 and 4: print four rails in teal polycarbonate in four 249 mm",
+                   "Stage 4: print two rails in teal polycarbonate in four 249 mm",
                    "  sections each, butt-joined with high-temperature silicone.",
-                   "Mark each rail with its stage number on the outside face; stages",
-                   "  1 and 2 must never swap with 3 and 4.",
+                   "Mark each rail with its stage number on the outside face; a teal",
+                   "  rail never goes in stages 1 to 3 (it softens at 113 C).",
                    "Fit: each rail lies along a side edge of the plate below, flush",
                    "  with it, and its low end touches the stop block.",
                    "The wick strips stop 10 mm short of the rail (dry break).",
                    "Check: 7.0 mm thick within 0.2 mm along the whole length."],
-            **rv(109, "PPS named for stages 1 and 2, teal PC for stages 3 and 4 (SSK-DEC-001)"), **base))
+            **rv3(109, "Stage 3 rails in PPS (SSK-DEC-001 D-01)", "PPS named for stages 1 and 2, teal PC for stages 3 and 4 (SSK-DEC-001)"), **base))
 
     if want(110):
         sh = straight_plate(2)
@@ -388,12 +408,12 @@ def sheets(only=None):
                    "  tongue, as long as the tongue (plus 10 mm).",
                    "High end: leave 150 mm extra beyond the plate's high edge for",
                    "  the feed tail (out through the opening, up the wall, into the trough).",
-                   "Hold it under the plate with two stainless clips and no adhesive:",
+                   "Hold it under the plate with two aluminium clips and no adhesive:",
                    "  a high-end clip (SSK-DWG-119) at the plate's high edge and a",
                    "  tongue clip over the brine tongue and the tail (SSK-DWG-120).",
                    "The strip edges stay 10 mm from the ribs and rails (dry breaks).",
                    "Check: no fibre bridges a dry break; tail centred on its tongue."],
-            **rv(111, "Wick clips in place of silicone dots (SSK-DEC-001)"), **base))
+            **rv4(111, "Wick clips in 5052 aluminium (SSK-DEC-001 D-08)", p2="Wick clips in place of silicone dots (SSK-DEC-001)"), **base))
 
     if want(112):
         sh = straight_plate(4)
@@ -517,10 +537,12 @@ def sheets(only=None):
                    "  the gusset is glued and screwed (8 x 4 x 40 mm) to the inside",
                    "  faces of both, behind the post, making the joint rigid.",
                    "The post's inside face touches the side wall; the pivot bolt",
-                   "  (M10 x 70 stainless) goes through post and wall, nut and large",
+                   "  (M10 x 75 stainless) goes through post and wall, nut and large",
                    "  washer inside the wall, in the liner pocket.",
+                   "Drill 10.5 mm through the gusset at the 10 and 15 deg prop holes",
+                   "  of the rail, which lie under it (foot pin M10 x 120).",
                    "Check: the post is upright (spirit level) on a level rail."],
-            **base))
+            **rv3(117, "Pivot bolt M10 x 75; gusset drilled at the 10 and 15 deg holes (SSK-DEC-001 D-02)"), **base))
 
     if want(118):
         pr = S["props"] & M._box(-3000, 3000, 0, 3000, -10, 2000)
@@ -539,12 +561,12 @@ def sheets(only=None):
                    "Top: an M10 x 120 stainless bolt through the prop, the prop block",
                    "  and the side wall (nut and washer inside the wall).",
                    "Foot: lies against the outside face of the ground rail; an M10",
-                   "  x 100 stainless bolt with a wing nut through the prop and the",
-                   "  rail hole for the tilt you want (the stand pins).",
+                   "  x 120 stainless bolt with a wing nut through the prop and the",
+                   "  rail hole for the tilt you want (and the gusset at 10 and 15 deg).",
                    "To change the tilt: support the panel, pull both foot pins, swing",
                    "  the props to the new holes, refit the pins.",
                    "Check: hole centres 1,000 mm apart within 1 mm."],
-            **base))
+            **rv3(118, "Foot pin M10 x 120 (SSK-DEC-001 D-02)"), **base))
 
     if want(119):
         a2, b2 = strips[2]
@@ -557,7 +579,7 @@ def sheets(only=None):
             [part("Plate", C()["plate_1"] & win_, COL["plate"]), part("Wick", C()["wick_2"] & win_, COL["wick"]),
              part("Rib", C()["ribs_2"] & win_, COL["rib"]), part("High liner", C()["liner_high"] & win_, COL["liner"])],
             dwg_no="SSK-DWG-119", title="StillStack high-end wick clip (make 20): making sketch",
-            material="304 stainless strip 0.4 x 8 mm (food contact)", view_shape=hi, inset_view=(30, -50),
+            material="5052-H32 aluminium strip 0.4 x 8 mm (D-08)", view_shape=hi, inset_view=(30, -50),
             notes=[f"Cut 20 lengths of strip: {bar + 2 * ear:.0f} mm for the three 167 mm wide",
                    "  strips of a stage, 4 mm more for the two 171 mm ones; ends filed.",
                    f"Mark the bar: {bar:.0f} mm in the middle (the strip's width plus 9 mm",
@@ -572,7 +594,7 @@ def sheets(only=None):
                    "No adhesive: the clip is slid on from the high edge and lifts off.",
                    "Check: the wick is pressed flat to the plate; no clip part touches a",
                    "  rib, a lip tab or the liner (1.5 mm to the nearest)."],
-            **base))
+            **rv4(119, "Clip in 5052 aluminium strip (SSK-DEC-001 D-08)"), **base))
 
     if want(120):
         lo = C()["clips_lo_2"] & M._box(400, 600, -40, 40, -100, 100)
@@ -582,7 +604,7 @@ def sheets(only=None):
             [part("Brine tongue (plate 1)", C()["plate_1"] & win2, COL["plate"]), part("Wick tail", C()["wick_2"] & win2, COL["wick"]),
              part("Chevron dam", C()["dams_1"] & win2, COL["dam"])],
             dwg_no="SSK-DWG-120", title="StillStack brine tongue clip (make 20): making sketch",
-            material="304 stainless strip 0.4 x 8 mm (food contact)", view_shape=lo, inset_view=(35, -50),
+            material="5052-H32 aluminium strip 0.4 x 8 mm (D-08)", view_shape=lo, inset_view=(35, -50),
             notes=["Cut 20 lengths of strip 62 mm long; ends filed.",
                    "Fold into a U that fits round a 50 mm wide tongue and the 30 mm",
                    "  wick tail under it: a 51 mm base, two 2.3 mm legs, and a 3.4 mm",
@@ -595,7 +617,7 @@ def sheets(only=None):
                    "Slide it off the tip to lift the wick out; no adhesive.",
                    "Check: the tail is centred under the tongue and pressed flat;",
                    "  the clip is at least 10 mm from the lid once the tongue is bent."],
-            **base))
+            **rv4(120, "Clip in 5052 aluminium strip (SSK-DEC-001 D-08)"), **base))
     return out
 
 
@@ -632,8 +654,8 @@ def joints(only=None):
               part("Side wall", win(c["wall_side_r"], *bx), COL["wall"]),
               part("Stone wool liner", win(c["liner_side_r"], *bx), COL["liner"]),
               part("Absorber plate", win(c["absorber"], *bx), COL["absorber"]),
-              part("Side rails, stages 1 and 2 (150 C polymer)", win(U(c["rails_1"], c["rails_2"]), *bx), COL["rail12"]),
-              part("Side rails, stages 3 and 4 (printed PC)", win(U(c["rails_3"], c["rails_4"]), *bx), COL["rail34"]),
+              part("Side rails, stages 1 to 3 (PPS)", win(U(c["rails_1"], c["rails_2"], c["rails_3"]), *bx), COL["rail12"]),
+              part("Side rails, stage 4 (printed PC)", win(c["rails_4"], *bx), COL["rail34"]),
               part("Condenser plates", win(stack(), *bx), COL["plate"]),
               part("Wick strips (10 mm dry break)", win(wicks(), *bx), COL["wick"]),
               part("Bottom plate", win(c["plate_bottom"], *bx), COL["bottom"]),
@@ -670,7 +692,7 @@ def joints(only=None):
         J(5, [part("Brine tongues (absorber, plates 1 to 3)", win(U(c["absorber"], stack()), *bx), COL["btongue"]),
               part("Wick tails under the tongues", win(wicks(), *bx), COL["wick"]),
               part("Chevron dams", win(U(c["dams_1"], c["dams_2"], c["dams_3"]), *bx), COL["dam"]),
-              part("Tongue clips (stainless)", win(U(*[c[f"clips_lo_{s_}"] for s_ in range(1, 5)]), *bx), COL["clip"]),
+              part("Tongue clips (aluminium)", win(U(*[c[f"clips_lo_{s_}"] for s_ in range(1, 5)]), *bx), COL["clip"]),
               part("Bottom plate", win(c["plate_bottom"], *bx), COL["bottom"]),
               part("Low wall, liner and cap (beside the notch)", win(U(c["wall_low"], c["wall_low_cap"], c["liner_low"], c["liner_low_cap"]), *bx), COL["wall"]),
               part("Manifold lid (closed here)", win(c["lid"], *bx), COL["lid"]),
@@ -690,7 +712,7 @@ def joints(only=None):
               part("Brine tongue", win(pbt, *bx), COL["btongue"]),
               part("Chevron dam (silicone bead, 3 mm high)", win(c["dams_2"], *bx), COL["dam"]),
               part("Ribs lying on the plate", win(c["ribs_2"], *(400, 545, y0 - 110, y0 + 110, z1 + 0.4, z1 + 4)), COL["rib"]),
-              part("Tongue clip (stainless)", win(c["clips_lo_3"], *(400, 545, y0 - 110, y0 + 110, z1 - 1.5, z1 + 4)), COL["clip"])],
+              part("Tongue clip (aluminium)", win(c["clips_lo_3"], *(400, 545, y0 - 110, y0 + 110, z1 - 1.5, z1 + 4)), COL["clip"])],
           "brine tongue root and chevron dam, from above", "Low edge to the right. The dam turns condensate aside onto the zigzag edges, which lead it to the distillate tongues",
           elev=75, azim=-95, size=(8, 6))
     if want(7):
@@ -763,7 +785,7 @@ def joints(only=None):
         bx = (-515, -470, r0 - 36, r0 + 36, -36, 33)
         J(13, [part("Plates with lip tabs (4 mm); absorber has none", win(U(c["plate_1"], c["plate_2"], c["plate_3"], c["absorber"], c["plate_bottom"]), *bx), "#9CA3AF"),
                part("Wick strips (centre strip and the next)", win(wicks(), *bx), COL["wick"]),
-               part("High-end clips (stainless): bar under the wick, ears over the edge", win(U(*[c[f"clips_hi_{s_}"] for s_ in range(1, 5)]), *bx), COL["clip"]),
+               part("High-end clips (aluminium): bar under the wick, ears over the edge", win(U(*[c[f"clips_hi_{s_}"] for s_ in range(1, 5)]), *bx), COL["clip"]),
                part("Ribs (start 6 mm in)", win(U(*[c[f"ribs_{s_}"] for s_ in range(1, 5)]), *bx), COL["rib"]),
                part("Base ring with slot under the bottom plate's tab", win(c["ring_high"], *bx), COL["ring"])],
            "high edge: lip tab beside the wick clip ears (cut at a rib line)",
@@ -775,7 +797,7 @@ def joints(only=None):
         bx = (455, 520, y0 - 35, y0 + 35, z1 - 3, z1 + 4)
         J(14, [part("Brine tongue, plate 1", win(c["plate_1"], *bx), COL["btongue"]),
                part("Wick tail (30 mm wide) under the tongue", win(c["wick_2"], *bx), COL["wick"]),
-               part("Tongue clip (stainless): base under the tail, flanges over the tongue", win(c["clips_lo_2"], *bx), COL["clip"]),
+               part("Tongue clip (aluminium): base under the tail, flanges over the tongue", win(c["clips_lo_2"], *bx), COL["clip"]),
                part("Chevron dam", win(c["dams_1"], *bx), COL["dam"])],
            "brine tongue clip holding the wick tail", "From above and the side. The clip sits 7 to 15 mm past the tongue root line, clear of the dam",
            elev=35, azim=-60, size=(8, 6))
@@ -832,13 +854,13 @@ def steps(only=None):
     n = 6
     for stage in (4, 3, 2, 1):
         lvl = 5 - stage                           # plate above this gap
-        rail_col = COL["rail34"] if stage >= 3 else COL["rail12"]
+        rail_col = COL["rail34"] if stage >= 4 else COL["rail12"]
         new = [mv(f"Stage {stage} side rails", c[f"rails_{stage}"], rail_col, (0, 0, 120)),
                mv(f"Stage {stage} ribs", c[f"ribs_{stage}"], COL["rib"], (0, 0, 160))]
         ptitle = "absorber" if lvl == 4 else names[4 - lvl]
         psh = U(straight_plate(lvl), straight_wick(stage))
         new.append(mv(f"{ptitle.capitalize()} with wick {stage} under it", psh, COL["absorber"] if lvl == 4 else "#475569", (0, 0, 480)))
-        new.append(mv(f"Wick {stage} clips (10, stainless)", clips_of(stage), COL["clip"], (0, 0, 560)))
+        new.append(mv(f"Wick {stage} clips (10, aluminium)", clips_of(stage), COL["clip"], (0, 0, 560)))
         psh = U(psh, clips_of(stage))
         sub = "Clip the wick strips under the plate on the bench first; rails and ribs, then the plate: tongues down into the notches, tails out through the high wall"
         st(n, done, new, f"stage {stage}: rails, ribs and {ptitle}", sub, elev=40, azim=-60, label_done=False)

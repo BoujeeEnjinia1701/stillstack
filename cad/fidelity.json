@@ -1,0 +1,35 @@
+{
+ "level": "D3",
+ "stage": "P3",
+ "hash": "e7ca008c377d31f9",
+ "options": {
+  "A": {
+   "title": "Four-stage wick still",
+   "parts": 293,
+   "made_or_bought": 174,
+   "fasteners": 119,
+   "welds": 0,
+   "bare": [],
+   "bare_share": 0.0,
+   "interference": [],
+   "mass_kg": 29.9,
+   "step_files": 174
+  },
+  "B": {
+   "title": "Single-effect tilted wick still",
+   "parts": 159,
+   "made_or_bought": 51,
+   "fasteners": 108,
+   "welds": 0,
+   "bare": [],
+   "bare_share": 0.0,
+   "interference": [],
+   "mass_kg": 41.7,
+   "step_files": 0
+  }
+ },
+ "failures": [],
+ "warnings": [],
+ "passed": true,
+ "seconds": 880.8
+}

@@ -3,9 +3,9 @@ doc_id: SSK-BLD-001
 title: StillStack prototype build plan
 project: StillStack
 doc_type: Build plan
-version: "0.3"
+version: '0.5'
 status: Draft
-date: '2026-10-02'
+date: '2026-10-25'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -21,6 +21,14 @@ revisions:
     date: '2026-10-02'
     author: Amish Chadha
     change: "Approved follow-ups carried into the design: lip tabs and base ring slots, wick clips (two new making sketches and two new joint pictures), PPS rails and stop blocks, fluoropolymer coating, labels; every picture regenerated from the model"
+  - version: "0.4"
+    date: '2026-10-24'
+    author: Amish Chadha
+    change: "Kit 1.9.1 upgrade: stage 3 rails cut from PPS (SSK-DEC-001 D-01); pivot bolts M10 x 75 and foot pins M10 x 120 through the gusset at the 10 and 15 deg holes (D-02); corner plates on top of the frame joints, as in the detailed model; mass 18.8 kg; pictures regenerated from the model"
+  - version: '0.5'
+    date: '2026-10-25'
+    author: Amish Chadha
+    change: 'Amish''s decisions of 2026-10-25: wick clips in 5052 aluminium strip (D-08; SSK-DWG-111 Rev P3, 119 and 120 Rev P2, joints 5, 6, 13, 14, steps 6 to 9 and the overview regenerated); panel label with the cover rule (D-05); anchoring a hold point at step 19 and safety stops S4, S5 (D-09)'
 ---
 
 # StillStack prototype build plan
@@ -54,7 +62,7 @@ The concept showed what the still does; some of its parts could not be made, fix
 | Manifold and gutter | No support | Two outlet brackets on the low wall (Figure 34) | The gutter sits lower and further out than the manifold |
 | Stand | Vertical rear struts that could not follow the panel's high edge as the tilt changes | Ground frame, front posts with gussets, a pivot bolt, and fixed props pinned at one of six holes (Figures 35 to 40) | Rigid at every tilt from 10° to 35°; the panel's weight stays well inside the frame |
 | Plate high edge | Plain edge, with feed tails leaving 6 mm above the condensing face of the plate below | Four 7 mm tabs bent down 4 mm on each condensing plate's high edge, on the rib lines, with slots in the base ring for the bottom plate's tabs (Figure 26) | Gives feed water at the high edge a drip edge away from the condensing face; the wicks pass between the tabs |
-| Wick fixing | Wicks bonded under the plates | Two stainless clips per wick strip, one at the high edge and one on the brine tongue, with no adhesive (Figures 24 to 27) | The wicks lift out for rinsing; no adhesive on the wet side |
+| Wick fixing | Wicks bonded under the plates | Two 5052 aluminium clips per wick strip (D-08), one at the high edge and one on the brine tongue, with no adhesive (Figures 24 to 27) | The wicks lift out for rinsing; no adhesive on the wet side |
 | Fins, corners, ribs | No fixing method | Fins bonded with silicone adhesive; corners glued and screwed; ribs stopped 6 mm short of the high edge and 8 mm short of the tongue tips | Plain workshop methods |
 
 ## 3. Making the components
@@ -236,12 +244,12 @@ The plate's four edges rest on the base ring's ledge; its corners touch the stop
 
 *Figure 18. Side rail making sketch (SSK-DWG-109).*
 
-**What it is and what it is made from.** Two rails per gap, along the side edges, that hold the plates 7 mm apart (6 mm gap plus the 1 mm wick). Stages 1 and 2 (the top two gaps): natural (tan) PPS rated above 150 °C (decided 2026-10-02). Stages 3 and 4: printed polycarbonate in teal, so the two kinds never swap.
+**What it is and what it is made from.** Two rails per gap, along the side edges, that hold the plates 7 mm apart (6 mm gap plus the 1 mm wick). Stages 1 to 3 (the top three gaps): natural (tan) PPS, long-term service 218 °C (stages 1 and 2 decided 2026-10-02; stage 3 added 2026-10-24, SSK-DEC-001 D-01, because stage 3 reaches 110 °C when dry and printed polycarbonate softens at 113 °C). Stage 4: printed polycarbonate in teal, so the two kinds never swap.
 
 **How to make it.**
 
-1. Stages 1 and 2: cut four strips 996 x 12 mm from 7 mm PPS sheet; keep the offcut for the stop blocks.
-2. Stages 3 and 4: print four rails 996 x 12 x 7 mm in teal polycarbonate, each in four 249 mm sections, and butt-join the sections with high-temperature silicone.
+1. Stages 1 to 3: cut six strips 996 x 12 mm from 7 mm PPS sheet (two 70 mm lengths, or one 100 mm strip); keep the offcut for the stop blocks.
+2. Stage 4: print two rails 996 x 12 x 7 mm in teal polycarbonate, each in four 249 mm sections, and butt-join the sections with high-temperature silicone.
 3. Mark each rail with its stage number on the outside face.
 
 **How it fits the parts next to it.**
@@ -316,13 +324,13 @@ Each plate rests on the rails and ribs of the gap below, its corners against the
 
 ![Figure 24. Making sketch of the high-end wick clip](../cad/drawings/SSK-DWG-119.png)
 
-*Figure 24. High-end wick clip making sketch (SSK-DWG-119): a 0.4 x 8 mm stainless strip, shown for the centre strip of a stage.*
+*Figure 24. High-end wick clip making sketch (SSK-DWG-119): a 0.4 x 8 mm 5052 aluminium strip, shown for the centre strip of a stage.*
 
 ![Figure 25. Making sketch of the brine tongue clip](../cad/drawings/SSK-DWG-120.png)
 
 *Figure 25. Brine tongue clip making sketch (SSK-DWG-120).*
 
-**The two clips.** Both are folded by hand from 0.4 x 8 mm 304 stainless strip, 20 of each (40 in all). The high-end clip is 206 mm long for a 167 mm strip: a 185 mm bar under the wick, and at each end three folds that carry an ear out under the plate's high edge, up along it and 6 mm flat over its top face, in the dry break beside the strip. The tongue clip is 62 mm long: a 51 mm base under the wick tail, two 2.3 mm legs up the sides of the brine tongue and a 3.4 mm flange turned in over the tongue's top face. Spring the flaps about 5° tighter than square so they grip. Neither clip touches a rib, a lip tab, the liner or the lid (the nearest is 1.5 mm).
+**The two clips.** Both are folded by hand from 0.4 x 8 mm 5052-H32 aluminium strip, 20 of each (40 in all); aluminium, not stainless, so the clips form no galvanic couple with the plates in hot brine (SSK-DEC-001 D-08, decided by Amish on 2026-10-25). The high-end clip is 206 mm long for a 167 mm strip: a 185 mm bar under the wick, and at each end three folds that carry an ear out under the plate's high edge, up along it and 6 mm flat over its top face, in the dry break beside the strip. The tongue clip is 62 mm long: a 51 mm base under the wick tail, two 2.3 mm legs up the sides of the brine tongue and a 3.4 mm flange turned in over the tongue's top face. Spring the flaps about 5° tighter than square so they grip. Neither clip touches a rib, a lip tab, the liner or the lid (the nearest is 1.5 mm).
 
 ![Figure 26. Joint 13: the high edge with its lip tab and wick clip ears](05-build-plan/joint-13.png)
 
@@ -436,7 +444,7 @@ Each bracket is screwed (4 x 25 mm stainless) to a tooth of the low wall comb an
 3. Drill six 10.5 mm holes through the side, at mid-height, measured back from the post centre: 113 mm (10°), 151 mm (15°), 195 mm (20°), 245 mm (25°), 309 mm (30°) and 396 mm (35°). Drill the two rails clamped together.
 4. Drill a 12 mm hole near each end of each ground rail for a ground stake.
 
-**How it fits the parts next to it.** The cross rails fit between the ground rails at the front and rear ends with four galvanised corner brackets. The posts stand on the rails at their marks; the props pin to the outside of the rails.
+**How it fits the parts next to it.** The cross rails fit between the ground rails at the front and rear ends, tied by four galvanised corner plates screwed on top of the joints. The posts stand on the rails at their marks; the props pin to the outside of the rails.
 
 **Check before moving on.** The frame is square, with diagonals equal within 3 mm.
 
@@ -453,6 +461,7 @@ Each bracket is screwed (4 x 25 mm stainless) to a tooth of the low wall comb an
 1. Cut two posts 349 mm long, ends square.
 2. Drill the pivot hole 10.5 mm, 22 mm down from the top, through the side that faces the panel.
 3. Cut two right-triangle gussets with legs of 195 mm.
+4. After the gussets are fixed (step 20), drill 10.5 mm through each gusset at the 10° and 15° prop holes of its rail, which lie under the gusset (SSK-DEC-001 D-02).
 
 **How they fit the parts next to them.**
 
@@ -460,7 +469,7 @@ Each bracket is screwed (4 x 25 mm stainless) to a tooth of the low wall comb an
 
 *Figure 37. Seen from inside the stand: the gusset joins post and rail behind the post; the M10 pivot bolt goes through the post and the side wall.*
 
-Each post stands on top of its ground rail at the mark; the gusset is glued and screwed (eight 4 x 40 mm screws) to the inside faces of post and rail, behind the post. The post's inside face touches the side wall, and an M10 x 70 stainless bolt through post and wall, with a large washer and nut inside the wall in the liner pocket, is the pivot.
+Each post stands on top of its ground rail at the mark; the gusset is glued and screwed (eight 4 x 40 mm screws) to the inside faces of post and rail, behind the post. The post's inside face touches the side wall, and an M10 x 75 stainless bolt through post and wall, with a large washer and nut inside the wall in the liner pocket, is the pivot.
 
 **Check before moving on.** Each post is upright on the level frame (spirit level).
 
@@ -487,7 +496,7 @@ Each post stands on top of its ground rail at the mark; the gusset is glued and 
 
 *Figure 40. The foot lies against the outside of the ground rail and is pinned through the hole for the chosen tilt.*
 
-The top: an M10 x 120 stainless bolt through prop, block and wall, nut and washer inside the wall. The foot: an M10 x 100 stainless bolt with a wing nut through the prop and the rail hole for the tilt. To change the tilt, support the panel, pull both foot pins, swing the props to the new holes and refit the pins.
+The top: an M10 x 120 stainless bolt through prop, block and wall, nut and washer inside the wall. The foot: an M10 x 120 stainless bolt with a washer and wing nut through the prop and the rail hole for the tilt; at the 10° and 15° holes it also passes through the gusset (SSK-DEC-001 D-02). To change the tilt, support the panel, pull both foot pins, swing the props to the new holes and refit the pins.
 
 **Check before moving on.** Hole centres are 1,000 mm apart within 1 mm.
 
@@ -505,9 +514,9 @@ Buy to specification, not brand. Line numbers are those of the bill of materials
 - **Stagnation cover (line 14).** Opaque white or aluminised tarpaulin 1.3 x 1.3 m with an elastic edge cord.
 - **Glazing tape (line 15).** Silicone foam tape 3 x 30 mm, 4.3 m.
 - **Feed closure (line 17).** Closed-cell silicone foam strip 5 x 35 mm, 1.0 m.
-- **Wick clips (line 18).** 0.4 x 8 mm 304 stainless strip, about 5.5 m (one 6 m coil), cut and folded in the workshop.
-- **Labels (line 19).** Two UV-stable vinyl or engraved aluminium labels, 80 x 25 mm, DISTILLATE beside the manifold outlet and BRINE beside the brine drain.
-- **Stand hardware (line 12).** Two M10 x 70 and two M10 x 120 stainless bolts with nuts and large washers; two M10 x 100 stainless bolts with wing nuts; four galvanised corner brackets; four ground stakes.
+- **Wick clips (line 18).** 0.4 x 8 mm 5052-H32 aluminium strip, about 5.5 m (one 6 m coil), cut and folded in the workshop.
+- **Labels (line 19).** Three UV-stable vinyl or engraved aluminium labels, 80 x 25 mm: DISTILLATE beside the manifold outlet, BRINE beside the brine drain, and a panel label on the high wall with the cover rule of safety stops S5 and S6: "Fit the stagnation cover whenever the feed runs out and before any work on the stack; never leave the panel in sun with an empty feed" (SSK-DEC-001 D-05).
+- **Stand hardware (line 12).** Two M10 x 75 and two M10 x 120 stainless bolts with nuts and large washers; two M10 x 120 stainless bolts with washers and wing nuts; four galvanised corner plates 40 x 100 x 2 mm, each with two 4 x 25 mm screws; four ground stakes.
 
 ## 4. Putting it together
 
@@ -625,7 +634,7 @@ Screw the two fascia brackets to the high wall's solid ends; glue the foam strip
 
 ![Step 19](05-build-plan/step-19.png)
 
-Cross rails between the ground rails with the four corner brackets. Set the frame level on firm ground and stake or ballast it.
+Cross rails between the ground rails, a corner plate screwed over each joint. Set the frame level on firm ground and stake it with the four ground stakes, or ballast it with 40 kg on the rear of the ground rails. **Hold point (D-09):** the frame stays anchored from here on; the panel is not lifted on, filled or turned to the sun until it is.
 
 ### Step 20: front posts and gussets
 
@@ -659,7 +668,7 @@ These are the checks a TRL 4 test report would record; this plan only lists them
 | Wicks lift out | R10 | Slide off the tongue clips, unhook the high-end clips, lift one wick strip and refit it; time it | A strip comes out and goes back in a few minutes without tearing |
 | Plates lift out | R10 | Remove the cap, lift the absorber and one condenser plate, refit; time it | The plates come out and go back without bending a tongue |
 | Tilt range | R11 | Pin the props at each of the six holes; angle finder on the glazing | 10° to 35°, each within 1° of its hole |
-| Mass and footprint | R9 | Weigh the panel dry; measure the stand at 10° | 20 kg or less dry (18.7 kg estimated); within 1.3 x 1.3 m |
+| Mass and footprint | R9 | Weigh the panel dry; measure the stand at 10° | 20 kg or less dry (18.8 kg estimated); within 1.3 x 1.3 m |
 | Feed head | R5 | Measure the trough rim height at 35° | 1.5 m or less (1.00 m estimated) |
 | Food-contact surfaces | R7 | Check the coating, manifold, lid, tube and silicone against their datasheets | Every distillate-side surface food-contact rated |
 | First sun | R1, R2, R8 | Feed running, cover off, a clear day; outputs per stage and absorber temperature logged | Recorded for the TRL 4 report; feed never runs out |
@@ -672,8 +681,8 @@ Stop at each point. Carry on only when everything listed is true.
 - **S1. Before cutting.** Gloves and glasses for aluminium sheet and snips; gloves, glasses and a dust mask for stone wool; hearing protection for the jigsaw; a ventilated space for paint, primer and the printer.
 - **S2. Before painting the absorber or coating the plates.** Ventilation and a respirator as the product's datasheet says; no flame nearby; cure to the maker's schedule before the plate goes in.
 - **S3. Before closing the stack (step 10).** Every surface on the distillate side (coating, lid, manifold, tube, silicone) is food-contact rated; no treated timber, lead solder or container of unknown history anywhere in the water path.
-- **S4. Before lifting the panel onto the stand (step 21).** Two people; the panel dry (about 18.7 kg); the ground frame staked or ballasted; the cover on.
-- **S5. Before the panel faces the sun.** The stand staked or ballasted (the panel can overturn at about 18 m/s of wind); the feed container full and the drip valve open; the stagnation cover at hand. Never leave the panel in sun with an empty feed: a dry stack reaches about 140 °C.
+- **S4. Before lifting the panel onto the stand (step 21).** Two people; the panel dry (about 18.8 kg); the ground frame staked or ballasted with 40 kg (hold point, SSK-DEC-001 D-09); the cover on.
+- **S5. Before the panel faces the sun.** Hold point: the stand staked with all four stakes or ballasted with 40 kg (unanchored, the panel can tip over at about 16.5 m/s of wind from behind; anchored, PR-013 is met to 17 m/s, SSK-CAL-001 section 9; SSK-DEC-001 D-09); the feed container full and the drip valve open; the stagnation cover at hand. Never leave the panel in sun with an empty feed: a dry stack reaches about 140 °C.
 - **S6. Before opening or working on the stack.** The cover on and the panel cool to the touch.
 - **S7. Before anyone drinks the distillate.** Tested for at least conductivity and E. coli, stored in a clean covered container and disinfected. The prototype's distillate is test water until then.
 - **S8. Brine.** Led to a soak-away or evaporation pond away from crops, wells and soil that must stay fresh.

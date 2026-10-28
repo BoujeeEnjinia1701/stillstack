@@ -397,3 +397,118 @@ Amish renders the three views on the Mac (`.kit/photoreal.py` on the scenes in `
 ## 2026-10-02: photoreal renders redone on the constructable design
 
 Rendered with Blender Cycles on Amish's Mac from the updated appearance model; captioned with `.kit/photo_caption.py`; `media/card.png` and `media/social-preview.png` regenerated with `.kit/cards.py`. Views: hero, exploded, detail. image_qc passes. Appearance deviations are those logged above as proposed, awaiting Amish.
+
+## Session 2026-10-24: kit 1.9.1 upgrade
+
+Kit 1.9.1 rollout for StillStack, under Amish's instructions of 2026-10-24 ("I want detailed TRL3 CAD", "Detail every option", "Kit 1.9.1 rollout - proceed") and his standing instruction of 2026-10-23 on STEM fixes. TRL stays 3; stage set to P3. No hardware built or tested.
+
+### What was added
+
+- Pipeline documents (kit 1.8): STEM check `docs/01b-stem-check.md` (SSK-STM-001) with `docs/04-calcs/stem_check.py` and `stem_results.csv`; concept options `docs/02a-concept-options.md` (SSK-OPT-001); users-and-needs and stakeholder tables in SSK-PRB-001 v0.7; user requirements `docs/03a-user-requirements.md` (SSK-URS-001, 13 URs); product requirements `docs/03-requirements.md` (SSK-PRS-001 v0.9, was SSK-REQ-001; R1 to R12 become PR-001 to PR-012, PR-013 added); traceability `docs/03b-traceability.md` (SSK-RTM-001, generated, 0 gaps); regulatory register `docs/07-regulatory.md` (SSK-REG-001); feasibility `docs/08-feasibility.md` (SSK-FEA-001); risk register with hazard analysis and design FMEA `docs/09-risk.md` (SSK-RSK-001); market `docs/10-market.md` (SSK-MKT-001, prices cited with dates); plan `docs/11-plan.md` (SSK-PLN-001, with the reference list); concept selection record `docs/decisions/0004-concept-selection.md` (SSK-DDR-004).
+- Detailed CAD (kit 1.9): `cad/src/model.py` keeps every earlier function and number and adds `TITLE`, `OPTIONS`, `PRINCIPLES`, `CHOSEN = "A"`, `OPTION_VIEWS`, `ALLOWED_CONTACTS` (empty) and `components(option)`. Option A is `build_components()` split into its real parts (every plate, rail, rib, wick strip, clip, fin, liner piece, mitred trim length, the twin-wall glazing with its flutes) with every screw, bolt, washer, nut, corner plate and ground stake, each cut into the parts it passes through. Option B is a new D3 model on the same frame, trough, gutter and stand. Repo helpers in `cad/src/ssk_parts.py`. STEP per made or bought part of option A in `cad/step/A/`, assemblies `cad/step/A-assembly.step` and `B-assembly.step`; `cad/fidelity.json`.
+- `cad/src/product_model.py` rebuilt from `components(CHOSEN)` plus a site (sandy yard, feed bucket and jar on concrete blocks, 1.75 m mannequin on the ground); `RENDER_VIEWS`: hero (outdoor, sand, ground at z = 0, sun 48/-70, 40 mm lens), studio, low-edge.
+- `cad/src/options_preview.py`: a provisional shaded `media/options.png` from the D3 models, because `render.py --check` needs the file and this rollout does not run `.kit/options.py` (see kit notes).
+- Regenerated from the model: SSK-DWG-002 Rev P5, making sketches (109, 117 and 118 at a new revision), build plan pictures, STL (0.1 to 0.15 mm chord), concept media (hero, blueprint P6, cutaway, exploded, flow, web model).
+
+### STEM verdicts and fixes
+
+38 rows (34 for option A, 4 for option B): 26 within known science, 10 plausible, 2 failed with a fix proposed to Amish, 0 outright fails; `stem_check: open`.
+
+- S11 (fixed, D-01): printed polycarbonate rails in stage 3 meet 110 °C at calm stagnation against a 113 °C softening point. Stage 3 rails are now PPS (USD +16).
+- S7 (fixed, D-07, after the independent review): the CAL over-credited the underside's convection (a 5 W/m2K floor where a laminar plate gives about 2.8). Corrected, with the brine's water activity added, the bare design made 9.2 L after warm-up. The underside and fins are now painted matte black (emissivity 0.90), giving 10.3 L; the extra paint is not priced yet.
+- S16 (fix proposed, D-09): unanchored, the stand tips at 16.5 m/s of wind from behind, under PR-013's 17 m/s.
+- S30 (fix proposed, D-08): 304 stainless clips on bare aluminium in hot brine are a galvanic couple; aluminium clips recommended, which reverses Amish's 2026-10-02 choice.
+- D-02 (model finding): pivot bolts M10 x 75 (not 70) and foot pins M10 x 120 (not 100) through the gussets at the 10 and 15 deg holes.
+
+Independent review: a second Claude instance (headless `claude -p`, tools disabled, because no Agent tool was available) saw only the STEM check, CAL, PRS and `sizing.py`. It weakened the headline yield, refuted S7, called S1, S2, S13 and S16 circular or wrong-mode, and listed six missing claims. All are answered in SSK-STM-001 Table 2: CAL v0.8 corrected, rows S29 to S34 added, S1 and S2 relabelled, S16 rewritten as a tipping check, S24's source replaced. Its PPS price point was checked and needs no change.
+
+### Option scores
+
+Option A (four-stage wick still, current design) 152 of 220; option B (single-effect tilted wick still) 153. Within 10 %, so both go to Amish without a pick (D-03). A makes about 2.7 times the water per panel; B is simpler, glass-condensing and easier to clean.
+
+### Part counts and mass per option (`cad/fidelity.json`)
+
+Table 1. CAD fidelity at D3 (both options pass).
+
+| Option | Parts | Made or bought | Fasteners | Bare share | Mass (kg) | STEP files |
+| --- | --- | --- | --- | --- | --- | --- |
+| A: Four-stage wick still | 293 | 174 | 119 | 0% | 29.9 | 174 per part plus the assembly |
+| B: Single-effect tilted wick still | 159 | 51 | 108 | 0% | 41.7 | Assembly only (kit 1.9.1: per-part STEP for the chosen option) |
+
+Kit masses use kit densities (canvas 500 kg/m3 for the wicks, HDPE for PPS), so option A's 19.8 kg model panel differs from the CAL's 18.8 kg.
+
+### Requirements not met
+
+- PR-002 gained output ratio: 1.22 after warm-up, 1.29 quasi-steady, against 1.3 (D-10).
+- PR-013 unanchored wind: tips at 16.5 m/s against 17 m/s (D-09); the stakes are in the design.
+- PR-012 cost: USD 459.20, USD 104.20 over the USD 355 value-engineering target (over target, not a limit).
+- At risk: PR-001 (10.3 L, 3 % margin; 10.1 L quasi-steady if the glazing passes 0.75), PR-004, PR-006, PR-007, PR-008 (142 °C calm against 150 °C; 151 °C at 1,100 W/m2). PR-003 verifiable only at TRL 4.
+
+### Decisions awaiting Amish
+
+D-03 concept selection (A or B, no pick); D-04 plate alloy and crevice corrosion; D-05 inner glazing margin; D-06 keep the D-02 bolt lengths; D-08 wick clip material; D-09 wind anchoring; D-10 restate PR-002 or add a stage. Made under the standing instruction and reversible: D-01 (stage 3 PPS rails), D-07 (painted underside and fins). Appearance: `product_model.py` adds only site parts; the README still leads with the 2026-10-02 `media/render-hero.png` until the Cycles views are rendered.
+
+### Safety
+
+Distillate stays test water until the TRL 4 per-stage conductivity and E. coli tests. New: the stand must always be staked or ballasted (it tips at about 16.5 m/s unanchored), and stagnation reaches about 151 °C at 1,100 W/m2, so the cover rule matters more.
+
+### Kit notes and bugs met
+
+1. `render.py --check` fails without `media/options.png`, and this rollout forbids running `.kit/options.py` without `--export`; worked around with `cad/src/options_preview.py` (provisional shaded picture).
+2. `cad_parts.break_edges()` on a solid taken from a compound (`shape.solids()[i]`) fillets the whole parent compound (build123d `topo_parent`), so split parts came back as copies of the whole union and overlapped each other; `ssk_parts.split()` rebuilds each as a free `Solid`. Suggest the kit copy the solid in `break_edges()`.
+3. `cad_check.py` lists only the first 10 interference failures per option, which hid later ones behind a large first failure.
+4. `cad_parts.MATERIALS` has no PPS or silicone; drawn as `hdpe_natural` and `epdm`, so fidelity masses are off for those parts.
+5. `stem_check.Check.claim()` can only return "Fails" for a failed limit; a "Fails, fix proposed" row has to be set by editing the row afterwards.
+6. No Agent tool was available for the independent reviewer; a headless `claude -p` run was used instead.
+7. `cad_check.py --export` takes about 10 minutes for the 452 parts of both options on this machine.
+
+### Checks
+
+- `python3 docs/04-calcs/sizing.py`: runs (CAL v0.8 figures above).
+- `python3 docs/04-calcs/stem_check.py`: open (26 within, 10 plausible, 2 fixes proposed, 0 fails).
+- `python3 .kit/trace.py`: SSK-RTM-001 v0.1, 13 URs, 13 PRs, 0 gaps.
+- `python3 .kit/cad_check.py --export`: PASS at D3 for options A and B (556 s); `--status` ok after the last edit.
+- `python3 cad/src/model.py --check`: 137 constructability checks pass, 0 fail.
+- `python3 .kit/render.py`: PDFs built; `python3 .kit/render.py --check`: no FAIL and no warnings.
+- `python3 -m reuse lint`: compliant (447 files).
+- No em or en dashes outside `.kit/` and `LICENSES/`.
+- Not run, as the rollout brief says: `.kit/options.py` without `--export`, `.kit/photoreal.py`, `.kit/export_views.py`, `.kit/cards.py`.
+
+### Recommended next step
+
+Amish decides D-03 and D-08 to D-10; the coordinator renders `media/options.png` (`python .kit/options.py`) and the `RENDER_VIEWS` (hero, studio, low-edge) in Cycles, then the cards. The design is not ready for TRL 4: the wick fabric, coating certificate and clip material come first.
+
+## Session 2026-10-25: decisions
+
+Amish, 2026-10-25 10:19 CT, after a report listing each repo's proposed decisions and recommendations: "i concur with your recommendations". Every decision that carried a recommendation is recorded as decided with the option recommended; every decision without a pick stays open.
+
+### Decided by Amish, 2026-10-25
+
+- **D-04 plate alloy:** option (a). 3003 or 1050 kept, 1050 preferred; a coupon test of plate, wick and clip in hot brine is in the TRL 4 plan (SSK-PLN-001 v0.2), with 5052 plates as the change if it shows crevice attack. STEM S21 closing route, RSK P6 and F4.
+- **D-05 inner glazing margin:** option (a). Twin-wall polycarbonate kept with the cover and shade rule as the barrier; the cover rule goes on a new panel label: `bom/bom.csv` line 19 from 2 to 3 labels (+USD 1.50 at the existing indicative price), build plan line 19 text, STEM S13 closing route.
+- **D-06 bolt lengths of D-02:** kept (M10 x 75 pivot bolts, M10 x 120 foot pins). No change.
+- **D-08 wick clips:** option (a), 5052-H32 aluminium strip 0.4 x 8 mm in place of 304 stainless, same shape. `cad/src/model.py` (clip material `MAT["al"]`, comments), `bom/bom.csv` line 18 (spec; USD 0.35 a clip kept as an estimate, 5052 price to confirm), `bom/bom-notes.md`, SSK-DWG-111 Rev P3, SSK-DWG-119 and SSK-DWG-120 Rev P2, SSK-DWG-002 Rev P6 (material note), build plan overview, joints 5, 6, 13 and 14 and steps 6 to 9 (labels), build plan text (Table, Figure 24, the clips paragraph, line 18). STEM S30 now Within known science; RSK P7, F11 (RPN 48 to 16); PR-010 text.
+- **D-09 wind anchoring:** option (a). PR-013 restated for the anchored stand with anchoring a hold point (step 19, safety stops S4 and S5). `docs/04-calcs/sizing.py` section 12 now prints the ballasted tipping speed, **28.8 m/s** with 40 kg on the rear of the ground rails (arm 0.83 m), and the hold-down each rear stake needs at 17 m/s, **about 6 N**; unanchored stays 16.5 m/s. STEM S16 restated, Within known science; PR-013 not met to **met on paper** (stake pull-out at TRL 5); RSK H3.
+- **D-10 PR-002:** option (a), restated as a gained output ratio of 1.2 or more for four stages. PR-002 not met to **met on paper**: 1.22 after warm-up (1.7 % margin), 1.29 quasi-steady, 1.20 at a glazing transmittance of 0.75.
+- Cost: USD 459.20 to **USD 460.70** (USD 105.70 over the USD 355 value-engineering target; `budget_usd` unchanged), carried into README, PRS, CAL, DEC, FEA, MKT, PLN, PRB, PRC, OPT, SSK-DDR-004, RTM and the concept sheet SSK-DWG-001 Rev P7.
+- Documents: SSK-STM-001 v0.2 (28 within, 10 plausible, 0 fail; `stem_check` stays open on the plausible rows), SSK-PRS-001 v0.10, SSK-CAL-001 v0.9, SSK-DEC-001 v0.5, SSK-RSK-001 v0.2, SSK-PLN-001 v0.2, SSK-FEA-001 v0.2, SSK-BLD-001 v0.5, SSK-PRC-001 v0.10, SSK-OPT-001 v0.2, SSK-PRB-001 v0.8, SSK-MKT-001 v0.2, SSK-DDR-004 v0.2, `project.yaml` comment.
+- Requirements now: none not met; PR-012 over the value-engineering target; PR-001, PR-004, PR-006, PR-007, PR-008 at risk; PR-003 to verify at TRL 4.
+
+### Still open (no recommendation to concur with)
+
+- **D-03 concept selection:** A (152) and B (153) within 10 %, sent without a pick; `concept_chosen` stays "A (proposed)".
+- Product render appearance (README still leads with the 2026-10-02 render until the Cycles views exist): noted, no option recommended.
+
+### Checks
+
+Run in this order on 2026-10-25 after the last edit to `cad/src/` and `bom/bom.csv`:
+
+- `python3 cad/src/model.py --check`: 137 checks pass, 0 fail (with the aluminium clips).
+- Regenerated: build plan overview, sketches SSK-DWG-111, 119 and 120, joints 5, 6, 13 and 14, steps 6 to 9, GA SSK-DWG-002 Rev P6 (detail A moved 13 mm down so its labels clear the longer revision table), concept media (SSK-DWG-001 Rev P7).
+- `python3 docs/04-calcs/sizing.py`: runs; ballasted tipping 28.8 m/s, rear stake hold-down about 6 N, parts USD 460.70.
+- `python3 docs/04-calcs/stem_check.py`: open, 28 within, 10 plausible, 0 fail.
+- `python3 .kit/trace.py`: RTM regenerated, 0 gaps.
+- `python3 .kit/cad_check.py --export`: PASS at D3.
+- `python3 .kit/render.py` and `python3 .kit/render.py --check`: pass, no FAIL.
+- `python3 -m reuse lint`: compliant.
+- Em and en dash scan outside `.kit/` and `LICENSES/`: none.

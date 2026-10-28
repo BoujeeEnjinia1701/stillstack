@@ -3,9 +3,9 @@ doc_id: SSK-PRB-001
 title: StillStack problem statement
 project: StillStack
 doc_type: Problem statement
-version: "0.6"
+version: '0.8'
 status: Draft
-date: '2026-10-02'
+date: '2026-10-25'
 author: Amish Chadha
 license: CERN-OHL-S-2.0
 revisions:
@@ -33,6 +33,14 @@ revisions:
   date: '2026-10-02'
   author: Amish Chadha
   change: "Partner decided and first candidate to approach (SSK-DEC-001, 2026-10-02)"
+- version: "0.7"
+  date: '2026-10-24'
+  author: Amish Chadha
+  change: "Kit 1.9.1 upgrade: users-and-needs and stakeholder tables added (STANDARDS section 22); constraint cost updated to USD 459.20 after SSK-DEC-001 D-01"
+- version: '0.8'
+  date: '2026-10-25'
+  author: Amish Chadha
+  change: 'Constraint cost USD 460.70 after the panel label of D-05 (decided by Amish 2026-10-25)'
 ---
 
 # StillStack problem statement
@@ -47,6 +55,8 @@ Multi-effect distillation fixes this in industry by condensing the vapor from on
 
 ## Users and context
 
+Table 1. Users and context.
+
 | User | Need | Context |
 | --- | --- | --- |
 | Household in an arid or saline coastal area | 5 to 15 L per day of safe drinking and cooking water from seawater or brackish well water | Rooftop or yard, no reliable grid, strong sun (5 to 7 kWh per m2 per day) |
@@ -54,9 +64,32 @@ Multi-effect distillation fixes this in industry by condensing the vapor from on
 | Small island or remote outpost | Backup water when a reverse osmosis unit or its power fails | Seawater feed, salt spray, high UV |
 | NGO, makerspace or technical college | A reproducible, inspectable design to build, test and improve | Workshop with hand tools, a 3D printer and sheet metal tools |
 
+### Users and needs
+
+Table 2. Users and needs (the source of the user requirements in SSK-URS-001).
+
+| User type | Goals and needs | Typical use scenario | Pain points and challenges |
+| --- | --- | --- | --- |
+| Household in an arid or saline coastal area | 5 to 15 L of low-salt water a day for drinking and cooking, without fuel, power or a water bill | One panel in the yard or on a flat roof, filled each morning from a bucket of seawater or well water | Basin stills need 3 to 5 m2 for the same water; glass breaks; nobody nearby can repair a membrane unit |
+| Rural clinic or school caretaker | A steady daily supply of low-salt water and simple upkeep that fits a part-time role | One or two panels in a compound; the caretaker fills the feed, empties the distillate jar and rinses the wicks weekly | Little time and few tools; must be sure the brine never reaches the drinking water |
+| Small island or remote outpost | Backup water when a reverse osmosis unit or its power fails | Panels stored and set up when needed, fed with seawater | Salt spray and high UV; spare parts arrive rarely |
+| NGO, makerspace or technical college | A reproducible, inspectable design to build, test and adapt | A workshop builds a batch from the drawings and build plan and runs it beside a basin still | Research devices are not documented for building; costs and materials must be local |
+
+### Stakeholders
+
+Table 3. Stakeholders.
+
+| Stakeholder group | Role or interest | Engagement needed |
+| --- | --- | --- |
+| University water or desalination lab (first candidate: Politecnico di Torino group) | Measures distillate quality and output; first co-design partner (SSK-DEC-001, 2026-10-02) | Share the design and calculation note; agree a TRL 4 test programme (on hold under the TRL 3 cap) |
+| Coastal NGO or WASH programme | Field use once the distillate passes its tests | Co-design of feed handling, maintenance and training; later field trial |
+| Local health or water authority | Rules on drinking-water materials and household water claims | Consulted before any claim about drinking water (SSK-REG-001) |
+| Builders (makerspaces, technical colleges, local workshops) | Make and repair the panels | Feedback on the build plan, parts sourcing and cost |
+| Neighbours and land users near the brine outlet | Brine discharged near crops, wells or soil | Brine disposal guidance in the instructions |
+
 ## Constraints
 
-- Garage-buildable prototype of 1 m2 aperture for about $355 USD in parts, using sheet aluminum, polycarbonate glazing, timber and cloth wicks. The 1 m2 aperture was confirmed by Amish on 2026-09-25 (SSK-DDR-001), the budget was raised from $250 to $320 the same day (SSK-DDR-002), and Amish approved a top-up to $355 on 2026-09-26. The priced BOM, including the 150 °C materials and stagnation cover decided in SSK-DDR-002, comes to about $351, so the cost constraint is met (SSK-CAL-001).
+- Garage-buildable prototype of 1 m2 aperture for about $355 USD in parts, using sheet aluminum, polycarbonate glazing, timber and cloth wicks. The 1 m2 aperture was confirmed by Amish on 2026-09-25 (SSK-DDR-001), the budget was raised from $250 to $320 the same day (SSK-DDR-002), and Amish approved a top-up to $355 on 2026-09-26. The priced BOM of the constructable design comes to USD 460.70 (SSK-CAL-001 v0.7, after the stage 3 rail fix of SSK-DEC-001 D-01), USD 105.70 over the value-engineering target that Amish set on 2026-10-01.
 - Fully passive: no pumps, electronics or batteries. Feed water arrives by gravity from a container the user fills.
 - Every surface that touches distillate must be food-contact safe, and all materials must tolerate dry stagnation under full sun.
 - Feed water may be seawater (about 35 g per L of salt) or brackish groundwater, so wicks and plates must resist salt build-up and corrosion.

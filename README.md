@@ -1,18 +1,18 @@
 # StillStack
 
-![TRL 3](https://img.shields.io/badge/TRL-3%20of%209-0F766E) ![Hardware: CERN-OHL-S-2.0](https://img.shields.io/badge/hardware-CERN--OHL--S--2.0-111827) ![Software: MIT](https://img.shields.io/badge/software-MIT-111827) [![DOI](https://zenodo.org/badge/1386352769.svg)](https://zenodo.org/badge/latestdoi/1386352769) [![REUSE compliant](https://github.com/BoujeeEnjinia1701/stillstack/actions/workflows/reuse.yml/badge.svg)](https://github.com/BoujeeEnjinia1701/stillstack/actions/workflows/reuse.yml) [![Archived in Software Heritage](https://archive.softwareheritage.org/badge/origin/https://github.com/BoujeeEnjinia1701/stillstack/)](https://archive.softwareheritage.org/browse/origin/?origin_url=https://github.com/BoujeeEnjinia1701/stillstack)
+![TRL 3](https://img.shields.io/badge/TRL-3%20of%209-0F766E) ![Stage P3](https://img.shields.io/badge/stage-P3%20design%20outputs-0F766E) ![Hardware: CERN-OHL-S-2.0](https://img.shields.io/badge/hardware-CERN--OHL--S--2.0-111827) ![Software: MIT](https://img.shields.io/badge/software-MIT-111827) [![DOI](https://zenodo.org/badge/1386352769.svg)](https://zenodo.org/badge/latestdoi/1386352769) [![REUSE compliant](https://github.com/BoujeeEnjinia1701/stillstack/actions/workflows/reuse.yml/badge.svg)](https://github.com/BoujeeEnjinia1701/stillstack/actions/workflows/reuse.yml) [![Archived in Software Heritage](https://archive.softwareheritage.org/badge/origin/https://github.com/BoujeeEnjinia1701/stillstack/)](https://archive.softwareheritage.org/browse/origin/?origin_url=https://github.com/BoujeeEnjinia1701/stillstack)
 
-**Area:** Water Security · **TRL:** 3 of 9 (proof of concept on paper) · **Value-engineering target:** USD 355 (estimated cost of the constructable design about USD 443) · **Difficulty:** 3 of 5
+**Area:** Water Security · **TRL:** 3 of 9 (proof of concept on paper) · **Value-engineering target:** USD 355 (estimated cost of the constructable design USD 460.70) · **Difficulty:** 3 of 5
 
 Multi-stage wick still that reuses the latent heat of condensation from each stage in the next one.
 
 ![StillStack: four-stage solar wick still, product render](media/render-hero.png)
 
-[Exploded render](media/render-exploded.png) · [Detail render](media/render-detail.png) · [Interactive 3D model](media/viewer.html) · [Concept blueprint (PDF)](media/concept-blueprint.pdf) · [General arrangement (PDF)](cad/drawings/SSK-DWG-002.pdf) · [Prototype build plan](docs/05-build-plan.md) · [Design decisions](docs/06-design-decisions.md) · [Sizing note](docs/04-calcs/01-sizing.md) · [Review note](docs/REVIEW.md)
+[Interactive 3D model](media/viewer.html) · [Concept blueprint (PDF)](media/concept-blueprint.pdf) · [General arrangement SSK-DWG-002 (PDF)](cad/drawings/SSK-DWG-002.pdf) · [STEM check](docs/01b-stem-check.md) · [Concept options](docs/02a-concept-options.md) · [Requirements](docs/03-requirements.md) · [Traceability](docs/03b-traceability.md) · [Sizing note SSK-CAL-001](docs/04-calcs/01-sizing.md) · [Prototype build plan](docs/05-build-plan.md) · [Design decisions](docs/06-design-decisions.md) · [Review note](docs/REVIEW.md)
 
 ## Concept rationale
 
-A basin still wastes the heat it collects: vapor condenses on the glass and its latent heat goes to the sky. Stacking thin wick stages under metal plates lets each stage condense against the next one, so one day of sun evaporates water about four times over. The approach needs no pumps, electronics or membranes, which keeps it passive and repairable, and the calculated output of about 10.6 L per m2 per day is two to three times a basin still of the same area.
+A basin still wastes the heat it collects: vapor condenses on the glass and its latent heat goes to the sky. Stacking thin wick stages under metal plates lets each stage condense against the next one, so one day of sun evaporates water about four times over. The approach needs no pumps, electronics or membranes, which keeps it passive and repairable, and the calculated output of about 10.3 L per m2 per day is two to three times a basin still of the same area.
 
 The design is open and garage-buildable because the people who need it most are rarely served by commercial desalination. Sheet aluminum, twin-wall polycarbonate, timber and cloth can be bought or salvaged almost anywhere, and a documented design lets an NGO, school or workshop build, test and adapt it rather than wait for a product.
 
@@ -56,9 +56,17 @@ Single-basin solar stills make only about 3 to 5 L per m2 per day.
 
 Multi-stage wick still that reuses the latent heat of condensation from each stage in the next one.
 
-The TRL 3 sizing (SSK-CAL-001) gives about 10.6 L per m2 per day on a 5.5 kWh per m2 day, with a gained output ratio of about 1.3. Dry stagnation reaches about 140 °C, so stages 1 and 2 use materials rated to 150 °C and a stagnation cover is supplied; the stage 3 margin is thin. Value-engineering target: USD 355. Estimated cost of the constructable design: USD 443.20 (USD 88.20 over the target).
+The TRL 3 sizing (SSK-CAL-001 v0.9) gives about 10.3 L per m2 per day on a 5.5 kWh per m2 day, with a gained output ratio of 1.22 to 1.29 (the target, restated by Amish on 2026-10-25 for four stages, is 1.2 or more). Dry stagnation reaches about 138 °C (142 °C in calm air), so stages 1 to 3 have PPS rails, the stack materials are rated to 150 °C and a stagnation cover is supplied. Value-engineering target: USD 355. Estimated cost of the constructable design: USD 460.70 (USD 105.70 over the target).
 
 Full design precis: [docs/02-concept.md](docs/02-concept.md)
+
+## STEM check
+
+The [STEM check](docs/01b-stem-check.md) (SSK-STM-001) tests 34 claims of the design and 4 of option B against known physics, chemistry and biology, each with an independent first-order estimate, and an independent reviewer tried to refute them. The working principle holds. Four details failed: two are fixed under Amish's standing instruction of 2026-10-23 (PPS rails in stage 3; the underside and fins painted black after the reviewer showed the underside convection had been over-credited), and two had fixes that Amish decided on 2026-10-25: aluminium in place of stainless wick clips, and anchoring against wind as a hold point, because the unanchored stand tips at about 16.5 m/s. Ten rows stay plausible, to confirm at TRL 4, so the check is open.
+
+## Concept options
+
+The [concept options](docs/02a-concept-options.md) (SSK-OPT-001) weigh the current design (option A, four-stage wick still) against a single-effect tilted wick still (option B), both modelled in detail in `cad/src/model.py`. A makes about 2.7 times the water per panel; B is simpler, uses a glass condensing surface and is easier to clean. They score 152 and 153 of 220, within 10 %, so both go to Amish without a pick (decision D-03); the repo stays on option A until he decides.
 
 ## Key components
 
@@ -66,9 +74,9 @@ Full design precis: [docs/02-concept.md](docs/02-concept.md)
 - Insulated plywood frame with a stone wool liner
 - Black aluminum absorber and four coated aluminum condenser plates
 - Wick strips, four stages
-- Side rails (150 °C polymer in stages 1 and 2, polycarbonate below) and silicone-cord spacer ribs
+- Side rails (PPS in stages 1 to 3, printed polycarbonate in stage 4) and silicone-cord spacer ribs
 - Feed trough, lidded distillate manifold and brine gutter
-- Rear heat-rejection fins and an adjustable tilt stand
+- Rear heat-rejection fins, painted black with the bottom plate's underside, and an adjustable tilt stand
 - Opaque stagnation cover for when the feed runs out
 
 The working bill of materials is in [bom/bom.csv](bom/bom.csv).
@@ -81,7 +89,7 @@ The [prototype build plan](docs/05-build-plan.md) (SSK-BLD-001) shows how to mak
 
 ## Safety
 
-> Distillate must be tested before drinking. Use food-safe materials on all wetted surfaces. The absorber reaches about 140 °C if the wicks run dry: fit the stagnation cover before maintenance and whenever the feed runs out. Anchor the stand against wind.
+> Distillate must be tested before drinking. Use food-safe materials on all wetted surfaces. The absorber reaches about 140 °C if the wicks run dry: fit the stagnation cover before maintenance and whenever the feed runs out. Always stake the stand or ballast it with 40 kg before filling (a hold point): unanchored, it can tip over at about 16.5 m/s of wind.
 
 ## Repository layout
 
